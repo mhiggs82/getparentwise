@@ -35,10 +35,28 @@
     body {
       font-family: 'DM Sans', sans-serif;
       color: var(--black);
-      background-color: var(--cream);
+      background-color: #C9C3B4;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+    }
+
+    /* ===== VERTICAL PAGE CONTAINER ===== */
+    .page-container {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.08),
+        0 8px 40px rgba(0, 0, 0, 0.12),
+        0 30px 100px rgba(0, 0, 0, 0.10);
+      overflow: hidden;
+    }
+
+    @media (max-width: 920px) {
+      .page-container {
+        box-shadow: none;
+      }
     }
 
     /* ===== SECTION SYSTEM ===== */
@@ -80,8 +98,6 @@
       height: 1px;
       background: var(--purple-mid);
       border: none;
-      max-width: 740px;
-      margin: 0 auto;
     }
 
     /* ===== TYPOGRAPHY ===== */
@@ -486,6 +502,7 @@
   </style>
 </head>
 <body>
+<div class="page-container">
 
   <!-- HERO -->
   <div class="section-wrap section-wrap--cream hero">
@@ -638,5 +655,7 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
+
+</div><!-- /.page-container -->
 </body>
 </html>

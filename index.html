@@ -162,14 +162,25 @@
     /* ===== HERO ===== */
     .hero { position: relative; overflow: hidden; }
 
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      left: -60px;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(ellipse at top left, rgba(107, 76, 163, 0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
     .hero::after {
       content: '';
       position: absolute;
       bottom: 0;
       right: -5%;
-      width: 40%;
-      height: 60%;
-      background: radial-gradient(ellipse at bottom right, var(--purple-light) 0%, transparent 70%);
+      width: 50%;
+      height: 75%;
+      background: radial-gradient(ellipse at bottom right, rgba(107, 76, 163, 0.18) 0%, transparent 65%);
       pointer-events: none;
     }
 
@@ -279,7 +290,7 @@
       margin-top: 0.4rem;
       margin-bottom: 2.5rem;
       font-size: 0.95rem;
-      opacity: 0.7;
+      opacity: 0.85;
       color: var(--cream);
     }
 
@@ -353,7 +364,7 @@
       font-size: 3.5rem;
       font-weight: 300;
       color: var(--purple);
-      opacity: 0.25;
+      opacity: 0.35;
       line-height: 1;
       padding-top: 0.15rem;
     }
@@ -371,7 +382,10 @@
     .phase-content p { font-size: 1rem; line-height: 1.8; }
 
     /* ===== CTA ===== */
-    .cta-section { text-align: center; }
+    .cta-section {
+      text-align: center;
+      padding-top: 8rem;
+    }
 
     .cta-service {
       font-family: 'Cormorant Garamond', serif;
@@ -444,6 +458,7 @@
       text-align: center;
       padding: 3rem 2rem 2rem;
       background: var(--black);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .footer-tagline {
@@ -596,7 +611,9 @@
     </div>
   </div>
 
-  <hr class="hr-full">
+  <div style="background-color: var(--cream); text-align: center; padding: 2rem 0;">
+    <hr class="hr-accent hr-accent--center">
+  </div>
 
   <!-- THE PROCESS -->
   <div class="section-wrap section-wrap--cream">

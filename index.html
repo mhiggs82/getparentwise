@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ParentWise | Your Teen Doesn't Need You to Fix Them</title>
+
+  <!-- Open Graph for social sharing -->
+  <meta property="og:title" content="Your Teen Doesn't Need You to Fix Them">
+  <meta property="og:description" content="They need you to create the foundation they launch from. ParentWise is a guided, science-backed service that shows you how, from the inside out.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="book-cover.png">
+  <meta name="description" content="ParentWise is a guided, science-backed service that helps entrepreneurial, globally minded parents create the secure foundation their teenager needs to launch.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple: #6B4CA3;
+      --purple-deep: #5A3D8F;
+      --cream: #F5F1E8;
+      --cream-warm: #EDE8DC;
+      --black: #1A1A1A;
+      --black-soft: #2C2C2C;
+      --white: #FDFCF9;
+      --purple-tint: rgba(107, 76, 163, 0.04);
+      --purple-light: rgba(107, 76, 163, 0.08);
+      --purple-mid: rgba(107, 76, 163, 0.18);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 18px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--black);
+      background-color: var(--cream);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ===== SECTION SYSTEM ===== */
+    .section-wrap { position: relative; }
+    .section-wrap--cream { background-color: var(--cream); }
+    .section-wrap--white { background-color: var(--white); }
+    .section-wrap--tint { background-color: var(--cream-warm); }
+    .section-wrap--purple { background-color: var(--purple); color: var(--cream); }
+    .section-wrap--dark {
+      background: linear-gradient(175deg, var(--black) 0%, var(--black-soft) 100%);
+      color: var(--cream);
+    }
+
+    .section-inner {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 6rem 2.5rem;
+    }
+
+    .section-inner--narrow { max-width: 640px; }
+
+    /* ===== HORIZONTAL ELEMENTS ===== */
+    .hr-accent {
+      display: block;
+      width: 48px;
+      height: 3px;
+      background-color: var(--purple);
+      border: none;
+      margin-bottom: 2.5rem;
+      border-radius: 2px;
+    }
+
+    .hr-accent--cream { background-color: var(--cream); opacity: 0.4; }
+    .hr-accent--center { margin-left: auto; margin-right: auto; }
+
+    .hr-full {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: var(--purple-mid);
+      border: none;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 3.6rem;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: var(--black);
+      margin-bottom: 1.8rem;
+    }
+
+    .subhead {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 1.8;
+      color: var(--black);
+      opacity: 0.75;
+      max-width: 520px;
+    }
+
+    .section-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 1.8rem;
+      display: block;
+    }
+
+    .section-label--light { color: var(--cream); opacity: 0.5; }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: 2.2rem;
+      line-height: 1.25;
+      color: var(--purple);
+      margin-bottom: 2rem;
+      letter-spacing: -0.01em;
+    }
+
+    .section-wrap--purple h2,
+    .section-wrap--dark h2 { color: var(--cream); }
+
+    p { margin-bottom: 1.3rem; font-size: 1rem; line-height: 1.8; }
+    p:last-child { margin-bottom: 0; }
+
+    .emphasis {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      line-height: 1.45;
+      font-weight: 500;
+    }
+
+    .emphasis--purple { color: var(--purple); }
+
+    /* ===== HERO ===== */
+    .hero { position: relative; overflow: hidden; }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: -5%;
+      width: 40%;
+      height: 60%;
+      background: radial-gradient(ellipse at bottom right, var(--purple-light) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero .section-inner {
+      padding-top: 7rem;
+      padding-bottom: 6rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 2.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--purple);
+    }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      margin-top: 3.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      opacity: 0.35;
+      transition: opacity 0.3s ease;
+    }
+
+    .scroll-hint:hover { opacity: 0.6; }
+
+    .scroll-hint-line {
+      width: 32px;
+      height: 1px;
+      background: var(--black);
+    }
+
+    .scroll-hint-text {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* ===== MIRROR ===== */
+    .mirror-lines { list-style: none; padding: 0; }
+
+    .mirror-lines li {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      line-height: 1.55;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: 0.7rem;
+      font-style: italic;
+      padding-left: 1.2rem;
+      border-left: 2px solid var(--purple-mid);
+    }
+
+    .mirror-lines li:last-child {
+      font-style: normal;
+      font-weight: 500;
+      margin-top: 2rem;
+      color: var(--purple);
+      border-left-color: var(--purple);
+    }
+
+    /* ===== AUTHORITY ===== */
+    .authority-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      margin-bottom: 0.3rem;
+      flex-wrap: wrap;
+    }
+
+    .authority-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--cream);
+    }
+
+    .authority-sep {
+      width: 32px;
+      height: 1px;
+      background: var(--cream);
+      opacity: 0.25;
+      flex-shrink: 0;
+      align-self: center;
+    }
+
+    .authority-title {
+      font-size: 0.85rem;
+      opacity: 0.55;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+
+    .authority-credentials {
+      margin-top: 0.4rem;
+      margin-bottom: 2.5rem;
+      font-size: 0.95rem;
+      opacity: 0.7;
+      color: var(--cream);
+    }
+
+    .book-reference { font-style: italic; opacity: 0.9; }
+
+    .section-wrap--purple p { color: var(--cream); opacity: 0.88; }
+
+    .authority-missing {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(245, 241, 232, 0.12);
+    }
+
+    .authority-missing p {
+      opacity: 1;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      line-height: 1.55;
+      font-weight: 500;
+      color: var(--cream);
+    }
+
+    /* ===== REFRAME ===== */
+    .reframe-turn {
+      margin: 2.5rem 0;
+      padding: 2rem 0;
+      border-top: 1px solid var(--purple-mid);
+      border-bottom: 1px solid var(--purple-mid);
+    }
+
+    /* ===== SEPARATION ===== */
+    .separation-stakes {
+      margin-top: 2rem;
+      padding: 2rem 2.2rem;
+      background: var(--purple-tint);
+      border-left: 3px solid var(--purple);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .separation-stakes p { font-size: 0.95rem; line-height: 1.8; margin-bottom: 1rem; }
+    .separation-stakes p:last-child { margin-bottom: 0; }
+
+    /* ===== WHAT MOST MISS ===== */
+    .sovereignty-statement {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--purple-mid);
+    }
+
+    .sovereignty-statement p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      line-height: 1.5;
+      font-weight: 500;
+      color: var(--purple);
+    }
+
+    /* ===== PROCESS ===== */
+    .phase {
+      margin-bottom: 3rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.8rem;
+      align-items: start;
+    }
+
+    .phase:last-child { margin-bottom: 0; }
+
+    .phase-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--purple);
+      opacity: 0.25;
+      line-height: 1;
+      padding-top: 0.15rem;
+    }
+
+    .phase-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 0.6rem;
+    }
+
+    .phase-content p { font-size: 1rem; line-height: 1.8; }
+
+    /* ===== CTA ===== */
+    .cta-section { text-align: center; }
+
+    .cta-service {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      line-height: 1.55;
+      font-weight: 500;
+      color: var(--cream);
+      opacity: 0.7;
+      max-width: 520px;
+      margin: 0 auto 3.5rem;
+    }
+
+    .cta-divider {
+      width: 48px;
+      height: 1px;
+      background: var(--cream);
+      opacity: 0.15;
+      margin: 0 auto 3rem;
+    }
+
+    .cta-lead {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 3.5rem;
+      color: var(--cream);
+    }
+
+    .book-cover-wrapper {
+      margin: 0 auto 3rem;
+      max-width: 300px;
+    }
+
+    .book-cover-wrapper img {
+      width: 100%;
+      display: block;
+      border-radius: 3px;
+      box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.35),
+        0 8px 20px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    }
+
+    .cta-button {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--purple-deep);
+      background-color: var(--cream);
+      padding: 1.15rem 3.8rem;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .cta-button:hover {
+      background-color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: center;
+      padding: 3rem 2rem 2rem;
+      background: var(--black);
+    }
+
+    .footer-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cream);
+      opacity: 0.35;
+      margin-bottom: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .footer-copy {
+      font-size: 0.7rem;
+      color: var(--cream);
+      opacity: 0.2;
+      letter-spacing: 0.04em;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes subtle-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(3px); }
+    }
+
+    .scroll-hint svg {
+      animation: subtle-bounce 2.5s ease-in-out infinite;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 640px) {
+      html { font-size: 16px; }
+      h1 { font-size: 2.6rem; }
+      .hero .section-inner { padding-top: 4.5rem; padding-bottom: 4rem; }
+      .section-inner { padding: 4rem 1.5rem; }
+      .mirror-lines li { font-size: 1.25rem; }
+      .emphasis { font-size: 1.35rem; }
+      .authority-header { flex-direction: column; gap: 0.3rem; }
+      .authority-sep { display: none; }
+      .phase { grid-template-columns: 1fr; gap: 0.5rem; }
+      .phase-number { font-size: 2.5rem; }
+      .book-cover-wrapper { max-width: 240px; }
+      .cta-button { padding: 1rem 2.5rem; width: 100%; max-width: 300px; }
+      .separation-stakes { padding: 1.5rem; }
+      .scroll-hint { margin-top: 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="section-wrap section-wrap--cream hero">
+    <div class="section-inner fade-in">
+      <span class="hero-tag">ParentWise 🪷</span>
+      <h1>Your Teen Doesn't Need<br>You to Fix Them</h1>
+      <p class="subhead">They need you to create the foundation they launch from. ParentWise is a guided, science-backed service that shows you how, from the inside out.</p>
+      <div class="scroll-hint">
+        <span class="scroll-hint-line"></span>
+        <span class="scroll-hint-text">Scroll</span>
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="opacity: 0.8;">
+          <path d="M6 1v10M2 7l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUDIENCE MIRROR -->
+  <div class="section-wrap section-wrap--white">
+    <div class="section-inner fade-in">
+      <span class="section-label">Is this you?</span>
+      <hr class="hr-accent">
+      <ul class="mirror-lines">
+        <li>You've built something that matters. Maybe from scratch.</li>
+        <li>You've raised a family across countries and cultures.</li>
+        <li>You care about what you leave behind, not just what you earn.</li>
+        <li>This isn't your first hard problem. But it might be the most important one.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- AUTHORITY -->
+  <div class="section-wrap section-wrap--purple">
+    <div class="section-inner fade-in">
+      <span class="section-label section-label--light">The guide</span>
+      <hr class="hr-accent hr-accent--cream">
+      <div class="authority-header">
+        <span class="authority-name">M. Aurelius Higgs</span>
+        <span class="authority-sep"></span>
+        <span class="authority-title">Founder of ParentWise</span>
+      </div>
+      <p class="authority-credentials">20+ years as an international educator working with families across cultures.</p>
+      <p>From extensive work across different cultural contexts, he saw a throughline. The science of how security develops during adolescence is sound. Works like <span class="book-reference">Parenting from the Inside Out</span> by Daniel J. Siegel and Mary Hartzell, and <span class="book-reference">The Breakthrough Years</span> by Ellen Galinsky lay the foundation.</p>
+      <div class="authority-missing">
+        <p>But there's something missing from the conversation. Security isn't only something that happens to a teen. It's something they actively create. And most approaches miss that entirely.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE REFRAME -->
+  <div class="section-wrap section-wrap--cream">
+    <div class="section-inner section-inner--narrow fade-in">
+      <span class="section-label">The reframe</span>
+      <hr class="hr-accent">
+      <p>You've been focused on your teen. The pulling away during a transition. The rootlessness of another move. The silence. The distance between you.</p>
+      <p>Sometimes they're struggling. Sometimes they're just processing. But you've already assumed what it means.</p>
+      <div class="reframe-turn">
+        <p class="emphasis emphasis--purple">The real work doesn't start with them. It starts with you.</p>
+      </div>
+      <p>Not because you're the problem. Because you're the foundation. And what you're creating isn't just safety. It's the environment where your teen learns to create for themselves.</p>
+    </div>
+  </div>
+
+  <!-- THE SEPARATION -->
+  <div class="section-wrap section-wrap--white">
+    <div class="section-inner fade-in">
+      <span class="section-label">Two responsibilities</span>
+      <hr class="hr-accent">
+      <p>These are two separate responsibilities at this stage of development.</p>
+      <p class="emphasis emphasis--purple" style="margin: 1.8rem 0;">Your job is to create the secure foundation. Their job is to launch from it.</p>
+      <p>When you try to do their work for them, or neglect your own, both of you lose.</p>
+      <div class="separation-stakes">
+        <p>A teen who is safe but never learns to create something of their own doesn't learn to trust themselves.</p>
+        <p>A parent who focuses only on the teen's behavior never works on securing themselves. This creates a foundation their teen can't trust.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT MOST MISS -->
+  <div class="section-wrap section-wrap--tint">
+    <div class="section-inner section-inner--narrow fade-in">
+      <span class="section-label">The missing piece</span>
+      <hr class="hr-accent">
+      <h2>Most approaches to raising secure teens stop at the same place.</h2>
+      <p style="font-size: 1.15rem; margin-bottom: 0.5rem;">Safe. Seen. Soothed.</p>
+      <p>That matters. But it's not enough.</p>
+      <p>What builds lasting inner security is an invitation toward creation. A teen who is supported in creating something of their own, something that contributes to the world around them, doesn't just feel safe. They become sovereign.</p>
+      <div class="sovereignty-statement">
+        <p>Inner sovereignty. The kind of self-trust that holds when life inevitably knocks them off their feet.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="hr-full">
+
+  <!-- THE PROCESS -->
+  <div class="section-wrap section-wrap--cream">
+    <div class="section-inner fade-in">
+      <span class="section-label">Your ParentWise Pathway</span>
+      <hr class="hr-accent">
+      <h2>There are three phases. Yet, your path is unique.</h2>
+      <div class="phase">
+        <span class="phase-number">01</span>
+        <div class="phase-content">
+          <p class="phase-label">Look Back</p>
+          <p>Understand your own adolescence. What you needed. How those needs were or weren't met. This is where your foundation begins.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <span class="phase-number">02</span>
+        <div class="phase-content">
+          <p class="phase-label">Look at Now</p>
+          <p>The transition you and your teen are both going through. What they need from you at this stage. And how to secure it.</p>
+        </div>
+      </div>
+      <div class="phase">
+        <span class="phase-number">03</span>
+        <div class="phase-content">
+          <p class="phase-label">Look Forward</p>
+          <p>You create the environment where your teen creates something of their own and launches from it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA (service line folded in) -->
+  <div class="section-wrap section-wrap--dark">
+    <div class="section-inner cta-section fade-in">
+      <p class="cta-service">ParentWise is a guided, science-backed service for parents who want to do this work with intention and support. Not alone.</p>
+      <div class="cta-divider"></div>
+      <p class="cta-lead">You don't have to figure this out alone. Start here.</p>
+      <div class="book-cover-wrapper">
+        <img src="book-cover.png" alt="A Parent's Guide: How to Create Security During Adolescence by M. Aurelius Higgs">
+      </div>
+      <a href="#" class="cta-button">Get the Book</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="footer-tagline">Secure Parents Create Secure Teens.<br>Secure Teens Create a Secure Future.</p>
+    <p class="footer-copy">&copy; 2026 ParentWise. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

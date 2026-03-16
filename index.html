@@ -656,6 +656,303 @@
       .reframe-turn { padding-left: 1.6rem; }
       .reframe-turn::before { font-size: 4rem; }
     }
+
+    /* ===== ASSESSMENT POPUP ===== */
+    .assessment-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 26, 26, 0.72);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .assessment-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .assessment-modal {
+      background: var(--white);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 520px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.28), 0 4px 20px rgba(107,76,163,0.15);
+      position: relative;
+      transform: translateY(24px) scale(0.98);
+      transition: transform 0.38s cubic-bezier(0.32, 0, 0.24, 1);
+    }
+
+    .assessment-overlay.open .assessment-modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .assessment-close {
+      position: absolute;
+      top: 1.1rem;
+      right: 1.1rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--ink-soft);
+      padding: 6px;
+      border-radius: 4px;
+      line-height: 1;
+      transition: color 0.2s ease, background 0.2s ease;
+      z-index: 1;
+    }
+
+    .assessment-close:hover {
+      color: var(--ink);
+      background: var(--purple-pale);
+    }
+
+    .assessment-progress {
+      height: 4px;
+      background: var(--purple-pale);
+      border-radius: 12px 12px 0 0;
+      overflow: hidden;
+    }
+
+    .assessment-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--purple), var(--accent-gold));
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 12px;
+    }
+
+    .assessment-body {
+      padding: 2.2rem 2.4rem 2.6rem;
+    }
+
+    .assessment-step-tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 1.4rem;
+      display: block;
+    }
+
+    .assessment-intro-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--purple-deep);
+      margin-bottom: 1rem;
+      letter-spacing: -0.015em;
+    }
+
+    .assessment-intro-body {
+      font-size: 0.975rem;
+      line-height: 1.75;
+      color: var(--ink-mid);
+      margin-bottom: 0.6rem;
+    }
+
+    .assessment-meta {
+      font-size: 0.72rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      display: block;
+    }
+
+    .assessment-q-number {
+      font-size: 0.7rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.1rem;
+      display: block;
+    }
+
+    .assessment-question {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.12rem;
+      font-weight: 500;
+      line-height: 1.65;
+      color: var(--ink);
+      margin-bottom: 2rem;
+    }
+
+    .assessment-yn {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .assessment-yn-btn {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1rem 1.5rem;
+      border-radius: 6px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .assessment-yn-btn--yes {
+      background: var(--purple);
+      color: var(--white);
+      border-color: var(--purple);
+    }
+
+    .assessment-yn-btn--yes:hover {
+      background: var(--purple-deep);
+      border-color: var(--purple-deep);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px var(--purple-glow);
+    }
+
+    .assessment-yn-btn--no {
+      background: transparent;
+      color: var(--ink-mid);
+      border-color: var(--cream-dark);
+    }
+
+    .assessment-yn-btn--no:hover {
+      border-color: var(--purple-light);
+      color: var(--purple);
+      background: var(--purple-pale);
+    }
+
+    .assessment-email-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--purple-deep);
+      margin-bottom: 0.75rem;
+    }
+
+    .assessment-email-body {
+      font-size: 0.975rem;
+      line-height: 1.75;
+      color: var(--ink-mid);
+      margin-bottom: 1.6rem;
+    }
+
+    .assessment-email-input {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      border: 2px solid var(--cream-dark);
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      color: var(--ink);
+      background: var(--white);
+      margin-bottom: 0.75rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      outline: none;
+    }
+
+    .assessment-email-input:focus {
+      border-color: var(--purple-light);
+      box-shadow: 0 0 0 3px rgba(107,76,163,0.1);
+    }
+
+    .assessment-email-input::placeholder { color: var(--ink-soft); }
+
+    .assessment-submit-btn {
+      width: 100%;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent-gold-light) 0%, #B8943A 100%);
+      padding: 1rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 4px 20px rgba(201,169,110,0.45);
+      margin-bottom: 0.75rem;
+    }
+
+    .assessment-submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(201,169,110,0.55);
+    }
+
+    .assessment-privacy {
+      font-size: 0.7rem;
+      color: var(--ink-soft);
+      text-align: center;
+      display: block;
+      letter-spacing: 0.06em;
+    }
+
+    .assessment-thanks-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--purple-pale);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .assessment-thanks-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--purple-deep);
+      margin-bottom: 0.75rem;
+    }
+
+    .assessment-thanks-body {
+      font-size: 0.975rem;
+      line-height: 1.75;
+      color: var(--ink-mid);
+      margin-bottom: 1rem;
+    }
+
+    .assessment-close-btn {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--purple);
+      background: var(--purple-pale);
+      padding: 0.875rem 2rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease;
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+
+    .assessment-close-btn:hover {
+      background: #ddd4f4;
+      color: var(--purple-deep);
+    }
+
+    @media (max-width: 480px) {
+      .assessment-body { padding: 1.8rem 1.5rem 2rem; }
+      .assessment-yn { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -815,5 +1112,206 @@
   </script>
 
 </div><!-- /.page-container -->
+
+<!-- ===== ASSESSMENT POPUP ===== -->
+<div class="assessment-overlay" id="assessmentOverlay" role="dialog" aria-modal="true" aria-label="Secure Foundation Assessment">
+  <div class="assessment-modal" id="assessmentModal">
+    <button class="assessment-close" id="assessmentClose" aria-label="Close assessment">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M14 4L4 14M4 4l10 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="assessment-progress">
+      <div class="assessment-progress-fill" id="assessmentProgress" style="width: 0%"></div>
+    </div>
+    <div class="assessment-body" id="assessmentBody">
+      <!-- Content injected by JS -->
+    </div>
+  </div>
+</div>
+
+<script>
+  // ===== ASSESSMENT POPUP =====
+
+  var assessmentQuestions = [
+    {
+      pillar: 'Safe',
+      q: 'When your teen tells you something you didn\'t expect or didn\'t want to hear, do they generally feel safe doing so — without fear of a lecture or an overreaction?'
+    },
+    {
+      pillar: 'Safe',
+      q: 'When life gets hard for your teen, do they tend to come <em>toward</em> home rather than away from it?'
+    },
+    {
+      pillar: 'Seen',
+      q: 'Can you name what genuinely lights your teen up right now — separate from what you hope or wish they cared about?'
+    },
+    {
+      pillar: 'Seen',
+      q: 'When your teen is struggling, do you find yourself listening more than offering solutions?'
+    },
+    {
+      pillar: 'Seen',
+      q: 'Do you make time for one-on-one moments with your teen that aren\'t tied to a problem, task, or schedule?'
+    },
+    {
+      pillar: 'Soothe',
+      q: 'When your teen is anxious, angry, or shut down, are you usually able to stay regulated yourself?'
+    },
+    {
+      pillar: 'Soothe',
+      q: 'After a conflict with your teen, do you typically take the first step toward repair — without waiting for them to apologise first?'
+    },
+    {
+      pillar: 'Inner Sovereignty',
+      q: 'Are you aware of which specific behaviours in your teen tend to activate your own unresolved patterns?'
+    },
+    {
+      pillar: 'Inner Sovereignty',
+      q: 'Is your sense of identity as a parent mostly steady — even when your teen is struggling or pulling away?'
+    },
+    {
+      pillar: 'Inner Sovereignty',
+      q: 'When your teen makes a mistake, do you respond in a way that keeps the relationship door open between you?'
+    }
+  ];
+
+  var assessmentStep = -1;
+  var assessmentAnswers = [];
+
+  function openAssessment() {
+    assessmentStep = -1;
+    assessmentAnswers = [];
+    renderAssessmentStep();
+    var overlay = document.getElementById('assessmentOverlay');
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeAssessment() {
+    var overlay = document.getElementById('assessmentOverlay');
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function updateProgress() {
+    var total = assessmentQuestions.length + 1; // questions + email step
+    var pct = assessmentStep < 0 ? 0 : Math.round((assessmentStep / total) * 100);
+    document.getElementById('assessmentProgress').style.width = pct + '%';
+  }
+
+  function renderAssessmentStep() {
+    updateProgress();
+    var body = document.getElementById('assessmentBody');
+
+    if (assessmentStep === -1) {
+      // ── Intro ──
+      body.innerHTML =
+        '<span class="assessment-step-tag">Free Assessment</span>' +
+        '<p class="assessment-intro-title">Are you a secure foundation for your teen to launch from?</p>' +
+        '<p class="assessment-intro-body">Take 2 minutes to see where you\'re already showing up for your teen — and where there\'s room to grow. Think of it as a mirror, not a measuring stick.</p>' +
+        '<span class="assessment-meta">10 questions &nbsp;&middot;&nbsp; Yes or No &nbsp;&middot;&nbsp; Less than 2 minutes</span>' +
+        '<button class="assessment-yn-btn assessment-yn-btn--yes" style="width:100%;font-size:0.85rem;" onclick="advanceAssessment()">Let\'s Begin &rarr;</button>';
+
+    } else if (assessmentStep < assessmentQuestions.length) {
+      // ── Question ──
+      var q = assessmentQuestions[assessmentStep];
+      var num = assessmentStep + 1;
+      body.innerHTML =
+        '<span class="assessment-step-tag">' + q.pillar + '</span>' +
+        '<span class="assessment-q-number">Question ' + num + ' of ' + assessmentQuestions.length + '</span>' +
+        '<p class="assessment-question">' + q.q + '</p>' +
+        '<div class="assessment-yn">' +
+          '<button class="assessment-yn-btn assessment-yn-btn--yes" onclick="answerQuestion(true)">Yes</button>' +
+          '<button class="assessment-yn-btn assessment-yn-btn--no" onclick="answerQuestion(false)">No</button>' +
+        '</div>';
+
+    } else if (assessmentStep === assessmentQuestions.length) {
+      // ── Email capture ──
+      body.innerHTML =
+        '<span class="assessment-step-tag">Almost there</span>' +
+        '<p class="assessment-email-title">You\'ve got good instincts for being here.</p>' +
+        '<p class="assessment-email-body">Where\'s the best place to send your results? You\'ll get a breakdown across Safe, Seen, Soothe, and Inner Sovereignty — plus your clearest next step.</p>' +
+        '<input type="email" class="assessment-email-input" id="assessmentEmail" placeholder="Your email address" autocomplete="email">' +
+        '<button class="assessment-submit-btn" onclick="submitAssessment()">Send My Results &rarr;</button>' +
+        '<span class="assessment-privacy">We respect your privacy. No spam, ever.</span>';
+
+      setTimeout(function() {
+        var input = document.getElementById('assessmentEmail');
+        if (input) {
+          input.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') submitAssessment();
+          });
+        }
+      }, 50);
+
+    } else {
+      // ── Thank you ──
+      document.getElementById('assessmentProgress').style.width = '100%';
+      body.innerHTML =
+        '<div class="assessment-thanks-icon">' +
+          '<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+            '<path d="M5 13l5.5 5.5L21 7" stroke="#6B4CA3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>' +
+          '</svg>' +
+        '</div>' +
+        '<p class="assessment-thanks-title">Your results are on the way.</p>' +
+        '<p class="assessment-thanks-body">Check your inbox in the next few minutes. You\'ll receive a full breakdown of where you stand across Safe, Seen, Soothe, and Inner Sovereignty — along with a personalised next step.</p>' +
+        '<p class="assessment-thanks-body" style="font-size:0.875rem;">In the meantime, explore what ParentWise offers below.</p>' +
+        '<button class="assessment-close-btn" onclick="closeAssessment()">Continue Exploring &rarr;</button>';
+    }
+
+    document.getElementById('assessmentModal').scrollTop = 0;
+  }
+
+  function advanceAssessment() {
+    assessmentStep++;
+    renderAssessmentStep();
+  }
+
+  function answerQuestion(answer) {
+    assessmentAnswers.push(answer);
+    assessmentStep++;
+    renderAssessmentStep();
+  }
+
+  function submitAssessment() {
+    var emailInput = document.getElementById('assessmentEmail');
+    var email = emailInput ? emailInput.value.trim() : '';
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      if (emailInput) {
+        emailInput.focus();
+        emailInput.style.borderColor = '#E57373';
+        setTimeout(function() { emailInput.style.borderColor = ''; }, 2000);
+      }
+      return;
+    }
+    // Submit answers — wire to your email service here
+    console.log('Assessment submitted:', { email: email, answers: assessmentAnswers });
+    assessmentStep++;
+    renderAssessmentStep();
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('assessmentClose').addEventListener('click', closeAssessment);
+
+    document.getElementById('assessmentOverlay').addEventListener('click', function(e) {
+      if (e.target === e.currentTarget) closeAssessment();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeAssessment();
+    });
+
+    // Wire the "Take a free assessment" CTA button
+    var ctaBtn = document.querySelector('.cta-button');
+    if (ctaBtn) {
+      ctaBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        openAssessment();
+      });
+    }
+  });
+</script>
+
 </body>
 </html>

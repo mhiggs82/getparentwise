@@ -1291,8 +1291,7 @@
     }
     // Submit answers — wire to your email service here
     console.log('Assessment submitted:', { email: email, answers: assessmentAnswers });
-    assessmentStep++;
-    renderAssessmentStep();
+    window.location.href = '/offers/';
   }
 
   document.addEventListener('DOMContentLoaded', function() {

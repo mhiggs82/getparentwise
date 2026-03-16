@@ -12,21 +12,30 @@
   <meta property="og:image" content="book-cover.png">
   <meta name="description" content="ParentWise is a guided, science-backed service that helps entrepreneurial, globally minded parents create the secure foundation their teenager needs to launch.">
 
+  <link rel="icon" type="image/svg+xml" href="/assets/images/flower-lotus-duotone.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --purple: #6B4CA3;
-      --purple-deep: #5A3D8F;
-      --cream: #F5F1E8;
-      --cream-warm: #EDE8DC;
-      --black: #1A1A1A;
-      --black-soft: #2C2C2C;
-      --white: #FDFCF9;
-      --purple-tint: rgba(107, 76, 163, 0.04);
-      --purple-light: rgba(107, 76, 163, 0.08);
-      --purple-mid: rgba(107, 76, 163, 0.18);
+      --purple:        #6B4CA3;
+      --purple-deep:   #5A3D8F;
+      --purple-light:  #9B7ED4;
+      --purple-pale:   #EDE7F8;
+      --purple-glow:   rgba(107, 76, 163, 0.18);
+      --purple-mid:    rgba(107, 76, 163, 0.18);
+      --purple-tint:   rgba(107, 76, 163, 0.04);
+      --cream:         #F5F1E8;
+      --cream-warm:    #EAE4D4;
+      --cream-dark:    #EAE4D4;
+      --ink:           #1A1A1A;
+      --ink-mid:       rgba(26, 26, 26, 0.65);
+      --ink-soft:      rgba(26, 26, 26, 0.38);
+      --black:         #1A1A1A;
+      --black-soft:    #2C2C2C;
+      --white:         #FDFCF9;
+      --card-bg:       #FFFFFF;
+      --card-border:   rgba(107, 76, 163, 0.14);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,11 +43,17 @@
 
     body {
       font-family: 'DM Sans', sans-serif;
-      color: var(--black);
-      background-color: #C9C3B4;
+      color: var(--ink);
+      background-color: var(--cream);
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+    }
+
+    /* ── Accent bar at top ── */
+    .top-bar {
+      height: 4px;
+      background: linear-gradient(90deg, var(--purple), var(--purple-light));
     }
 
     /* ===== VERTICAL PAGE CONTAINER ===== */
@@ -46,17 +61,7 @@
       max-width: 900px;
       margin: 0 auto;
       position: relative;
-      box-shadow:
-        0 0 0 1px rgba(0, 0, 0, 0.08),
-        0 8px 40px rgba(0, 0, 0, 0.12),
-        0 30px 100px rgba(0, 0, 0, 0.10);
       overflow: hidden;
-    }
-
-    @media (max-width: 920px) {
-      .page-container {
-        box-shadow: none;
-      }
     }
 
     /* ===== SECTION SYSTEM ===== */
@@ -194,14 +199,15 @@
     .hero-tag {
       display: inline-block;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.7rem;
+      font-size: 10px;
       font-weight: 600;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--purple);
+      background: var(--purple-pale);
+      padding: 6px 16px;
+      border-radius: 20px;
       margin-bottom: 2.5rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--purple);
     }
 
     /* Scroll indicator */
@@ -420,57 +426,71 @@
       font-size: 0.78rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      opacity: 0.5;
+      opacity: 0.6;
       color: var(--cream);
     }
 
     .cta-button {
       display: inline-block;
       font-family: 'DM Sans', sans-serif;
-      font-size: 0.85rem;
+      font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--purple-deep);
-      background-color: var(--cream);
-      padding: 1.15rem 3.8rem;
+      color: #fff;
+      background: var(--purple);
+      padding: 18px 52px;
       border: none;
-      border-radius: 3px;
+      border-radius: 6px;
       cursor: pointer;
       text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+      transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+      box-shadow: 0 4px 24px var(--purple-glow);
     }
 
     .cta-button:hover {
-      background-color: #fff;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+      background: #5a3d8f;
+      box-shadow: 0 8px 32px rgba(107, 76, 163, 0.3);
+      transform: translateY(-1px);
     }
 
     /* ===== FOOTER ===== */
     .footer {
       text-align: center;
-      padding: 3rem 2rem 2rem;
-      background: var(--black);
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 40px 24px 60px;
+      background: var(--cream);
+      border-top: 1px solid var(--cream-dark);
     }
 
+    .logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .logo-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.04em;
+    }
+
+    .logo-text span { color: var(--purple); }
+
     .footer-tagline {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      font-weight: 400;
-      font-style: italic;
-      color: var(--cream);
-      opacity: 0.35;
-      margin-bottom: 1.2rem;
-      line-height: 1.6;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      max-width: 460px;
+      margin: 0 auto 0.8rem;
     }
 
     .footer-copy {
       font-size: 0.7rem;
-      color: var(--cream);
-      opacity: 0.2;
+      color: var(--ink-soft);
       letter-spacing: 0.04em;
     }
 
@@ -511,6 +531,7 @@
   </style>
 </head>
 <body>
+<div class="top-bar"></div>
 <div class="page-container">
 
   <!-- HERO -->
@@ -648,6 +669,10 @@
 
   <!-- FOOTER -->
   <footer class="footer">
+    <div class="logo-wrap">
+      <span class="logo-text">Parent<span>Wise</span></span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#6b4ca3" viewBox="0 0 256 256" aria-hidden="true"><path d="M128,200c-15.37,0-40.77-.18-70-17.64S19.31,143,16.28,131.82A7.94,7.94,0,0,1,21.74,122a69.59,69.59,0,0,1,30.82-.64h0c-7.63-23.88-4-42.44-1-51.71A8.2,8.2,0,0,1,61,64.18C68.56,65.79,81.28,70,94.6,80.8v0A108.49,108.49,0,0,0,88,119.18C88,178,128,200,128,200Zm106.26-78a69.59,69.59,0,0,0-30.82-.64h0c7.63-23.88,4-42.44,1-51.71A8.2,8.2,0,0,0,195,64.18c-7.52,1.61-20.24,5.8-33.56,16.62v0A108.49,108.49,0,0,1,168,119.18C168,178,128,200,128,200c15.37,0,40.77-.18,70-17.64s38.69-39.34,41.72-50.54A7.94,7.94,0,0,0,234.26,122Z" opacity="0.2"/><path d="M245.83,121.63a15.53,15.53,0,0,0-9.52-7.33,73.51,73.51,0,0,0-22.17-2.22c4-19.85,1-35.55-2.06-44.86a16.15,16.15,0,0,0-18.79-10.88,85.53,85.53,0,0,0-28.55,12.12,94.58,94.58,0,0,0-27.11-33.25,16.05,16.05,0,0,0-19.26,0A94.48,94.48,0,0,0,91.26,68.46,85.53,85.53,0,0,0,62.71,56.34,16.15,16.15,0,0,0,43.92,67.22c-3,9.31-6,25-2.06,44.86a73.51,73.51,0,0,0-22.17,2.22,15.53,15.53,0,0,0-9.52,7.33,16,16,0,0,0-1.6,12.27c3.39,12.57,13.8,36.48,45.33,55.32S113.13,208,128.05,208s42.67,0,74-18.78c31.53-18.84,41.94-42.75,45.33-55.32A16,16,0,0,0,245.83,121.63ZM59.14,72.14a.2.2,0,0,1,.23-.15A70.43,70.43,0,0,1,85.18,83.66,118.65,118.65,0,0,0,80,119.17c0,18.74,3.77,34,9.11,46.28A123.59,123.59,0,0,1,69.57,140C51.55,108.62,55.3,84,59.14,72.14Zm3,103.35C35.47,159.57,26.82,140.05,24,129.7a59.82,59.82,0,0,1,22.5-1.17,129.08,129.08,0,0,0,9.15,19.41,142.28,142.28,0,0,0,34,39.56A114.92,114.92,0,0,1,62.1,175.49ZM128,190.4c-9.33-6.94-32-28.23-32-71.23C96,76.7,118.38,55.24,128,48c9.62,7.26,32,28.72,32,71.19C160,162.17,137.33,183.46,128,190.4ZM170.82,83.66A70.43,70.43,0,0,1,196.63,72a.2.2,0,0,1,.23.15C200.7,84,204.45,108.62,186.43,140a123.32,123.32,0,0,1-19.54,25.48c5.34-12.26,9.11-27.54,9.11-46.28A118.65,118.65,0,0,0,170.82,83.66ZM232,129.72c-2.77,10.25-11.4,29.81-38.09,45.77a114.92,114.92,0,0,1-27.55,12,142.28,142.28,0,0,0,34-39.56,129.08,129.08,0,0,0,9.15-19.41A59.69,59.69,0,0,1,232,129.71Z"/></svg>
+    </div>
     <p class="footer-tagline">Secure Parents Create Secure Teens.<br>Secure Teens Create a Secure Future.</p>
     <p class="footer-copy">&copy; 2026 ParentWise. All rights reserved.</p>
   </footer>

@@ -1258,10 +1258,10 @@
             '<path d="M5 13l5.5 5.5L21 7" stroke="#6B4CA3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>' +
           '</svg>' +
         '</div>' +
-        '<p class="assessment-thanks-title">Your results are on the way.</p>' +
-        '<p class="assessment-thanks-body">Check your inbox in the next few minutes. You\'ll receive a full breakdown of where you stand across Safe, Seen, Soothe, and Inner Sovereignty — along with a personalised next step.</p>' +
-        '<p class="assessment-thanks-body" style="font-size:0.875rem;">In the meantime, explore what ParentWise offers below.</p>' +
-        '<button class="assessment-close-btn" onclick="closeAssessment()">Continue Exploring &rarr;</button>';
+        '<p class="assessment-thanks-title">Thank you — that took honesty.</p>' +
+        '<p class="assessment-thanks-body">Your personalised results and next steps are on their way. Check your inbox in the next few moments.</p>' +
+        '<p class="assessment-thanks-body">In the meantime, here\'s how ParentWise can support you on this journey.</p>' +
+        '<button class="assessment-submit-btn" onclick="window.location.href=\'/offers/\'">See What ParentWise Offers &rarr;</button>';
     }
 
     document.getElementById('assessmentModal').scrollTop = 0;
@@ -1291,7 +1291,8 @@
     }
     // Submit answers — wire to your email service here
     console.log('Assessment submitted:', { email: email, answers: assessmentAnswers });
-    window.location.href = '/offers/';
+    assessmentStep++;
+    renderAssessmentStep();
   }
 
   document.addEventListener('DOMContentLoaded', function() {

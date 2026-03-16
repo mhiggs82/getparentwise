@@ -148,6 +148,8 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
       box-shadow: 0 2px 16px rgba(107, 76, 163, 0.06);
       cursor: pointer;
+      text-decoration: none;
+      color: inherit;
     }
 
     .card:hover {
@@ -239,19 +241,6 @@
       position: relative;
     }
 
-    /* Stretch the link to cover the entire card surface */
-    .btn::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 14px;
-      /* Expand to fill the parent card by overflowing the card padding */
-      top: calc(-40px - 1px);
-      left: calc(-32px - 1px);
-      right: calc(-32px - 1px);
-      bottom: calc(-36px - 1px);
-    }
-
     .btn:hover {
       border-color: var(--purple);
       background: var(--purple-pale);
@@ -332,33 +321,33 @@
     <h2>Our Solutions to Create Security During Adolescence</h2>
     <div class="cards">
 
-      <div class="card">
+      <a href="/first" class="card">
         <div class="card-icon"><img src="/assets/images/plant-duotone%201.svg" alt="" width="32" height="32" /></div>
         <h3>Your ParentWise First Steps</h3>
         <div class="card-price">Free</div>
         <div class="card-tagline">A Tiny 5-Day Challenge</div>
         <p>A 5-day, 1:1 challenge to start you on the path of secure parenting. Begin where you have the greatest influence — yourself.</p>
-        <a href="/first" class="btn">Start Your 5-Day Challenge</a>
-      </div>
+        <span class="btn">Start Your 5-Day Challenge</span>
+      </a>
 
-      <div class="card featured">
+      <a href="/circle/" class="card featured">
         <div class="card-icon"><img src="/assets/images/globe-hemisphere-west-duotone.svg" alt="" width="32" height="32" /></div>
         <div class="badge">Most Popular</div>
         <h3>🌍 Circle of Secure Parents</h3>
         <div class="card-price">$7/mo</div>
         <div class="card-tagline">Community Membership</div>
         <p>A worldwide community of parents committed to their own growth first. Because secure parents, secure teens.</p>
-        <a href="/circle/" class="btn btn-filled">Join the Circle</a>
-      </div>
+        <span class="btn btn-filled">Join the Circle</span>
+      </a>
 
-      <div class="card">
+      <a href="/path" class="card">
         <div class="card-icon"><img src="/assets/images/compass-duotone.svg" alt="" width="32" height="32" /></div>
         <h3>Your ParentWise Pathway</h3>
         <div class="card-price">From $3K</div>
         <div class="card-tagline">90-Day 1:1 Journey</div>
         <p>Understand the drift so it doesn't become distance. A 90-day 1:1 journey built around your family, your patterns, and your goals.</p>
-        <a href="/path" class="btn">Explore Your Pathway</a>
-      </div>
+        <span class="btn">Explore Your Pathway</span>
+      </a>
 
     </div>
   </section>

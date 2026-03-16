@@ -839,6 +839,535 @@
       .guarantee-badge { width: 100px; height: 100px; }
       .guarantee-badge .pct { font-size: 24px; }
     }
+
+    /* ===== SLIDE-OUT CART ===== */
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 26, 26, 0.55);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      z-index: 900;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+
+    .cart-overlay.is-open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .cart-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 440px;
+      max-width: 100vw;
+      background: var(--white);
+      z-index: 901;
+      transform: translateX(100%);
+      transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: -8px 0 48px rgba(0,0,0,0.2);
+    }
+
+    .cart-panel.is-open {
+      transform: translateX(0);
+    }
+
+    /* Cart Header */
+    .cart-header {
+      background: linear-gradient(135deg, var(--purple) 0%, var(--purple-deep) 100%);
+      color: var(--white);
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .cart-header h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .cart-header .cart-secure-badge {
+      font-size: 12px;
+      opacity: 0.75;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .cart-close-btn {
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: var(--white);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .cart-close-btn:hover { background: rgba(255,255,255,0.25); }
+
+    /* Cart Scrollable Body */
+    .cart-body {
+      flex: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Cart View */
+    .cart-view { display: none; }
+    .cart-view.is-active { display: block; }
+
+    /* Product Row */
+    .cart-product {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--cream-dark);
+      background: var(--cream);
+    }
+
+    .cart-product img {
+      width: 56px;
+      height: auto;
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      flex-shrink: 0;
+    }
+
+    .cart-product-info { flex: 1; }
+
+    .cart-product-info .cart-product-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+
+    .cart-product-info .cart-product-sub {
+      font-size: 12px;
+      color: var(--black-soft);
+      opacity: 0.6;
+    }
+
+    .cart-product-price {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--purple);
+      font-family: 'Cormorant Garamond', serif;
+      flex-shrink: 0;
+    }
+
+    /* Order Bump */
+    .cart-bump {
+      margin: 16px 22px;
+      border: 2px dashed var(--accent-gold);
+      border-radius: 8px;
+      background: #FFFBF2;
+      overflow: hidden;
+    }
+
+    .cart-bump label {
+      display: flex;
+      gap: 12px;
+      padding: 16px;
+      cursor: pointer;
+      align-items: flex-start;
+    }
+
+    .cart-bump input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: var(--purple);
+      flex-shrink: 0;
+      margin-top: 2px;
+      cursor: pointer;
+    }
+
+    .bump-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .bump-badge {
+      background: var(--accent-gold);
+      color: var(--white);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 2px 8px;
+      border-radius: 3px;
+    }
+
+    .bump-content p {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--black-soft);
+      margin-bottom: 6px;
+    }
+
+    .bump-content p strong { color: var(--black); }
+
+    .bump-price {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--purple);
+    }
+
+    .bump-original {
+      text-decoration: line-through;
+      opacity: 0.5;
+      font-weight: 400;
+    }
+
+    /* Section label */
+    .cart-section-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: var(--black-soft);
+      opacity: 0.5;
+      margin-bottom: 10px;
+    }
+
+    /* Express Checkout */
+    .cart-express {
+      padding: 14px 22px 0;
+    }
+
+    .express-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .express-btn {
+      flex: 1;
+      padding: 11px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.2s ease, transform 0.15s ease;
+    }
+
+    .express-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .express-btn:active { transform: translateY(0); }
+
+    .express-btn.apple-pay {
+      background: #000;
+      color: #fff;
+    }
+
+    .express-btn.google-pay {
+      background: #fff;
+      color: #3c4043;
+      border: 1.5px solid #dadce0;
+    }
+
+    .cart-or-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .cart-or-divider::before,
+    .cart-or-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--cream-dark);
+    }
+
+    .cart-or-divider span {
+      font-size: 12px;
+      color: var(--black-soft);
+      opacity: 0.45;
+      white-space: nowrap;
+    }
+
+    /* Cart Form */
+    .cart-form {
+      padding: 0 22px 14px;
+    }
+
+    .cart-input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid var(--cream-dark);
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: var(--black);
+      background: var(--white);
+      margin-bottom: 10px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      -webkit-appearance: none;
+    }
+
+    .cart-input:focus {
+      outline: none;
+      border-color: var(--purple-light);
+      box-shadow: 0 0 0 3px rgba(107,76,163,0.12);
+    }
+
+    .cart-input::placeholder { color: #aaa; }
+
+    .cart-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .cart-row .cart-input { margin-bottom: 0; }
+
+    .card-icons {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+      align-items: center;
+    }
+
+    .card-icon {
+      width: 36px;
+      height: 22px;
+      background: var(--cream);
+      border: 1px solid var(--cream-dark);
+      border-radius: 3px;
+      font-size: 9px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--black-soft);
+      letter-spacing: 0.3px;
+    }
+
+    /* Trust Signals */
+    .cart-trust {
+      padding: 12px 22px;
+      background: var(--cream);
+      border-top: 1px solid var(--cream-dark);
+      border-bottom: 1px solid var(--cream-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      color: var(--black-soft);
+      opacity: 0.65;
+    }
+
+    .trust-item .trust-icon { font-size: 14px; }
+
+    /* Order Total */
+    .cart-total-row {
+      padding: 14px 22px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .cart-total-label {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--black-soft);
+    }
+
+    .cart-total-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--purple);
+    }
+
+    /* Cart Buy Button */
+    .cart-buy-btn {
+      display: block;
+      width: calc(100% - 44px);
+      margin: 0 22px 22px;
+      background: linear-gradient(135deg, var(--accent-gold-light) 0%, #B8943A 100%);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      padding: 17px 24px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 18px rgba(201,169,110,0.45);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cart-buy-btn::after {
+      content: '';
+      position: absolute;
+      top: -50%; left: -75%;
+      width: 50%; height: 200%;
+      background: rgba(255,255,255,0.18);
+      transform: skewX(-20deg);
+      transition: left 0.5s ease;
+    }
+
+    .cart-buy-btn:hover::after { left: 150%; }
+
+    .cart-buy-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 26px rgba(201,169,110,0.55);
+    }
+
+    /* ===== UPSELL VIEW ===== */
+    .upsell-view-inner {
+      padding: 32px 22px;
+      text-align: center;
+    }
+
+    .upsell-wait {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--accent-gold);
+      margin-bottom: 8px;
+    }
+
+    .upsell-view-inner h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      line-height: 1.3;
+      color: var(--black);
+    }
+
+    .upsell-view-inner p {
+      font-size: 15.5px;
+      line-height: 1.75;
+      color: var(--black-soft);
+      margin-bottom: 14px;
+    }
+
+    .upsell-price-line {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--purple);
+      font-family: 'Cormorant Garamond', serif;
+      margin-bottom: 24px !important;
+    }
+
+    .upsell-no {
+      display: block;
+      background: none;
+      border: none;
+      color: var(--black-soft);
+      opacity: 0.4;
+      font-size: 13px;
+      margin: 14px auto 0;
+      cursor: pointer;
+      text-decoration: underline;
+      font-family: 'DM Sans', sans-serif;
+      transition: opacity 0.2s ease;
+    }
+
+    .upsell-no:hover { opacity: 0.65; }
+
+    /* ===== SUCCESS VIEW ===== */
+    .success-view-inner {
+      padding: 60px 22px 32px;
+      text-align: center;
+    }
+
+    .success-icon {
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, #5BAD6E, #3D9452);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: white;
+      margin: 0 auto 24px;
+      box-shadow: 0 8px 28px rgba(91,173,110,0.4);
+    }
+
+    .success-view-inner h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 14px;
+    }
+
+    .success-view-inner p {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--black-soft);
+      max-width: 320px;
+      margin: 0 auto 32px;
+    }
+
+    .cart-back-btn {
+      display: inline-block;
+      background: var(--purple);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 13px 36px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .cart-back-btn:hover { background: var(--purple-deep); transform: translateY(-1px); }
+
+    /* ===== MOBILE CART ===== */
+    @media (max-width: 480px) {
+      .cart-panel { width: 100vw; }
+      .cart-header { padding: 16px 18px; }
+      .cart-product, .cart-form, .cart-express,
+      .cart-trust, .cart-total-row { padding-left: 18px; padding-right: 18px; }
+      .cart-buy-btn { width: calc(100% - 36px); margin-left: 18px; margin-right: 18px; }
+      .cart-bump { margin-left: 18px; margin-right: 18px; }
+    }
   </style>
 </head>
 <body>
@@ -856,7 +1385,7 @@
         <h1>How to Build a Secure, Connected Relationship With Your Teenager That Lasts a Lifetime</h1>
         <p class="subtitle">The science-backed path to becoming the foundation your teen needs to launch from. By securing yourself from the inside out.</p>
         <p class="even-if">...Even if your teen barely talks to you, you feel like you are losing them, or nothing you have tried has worked.</p>
-        <a href="#order" class="hero-cta">Get the Book &raquo;</a>
+        <a href="javascript:void(0)" onclick="openCart()" class="hero-cta">Get the Book &raquo;</a>
       </div>
     </div>
   </section>
@@ -870,7 +1399,7 @@
 
   <!-- CTA 1 -->
   <div class="cta-wrap">
-    <a href="#order" class="cta-btn">Order Now &raquo;</a>
+    <a href="javascript:void(0)" onclick="openCart()" class="cta-btn">Order Now &raquo;</a>
   </div>
 
   <!-- LETTER OPENING -->
@@ -923,7 +1452,7 @@
 
   <!-- CTA 2 -->
   <div class="cta-wrap">
-    <a href="#order" class="cta-btn">Get the Book &raquo;</a>
+    <a href="javascript:void(0)" onclick="openCart()" class="cta-btn">Get the Book &raquo;</a>
   </div>
 
   <!-- WHAT'S INSIDE -->
@@ -947,7 +1476,7 @@
 
   <!-- CTA 3 -->
   <div class="cta-wrap bg-white">
-    <a href="#order" class="cta-btn">Get the Book &raquo;</a>
+    <a href="javascript:void(0)" onclick="openCart()" class="cta-btn">Get the Book &raquo;</a>
   </div>
 
   <!-- EVEN IF -->
@@ -1011,16 +1540,16 @@
   </section>
 
   <!-- FINAL CTA -->
-  <section class="final-cta" id="order">
+  <section class="final-cta">
     <h2>Get Your Copy of<br><em>A Parent's Guide: How to Create Security During Adolescence</em><br>Now</h2>
     <img src="../assets/images/bookcover.png" alt="Book Cover"><br>
-    <a href="#order" class="cta-btn">Get the Book &raquo;</a>
+    <a href="javascript:void(0)" onclick="openCart()" class="cta-btn">Get the Book &raquo;</a>
     <p class="cta-sub" style="margin-top:12px;">Just $4.99. Instant digital delivery. Start reading in minutes.</p>
   </section>
 
   <!-- SIGN OFF + PS -->
   <section class="ps-section">
-    <p class="signoff">See you on the inside,</p>
+    <p class="signoff">Always Be Creating,</p>
     <p class="author-name">M. Aurelius Higgs</p>
     <p class="ps-label">P.S. Here is the quick recap for those who scrolled straight to the bottom:</p>
     <ol>
@@ -1034,7 +1563,7 @@
 
   <!-- FINAL FINAL CTA -->
   <div class="cta-wrap bg-white" style="padding-bottom:24px;">
-    <a href="#order" class="cta-btn">Get the Book &raquo;</a>
+    <a href="javascript:void(0)" onclick="openCart()" class="cta-btn">Get the Book &raquo;</a>
   </div>
 
   <!-- ABOUT AUTHOR -->
@@ -1053,6 +1582,210 @@
     <p>&copy; 2026 ParentWise by M. Aurelius Higgs. All rights reserved.</p>
     <p style="margin-top:6px;"><a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Use</a></p>
   </footer>
+
+
+  <!-- ===== SLIDE-OUT CART ===== -->
+
+  <!-- Overlay -->
+  <div id="cartOverlay" class="cart-overlay" onclick="closeCart()"></div>
+
+  <!-- Panel -->
+  <div id="cartPanel" class="cart-panel" role="dialog" aria-modal="true" aria-label="Secure Checkout">
+
+    <!-- ── CHECKOUT VIEW ── -->
+    <div id="viewCheckout" class="cart-view is-active">
+      <div class="cart-header">
+        <div>
+          <h3>Secure Checkout</h3>
+          <span class="cart-secure-badge">&#128274; SSL Encrypted</span>
+        </div>
+        <button class="cart-close-btn" onclick="closeCart()" aria-label="Close cart">&times;</button>
+      </div>
+
+      <div class="cart-body">
+
+        <!-- Product Summary -->
+        <div class="cart-product">
+          <img src="../assets/images/bookcover.png" alt="Book Cover">
+          <div class="cart-product-info">
+            <p class="cart-product-title">A Parent's Guide: How to Create Security During Adolescence</p>
+            <p class="cart-product-sub">Digital Book + 2 Free Bonuses</p>
+          </div>
+          <span class="cart-product-price">$4.99</span>
+        </div>
+
+        <!-- Order Bump -->
+        <div class="cart-bump">
+          <label>
+            <input type="checkbox" id="bumpCheckbox" onchange="updateTotal()">
+            <div class="bump-content">
+              <div class="bump-top">
+                <span class="bump-badge">Add-On Offer</span>
+              </div>
+              <p><strong>Yes! Add 6 Months in the Global Circle of Secure Parents</strong> — a private community of parents doing the inner work together. Weekly discussions, live Q&As, and ongoing accountability.</p>
+              <p class="bump-price">Just $47 more <span class="bump-original">(normally $97)</span></p>
+            </div>
+          </label>
+        </div>
+
+        <!-- Express Checkout -->
+        <div class="cart-express">
+          <p class="cart-section-label">Express Checkout</p>
+          <div class="express-buttons">
+            <button class="express-btn apple-pay" onclick="handleExpressPay('apple')">&#63743; Pay</button>
+            <button class="express-btn google-pay" onclick="handleExpressPay('google')">
+              <span style="color:#4285F4;font-weight:700;">G</span><span style="color:#EA4335;font-weight:700;">o</span><span style="color:#FBBC05;font-weight:700;">o</span><span style="color:#4285F4;font-weight:700;">g</span><span style="color:#34A853;font-weight:700;">l</span><span style="color:#EA4335;font-weight:700;">e</span>&nbsp;Pay
+            </button>
+          </div>
+          <div class="cart-or-divider"><span>or pay by card</span></div>
+        </div>
+
+        <!-- Form Fields -->
+        <div class="cart-form">
+          <input type="text" class="cart-input" placeholder="Full Name" autocomplete="name">
+          <input type="email" class="cart-input" placeholder="Email Address" autocomplete="email">
+          <input type="text" class="cart-input" placeholder="Card Number" autocomplete="cc-number" inputmode="numeric" maxlength="19">
+          <div class="cart-row">
+            <input type="text" class="cart-input" placeholder="MM / YY" autocomplete="cc-exp" inputmode="numeric" maxlength="7" style="flex:1">
+            <input type="text" class="cart-input" placeholder="CVV" autocomplete="cc-csc" inputmode="numeric" maxlength="4" style="flex:1">
+          </div>
+          <div class="card-icons">
+            <span class="card-icon">VISA</span>
+            <span class="card-icon">MC</span>
+            <span class="card-icon">AMEX</span>
+            <span class="card-icon">DISC</span>
+          </div>
+        </div>
+
+        <!-- Trust Signals -->
+        <div class="cart-trust">
+          <span class="trust-item"><span class="trust-icon">&#128274;</span> Secure Checkout</span>
+          <span class="trust-item"><span class="trust-icon">&#10003;</span> 365-Day Money-Back Guarantee</span>
+          <span class="trust-item"><span class="trust-icon">&#9889;</span> Instant Digital Delivery</span>
+        </div>
+
+        <!-- Order Total -->
+        <div class="cart-total-row">
+          <span class="cart-total-label">Order Total</span>
+          <span class="cart-total-price" id="cartTotalPrice">$4.99</span>
+        </div>
+
+        <!-- Buy Button -->
+        <button class="cart-buy-btn" onclick="handlePurchase()">Complete Purchase</button>
+
+      </div><!-- /cart-body -->
+    </div><!-- /viewCheckout -->
+
+    <!-- ── UPSELL VIEW ── -->
+    <div id="viewUpsell" class="cart-view">
+      <div class="cart-header">
+        <h3>One-Time Offer</h3>
+        <button class="cart-close-btn" onclick="closeCart()" aria-label="Close">&times;</button>
+      </div>
+      <div class="cart-body">
+        <div class="upsell-view-inner">
+          <p class="upsell-wait">Wait!</p>
+          <img src="../assets/images/bookcover.png" alt="Book Cover" style="width:90px;border-radius:4px;box-shadow:0 8px 24px rgba(0,0,0,0.18);margin-bottom:20px;display:inline-block;">
+          <h3>Want a Private 1-on-1 Coaching Session With M. Aurelius Higgs?</h3>
+          <p>A focused 60-minute session where we work through your specific family situation using the Inside-Out framework. Limited spots available.</p>
+          <p class="upsell-price-line">Just $99 — added to your order in one click.</p>
+          <button class="cart-buy-btn" onclick="handleUpsellYes()">Yes! Add the Coaching Session &raquo;</button>
+          <button class="upsell-no" onclick="handleUpsellNo()">No thanks, I'll pass on this one-time offer.</button>
+        </div>
+      </div>
+    </div><!-- /viewUpsell -->
+
+    <!-- ── SUCCESS VIEW ── -->
+    <div id="viewSuccess" class="cart-view">
+      <div class="cart-header">
+        <h3>Purchase Complete</h3>
+      </div>
+      <div class="cart-body">
+        <div class="success-view-inner">
+          <div class="success-icon">&#10003;</div>
+          <h3>You're In!</h3>
+          <p>Check your inbox for your download link and bonuses. Welcome to the ParentWise family.</p>
+          <button class="cart-back-btn" onclick="closeCart()">Back to the Page</button>
+        </div>
+      </div>
+    </div><!-- /viewSuccess -->
+
+  </div><!-- /cartPanel -->
+
+  <script>
+    const cartPanel   = document.getElementById('cartPanel');
+    const cartOverlay = document.getElementById('cartOverlay');
+
+    function openCart() {
+      cartPanel.classList.add('is-open');
+      cartOverlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      showView('viewCheckout');
+    }
+
+    function closeCart() {
+      cartPanel.classList.remove('is-open');
+      cartOverlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+      // Reset after transition so next open starts fresh
+      setTimeout(function() {
+        document.getElementById('bumpCheckbox').checked = false;
+        updateTotal();
+        showView('viewCheckout');
+      }, 400);
+    }
+
+    function showView(id) {
+      ['viewCheckout','viewUpsell','viewSuccess'].forEach(function(v) {
+        var el = document.getElementById(v);
+        el.classList.toggle('is-active', v === id);
+      });
+    }
+
+    function updateTotal() {
+      var bump = document.getElementById('bumpCheckbox').checked;
+      var total = bump ? '$51.99' : '$4.99';
+      document.getElementById('cartTotalPrice').textContent = total;
+    }
+
+    function handlePurchase() {
+      // In production this wires to SamCart's payment processor.
+      // For now, transition to the upsell view.
+      showView('viewUpsell');
+    }
+
+    function handleUpsellYes() {
+      showView('viewSuccess');
+    }
+
+    function handleUpsellNo() {
+      showView('viewSuccess');
+    }
+
+    function handleExpressPay(provider) {
+      // In production this triggers the relevant payment sheet.
+      handlePurchase();
+    }
+
+    // Card number auto-spacing
+    document.addEventListener('DOMContentLoaded', function() {
+      var cardInput = document.querySelector('input[placeholder="Card Number"]');
+      if (cardInput) {
+        cardInput.addEventListener('input', function(e) {
+          var v = e.target.value.replace(/\D/g, '').substring(0, 16);
+          e.target.value = v.replace(/(.{4})/g, '$1 ').trim();
+        });
+      }
+      var expInput = document.querySelector('input[placeholder="MM / YY"]');
+      if (expInput) {
+        expInput.addEventListener('input', function(e) {
+          var v = e.target.value.replace(/\D/g, '').substring(0, 4);
+          if (v.length >= 3) v = v.substring(0,2) + ' / ' + v.substring(2);
+          e.target.value = v;
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>

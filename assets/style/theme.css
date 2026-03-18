@@ -1,0 +1,165 @@
+/*
+ * ParentWise — Shared Theme
+ * Source: assets/style/parentwise-brand-reference-light-mode.md
+ *         assets/style/parentwise-brand-reference-dark-mode.md
+ *
+ * Usage:
+ *   1. <link rel="stylesheet" href="/assets/style/theme.css"> in <head>
+ *   2. Anti-flash snippet in <head> before this link:
+ *        <script>(function(){var t=localStorage.getItem('pw-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t!=='light'&&d))document.documentElement.setAttribute('data-theme','dark')})();</script>
+ *   3. Toggle button HTML + JS at the end of <body> (see index.html for reference).
+ */
+
+/* ── Light Mode (default) ── */
+:root {
+  /* Backgrounds */
+  --bg-page:       #C9C3B4;
+  --bg-primary:    #F5F1E8;
+  --bg-secondary:  #FDFCF9;
+  --bg-tint:       #EAE4D4;
+  --bg-card:       #FFFFFF;
+  --bg-footer:     #1A1A1A;
+
+  /* Text on light backgrounds */
+  --text-primary:     #1A1A1A;
+  --text-secondary:   rgba(26, 26, 26, 0.65);
+  --text-muted:       rgba(26, 26, 26, 0.38);
+
+  /* Text on always-dark sections (hero, purple, CTA bands) */
+  --text-on-dark:     #F5F1E8;
+  --text-on-dark-sub: rgba(245, 241, 232, 0.82);
+
+  /* Purple scale */
+  --purple:        #6B4CA3;
+  --purple-deep:   #5A3D8F;
+  --purple-light:  #9B7ED4;
+  --purple-pale:   #EDE7F8;
+  --purple-mid:    rgba(107, 76, 163, 0.18);
+  --purple-glow:   rgba(107, 76, 163, 0.18);
+  --purple-tint:   rgba(107, 76, 163, 0.04);
+
+  /* Gold */
+  --gold:              #C9A96E;
+  --gold-light:        #D4B97E;
+  --accent-gold:       #C9A96E;
+  --accent-gold-light: #D4B97E;
+
+  /* Borders / dividers / shadows */
+  --border:        rgba(107, 76, 163, 0.14);
+  --divider:       #EAE4D4;
+  --shadow:        rgba(107, 76, 163, 0.18);
+  --shadow-purple: rgba(107, 76, 163, 0.18);
+
+  /* Legacy aliases — kept for compatibility with page-specific styles */
+  --cream:      #F5F1E8;
+  --cream-warm: #EAE4D4;
+  --cream-dark: #EAE4D4;
+  --white:      #FDFCF9;
+  --ink:        #1A1A1A;
+  --ink-mid:    rgba(26, 26, 26, 0.65);
+  --ink-soft:   rgba(26, 26, 26, 0.38);
+  --black:      #1A1A1A;
+  --black-soft: #2C2C2C;
+  --card-bg:    #FFFFFF;
+  --card-border: rgba(107, 76, 163, 0.14);
+}
+
+/* ── Dark Mode ── */
+[data-theme="dark"] {
+  /* Backgrounds */
+  --bg-page:       #111118;
+  --bg-primary:    #1C1C26;
+  --bg-secondary:  #22222E;
+  --bg-tint:       #201E2B;
+  --bg-card:       #26263A;
+  --bg-footer:     #0E0E18;
+
+  /* Text on dark backgrounds */
+  --text-primary:     #EDE7D8;
+  --text-secondary:   rgba(237, 231, 216, 0.68);
+  --text-muted:       rgba(237, 231, 216, 0.38);
+
+  /* Text on hero / purple / dark sections */
+  --text-on-dark:     #EDE7D8;
+  --text-on-dark-sub: rgba(237, 231, 216, 0.78);
+
+  /* Purple scale */
+  --purple:        #9B7ED4;
+  --purple-deep:   #7B5AB5;
+  --purple-light:  #BBA2E8;
+  --purple-pale:   rgba(107, 76, 163, 0.22);
+  --purple-mid:    rgba(155, 126, 212, 0.22);
+  --purple-glow:   rgba(155, 126, 212, 0.20);
+  --purple-tint:   rgba(107, 76, 163, 0.08);
+
+  /* Gold unchanged */
+  --gold:              #C9A96E;
+  --gold-light:        #D4B97E;
+  --accent-gold:       #C9A96E;
+  --accent-gold-light: #D4B97E;
+
+  /* Borders / dividers / shadows */
+  --border:        rgba(155, 126, 212, 0.18);
+  --divider:       rgba(237, 231, 216, 0.10);
+  --shadow:        rgba(0, 0, 0, 0.40);
+  --shadow-purple: rgba(0, 0, 0, 0.40);
+
+  /* Legacy aliases */
+  --cream:      #1C1C26;
+  --cream-warm: #201E2B;
+  --cream-dark: rgba(237, 231, 216, 0.10);
+  --white:      #22222E;
+  --ink:        #EDE7D8;
+  --ink-mid:    rgba(237, 231, 216, 0.68);
+  --ink-soft:   rgba(237, 231, 216, 0.38);
+  --black:      #0E0E18;
+  --black-soft: #1A1A26;
+  --card-bg:    #26263A;
+  --card-border: rgba(155, 126, 212, 0.18);
+}
+
+/* ── Smooth theme transitions ── */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ── Theme toggle button ── */
+.theme-toggle {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 169, 110, 0.35);
+  background: var(--bg-card);
+  color: var(--gold);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease,
+              transform 0.2s ease, box-shadow 0.2s ease;
+  line-height: 1;
+  padding: 0;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.22);
+  border-color: var(--gold);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--purple-light);
+  outline-offset: 3px;
+}
+
+/* Show sun in dark mode, moon in light mode */
+.theme-toggle .icon-sun  { display: none; }
+.theme-toggle .icon-moon { display: block; }
+
+[data-theme="dark"] .theme-toggle .icon-sun  { display: block; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }

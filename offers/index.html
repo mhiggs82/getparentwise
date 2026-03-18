@@ -5,28 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ParentWise — Offerings</title>
   <link rel="icon" type="image/svg+xml" href="/assets/images/flower-lotus-duotone.svg" />
+  <script>(function(){var t=localStorage.getItem('pw-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t!=='light'&&d))document.documentElement.setAttribute('data-theme','dark')})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/style/theme.css" />
   <style>
-    :root {
-      --purple:        #6B4CA3;
-      --purple-light:  #9B7ED4;
-      --purple-pale:   #EDE7F8;
-      --purple-glow:   rgba(107, 76, 163, 0.18);
-      --cream:         #F5F1E8;
-      --cream-dark:    #EAE4D4;
-      --ink:           #1A1A1A;
-      --ink-mid:       rgba(26, 26, 26, 0.65);
-      --ink-soft:      rgba(26, 26, 26, 0.38);
-      --card-bg:       #FFFFFF;
-      --card-border:   rgba(107, 76, 163, 0.14);
-    }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background: var(--cream);
-      color: var(--ink);
+      background: var(--bg-primary);
+      color: var(--text-primary);
       font-family: 'DM Sans', sans-serif;
       font-weight: 300;
       min-height: 100vh;
@@ -111,7 +99,7 @@
     }
     .divider hr {
       border: none;
-      border-top: 1px solid var(--cream-dark);
+      border-top: 1px solid var(--divider);
     }
 
     /* ── Solutions ── */
@@ -263,7 +251,7 @@
     footer {
       text-align: center;
       padding: 40px 24px 60px;
-      border-top: 1px solid var(--cream-dark);
+      border-top: 1px solid var(--divider);
     }
 
     .logo-wrap {
@@ -361,6 +349,22 @@
       Founded by M. Aurelius Higgs — educator, coach, and global practitioner with over 20 years working with families across South Korea, Spain, Saudi Arabia, Thailand, and beyond.
     </p>
   </footer>
+
+
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+    <span class="icon-sun" aria-hidden="true">☀</span>
+    <span class="icon-moon" aria-hidden="true">☽</span>
+  </button>
+  <script>
+    (function() {
+      var btn = document.getElementById('themeToggle');
+      btn.addEventListener('click', function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('pw-theme', isDark ? 'light' : 'dark');
+      });
+    })();
+  </script>
 
 </body>
 </html>

@@ -16,12 +16,12 @@ Follow all rules here before writing or modifying any HTML, CSS, or JS.
 | `/path/index.html` | 90-Day Pathway coaching |
 | `/book/index.html` | Book sales page |
 
-**Design system files (served from repo root):**
+**Design system files (served from `/style-guide/`):**
 | File | Purpose |
 |------|---------|
-| `/parentwise-design-system.css` | All tokens + component classes |
-| `/parentwise-design-system.js` | Theme toggle, FAQ accordion, scroll reveal |
-| `/template.html` | Starter file for every new page |
+| `/style-guide/parentwise-design-system.css` | All tokens + component classes |
+| `/style-guide/parentwise-design-system.js` | Theme toggle, FAQ accordion, scroll reveal |
+| `/style-guide/template.html` | Starter file for every new page |
 | `/style-guide/index.html` | Live visual reference for all components |
 
 ---
@@ -31,7 +31,7 @@ Follow all rules here before writing or modifying any HTML, CSS, or JS.
 **Always copy `template.html`.** Never start from scratch.
 
 ```bash
-cp template.html new-page/index.html
+cp style-guide/template.html new-page/index.html
 ```
 
 Then fill every `<!-- TODO -->` comment. Remove sections you don't need.
@@ -88,8 +88,8 @@ This applies to every element with a gold gradient background:
 ### 3. CSS links must point to local files
 ```html
 <!-- ✅ Correct -->
-<link rel="stylesheet" href="/parentwise-design-system.css" />
-<script src="/parentwise-design-system.js"></script>
+<link rel="stylesheet" href="/style-guide/parentwise-design-system.css" />
+<script src="/style-guide/parentwise-design-system.js"></script>
 
 <!-- ❌ Wrong — CDN files may not exist yet -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/..." />

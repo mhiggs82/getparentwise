@@ -1,165 +1,648 @@
-/*
- * ParentWise — Shared Theme
- * Source: assets/style/parentwise-brand-reference-light-mode.md
- *         assets/style/parentwise-brand-reference-dark-mode.md
+/**
+ * Parentwise Design System — theme.css
+ * Version: 1.0.0
+ * CDN: https://cdn.jsdelivr.net/gh/mhiggs82/parentwise-design-system@v1.0.0/theme.css
  *
  * Usage:
- *   1. <link rel="stylesheet" href="/assets/style/theme.css"> in <head>
- *   2. Anti-flash snippet in <head> before this link:
- *        <script>(function(){var t=localStorage.getItem('pw-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t!=='light'&&d))document.documentElement.setAttribute('data-theme','dark')})();</script>
- *   3. Toggle button HTML + JS at the end of <body> (see index.html for reference).
+ *   1. Add FOUC-prevention script in <head> BEFORE any <link> tags:
+ *      <script>
+ *        (function(){
+ *          var t = localStorage.getItem('pw-theme');
+ *          if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+ *          document.documentElement.setAttribute('data-theme', t);
+ *        })();
+ *      </script>
+ *   2. Link this stylesheet:
+ *      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mhiggs82/parentwise-design-system@v1.0.0/theme.css">
+ *   3. Add the toggle button markup:
+ *      <button class="pw-theme-toggle" aria-label="Toggle light/dark mode">
+ *        <svg class="icon-sun" ...>...</svg>
+ *        <svg class="icon-moon" ...>...</svg>
+ *      </button>
+ *   4. Add the toggle script before </body>:
+ *      <script>
+ *        (function(){
+ *          var btn = document.querySelector('.pw-theme-toggle');
+ *          if (!btn) return;
+ *          function apply(t) {
+ *            document.documentElement.setAttribute('data-theme', t);
+ *            localStorage.setItem('pw-theme', t);
+ *          }
+ *          btn.addEventListener('click', function() {
+ *            apply(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+ *          });
+ *        })();
+ *      </script>
  */
 
-/* ── Light Mode (default) ── */
+/* ==========================================================================
+   1. COLOR TOKENS — LIGHT MODE (default)
+   ========================================================================== */
 :root {
-  /* Backgrounds */
-  --bg-page:       #C9C3B4;
-  --bg-primary:    #F5F1E8;
-  --bg-secondary:  #FDFCF9;
-  --bg-tint:       #EAE4D4;
-  --bg-card:       #FFFFFF;
-  --bg-footer:     #1A1A1A;
+  /* --- Core Brand Palette --- */
+  --purple-deep:    #3D2970;
+  --purple-mid:     #5A3D8F;
+  --purple-light:   #7B5AB5;
+  --purple-pale:    #9B7ED4;
+  --purple-tint:    #C4AEE8;
+  --purple-ghost:   #EDE8F5;
 
-  /* Text on light backgrounds */
-  --text-primary:     #1A1A1A;
-  --text-secondary:   rgba(26, 26, 26, 0.65);
-  --text-muted:       rgba(26, 26, 26, 0.38);
+  --gold-honey:     #D4B97E;
+  --gold-mid:       #C9A96E;
+  --gold-deep:      #B8943A;
 
-  /* Text on always-dark sections (hero, purple, CTA bands) */
-  --text-on-dark:     #F5F1E8;
-  --text-on-dark-sub: rgba(245, 241, 232, 0.82);
+  --near-black:     #1A1A2E;
+  --ghost-lavender: #F0EAF8;
+  --lavender-tint:  #EDE8F5;
+  --greige:         #C9C3B4;
 
-  /* Purple scale */
-  --purple:        #6B4CA3;
-  --purple-deep:   #5A3D8F;
-  --purple-light:  #9B7ED4;
-  --purple-pale:   #EDE7F8;
-  --purple-mid:    rgba(107, 76, 163, 0.18);
-  --purple-glow:   rgba(107, 76, 163, 0.18);
-  --purple-tint:   rgba(107, 76, 163, 0.04);
+  --cream:          #F0EAF8;
+  --cream-dark:     #C9C3B4;
+  --white:          #FFFFFF;
+  --ink:            #1A1A2E;
 
-  /* Gold */
-  --gold:              #C9A96E;
-  --gold-light:        #D4B97E;
-  --accent-gold:       #C9A96E;
-  --accent-gold-light: #D4B97E;
+  /* --- Semantic Background Tokens --- */
+  --bg-primary:     #FFFFFF;
+  --bg-secondary:   #F5F0FF;
+  --bg-tint:        #EDE8F5;
+  --bg-card:        #FFFFFF;
+  --bg-footer:      #1A1A2E;
+  --bg-nav:         rgba(255, 255, 255, 0.95);
 
-  /* Borders / dividers / shadows */
-  --border:        rgba(107, 76, 163, 0.14);
-  --divider:       #EAE4D4;
-  --shadow:        rgba(107, 76, 163, 0.18);
-  --shadow-purple: rgba(107, 76, 163, 0.18);
+  /* --- Semantic Text Tokens --- */
+  --text-primary:   #1A1A2E;
+  --text-secondary: #5A3D8F;
+  --text-muted:     #6B5B8A;
+  --text-on-dark:   #F0EAF8;   /* NEVER flips — for text on always-dark sections */
 
-  /* Legacy aliases — kept for compatibility with page-specific styles */
-  --cream:      #F5F1E8;
-  --cream-warm: #EAE4D4;
-  --cream-dark: #EAE4D4;
-  --white:      #FDFCF9;
-  --ink:        #1A1A1A;
-  --ink-mid:    rgba(26, 26, 26, 0.65);
-  --ink-soft:   rgba(26, 26, 26, 0.38);
-  --black:      #1A1A1A;
-  --black-soft: #2C2C2C;
-  --card-bg:    #FFFFFF;
-  --card-border: rgba(107, 76, 163, 0.14);
+  /* --- UI Element Tokens --- */
+  --divider:        #C9C3B4;
+  --border-light:   #EDE8F5;
+  --icon-color:     #6B4CA3;
+  --focus-ring:     #C9A96E;
+
+  /* --- Gradient Definitions --- */
+  --gradient-hero:  linear-gradient(155deg, #7B5AB5 0%, #5A3D8F 50%, #3D2970 100%);
+  --gradient-gold:  linear-gradient(135deg, #D4B97E 0%, #B8943A 100%);
+  --gradient-tint:  linear-gradient(135deg, #EDE8F5 0%, #F5F0FF 100%);
+
+  /* ==========================================================================
+     2. COMPONENT TOKENS — LIGHT MODE
+     ========================================================================== */
+
+  /* --- Buttons: Purple --- */
+  --btn-pur-bg:     #5A3D8F;
+  --btn-pur-hbg:    #3D2970;
+  --btn-pur-text:   #FFFFFF;
+
+  /* --- Buttons: Outline Purple --- */
+  --btn-ol-bd:      #7B5AB5;
+  --btn-ol-text:    #5A3D8F;
+  --btn-ol-hbg:     rgba(123, 90, 181, 0.08);
+  --btn-ol-hbd:     #5A3D8F;
+
+  /* --- Buttons: Gold --- */
+  --btn-gol-bg:     linear-gradient(135deg, #D4B97E 0%, #B8943A 100%);
+  --btn-gol-bd:     #B8943A;
+  --btn-gol-tx:     #1A1000;
+  --btn-gol-hbg:    linear-gradient(135deg, #C9A96E 0%, #A07B2A 100%);
+  --btn-gol-hbd:    #9A7028;
+
+  /* --- Badges --- */
+  --badge-sci-bg:   rgba(90, 61, 143, 0.10);
+  --badge-sci-text: #5A3D8F;
+  --badge-sci-bd:   rgba(90, 61, 143, 0.20);
+  --badge-sci-hbg:  rgba(90, 61, 143, 0.18);
+  --badge-ol-text:  #5A3D8F;
+  --badge-ol-bd:    #7B5AB5;
+  --badge-ol-hbg:   rgba(123, 90, 181, 0.10);
+
+  /* --- Cards --- */
+  --card-bg:        #FFFFFF;
+  --card-border:    #EDE8F5;
+  --card-shadow:    0 4px 24px rgba(61, 41, 112, 0.08);
+  --bd-gold:        #D4B97E;
+  --cbtn-ol-hbg:    rgba(212, 185, 126, 0.10);
+  --cbtn-ol-htx:    #B8943A;
+
+  /* --- Nav --- */
+  --nav-bg:         rgba(255, 255, 255, 0.95);
+  --nav-border:     rgba(201, 195, 180, 0.40);
+  --nav-text:       #1A1A2E;
+  --nav-link-hover: #5A3D8F;
 }
 
-/* ── Dark Mode ── */
+/* ==========================================================================
+   3. DARK MODE OVERRIDES
+   ========================================================================== */
 [data-theme="dark"] {
-  /* Backgrounds */
-  --bg-page:       #111118;
-  --bg-primary:    #1C1C26;
-  --bg-secondary:  #22222E;
-  --bg-tint:       #201E2B;
-  --bg-card:       #26263A;
-  --bg-footer:     #0E0E18;
+  /* --- Core overrides --- */
+  --cream:          #1A1A2E;
+  --white:          #2D2547;
+  --ink:            #F0EAF8;
 
-  /* Text on dark backgrounds */
-  --text-primary:     #EDE7D8;
-  --text-secondary:   rgba(237, 231, 216, 0.68);
-  --text-muted:       rgba(237, 231, 216, 0.38);
+  /* --- Semantic Background Tokens --- */
+  --bg-primary:     #1A1A2E;
+  --bg-secondary:   #221B3A;
+  --bg-tint:        #2D2547;
+  --bg-card:        #2D2547;
+  --bg-footer:      #0F0C1A;
+  --bg-nav:         rgba(26, 26, 46, 0.97);
 
-  /* Text on hero / purple / dark sections */
-  --text-on-dark:     #EDE7D8;
-  --text-on-dark-sub: rgba(237, 231, 216, 0.78);
+  /* --- Semantic Text Tokens --- */
+  --text-primary:   #F0EAF8;
+  --text-secondary: #C4AEE8;
+  --text-muted:     #A89BC8;
+  /* --text-on-dark stays #F0EAF8 — intentionally NOT overridden */
 
-  /* Purple scale */
-  --purple:        #9B7ED4;
-  --purple-deep:   #7B5AB5;
-  --purple-light:  #BBA2E8;
-  --purple-pale:   rgba(107, 76, 163, 0.22);
-  --purple-mid:    rgba(155, 126, 212, 0.22);
-  --purple-glow:   rgba(155, 126, 212, 0.20);
-  --purple-tint:   rgba(107, 76, 163, 0.08);
+  /* --- UI Element Tokens --- */
+  --divider:        rgba(201, 195, 180, 0.25);
+  --border-light:   rgba(196, 174, 232, 0.20);
+  --icon-color:     #D4B97E;
+  --focus-ring:     #D4B97E;
 
-  /* Gold unchanged */
-  --gold:              #C9A96E;
-  --gold-light:        #D4B97E;
-  --accent-gold:       #C9A96E;
-  --accent-gold-light: #D4B97E;
+  /* --- Gradient overrides --- */
+  --gradient-tint:  linear-gradient(135deg, #2D2547 0%, #221B3A 100%);
 
-  /* Borders / dividers / shadows */
-  --border:        rgba(155, 126, 212, 0.18);
-  --divider:       rgba(237, 231, 216, 0.10);
-  --shadow:        rgba(0, 0, 0, 0.40);
-  --shadow-purple: rgba(0, 0, 0, 0.40);
+  /* --- Buttons: Purple --- */
+  --btn-pur-bg:     #7B5AB5;
+  --btn-pur-hbg:    #9B7ED4;
 
-  /* Legacy aliases */
-  --cream:      #1C1C26;
-  --cream-warm: #201E2B;
-  --cream-dark: rgba(237, 231, 216, 0.10);
-  --white:      #22222E;
-  --ink:        #EDE7D8;
-  --ink-mid:    rgba(237, 231, 216, 0.68);
-  --ink-soft:   rgba(237, 231, 216, 0.38);
-  --black:      #0E0E18;
-  --black-soft: #1A1A26;
-  --card-bg:    #26263A;
-  --card-border: rgba(155, 126, 212, 0.18);
+  /* --- Buttons: Outline Purple --- */
+  --btn-ol-bd:      #9B7ED4;
+  --btn-ol-text:    #C4AEE8;
+  --btn-ol-hbg:     rgba(155, 126, 212, 0.15);
+  --btn-ol-hbd:     #C4AEE8;
+
+  /* --- Badges --- */
+  --badge-sci-bg:   rgba(155, 126, 212, 0.15);
+  --badge-sci-text: #C4AEE8;
+  --badge-sci-bd:   rgba(155, 126, 212, 0.30);
+  --badge-sci-hbg:  rgba(155, 126, 212, 0.25);
+  --badge-ol-text:  #C4AEE8;
+  --badge-ol-bd:    #9B7ED4;
+  --badge-ol-hbg:   rgba(155, 126, 212, 0.15);
+
+  /* --- Cards --- */
+  --card-bg:        #2D2547;
+  --card-border:    rgba(155, 126, 212, 0.20);
+  --card-shadow:    0 4px 24px rgba(0, 0, 0, 0.30);
+  --cbtn-ol-hbg:    rgba(212, 185, 126, 0.15);
+  --cbtn-ol-htx:    #D4B97E;
+
+  /* --- Nav --- */
+  --nav-bg:         rgba(26, 26, 46, 0.97);
+  --nav-border:     rgba(155, 126, 212, 0.20);
+  --nav-text:       #F0EAF8;
+  --nav-link-hover: #C4AEE8;
 }
 
-/* ── Smooth theme transitions ── */
+/* ==========================================================================
+   4. BASE STYLES
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* ── Theme toggle button ── */
-.theme-toggle {
-  position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
-  z-index: 9999;
+/* ==========================================================================
+   5. FOCUS RING — ALL INTERACTIVE ELEMENTS
+   ========================================================================== */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   6. ANIMATION KEYFRAMES
+   ========================================================================== */
+@keyframes pw-goldPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 185, 126, 0.40); }
+  50%       { box-shadow: 0 0 0 8px rgba(212, 185, 126, 0); }
+}
+
+@keyframes pw-floatY {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-4px); }
+}
+
+@keyframes pw-fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pw-shineSwipe {
+  0%   { left: -80%; }
+  100% { left: 130%; }
+}
+
+@keyframes pw-orbDrift {
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(20px, -15px) scale(1.05); }
+  50%  { transform: translate(10px, 20px) scale(0.97); }
+  75%  { transform: translate(-15px, 5px) scale(1.03); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+/* ==========================================================================
+   7. BUTTONS
+   ========================================================================== */
+
+/* --- Base Button Reset --- */
+.pw-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease,
+              transform 0.15s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.pw-btn:active {
+  transform: translateY(0) !important;
+  box-shadow: none !important;
+}
+
+/* --- Purple Button --- */
+.pw-btn-purple {
+  background: var(--btn-pur-bg);
+  color: var(--btn-pur-text);
+  border-color: transparent;
+}
+
+.pw-btn-purple:hover {
+  background: var(--btn-pur-hbg);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(61, 41, 112, 0.35);
+}
+
+/* --- Gold Button --- */
+.pw-btn-gold {
+  background: var(--gradient-gold);
+  color: var(--btn-gol-tx);
+  border-color: var(--btn-gol-bd);
+  animation: pw-goldPulse 3s infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.pw-btn-gold::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: skewX(-20deg);
+  animation: pw-shineSwipe 3s infinite 1.5s;
+}
+
+.pw-btn-gold:hover {
+  background: var(--btn-gol-hbg);
+  border-color: var(--btn-gol-hbd);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(184, 148, 58, 0.40);
+  animation-play-state: paused;
+}
+
+.pw-btn-gold:hover::after {
+  animation-play-state: paused;
+}
+
+/* --- Outline Purple Button --- */
+.pw-btn-outline {
+  background: transparent;
+  color: var(--btn-ol-text);
+  border-color: var(--btn-ol-bd);
+}
+
+.pw-btn-outline:hover {
+  background: var(--btn-ol-hbg);
+  border-color: var(--btn-ol-hbd);
+  transform: translateY(-2px);
+}
+
+/* --- Gold Outline Button --- */
+.pw-btn-gold-outline {
+  background: transparent;
+  color: var(--gold-honey);
+  border-color: var(--btn-gol-bd);
+}
+
+.pw-btn-gold-outline:hover {
+  background: rgba(212, 185, 126, 0.12);
+  border-color: var(--gold-honey);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   8. BADGES
+   ========================================================================== */
+.pw-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  cursor: default;
+}
+
+/* --- Science / Purple Badge --- */
+.pw-badge-sci {
+  background: var(--badge-sci-bg);
+  color: var(--badge-sci-text);
+  border-color: var(--badge-sci-bd);
+}
+
+.pw-badge-sci:hover {
+  background: var(--badge-sci-hbg);
+}
+
+/* --- Outline Badge --- */
+.pw-badge-outline {
+  background: transparent;
+  color: var(--badge-ol-text);
+  border-color: var(--badge-ol-bd);
+}
+
+.pw-badge-outline:hover {
+  background: var(--badge-ol-hbg);
+}
+
+/* ==========================================================================
+   9. CARDS
+   ========================================================================== */
+.pw-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  padding: 2rem;
+  transition: background 0.3s ease, border-color 0.3s ease,
+              box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.pw-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(61, 41, 112, 0.15);
+}
+
+[data-theme="dark"] .pw-card:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.40);
+}
+
+/* --- Card with Gold Accent Border --- */
+.pw-card-gold {
+  border-top: 3px solid var(--bd-gold);
+}
+
+/* --- Card CTA Button (outline variant inside card) --- */
+.pw-cbtn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: transparent;
+  color: var(--gold-honey);
+  border: 1.5px solid var(--bd-gold);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.pw-cbtn-outline:hover {
+  background: var(--cbtn-ol-hbg);
+  color: var(--cbtn-ol-htx);
+  border-color: var(--cbtn-ol-htx);
+}
+
+/* ==========================================================================
+   10. ICON COLOR
+   ========================================================================== */
+.pw-icon {
+  color: var(--icon-color);
+  fill: currentColor;
+  transition: color 0.3s ease;
+}
+
+/* Phosphor Icons duotone support */
+.ph-duotone .ph-icon-secondary {
+  opacity: 0.3;
+}
+
+/* ==========================================================================
+   11. ANIMATIONS — UTILITY CLASSES
+   ========================================================================== */
+.pw-animate-float {
+  animation: pw-floatY 4s ease-in-out infinite;
+}
+
+.pw-animate-fade-in {
+  animation: pw-fadeSlideIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.pw-animate-gold-pulse {
+  animation: pw-goldPulse 3s infinite;
+}
+
+.pw-animate-orb {
+  animation: pw-orbDrift 8s ease-in-out infinite;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .pw-animate-float,
+  .pw-animate-fade-in,
+  .pw-animate-gold-pulse,
+  .pw-animate-orb,
+  .pw-btn-gold,
+  .pw-btn-gold::after {
+    animation: none !important;
+  }
+
+  body,
+  .pw-btn,
+  .pw-badge,
+  .pw-card {
+    transition: none !important;
+  }
+}
+
+/* ==========================================================================
+   12. THEME TOGGLE BUTTON
+   ========================================================================== */
+.pw-theme-toggle {
+  background: var(--bg-tint);
+  border: 1px solid var(--divider);
+  border-radius: 50px;
   width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid rgba(201, 169, 110, 0.35);
-  background: var(--bg-card);
-  color: var(--gold);
+  height: 28px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
-  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease,
-              transform 0.2s ease, box-shadow 0.2s ease;
-  line-height: 1;
   padding: 0;
+  transition: background 0.3s ease, border-color 0.3s ease;
+  flex-shrink: 0;
 }
 
-.theme-toggle:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.22);
-  border-color: var(--gold);
+.pw-theme-toggle:hover {
+  background: var(--border-light);
 }
 
-.theme-toggle:focus-visible {
-  outline: 2px solid var(--purple-light);
-  outline-offset: 3px;
+.pw-theme-toggle .icon-sun,
+.pw-theme-toggle .icon-moon {
+  width: 16px;
+  height: 16px;
+  transition: opacity 0.2s ease, transform 0.3s ease;
+  position: absolute;
 }
 
-/* Show sun in dark mode, moon in light mode */
-.theme-toggle .icon-sun  { display: none; }
-.theme-toggle .icon-moon { display: block; }
+/* Light mode: show sun, hide moon */
+.pw-theme-toggle .icon-sun  { opacity: 1; transform: rotate(0deg); }
+.pw-theme-toggle .icon-moon { opacity: 0; transform: rotate(-90deg); }
 
-[data-theme="dark"] .theme-toggle .icon-sun  { display: block; }
-[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+/* Dark mode: show moon, hide sun */
+[data-theme="dark"] .pw-theme-toggle .icon-sun  { opacity: 0; transform: rotate(90deg); }
+[data-theme="dark"] .pw-theme-toggle .icon-moon { opacity: 1; transform: rotate(0deg); }
+
+/* ==========================================================================
+   13. NAVIGATION (base styles)
+   ========================================================================== */
+.pw-nav {
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.pw-nav a {
+  color: var(--nav-text);
+  transition: color 0.2s ease;
+}
+
+.pw-nav a:hover {
+  color: var(--nav-link-hover);
+}
+
+/* ==========================================================================
+   14. DIVIDERS
+   ========================================================================== */
+.pw-divider {
+  border: none;
+  border-top: 1px solid var(--divider);
+  margin: 2rem 0;
+  transition: border-color 0.3s ease;
+}
+
+/* ==========================================================================
+   15. FORM ELEMENTS
+   ========================================================================== */
+.pw-input,
+.pw-select,
+.pw-textarea {
+  background: var(--bg-card);
+  border: 1px solid var(--divider);
+  border-radius: 8px;
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  width: 100%;
+  transition: border-color 0.2s ease, background 0.3s ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.pw-input::placeholder,
+.pw-textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.pw-input:focus,
+.pw-select:focus,
+.pw-textarea:focus {
+  border-color: var(--gold-mid);
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   16. SECTION HELPERS
+   ========================================================================== */
+
+/* Always-dark section (hero, CTA, footer) — text never flips */
+.pw-section-dark {
+  background: var(--gradient-hero);
+  color: var(--text-on-dark);
+}
+
+.pw-section-dark a,
+.pw-section-dark p,
+.pw-section-dark h1,
+.pw-section-dark h2,
+.pw-section-dark h3 {
+  color: var(--text-on-dark);
+}
+
+/* Tinted section */
+.pw-section-tint {
+  background: var(--bg-tint);
+  transition: background 0.3s ease;
+}
+
+/* ==========================================================================
+   17. LEGACY ALIASES (backward compat with existing pages)
+   ========================================================================== */
+:root {
+  --purple-1: var(--purple-deep);
+  --purple-2: var(--purple-mid);
+  --purple-3: var(--purple-light);
+  --purple-4: var(--purple-pale);
+  --purple-5: var(--purple-tint);
+  --purple-6: var(--purple-ghost);
+  --gold-1:   var(--gold-honey);
+  --gold-2:   var(--gold-mid);
+  --gold-3:   var(--gold-deep);
+}

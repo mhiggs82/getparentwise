@@ -12,84 +12,12 @@
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--bg-secondary); /* intentionally warmer tint vs default bg-primary */
+      background: var(--bg-secondary);
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ===== TOP BAR ===== */
-    .top-bar {
-      background: var(--purple-deep);
-      color: var(--accent-gold-light);
-      text-align: center;
-      padding: 11px 20px;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-    }
-
-    .top-bar::before,
-    .top-bar::after {
-      content: '✦';
-      margin: 0 10px;
-      font-size: 10px;
-      opacity: 0.7;
-    }
-
-    /* ===== HERO ===== */
-    .hero {
-      background: linear-gradient(155deg, #7B5AB5 0%, var(--purple-deep) 60%, #3D2970 100%);
-      color: var(--text-on-dark);
-      padding: 60px 24px 70px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 20% 10%, rgba(255,255,255,0.09) 0%, transparent 50%),
-        radial-gradient(ellipse at 85% 80%, rgba(0,0,0,0.18) 0%, transparent 45%),
-        radial-gradient(ellipse at 60% 40%, rgba(201,169,110,0.06) 0%, transparent 55%);
-      pointer-events: none;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      bottom: -1px;
-      left: 0;
-      right: 0;
-      height: 50px;
-      background: var(--bg-primary);
-      clip-path: ellipse(55% 100% at 50% 100%);
-    }
-
-    .hero-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 36px;
-    }
-
-    @media (min-width: 768px) {
-      .hero-inner {
-        flex-direction: row;
-        text-align: left;
-        gap: 48px;
-        align-items: center;
-      }
-    }
-
-    .hero-book { flex-shrink: 0; }
-
+    /* Page-specific overrides for Hero Book */
     .hero-book img {
       width: 220px;
       height: auto;
@@ -107,23 +35,6 @@
       box-shadow: 0 24px 70px rgba(0,0,0,0.45), 0 10px 24px rgba(0,0,0,0.3);
     }
 
-    .hero-text h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(26px, 4.5vw, 44px);
-      font-weight: 700;
-      line-height: 1.18;
-      margin-bottom: 18px;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.2);
-    }
-
-    .hero-text .subtitle {
-      font-size: clamp(15px, 2.2vw, 18px);
-      font-weight: 400;
-      line-height: 1.65;
-      opacity: 0.9;
-      margin-bottom: 10px;
-    }
-
     .hero-text .even-if {
       font-style: italic;
       font-size: clamp(14px, 1.8vw, 16px);
@@ -131,209 +42,13 @@
       margin-bottom: 28px;
     }
 
-    .hero-cta {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--accent-gold-light) 0%, var(--accent-gold) 100%);
-      color: var(--btn-gol-tx);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 15px 42px;
-      border-radius: 5px;
-      text-decoration: none;
-      box-shadow: 0 4px 20px rgba(201,169,110,0.5), 0 2px 6px rgba(0,0,0,0.2);
-      transition: all 0.25s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-cta::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -75%;
-      width: 50%;
-      height: 200%;
-      background: rgba(255,255,255,0.2);
-      transform: skewX(-20deg);
-      transition: left 0.5s ease;
-    }
-
-    .hero-cta:hover::after { left: 150%; }
-
-    .hero-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(201,169,110,0.55), 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    /* ===== SUB-HERO ===== */
-    .sub-hero {
-      background: var(--bg-primary);
-      text-align: center;
-      padding: 52px 24px 18px;
-    }
-
-    .sub-hero-rule {
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent-gold), var(--accent-gold-light));
-      margin: 0 auto 28px;
-      border-radius: 2px;
-    }
-
-    .sub-hero p {
-      font-size: 18px;
-      font-weight: 600;
-      max-width: 680px;
-      margin: 0 auto;
-      line-height: 1.65;
-      color: var(--text-primary);
-    }
-
-    .sub-hero .sub-line {
-      font-size: 16px;
-      font-weight: 400;
-      margin-top: 10px;
-      color: var(--purple);
-      font-style: italic;
-    }
-
-    /* ===== CTA ===== */
-    .cta-wrap {
-      text-align: center;
-      padding: 32px 24px;
-      background: var(--bg-primary);
-    }
-
-    .cta-wrap.bg-white { background: var(--bg-secondary); }
-
-    .cta-btn {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--accent-gold-light) 0%, #B8943A 100%);
-      color: var(--btn-gol-tx);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      padding: 18px 56px;
-      border-radius: 5px;
-      text-decoration: none;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 18px rgba(201,169,110,0.4), 0 2px 6px rgba(0,0,0,0.1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-btn::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -75%;
-      width: 50%;
-      height: 200%;
-      background: rgba(255,255,255,0.18);
-      transform: skewX(-20deg);
-      transition: left 0.5s ease;
-    }
-
-    .cta-btn:hover::after { left: 150%; }
-
-    .cta-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 26px rgba(201,169,110,0.5), 0 4px 10px rgba(0,0,0,0.12);
-    }
-
-    .cta-sub {
-      font-size: 13px;
-      color: var(--text-secondary);
-      opacity: 0.7; /* Increased for contrast in dark mode */
-      margin-top: 10px;
-    }
-
-    /* ===== LETTER ===== */
-    .letter {
-      max-width: 660px;
-      margin: 0 auto;
-      padding: 48px 24px 36px;
-    }
-
-    .letter p {
-      font-size: 17px;
-      line-height: 1.9;
-      margin-bottom: 20px;
-      color: var(--text-secondary);
-    }
-
-    .letter .greeting {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 26px;
-      font-style: italic;
-      color: var(--purple);
-      margin-bottom: 26px;
-      display: block;
-    }
-
-    /* ===== NO MORE ===== */
-    .no-more {
-      text-align: center;
-      padding: 56px 24px;
-      background: var(--bg-primary);
-      position: relative;
-    }
-
-    .no-more::before {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 3px;
-      background: var(--purple-light);
-      margin: 0 auto 28px;
-      border-radius: 2px;
-    }
-
-    .no-more h2 {
-      font-family: 'DM Sans', sans-serif;
-      font-size: clamp(21px, 3.8vw, 30px);
-      font-weight: 700;
-      line-height: 1.4;
-      max-width: 700px;
-      margin: 0 auto;
-      color: var(--text-primary);
-    }
-
-    .no-more h2 span {
-      display: block;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(20px, 3.5vw, 30px);
-      font-weight: 600;
-      color: var(--purple);
-      margin-top: 20px;
-      line-height: 1.3;
-    }
-
-    /* ===== TRANSFORMATION ===== */
-    .transformation {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 28px 24px 48px;
-    }
-
-    .transformation p {
-      font-size: 17px;
-      line-height: 1.9;
-      margin-bottom: 20px;
-      color: var(--text-secondary);
-    }
-
+    /* Transformation before-after tint */
     .transformation .before-after {
       border-left: 4px solid transparent;
       border-image: linear-gradient(180deg, var(--purple-light), var(--accent-gold)) 1;
       padding: 24px 28px;
       margin: 32px 0;
-      background: linear-gradient(135deg, var(--purple-pale) 0%, #F8F4FF 100%);
+      background: var(--gradient-tint);
       border-radius: 0 8px 8px 0;
       box-shadow: 0 4px 20px var(--shadow-purple);
     }
@@ -342,167 +57,8 @@
       background: linear-gradient(135deg, rgba(155,126,212,0.14) 0%, rgba(155,126,212,0.06) 100%);
     }
 
-    [data-mode="dark"] .transformation .before-after p {
-      color: var(--text-primary);
-    }
-
-    .transformation .before-after p { margin-bottom: 14px; font-size: 16px; line-height: 1.8; }
-    .transformation .before-after p:last-child { margin-bottom: 0; }
-
-    /* ===== PROOF ===== */
-    .proof-section {
-      background: linear-gradient(160deg, var(--purple) 0%, var(--purple-deep) 100%);
-      color: var(--text-on-dark);
-      text-align: center;
-      padding: 60px 24px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .proof-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 20% 50%, rgba(255,255,255,0.06) 0%, transparent 60%);
-      pointer-events: none;
-    }
-
-    .proof-section h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(24px, 4vw, 36px);
-      font-weight: 700;
-      margin-bottom: 24px;
-      position: relative;
-    }
-
-    .proof-section p {
-      font-size: 17px;
-      max-width: 600px;
-      margin: 0 auto 14px;
-      opacity: 0.88;
-      line-height: 1.75;
-      position: relative;
-    }
-
-    .proof-section .proof-highlight {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(20px, 3vw, 26px);
-      font-weight: 600;
-      font-style: italic;
-      opacity: 1;
-      margin-top: 32px;
-      padding: 24px 32px;
-      border-top: 1px solid rgba(255,255,255,0.2);
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-      max-width: 620px;
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-    }
-
-    .proof-section .proof-highlight::before {
-      content: '\201C';
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 80px;
-      line-height: 0;
-      position: absolute;
-      top: 24px;
-      left: 0;
-      color: var(--accent-gold);
-      opacity: 0.5;
-    }
-
-    /* ===== DISCLAIMER ===== */
-    .disclaimer {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 32px 24px 12px;
-      font-size: 12.5px;
-      color: var(--text-secondary);
-      opacity: 0.7; /* Increased for contrast in dark mode */
-      line-height: 1.65;
-      text-align: center;
-      border-top: 1px solid var(--divider);
-    }
-
-    [data-mode="dark"] .proof-section,
-    [data-mode="dark"] .guarantee {
-      background: linear-gradient(155deg, #3D2C6B 0%, #2A1F52 100%);
-    }
-
-    /* ===== OFFER OVERVIEW ===== */
-    .offer-overview {
-      text-align: center;
-      padding: 52px 24px;
-      background: var(--bg-primary);
-    }
-
-    .offer-overview h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(24px, 4vw, 36px);
-      font-weight: 700;
-      color: var(--purple);
-      margin-bottom: 32px;
-    }
-
-    .offer-overview .offer-body {
-      max-width: 680px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 28px;
-    }
-
-    @media (min-width: 640px) {
-      .offer-overview .offer-body {
-        flex-direction: row;
-        text-align: left;
-        align-items: flex-start;
-      }
-    }
-
-    .offer-overview img {
-      width: 180px;
-      height: auto;
-      border-radius: 6px;
-      box-shadow: 0 16px 48px rgba(107,76,163,0.25), 0 4px 14px rgba(0,0,0,0.12);
-      flex-shrink: 0;
-      transform: perspective(800px) rotateY(-3deg);
-    }
-
-    .offer-overview .offer-text p {
-      font-size: 17px;
-      line-height: 1.8;
-      margin-bottom: 14px;
-      color: var(--text-secondary);
-    }
-
-    .offer-overview .price-line {
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--purple);
-      font-family: 'Cormorant Garamond', serif;
-    }
-
-    /* ===== BULLETS ===== */
-    .whats-inside {
-      padding: 60px 24px;
-      background: var(--bg-secondary);
-    }
-
-    .whats-inside h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(24px, 4vw, 36px);
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 42px;
-      color: var(--text-primary);
-    }
-
+    /* Bullets Grid */
     .bullets-grid {
-      max-width: 880px;
-      margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr;
       gap: 16px;
@@ -512,194 +68,12 @@
       .bullets-grid { grid-template-columns: 1fr 1fr; gap: 14px 36px; }
     }
 
-    .bullet-item {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      font-size: 15.5px;
-      line-height: 1.65;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--divider);
-    }
-
     .bullet-item .check {
-      flex-shrink: 0;
-      width: 22px;
-      height: 22px;
-      background: var(--purple);
-      color: #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-weight: 700;
       margin-top: 2px;
       box-shadow: 0 2px 8px var(--shadow-purple);
     }
 
-    /* ===== EVEN IF ===== */
-    .even-if-section {
-      padding: 56px 24px;
-      background: var(--bg-primary);
-    }
-
-    .even-if-section .inner {
-      max-width: 660px;
-      margin: 0 auto;
-    }
-
-    .even-if-section h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(22px, 4vw, 34px);
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 28px;
-      line-height: 1.3;
-      color: var(--purple-deep);
-    }
-
-    .even-if-section p {
-      font-size: 17px;
-      line-height: 1.9;
-      margin-bottom: 18px;
-      color: var(--text-secondary);
-    }
-
-    /* ===== BONUSES ===== */
-    .bonuses {
-      padding: 60px 24px;
-      background: var(--bg-secondary);
-      text-align: center;
-    }
-
-    .bonuses h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(24px, 4vw, 36px);
-      font-weight: 700;
-      margin-bottom: 40px;
-    }
-
-    .bonus-card {
-      max-width: 600px;
-      margin: 0 auto 24px;
-      background: var(--bg-card);
-      border: 1px solid rgba(107,76,163,0.15);
-      border-radius: 10px;
-      padding: 0;
-      text-align: left;
-      box-shadow: 0 4px 24px var(--shadow-purple);
-      overflow: hidden;
-    }
-
-    .bonus-card-top {
-      height: 5px;
-      background: linear-gradient(90deg, var(--accent-gold), var(--purple-light));
-    }
-
-    .bonus-card-body {
-      padding: 26px 28px;
-    }
-
-    .bonus-card .bonus-label {
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1.8px;
-      color: var(--accent-gold);
-      margin-bottom: 8px;
-    }
-
-    .bonus-card h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--text-primary);
-    }
-
-    .bonus-card p {
-      font-size: 15.5px;
-      line-height: 1.75;
-      color: var(--text-secondary);
-    }
-
-    /* ===== GUARANTEE ===== */
-    .guarantee {
-      background: linear-gradient(155deg, var(--purple) 0%, var(--purple-deep) 100%);
-      color: var(--text-on-dark);
-      padding: 60px 24px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .guarantee::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 55%);
-      pointer-events: none;
-    }
-
-    .guarantee-inner {
-      max-width: 680px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 28px;
-      text-align: center;
-      position: relative;
-    }
-
-    @media (min-width: 600px) {
-      .guarantee-inner { flex-direction: row; text-align: left; }
-    }
-
-    .guarantee-badge {
-      flex-shrink: 0;
-      width: 120px;
-      height: 120px;
-      border: 3px solid var(--accent-gold);
-      border-radius: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      background: rgba(255,255,255,0.08);
-      box-shadow: 0 0 0 6px rgba(201,169,110,0.15), inset 0 0 20px rgba(201,169,110,0.1);
-    }
-
-    .guarantee-badge .pct { font-size: 30px; line-height: 1; color: var(--accent-gold-light); }
-    .guarantee-badge .label { font-size: 10px; text-transform: uppercase; letter-spacing: 1.2px; margin-top: 4px; opacity: 0.8; }
-
-    .guarantee h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(22px, 3.5vw, 30px);
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .guarantee p { font-size: 16px; line-height: 1.75; opacity: 0.88; }
-
-    /* ===== WHO FOR ===== */
-    .who-for {
-      background: var(--bg-primary);
-      padding: 60px 24px;
-    }
-
-    .who-for .inner { max-width: 660px; margin: 0 auto; }
-
-    .who-for h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(24px, 4vw, 36px);
-      font-weight: 700;
-      color: var(--purple);
-      text-align: center;
-      margin-bottom: 32px;
-    }
-
+    /* Who For items */
     .who-item {
       font-size: 17px;
       padding: 14px 0;
@@ -719,90 +93,7 @@
       font-size: 22px;
       line-height: 1;
     }
-
-    /* ===== FINAL CTA ===== */
-    .final-cta {
-      text-align: center;
-      padding: 70px 24px 60px;
-      background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-    }
-
-    .final-cta h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(24px, 4vw, 38px);
-      font-weight: 700;
-      margin-bottom: 32px;
-      line-height: 1.3;
-      color: var(--text-primary);
-    }
-
-    .final-cta img {
-      width: 200px;
-      height: auto;
-      border-radius: 6px;
-      box-shadow: 0 20px 60px rgba(107,76,163,0.25), 0 6px 18px rgba(0,0,0,0.12);
-      margin-bottom: 32px;
-      transform: perspective(800px) rotateY(-3deg);
-    }
-
-    /* ===== PS ===== */
-    .ps-section {
-      max-width: 660px;
-      margin: 0 auto;
-      padding: 10px 24px 48px;
-    }
-
-    .ps-section .signoff { font-size: 17px; margin-bottom: 6px; color: var(--text-secondary); }
-
-    .ps-section .author-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 700;
-      font-style: italic;
-      color: var(--purple);
-      margin-bottom: 32px;
-    }
-
-    .ps-section .ps-label {
-      font-weight: 700;
-      font-size: 15px;
-      margin-bottom: 14px;
-      color: var(--text-primary);
-      padding-top: 24px;
-      border-top: 2px solid var(--divider);
-    }
-
-    .ps-section ol {
-      padding-left: 22px;
-      font-size: 15px;
-      line-height: 1.85;
-      color: var(--text-secondary);
-    }
-
-    .ps-section ol li { margin-bottom: 10px; }
-
-    /* ===== ABOUT ===== */
-    .author-section {
-      background: linear-gradient(155deg, var(--purple-deep) 0%, #2E1E60 100%);
-      color: var(--text-on-dark);
-      padding: 60px 24px;
-    }
-
-    .author-section .inner { max-width: 660px; margin: 0 auto; }
-
-    .author-section h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 30px;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-
-    .author-section p { font-size: 16px; line-height: 1.85; margin-bottom: 16px; opacity: 0.88; }
-
-    .author-section .tagline {
-      font-weight: 700;
-      font-size: 17px;
-      opacity: 1;
+    .author-section .pw-pull {
       margin-top: 24px;
       color: var(--accent-gold-light);
       border-top: 1px solid rgba(255,255,255,0.15);
@@ -810,17 +101,7 @@
       font-style: italic;
     }
 
-    /* ===== FOOTER ===== */
-    .footer {
-      background: var(--bg-footer);
-      text-align: center;
-      padding: 32px 24px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.45);
-    }
-
-    .footer a { color: var(--accent-gold); text-decoration: none; opacity: 0.8; }
-    .footer a:hover { opacity: 1; }
+    /* Note: Footer and other global sections are now fully handled by DS classes. */
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 600px) {
@@ -1378,112 +659,132 @@
 
   <!-- HERO -->
   <section class="pw-hero pw-hero--wave">
-    <div class="hero-inner">
-      <div class="hero-book">
-        <img src="../assets/images/bookcover.png" alt="A Parent's Guide: How to Create Security During Adolescence by M. Aurelius Higgs">
-      </div>
-      <div class="hero-text">
-        <h1>How to Build a Secure, Connected Relationship With Your Teenager That Lasts a Lifetime</h1>
-        <p class="subtitle">The science-backed path to becoming the foundation your teen needs to launch from. By securing yourself from the inside out.</p>
-        <p class="even-if">...Even if your teen barely talks to you, you feel like you are losing them, or nothing you have tried has worked.</p>
-        <a href="javascript:void(0)" onclick="openCart()" class="hero-cta">Get the Book &raquo;</a>
+    <div class="pw-container-wide">
+      <div class="hero-inner" style="display: flex; flex-direction: column; align-items: center; gap: 36px;">
+        <div class="hero-book">
+          <img src="../assets/images/bookcover.png" alt="A Parent's Guide: How to Create Security During Adolescence by M. Aurelius Higgs">
+        </div>
+        <div class="hero-text">
+          <h1 class="pw-heading">How to Build a Secure, Connected Relationship With Your Teenager That Lasts a Lifetime</h1>
+          <p class="pw-lead pw-lead--on-dark">The science-backed path to becoming the foundation your teen needs to launch from. By securing yourself from the inside out.</p>
+          <p class="even-if" style="font-style: italic; font-size: clamp(14px, 1.8vw, 16px); opacity: 0.65; margin-bottom: 28px;">...Even if your teen barely talks to you, you feel like you are losing them, or nothing you have tried has worked.</p>
+          <a href="javascript:void(0)" onclick="openCart()" class="pw-btn pw-btn-gold">Get the Book &raquo;</a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- SUB HERO -->
-  <div class="sub-hero">
-    <div class="sub-hero-rule"></div>
-    <p>Use This Science-Backed Method to Close the Preparation Gap, Become a Secure Base for Your Teen, and Build a Relationship That Survives Adolescence and Thrives Beyond It.</p>
-    <p class="sub-line">The book on this page will show you how.</p>
-  </div>
+  <section class="pw-section">
+    <div class="pw-container-narrow">
+      <hr class="pw-rule-gold pw-rule-gold--center">
+      <p class="pw-lead">Use This Science-Backed Method to Close the Preparation Gap, Become a Secure Base for Your Teen, and Build a Relationship That Survives Adolescence and Thrives Beyond It.</p>
+      <p style="font-size: 16px; font-weight: 400; color: var(--purple); font-style: italic;">The book on this page will show you how.</p>
+    </div>
+  </section>
 
   <!-- CTA 1 -->
-  <div class="cta-wrap">
-    <a href="javascript:void(0)" onclick="openCart()" class="cta-btn">Order Now &raquo;</a>
-  </div>
+  <section class="pw-section-white" style="padding: 32px 24px; text-align: center;">
+    <a href="javascript:void(0)" onclick="openCart()" class="pw-btn pw-btn-gold">Order Now &raquo;</a>
+  </section>
 
   <!-- LETTER OPENING -->
-  <section class="letter">
-    <span class="greeting">Dear Parent,</span>
-    <p>Do you want to build a relationship with your teenager that is so secure they never question whether they can come to you, no matter what?</p>
-    <p>Here is the secret:</p>
+  <section class="pw-section">
+    <div class="pw-container-narrow">
+      <span class="pw-pull" style="margin-bottom: 26px; display: block;">Dear Parent,</span>
+      <p>Do you want to build a relationship with your teenager that is so secure they never question whether they can come to you, no matter what?</p>
+      <p>Here is the secret:</p>
+    </div>
   </section>
 
   <!-- NO MORE -->
-  <section class="no-more">
-    <h2>No More Walking on Eggshells Around Your Own Child. No More Guessing What You Did Wrong. No More Lying Awake Wondering If It Is Too Late.<span>Just a Clear, Science-Backed Path to Becoming the Secure Foundation Your Teen Needs.</span></h2>
+  <section class="pw-section pw-reveal" style="text-align: center;">
+    <div class="pw-container">
+      <h2 class="pw-heading">No More Walking on Eggshells Around Your Own Child. No More Guessing What You Did Wrong. No More Lying Awake Wondering If It Is Too Late.<br><span style="display: block; font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 3.5vw, 30px); font-weight: 600; color: var(--purple); margin-top: 20px; line-height: 1.3;">Just a Clear, Science-Backed Path to Becoming the Secure Foundation Your Teen Needs.</span></h2>
+    </div>
   </section>
 
   <!-- TRANSFORMATION -->
-  <section class="transformation pw-reveal">
-    <div class="before-after">
-      <p><strong>Before:</strong> I watched family after family fall apart during adolescence. Not because the parents did not love their kids. Not because the teens were "bad." But because nobody had taught these parents how to prepare for the seismic shift that happens when a child starts becoming an adult. I saw the same pattern repeated across six countries, thousands of families, and two decades of working in international education.</p>
-      <p><strong>Now:</strong> I understand something that most parenting experts overlook entirely. The single greatest predictor of whether your teenager will be securely attached is not what happened to you growing up. It is whether you have made sense of what happened to you. That changes everything.</p>
-      <p><strong>The difference?</strong> I stopped trying to "fix" teen behavior and started helping parents examine the one thing they can actually control: their own story.</p>
+  <section class="pw-section-alt pw-reveal">
+    <div class="pw-container-narrow">
+      <div class="before-after" style="border-left: 4px solid transparent; border-image: linear-gradient(180deg, var(--purple-light), var(--accent-gold)) 1; padding: 24px 28px; margin: 32px 0; background: var(--gradient-tint); border-radius: 0 8px 8px 0; box-shadow: 0 4px 20px var(--shadow-purple);">
+        <p><strong>Before:</strong> I watched family after family fall apart during adolescence. Not because the parents did not love their kids. Not because the teens were "bad." But because nobody had taught these parents how to prepare for the seismic shift that happens when a child starts becoming an adult. I saw the same pattern repeated across six countries, thousands of families, and two decades of working in international education.</p>
+        <p><strong>Now:</strong> I understand something that most parenting experts overlook entirely. The single greatest predictor of whether your teenager will be securely attached is not what happened to you growing up. It is whether you have made sense of what happened to you. That changes everything.</p>
+        <p><strong>The difference?</strong> I stopped trying to "fix" teen behavior and started helping parents examine the one thing they can actually control: their own story.</p>
+      </div>
+      <p>This is not therapy. This is not blame. Your parents did the best they could. You are doing the best you can.</p>
+      <p>But there is a <strong>preparation gap</strong> that nobody talks about. It sits between the parent you are right now and the parent your teenager needs you to become. This book closes that gap.</p>
     </div>
-    <p>This is not therapy. This is not blame. Your parents did the best they could. You are doing the best you can.</p>
-    <p>But there is a <strong>preparation gap</strong> that nobody talks about. It sits between the parent you are right now and the parent your teenager needs you to become. This book closes that gap.</p>
   </section>
 
   <!-- PROOF -->
-  <section class="proof-section pw-reveal">
-    <h2>The Science Behind This Works</h2>
-    <p>Attachment research spanning 50+ years tells us something that might surprise you. A parent's ability to reflect on their own life story is the strongest predictor of their child's security. Not income. Not education. Not parenting techniques.</p>
-    <p>That means the parent who had a difficult childhood but has processed it will raise a more secure child than the parent who had a "fine" childhood but never looked at it honestly.</p>
-    <p class="proof-highlight">"Your story is not a wound to fix. It is a resource to understand."</p>
+  <section class="pw-section-purple pw-reveal">
+    <div class="pw-container">
+      <h2 class="pw-heading pw-heading--on-dark" style="text-align: center;">The Science Behind This Works</h2>
+      <p class="pw-lead pw-lead--on-dark">Attachment research spanning 50+ years tells us something that might surprise you. A parent's ability to reflect on their own life story is the strongest predictor of their child's security. Not income. Not education. Not parenting techniques.</p>
+      <p class="pw-lead pw-lead--on-dark">That means the parent who had a difficult childhood but has processed it will raise a more secure child than the parent who had a "fine" childhood but never looked at it honestly.</p>
+      <p class="pw-pull pw-pull--on-dark" style="text-align: center; margin-top: 32px; padding: 24px 32px; border-top: 1px solid rgba(255,255,255,0.2); border-bottom: 1px solid rgba(255,255,255,0.2); max-width: 620px; margin-left: auto; margin-right: auto;">"Your story is not a wound to fix. It is a resource to understand."</p>
+    </div>
   </section>
 
   <!-- DISCLAIMER -->
-  <p class="disclaimer">DISCLAIMER: This book does not replace professional therapy or counseling. It is an educational resource grounded in attachment science for parents who want to do the inner work of becoming more secure. Results depend on your willingness to engage honestly with the material.</p>
+  <section class="pw-section" style="padding-top: 12px; padding-bottom: 12px;">
+    <div class="pw-container-narrow">
+      <p class="disclaimer" style="font-size: 12.5px; opacity: 0.7; text-align: center;">DISCLAIMER: This book does not replace professional therapy or counseling. It is an educational resource grounded in attachment science for parents who want to do the inner work of becoming more secure. Results depend on your willingness to engage honestly with the material.</p>
+    </div>
+  </section>
 
   <!-- OFFER OVERVIEW -->
-  <section class="offer-overview">
-    <h2>Get the Complete Guide on Creating Security During Adolescence</h2>
-    <div class="offer-body">
-      <img src="../assets/images/bookcover.png" alt="Book Cover">
-      <div class="offer-text">
-        <p>This book gives you everything you need to understand why your teen is pulling away, what is really driving your emotional reactions, and how to become the kind of parent whose presence is more compelling than any screen.</p>
-        <p>It is short. It is direct. It is built on science, not opinions.</p>
-        <p>You can read it in a weekend and start applying it immediately.</p>
-        <p class="price-line">It is only $4.99.</p>
+  <section class="pw-section pw-reveal">
+    <div class="pw-container-narrow">
+      <h2 class="pw-heading" style="text-align: center;">Get the Complete Guide on Creating Security During Adolescence</h2>
+      <div class="offer-body" style="display: flex; flex-direction: column; align-items: center; gap: 28px;">
+        <img src="../assets/images/bookcover.png" alt="Book Cover" style="width: 180px; height: auto; border-radius: 6px; box-shadow: 0 16px 48px rgba(107,76,163,0.25), 0 4px 14px rgba(0,0,0,0.12); flex-shrink: 0; transform: perspective(800px) rotateY(-3deg);">
+        <div class="offer-text">
+          <p>This book gives you everything you need to understand why your teen is pulling away, what is really driving your emotional reactions, and how to become the kind of parent whose presence is more compelling than any screen.</p>
+          <p>It is short. It is direct. It is built on science, not opinions.</p>
+          <p>You can read it in a weekend and start applying it immediately.</p>
+          <p class="price-line" style="font-size: 24px; font-weight: 700; color: var(--purple); font-family: 'Cormorant Garamond', serif;">It is only $4.99.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- CTA 2 -->
-  <div class="cta-wrap">
-    <a href="javascript:void(0)" onclick="openCart()" class="cta-btn">Get the Book &raquo;</a>
-  </div>
+  <section class="pw-section-white" style="padding: 32px 24px; text-align: center;">
+    <a href="javascript:void(0)" onclick="openCart()" class="pw-btn pw-btn-gold">Get the Book &raquo;</a>
+  </section>
 
   <!-- WHAT'S INSIDE -->
-  <section class="whats-inside">
-    <h2>Here Is What You Will Discover Inside This Book:</h2>
-    <div class="bullets-grid">
-      <div class="bullet-item"><span class="check">&#10003;</span><span>Why <strong>the digital drift</strong>, society's hyper-consumption culture accelerated by algorithms, is the real force pulling your teen away from connection and their own creative nature...</span></div>
-      <div class="bullet-item"><span class="check">&#10003;</span><span><strong>The Inside-Out Audit:</strong> a guided process to examine the patterns from your own upbringing that silently shape how you parent today, without judgment or blame...</span></div>
-      <div class="bullet-item"><span class="check">&#10003;</span><span>Why "Safe, Seen, and Soothed" is necessary but incomplete, and <strong>the fourth S</strong> that transforms passive security into sovereign, active parenting...</span></div>
-      <div class="bullet-item"><span class="check">&#10003;</span><span>The <strong>preparation gap</strong> that nobody talks about: why most parenting struggles are not a failure of love, they are a failure of preparation, and exactly how to close it...</span></div>
-      <div class="bullet-item"><span class="check">&#10003;</span><span>How to build <strong>inner sovereignty</strong>: integrity with yourself while being in service to others, the unshakeable identity base that keeps you grounded when your teen tests every boundary...</span></div>
-      <div class="bullet-item"><span class="check">&#10003;</span><span><strong>The Teen Autonomy Blueprint:</strong> a practical framework for supporting independence without losing connection, so separation becomes a launch, not a loss...</span></div>
-      <div class="bullet-item"><span class="check">&#10003;</span><span>Why the biggest threat to your relationship with your teenager is <strong>not their behavior, their phone, or their friends</strong>. It is the part of your own story you have never examined...</span></div>
-      <div class="bullet-item"><span class="check">&#10003;</span><span>How to become the kind of parent whose <strong>home feels like a secure base</strong>, not a battlefield, the kind of parent whose teen knows: "I can always come back here"...</span></div>
-      <div class="bullet-item"><span class="check">&#10003;</span><span>The counterintuitive reason why <strong>your teen is biologically designed to separate from you</strong>, and why that is not the problem (the problem is what nobody prepared you for)...</span></div>
-      <div class="bullet-item"><span class="check">&#10003;</span><span>Why other parenting books tell you how to <strong>manage</strong> your teen, while this one prepares you to become the person they do not need to be managed away from...</span></div>
-      <div class="bullet-item"><span class="check">&#10003;</span><span>The specific science showing that <strong>a parent who had a hard childhood but has processed it</strong> will raise a more secure child than one who had a "fine" childhood but never examined it...</span></div>
-      <div class="bullet-item"><span class="check">&#10003;</span><span><strong>And much more...</strong> including practical exercises, self-assessment tools, and frameworks you can start using with your family this week.</span></div>
+  <section class="pw-section-alt">
+    <div class="pw-container">
+      <h2 class="pw-heading" style="text-align: center;">Here Is What You Will Discover Inside This Book:</h2>
+      <div class="bullets-grid">
+        <div class="bullet-item"><span class="check">&#10003;</span><span>Why <strong>the digital drift</strong>, society's hyper-consumption culture accelerated by algorithms, is the real force pulling your teen away from connection and their own creative nature...</span></div>
+        <div class="bullet-item"><span class="check">&#10003;</span><span><strong>The Inside-Out Audit:</strong> a guided process to examine the patterns from your own upbringing that silently shape how you parent today, without judgment or blame...</span></div>
+        <div class="bullet-item"><span class="check">&#10003;</span><span>Why "Safe, Seen, and Soothed" is necessary but incomplete, and <strong>the fourth S</strong> that transforms passive security into sovereign, active parenting...</span></div>
+        <div class="bullet-item"><span class="check">&#10003;</span><span>The <strong>preparation gap</strong> that nobody talks about: why most parenting struggles are not a failure of love, they are a failure of preparation, and exactly how to close it...</span></div>
+        <div class="bullet-item"><span class="check">&#10003;</span><span>How to build <strong>inner sovereignty</strong>: integrity with yourself while being in service to others, the unshakeable identity base that keeps you grounded when your teen tests every boundary...</span></div>
+        <div class="bullet-item"><span class="check">&#10003;</span><span><strong>The Teen Autonomy Blueprint:</strong> a practical framework for supporting independence without losing connection, so separation becomes a launch, not a loss...</span></div>
+        <div class="bullet-item"><span class="check">&#10003;</span><span>Why the biggest threat to your relationship with your teenager is <strong>not their behavior, their phone, or their friends</strong>. It is the part of your own story you have never examined...</span></div>
+        <div class="bullet-item"><span class="check">&#10003;</span><span>How to become the kind of parent whose <strong>home feels like a secure base</strong>, not a battlefield, the kind of parent whose teen knows: "I can always come back here"...</span></div>
+        <div class="bullet-item"><span class="check">&#10003;</span><span>The counterintuitive reason why <strong>your teen is biologically designed to separate from you</strong>, and why that is not the problem (the problem is what nobody prepared you for)...</span></div>
+        <div class="bullet-item"><span class="check">&#10003;</span><span>Why other parenting books tell you how to <strong>manage</strong> your teen, while this one prepares you to become the person they do not need to be managed away from...</span></div>
+        <div class="bullet-item"><span class="check">&#10003;</span><span>The specific science showing that <strong>a parent who had a hard childhood but has processed it</strong> will raise a more secure child than one who had a "fine" childhood but never examined it...</span></div>
+        <div class="bullet-item"><span class="check">&#10003;</span><span><strong>And much more...</strong> including practical exercises, self-assessment tools, and frameworks you can start using with your family this week.</span></div>
+      </div>
     </div>
   </section>
 
   <!-- CTA 3 -->
-  <div class="cta-wrap bg-white">
-    <a href="javascript:void(0)" onclick="openCart()" class="cta-btn">Get the Book &raquo;</a>
-  </div>
+  <section class="pw-section-white" style="padding: 32px 24px; text-align: center;">
+    <a href="javascript:void(0)" onclick="openCart()" class="pw-btn pw-btn-gold">Get the Book &raquo;</a>
+  </section>
 
   <!-- EVEN IF -->
-  <section class="even-if-section">
-    <div class="inner">
-      <h2>This Works Even If You Think It Is "Too Late" to Change Your Relationship With Your Teen</h2>
+  <section class="pw-section pw-reveal">
+    <div class="pw-container-narrow">
+      <h2 class="pw-heading" style="text-align: center;">This Works Even If You Think It Is "Too Late" to Change Your Relationship With Your Teen</h2>
       <p>You might be thinking that you will need to overhaul your entire parenting approach, have awkward confrontations, or somehow become a different person in order to rebuild your relationship with your teenager.</p>
       <p>Actually, the opposite is true.</p>
       <p>This book is not about adding more strategies to your already-overwhelmed plate. It is about understanding one thing: <strong>the most powerful change you can make for your teenager starts inside of you.</strong></p>
@@ -1493,44 +794,44 @@
   </section>
 
   <!-- BONUSES -->
-  <section class="bonuses pw-reveal">
-    <h2>Order Now and Get These 2 Bonuses Free</h2>
-    <div class="bonus-card">
-      <div class="bonus-card-top"></div>
-      <div class="bonus-card-body">
-        <div class="bonus-label">Bonus #1</div>
-        <h3>The ParentWise 10 Commandments Quick-Reference Card</h3>
-        <p>A printable, one-page guide with the 10 core principles of secure parenting during adolescence. Keep it on your fridge, in your journal, or on your phone. When a difficult moment hits with your teen, you will have the right framework within arm's reach instead of reacting from old patterns.</p>
-      </div>
-    </div>
-    <div class="bonus-card">
-      <div class="bonus-card-top"></div>
-      <div class="bonus-card-body">
-        <div class="bonus-label">Bonus #2</div>
-        <h3>The Inside-Out Audit Companion Worksheet</h3>
-        <p>A structured, fill-in worksheet that walks you through the self-reflection process described in the book, step by step. This turns the book's concepts into a personal action plan specific to your family, your story, and your teen.</p>
+  <section class="pw-section-alt pw-reveal">
+    <div class="pw-container">
+      <h2 class="pw-heading" style="text-align: center;">Order Now and Get These 2 Bonuses Free</h2>
+      <div style="display: flex; flex-direction: column; gap: 24px; align-items: center;">
+        <div class="pw-card pw-card-gold" style="max-width: 600px; text-align: left;">
+          <div class="bonus-label" style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.8px; color: var(--accent-gold); margin-bottom: 8px;">Bonus #1</div>
+          <h3 class="pw-heading" style="font-size: 22px;">The ParentWise 10 Commandments Quick-Reference Card</h3>
+          <p>A printable, one-page guide with the 10 core principles of secure parenting during adolescence. Keep it on your fridge, in your journal, or on your phone. When a difficult moment hits with your teen, you will have the right framework within arm's reach instead of reacting from old patterns.</p>
+        </div>
+        <div class="pw-card pw-card-gold" style="max-width: 600px; text-align: left;">
+          <div class="bonus-label" style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.8px; color: var(--accent-gold); margin-bottom: 8px;">Bonus #2</div>
+          <h3 class="pw-heading" style="font-size: 22px;">The Inside-Out Audit Companion Worksheet</h3>
+          <p>A structured, fill-in worksheet that walks you through the self-reflection process described in the book, step by step. This turns the book's concepts into a personal action plan specific to your family, your story, and your teen.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- GUARANTEE -->
-  <section class="guarantee pw-reveal">
-    <div class="guarantee-inner">
-      <div class="guarantee-badge">
-        <span class="pct">100%</span>
-        <span class="label">Guarantee</span>
-      </div>
-      <div>
-        <h2>Here Is My Guarantee</h2>
-        <p>Try the book and the bonuses for 1 full year. If, for any reason, you do not find them useful, I will refund you the full $4.99. Just send me an email and I will refund you within 48 hours. No questions asked.</p>
+  <section class="pw-section-purple pw-reveal">
+    <div class="pw-container-narrow">
+      <div class="guarantee-inner" style="display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center;">
+        <div class="guarantee-badge" style="flex-shrink: 0; width: 120px; height: 120px; border: 3px solid var(--accent-gold); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 700; background: rgba(255,255,255,0.08); box-shadow: 0 0 0 6px rgba(201,169,110,0.15), inset 0 0 20px rgba(201,169,110,0.1);">
+          <span class="pct" style="font-size: 30px; line-height: 1; color: var(--accent-gold-light);">100%</span>
+          <span class="label" style="font-size: 10px; text-transform: uppercase; letter-spacing: 1.2px; margin-top: 4px; opacity: 0.8;">Guarantee</span>
+        </div>
+        <div>
+          <h2 class="pw-heading pw-heading--on-dark">Here Is My Guarantee</h2>
+          <p class="pw-lead pw-lead--on-dark">Try the book and the bonuses for 1 full year. If, for any reason, you do not find them useful, I will refund you the full $4.99. Just send me an email and I will refund you within 48 hours. No questions asked.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- WHO FOR -->
-  <section class="who-for pw-reveal">
-    <div class="inner">
-      <h2>This Book Is for You If...</h2>
+  <section class="pw-section pw-reveal">
+    <div class="pw-container-narrow">
+      <h2 class="pw-heading" style="text-align: center;">This Book Is for You If...</h2>
       <div class="who-item"><span class="arrow">&rsaquo;</span><span>You have a teen or pre-teen and you can feel the distance growing between you</span></div>
       <div class="who-item"><span class="arrow">&rsaquo;</span><span>You find yourself reacting emotionally and then regretting it, and you do not know why</span></div>
       <div class="who-item"><span class="arrow">&rsaquo;</span><span>You have read other parenting books that told you what to <em>do</em> but never addressed who you need to <em>become</em></span></div>
@@ -1541,47 +842,52 @@
   </section>
 
   <!-- FINAL CTA -->
-  <section class="final-cta pw-reveal">
-    <h2>Get Your Copy of<br><em>A Parent's Guide: How to Create Security During Adolescence</em><br>Now</h2>
-    <img src="../assets/images/bookcover.png" alt="Book Cover"><br>
-    <a href="javascript:void(0)" onclick="openCart()" class="cta-btn">Get the Book &raquo;</a>
-    <p class="cta-sub" style="margin-top:12px;">Just $4.99. Instant digital delivery. Start reading in minutes.</p>
+  <section class="pw-cta-section pw-reveal">
+    <div class="pw-container">
+      <h2 class="pw-heading pw-heading--on-dark">Get Your Copy of<br><em>A Parent's Guide: How to Create Security During Adolescence</em><br>Now</h2>
+      <img src="../assets/images/bookcover.png" alt="Book Cover" style="width: 200px; height: auto; border-radius: 6px; box-shadow: 0 20px 60px rgba(107,76,163,0.25), 0 6px 18px rgba(0,0,0,0.12); margin-bottom: 32px; transform: perspective(800px) rotateY(-3deg);"><br>
+      <a href="javascript:void(0)" onclick="openCart()" class="pw-btn pw-btn-gold">Get the Book &raquo;</a>
+      <p class="cta-sub" style="margin-top:12px; font-size: 13px; color: var(--text-on-dark-sub); opacity: 0.7;">Just $4.99. Instant digital delivery. Start reading in minutes.</p>
+    </div>
   </section>
 
   <!-- SIGN OFF + PS -->
-  <section class="ps-section">
-    <p class="signoff">Always Be Creating,</p>
-    <p class="author-name">M. Aurelius Higgs</p>
-    <p class="ps-label">P.S. Here is the quick recap for those who scrolled straight to the bottom:</p>
-    <ol>
-      <li>Your teen is biologically designed to separate from you. That is not the problem. The problem is that nobody prepared you for this transition. There is a preparation gap, and this book closes it.</li>
-      <li>50+ years of attachment science shows that the single greatest predictor of your teen's security is whether you have made sense of your own story. Not what happened to you. Whether you have processed it.</li>
-      <li>For just $4.99, you get the complete book plus 2 bonuses: the ParentWise 10 Commandments quick-reference card and the Inside-Out Audit companion worksheet.</li>
-      <li>This works even if your teen barely talks to you, even if you think it is too late, and even if every other parenting approach has failed. Because this one starts with you, not them.</li>
-      <li>You can try the book and bonuses for a full year. If you do not find them useful, I will refund every penny. No questions asked.</li>
-    </ol>
+  <section class="pw-section">
+    <div class="pw-container-narrow">
+      <p class="signoff" style="font-size: 17px; margin-bottom: 6px; color: var(--text-secondary);">Always Be Creating,</p>
+      <p class="author-name" style="font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; font-style: italic; color: var(--purple); margin-bottom: 32px;">M. Aurelius Higgs</p>
+      <p class="ps-label" style="font-weight: 700; font-size: 15px; margin-bottom: 14px; color: var(--text-primary); padding-top: 24px; border-top: 2px solid var(--divider);">P.S. Here is the quick recap for those who scrolled straight to the bottom:</p>
+      <ol style="padding-left: 22px; font-size: 15px; line-height: 1.85; color: var(--text-secondary);">
+        <li>Your teen is biologically designed to separate from you. That is not the problem. The problem is that nobody prepared you for this transition. There is a preparation gap, and this book closes it.</li>
+        <li>50+ years of attachment science shows that the single greatest predictor of your teen's security is whether you have made sense of your own story. Not what happened to you. Whether you have processed it.</li>
+        <li>For just $4.99, you get the complete book plus 2 bonuses: the ParentWise 10 Commandments quick-reference card and the Inside-Out Audit companion worksheet.</li>
+        <li>This works even if your teen barely talks to you, even if you think it is too late, and even if every other parenting approach has failed. Because this one starts with you, not them.</li>
+        <li>You can try the book and bonuses for a full year. If you do not find them useful, I will refund every penny. No questions asked.</li>
+      </ol>
+    </div>
   </section>
 
   <!-- FINAL FINAL CTA -->
-  <div class="cta-wrap bg-white" style="padding-bottom:24px;">
-    <a href="javascript:void(0)" onclick="openCart()" class="cta-btn">Get the Book &raquo;</a>
-  </div>
+  <section class="pw-section-white" style="padding-bottom: 24px; text-align: center;">
+    <a href="javascript:void(0)" onclick="openCart()" class="pw-btn pw-btn-gold">Get the Book &raquo;</a>
+  </section>
 
   <!-- ABOUT AUTHOR -->
-  <section class="author-section pw-reveal">
-    <div class="inner">
-      <h2>About the Author</h2>
+  <section class="pw-section-dark pw-reveal">
+    <div class="pw-container-narrow">
+      <h2 class="pw-heading pw-heading--on-dark">About the Author</h2>
       <p>M. Aurelius Higgs is the founder of ParentWise and creator of The Story Growth Method. With over 20 years of international English Language Arts education experience spanning South Korea, Spain, Saudi Arabia, Thailand, and The Bahamas, he has watched thousands of families navigate adolescence.</p>
       <p>Some thrived. Many struggled. The difference was never about discipline strategies or screen-time rules. The difference was always the same: the parents who were secure in themselves raised teens who were secure in the world.</p>
       <p>He built ParentWise to close the preparation gap. To give parents the science, the framework, and the honest self-examination tools that nobody else provides. This book is where it starts.</p>
-      <p class="tagline">Secure Parents Create Secure Teens. Secure Teens Create a Secure Future.</p>
+      <p class="pw-pull pw-pull--on-dark" style="margin-top: 24px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 20px;">Secure Parents Create Secure Teens. Secure Teens Create a Secure Future.</p>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <p>&copy; 2026 ParentWise by M. Aurelius Higgs. All rights reserved.</p>
-    <p style="margin-top:6px;"><a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Use</a></p>
+  <footer class="pw-footer">
+    <div class="pw-footer-name">Parent<span>Wise</span></div>
+    <p class="pw-footer-tagline">&copy; 2026 ParentWise by M. Aurelius Higgs. All rights reserved.</p>
+    <p class="pw-footer-copy" style="margin-top:6px;"><a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Use</a></p>
   </footer>
 
 

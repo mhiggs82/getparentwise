@@ -5,31 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Your ParentWise Pathway — 90-Day 1:1 Coaching</title>
   <link rel="icon" type="image/svg+xml" href="/assets/images/flower-lotus-duotone.svg" />
+  <script>(function(){var t=localStorage.getItem('pw-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t!=='light'&&d))document.documentElement.setAttribute('data-theme','dark')})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/style/theme.css" />
   <style>
-    :root {
-      --purple:        #6B4CA3;
-      --purple-light:  #9B7ED4;
-      --purple-pale:   #EDE7F8;
-      --purple-glow:   rgba(107, 76, 163, 0.18);
-      --purple-deep:   #4A3070;
-      --cream:         #F5F1E8;
-      --cream-dark:    #EAE4D4;
-      --ink:           #1A1A1A;
-      --ink-mid:       rgba(26, 26, 26, 0.65);
-      --ink-soft:      rgba(26, 26, 26, 0.38);
-      --card-bg:       #FFFFFF;
-      --card-border:   rgba(107, 76, 163, 0.14);
-    }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--cream);
-      color: var(--ink);
+      background: var(--bg-primary);
+      color: var(--text-primary);
       font-family: 'DM Sans', sans-serif;
       font-weight: 300;
       min-height: 100vh;
@@ -196,11 +183,13 @@
     }
 
     /* ── Pain points ── */
-    .pain { background: var(--ink); color: var(--cream); }
+    .pain { background: var(--ink); color: var(--text-on-dark); }
 
     .pain .section-inner { text-align: center; }
 
-    .pain h2.section-title { color: var(--cream); }
+    .pain h2.section-title { color: var(--text-on-dark); }
+
+    [data-theme="dark"] .pain { background: var(--bg-footer); }
 
     .pain-grid {
       display: grid;
@@ -236,7 +225,7 @@
 
     /* ── What you get ── */
     .transform {
-      background: var(--cream);
+      background: var(--bg-primary);
     }
 
     .transform-flex {
@@ -382,7 +371,7 @@
     }
 
     /* ── Who it's for ── */
-    .fit { background: var(--cream); }
+    .fit { background: var(--bg-primary); }
 
     .fit-grid {
       display: grid;
@@ -450,11 +439,13 @@
     }
 
     /* ── Testimonials ── */
-    .testimonials { background: var(--ink); }
+    .testimonials { background: var(--ink); color: var(--text-on-dark); }
 
     .testimonials .section-inner { text-align: center; }
 
-    .testimonials h2.section-title { color: var(--cream); }
+    .testimonials h2.section-title { color: var(--text-on-dark); }
+
+    [data-theme="dark"] .testimonials { background: var(--bg-footer); }
 
     .testi-grid {
       display: grid;
@@ -536,7 +527,7 @@
 
     .invest-divider {
       border: none;
-      border-top: 1px solid var(--cream-dark);
+      border-top: 1px solid var(--divider);
       margin: 28px 0;
     }
 
@@ -580,7 +571,7 @@
     }
 
     /* ── FAQ ── */
-    .faq { background: var(--cream); }
+    .faq { background: var(--bg-primary); }
 
     .faq .section-inner { max-width: 720px; }
 
@@ -592,7 +583,7 @@
     }
 
     .faq-item {
-      border-bottom: 1px solid var(--cream-dark);
+      border-bottom: 1px solid var(--divider);
     }
 
     .faq-question {
@@ -655,6 +646,10 @@
       padding: 100px 24px;
     }
 
+    [data-theme="dark"] .final-cta {
+      background: linear-gradient(155deg, #3D2C6B 0%, #2A1F52 100%);
+    }
+
     .final-cta .eyebrow {
       background: rgba(255,255,255,0.15);
       color: rgba(255,255,255,0.85);
@@ -704,7 +699,7 @@
     footer {
       text-align: center;
       padding: 40px 24px 60px;
-      border-top: 1px solid var(--cream-dark);
+      border-top: 1px solid var(--divider);
     }
 
     .logo-wrap {
@@ -728,7 +723,7 @@
       margin: 0 auto;
       padding: 0 24px;
     }
-    .hr-divider hr { border: none; border-top: 1px solid var(--cream-dark); }
+    .hr-divider hr { border: none; border-top: 1px solid var(--divider); }
 
     /* ── Animations ── */
     @keyframes fadeUp {
@@ -943,7 +938,7 @@
   -->
 
   <!-- Credibility -->
-  <section class="section" style="background: var(--cream); padding: 80px 24px;">
+  <section class="section" style="background: var(--bg-primary); padding: 80px 24px;">
     <div class="section-inner animate" style="text-align: center; max-width: 900px;">
       <div class="eyebrow">Rooted in research</div>
       <h2 class="section-title">This work is built on 20+ years of real experience.</h2>
@@ -1075,6 +1070,21 @@
       Founded by M. Aurelius Higgs, educator, coach, and global practitioner with over 20 years working with families across South Korea, Spain, Saudi Arabia, Thailand, and beyond.
     </p>
   </footer>
+
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+    <span class="icon-sun" aria-hidden="true">☀</span>
+    <span class="icon-moon" aria-hidden="true">☽</span>
+  </button>
+  <script>
+    (function() {
+      var btn = document.getElementById('themeToggle');
+      btn.addEventListener('click', function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem('pw-theme', isDark ? 'light' : 'dark');
+      });
+    })();
+  </script>
 
   <script>
     // FAQ accordion

@@ -5,27 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ParentWise First Steps — 5-Day Challenge</title>
 <link rel="icon" type="image/svg+xml" href="/assets/images/flower-lotus-duotone.svg" />
+<script>(function(){var t=localStorage.getItem('pw-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t!=='light'&&d))document.documentElement.setAttribute('data-theme','dark')})();</script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/style/theme.css" />
 <style>
-:root {
-      --purple:        #6B4CA3;
-      --purple-light:  #9B7ED4;
-      --purple-pale:   #EDE7F8;
-      --purple-glow:   rgba(107, 76, 163, 0.18);
-      --cream:         #F5F1E8;
-      --cream-dark:    #EAE4D4;
-      --ink:           #1A1A1A;
-      --ink-mid:       rgba(26, 26, 26, 0.65);
-      --ink-soft:      rgba(26, 26, 26, 0.38);
-      --card-bg:       #FFFFFF;
-      --card-border:   rgba(107, 76, 163, 0.14);
-}
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-background: var(--cream);
-color: var(--ink);
+background: var(--bg-primary);
+color: var(--text-primary);
 font-family: 'DM Sans', sans-serif;
 font-weight: 300;
 min-height: 100vh;
@@ -214,9 +203,9 @@ padding: 0 24px 18px;
 }
 /* ── Full-bleed contrasting section ── */
 .section-contrast {
-background: var(--cream);
-border-top: 1px solid var(--cream-dark);
-border-bottom: 1px solid var(--cream-dark);
+background: var(--bg-secondary);
+border-top: 1px solid var(--divider);
+border-bottom: 1px solid var(--divider);
 }
 .section-contrast .section-inner {
 padding: 80px 24px;
@@ -252,7 +241,7 @@ margin-bottom: 16px;
 .section-contrast p:last-child { margin-bottom: 0; }
 /* ── Divider ── */
 .rule { max-width: 760px; margin: 0 auto; padding: 0 24px; }
-.rule hr { border: none; border-top: 1px solid var(--cream-dark); }
+.rule hr { border: none; border-top: 1px solid var(--divider); }
 /* ── Who This Is For ── */
 .fit-list {
 list-style: none;
@@ -330,8 +319,8 @@ flex-direction: column;
 gap: 14px;
 }
 .outcome-item {
-background: var(--cream);
-border: 1px solid var(--cream-dark);
+background: var(--bg-tint);
+border: 1px solid var(--divider);
 border-radius: 10px;
 padding: 22px 28px;
 font-size: 0.92rem;
@@ -418,7 +407,7 @@ margin-top: 16px;
 footer {
 text-align: center;
 padding: 40px 24px 60px;
-border-top: 1px solid var(--cream-dark);
+border-top: 1px solid var(--divider);
 }
 .logo-wrap {
 display: inline-flex;
@@ -506,7 +495,7 @@ font-family: 'DM Sans', sans-serif;
 transition: background 0.2s ease;
 flex-shrink: 0;
 }
-.drawer-close:hover { background: var(--cream-dark); }
+.drawer-close:hover { background: var(--bg-tint); }
 .drawer-body {
 flex: 1;
 overflow-y: auto;
@@ -780,5 +769,21 @@ if (entry.isIntersecting) {
 }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
+
+<button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+  <span class="icon-sun" aria-hidden="true">☀</span>
+  <span class="icon-moon" aria-hidden="true">☽</span>
+</button>
+<script>
+  (function() {
+    var btn = document.getElementById('themeToggle');
+    btn.addEventListener('click', function() {
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      localStorage.setItem('pw-theme', isDark ? 'light' : 'dark');
+    });
+  })();
+</script>
+
 </body>
 </html>

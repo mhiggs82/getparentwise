@@ -249,7 +249,7 @@
     .cta-sub {
       font-size: 13px;
       color: var(--text-secondary);
-      opacity: 0.5;
+      opacity: 0.7; /* Increased for contrast in dark mode */
       margin-top: 10px;
     }
 
@@ -419,7 +419,7 @@
       padding: 32px 24px 12px;
       font-size: 12.5px;
       color: var(--text-secondary);
-      opacity: 0.45;
+      opacity: 0.7; /* Increased for contrast in dark mode */
       line-height: 1.65;
       text-align: center;
       border-top: 1px solid var(--divider);
@@ -977,8 +977,14 @@
       margin: 16px 22px;
       border: 2px dashed var(--accent-gold);
       border-radius: 8px;
-      background: #FFFBF2;
+      background: var(--bg-tint); /* Sync with design system instead of hardcoded white/yellow */
+      border: 2px dashed var(--accent-gold);
       overflow: hidden;
+    }
+
+    [data-mode="dark"] .cart-bump {
+      background: rgba(201, 169, 110, 0.08);
+      border-color: var(--accent-gold);
     }
 
     .cart-bump label {
@@ -1123,6 +1129,7 @@
       margin-bottom: 10px;
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
       -webkit-appearance: none;
+      appearance: none;
     }
 
     .cart-input:focus {
@@ -1131,7 +1138,7 @@
       box-shadow: 0 0 0 3px rgba(107,76,163,0.12);
     }
 
-    .cart-input::placeholder { color: #aaa; }
+    .cart-input::placeholder { color: var(--text-muted); }
 
     .cart-row {
       display: flex;
@@ -1367,10 +1374,10 @@
 <body>
 
   <!-- TOP BAR -->
-  <div class="top-bar">New Book for Parents of Teens and Pre-Teens Reveals</div>
+  <div class="pw-top-bar">New Book for Parents of Teens and Pre-Teens Reveals</div>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="pw-hero pw-hero--wave">
     <div class="hero-inner">
       <div class="hero-book">
         <img src="../assets/images/bookcover.png" alt="A Parent's Guide: How to Create Security During Adolescence by M. Aurelius Higgs">
@@ -1409,7 +1416,7 @@
   </section>
 
   <!-- TRANSFORMATION -->
-  <section class="transformation">
+  <section class="transformation pw-reveal">
     <div class="before-after">
       <p><strong>Before:</strong> I watched family after family fall apart during adolescence. Not because the parents did not love their kids. Not because the teens were "bad." But because nobody had taught these parents how to prepare for the seismic shift that happens when a child starts becoming an adult. I saw the same pattern repeated across six countries, thousands of families, and two decades of working in international education.</p>
       <p><strong>Now:</strong> I understand something that most parenting experts overlook entirely. The single greatest predictor of whether your teenager will be securely attached is not what happened to you growing up. It is whether you have made sense of what happened to you. That changes everything.</p>
@@ -1420,7 +1427,7 @@
   </section>
 
   <!-- PROOF -->
-  <section class="proof-section">
+  <section class="proof-section pw-reveal">
     <h2>The Science Behind This Works</h2>
     <p>Attachment research spanning 50+ years tells us something that might surprise you. A parent's ability to reflect on their own life story is the strongest predictor of their child's security. Not income. Not education. Not parenting techniques.</p>
     <p>That means the parent who had a difficult childhood but has processed it will raise a more secure child than the parent who had a "fine" childhood but never looked at it honestly.</p>
@@ -1486,7 +1493,7 @@
   </section>
 
   <!-- BONUSES -->
-  <section class="bonuses">
+  <section class="bonuses pw-reveal">
     <h2>Order Now and Get These 2 Bonuses Free</h2>
     <div class="bonus-card">
       <div class="bonus-card-top"></div>
@@ -1507,7 +1514,7 @@
   </section>
 
   <!-- GUARANTEE -->
-  <section class="guarantee">
+  <section class="guarantee pw-reveal">
     <div class="guarantee-inner">
       <div class="guarantee-badge">
         <span class="pct">100%</span>
@@ -1521,7 +1528,7 @@
   </section>
 
   <!-- WHO FOR -->
-  <section class="who-for">
+  <section class="who-for pw-reveal">
     <div class="inner">
       <h2>This Book Is for You If...</h2>
       <div class="who-item"><span class="arrow">&rsaquo;</span><span>You have a teen or pre-teen and you can feel the distance growing between you</span></div>
@@ -1534,7 +1541,7 @@
   </section>
 
   <!-- FINAL CTA -->
-  <section class="final-cta">
+  <section class="final-cta pw-reveal">
     <h2>Get Your Copy of<br><em>A Parent's Guide: How to Create Security During Adolescence</em><br>Now</h2>
     <img src="../assets/images/bookcover.png" alt="Book Cover"><br>
     <a href="javascript:void(0)" onclick="openCart()" class="cta-btn">Get the Book &raquo;</a>
@@ -1561,7 +1568,7 @@
   </div>
 
   <!-- ABOUT AUTHOR -->
-  <section class="author-section">
+  <section class="author-section pw-reveal">
     <div class="inner">
       <h2>About the Author</h2>
       <p>M. Aurelius Higgs is the founder of ParentWise and creator of The Story Growth Method. With over 20 years of international English Language Arts education experience spanning South Korea, Spain, Saudi Arabia, Thailand, and The Bahamas, he has watched thousands of families navigate adolescence.</p>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  ParentWise — New Page Template                              ║
+  ║                                                              ║
+  ║  HOW TO USE                                                  ║
+  ║  1. Copy this file to your page folder (e.g. /new-page/)     ║
+  ║  2. Rename it index.html                                     ║
+  ║  3. Find every <!-- TODO --> comment and fill it in          ║
+  ║  4. Remove any sections you don't need                       ║
+  ║  5. Add page-specific styles ONLY inside the <style> block   ║
+  ║     below — never redefine tokens or re-implement classes    ║
+  ║     that already exist in parentwise-design-system.css       ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+<html lang="en" data-mode="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><!-- TODO: Page Title --> — ParentWise</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/images/flower-lotus-duotone.svg" />
+
+  <!--
+    Anti-flash script: sets data-mode BEFORE first paint so the
+    page never flickers between light and dark on load.
+    DO NOT MOVE THIS — it must run before any <link> or <style>.
+  -->
+  <script>(function(){var t=localStorage.getItem('pw-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t!=='light'&&d))document.documentElement.setAttribute('data-mode','dark')})();</script>
+
+  <!-- Brand fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
+
+  <!-- Design system: tokens + all component classes -->
+  <link rel="stylesheet" href="/parentwise-design-system.css" />
+
+  <style>
+    /*
+      Page-specific styles only.
+
+      ✅ OK here:
+         - unique layout rules for this page's sections
+         - one-off component tweaks (e.g. a specific grid column count)
+         - hero background overrides
+
+      ❌ NOT here:
+         - redefining CSS tokens (:root variables)
+         - re-implementing buttons, cards, badges, FAQ, top-bar, footer,
+           nav, or any other component already in the design system
+    */
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TOP BAR  — remove if not needed
+       ═══════════════════════════════════════════════════════════ -->
+  <div class="pw-top-bar"><!-- TODO: announce message, e.g. "Cohort 3 now open" --></div>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════════════════════ -->
+  <nav class="pw-nav-bar">
+    <div class="pw-nav-inner">
+
+      <a href="/offers" class="pw-logo">
+        Parent<span>Wise</span>
+        <!-- Optional: lotus SVG icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+             fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">
+          <path d="M128,200c-15.37,0-40.77-.18-70-17.64S19.31,143,16.28,131.82A7.94,7.94,0,0,1,21.74,122a69.59,69.59,0,0,1,30.82-.64h0c-7.63-23.88-4-42.44-1-51.71A8.2,8.2,0,0,1,61,64.18C68.56,65.79,81.28,70,94.6,80.8v0A108.49,108.49,0,0,0,88,119.18C88,178,128,200,128,200Zm106.26-78a69.59,69.59,0,0,0-30.82-.64h0c7.63-23.88,4-42.44,1-51.71A8.2,8.2,0,0,0,195,64.18c-7.52,1.61-20.24,5.8-33.56,16.62v0A108.49,108.49,0,0,1,168,119.18C168,178,128,200,128,200c15.37,0,40.77-.18,70-17.64s38.69-39.34,41.72-50.54A7.94,7.94,0,0,0,234.26,122Z" opacity="0.3"/>
+          <path d="M245.83,121.63a15.53,15.53,0,0,0-9.52-7.33,73.51,73.51,0,0,0-22.17-2.22c4-19.85,1-35.55-2.06-44.86a16.15,16.15,0,0,0-18.79-10.88,85.53,85.53,0,0,0-28.55,12.12,94.58,94.58,0,0,0-27.11-33.25,16.05,16.05,0,0,0-19.26,0A94.48,94.48,0,0,0,91.26,68.46,85.53,85.53,0,0,0,62.71,56.34,16.15,16.15,0,0,0,43.92,67.22c-3,9.31-6,25-2.06,44.86a73.51,73.51,0,0,0-22.17,2.22,15.53,15.53,0,0,0-9.52,7.33,16,16,0,0,0-1.6,12.27c3.39,12.57,13.8,36.48,45.33,55.32S113.13,208,128.05,208s42.67,0,74-18.78c31.53-18.84,41.94-42.75,45.33-55.32A16,16,0,0,0,245.83,121.63Z"/>
+        </svg>
+      </a>
+
+      <!-- TODO: update CTA label + href -->
+      <a href="/first" class="pw-nav-cta">Get Started</a>
+
+    </div>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       HERO  — full-bleed purple gradient, always dark text
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="pw-hero pw-hero--wave">
+    <div class="pw-hero-inner pw-reveal">
+
+      <!-- Eyebrow on dark: use pw-eyebrow--dark -->
+      <span class="pw-eyebrow pw-eyebrow--dark"><!-- TODO: eyebrow label --></span>
+
+      <h1><!-- TODO: hero headline --></h1>
+
+      <p class="pw-lead pw-lead--on-dark">
+        <!-- TODO: supporting subhead copy -->
+      </p>
+
+      <!-- Primary gold CTA -->
+      <a href="#" class="pw-btn pw-btn-gold"><!-- TODO: CTA label --></a>
+
+      <!-- Optional secondary outline CTA -->
+      <!-- <a href="#" class="pw-btn pw-btn-gold-outline" style="margin-left:1rem;">Learn more</a> -->
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SECTION — light (bg-primary / warm cream)
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="pw-section">
+    <div class="pw-container pw-reveal">
+
+      <span class="pw-eyebrow"><!-- TODO: eyebrow --></span>
+      <hr class="pw-rule-gold" />
+      <h2 class="pw-heading"><!-- TODO: section heading --></h2>
+      <p class="pw-lead"><!-- TODO: intro copy --></p>
+
+      <!-- TODO: add cards, lists, or custom content here -->
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SECTION — tinted (bg-tint / warm taupe)
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="pw-section-alt">
+    <div class="pw-container pw-reveal">
+
+      <h2 class="pw-heading"><!-- TODO: heading --></h2>
+
+      <!-- Example: card grid using design system card classes -->
+      <!--
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.5rem; margin-top:2.5rem;">
+        <div class="pw-card pw-card-gold pw-reveal">
+          <h3>Card heading</h3>
+          <p>Card body copy.</p>
+          <a href="#" class="pw-cbtn-outline">Learn more →</a>
+        </div>
+      </div>
+      -->
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       SECTION — FAQ  (remove if not needed)
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="pw-section">
+    <div class="pw-container pw-reveal">
+
+      <span class="pw-eyebrow">Common questions</span>
+      <h2 class="pw-heading">FAQ</h2>
+
+      <div class="pw-faq">
+
+        <div class="pw-faq-item">
+          <button class="pw-faq-q" aria-expanded="false">
+            <!-- TODO: question -->
+            <span class="pw-faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="pw-faq-a"><!-- TODO: answer --></div>
+        </div>
+
+        <div class="pw-faq-item">
+          <button class="pw-faq-q" aria-expanded="false">
+            <!-- TODO: question -->
+            <span class="pw-faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="pw-faq-a"><!-- TODO: answer --></div>
+        </div>
+
+        <!-- Duplicate .pw-faq-item blocks for more questions -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       CTA SECTION — purple bg, closing call to action
+       ═══════════════════════════════════════════════════════════ -->
+  <section class="pw-cta-section pw-reveal">
+    <div class="pw-container-narrow">
+      <span class="pw-eyebrow pw-eyebrow--dark"><!-- TODO or remove --></span>
+      <h2 class="pw-heading pw-heading--on-dark"><!-- TODO: CTA headline --></h2>
+      <p class="pw-lead pw-lead--on-dark"><!-- TODO: supporting copy --></p>
+      <a href="#" class="pw-btn pw-btn-gold"><!-- TODO: CTA label --></a>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════════ -->
+  <footer class="pw-footer">
+    <div class="pw-footer-logo">
+      <span class="pw-footer-name">Parent<span>Wise</span></span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+           fill="#C9A96E" viewBox="0 0 256 256" aria-hidden="true">
+        <path d="M128,200c-15.37,0-40.77-.18-70-17.64S19.31,143,16.28,131.82A7.94,7.94,0,0,1,21.74,122a69.59,69.59,0,0,1,30.82-.64h0c-7.63-23.88-4-42.44-1-51.71A8.2,8.2,0,0,1,61,64.18C68.56,65.79,81.28,70,94.6,80.8v0A108.49,108.49,0,0,0,88,119.18C88,178,128,200,128,200Zm106.26-78a69.59,69.59,0,0,0-30.82-.64h0c7.63-23.88,4-42.44,1-51.71A8.2,8.2,0,0,0,195,64.18c-7.52,1.61-20.24,5.8-33.56,16.62v0A108.49,108.49,0,0,1,168,119.18C168,178,128,200,128,200c15.37,0,40.77-.18,70-17.64s38.69-39.34,41.72-50.54A7.94,7.94,0,0,0,234.26,122Z" opacity="0.2"/>
+        <path d="M245.83,121.63a15.53,15.53,0,0,0-9.52-7.33,73.51,73.51,0,0,0-22.17-2.22c4-19.85,1-35.55-2.06-44.86a16.15,16.15,0,0,0-18.79-10.88,85.53,85.53,0,0,0-28.55,12.12,94.58,94.58,0,0,0-27.11-33.25,16.05,16.05,0,0,0-19.26,0A94.48,94.48,0,0,0,91.26,68.46,85.53,85.53,0,0,0,62.71,56.34,16.15,16.15,0,0,0,43.92,67.22c-3,9.31-6,25-2.06,44.86a73.51,73.51,0,0,0-22.17,2.22,15.53,15.53,0,0,0-9.52,7.33,16,16,0,0,0-1.6,12.27c3.39,12.57,13.8,36.48,45.33,55.32S113.13,208,128.05,208s42.67,0,74-18.78c31.53-18.84,41.94-42.75,45.33-55.32A16,16,0,0,0,245.83,121.63Z"/>
+      </svg>
+    </div>
+    <p class="pw-footer-tagline">
+      Helping families build secure, lasting bonds — wherever they are in the world.
+    </p>
+    <!-- TODO: update year -->
+    <p class="pw-footer-copy">© 2025 ParentWise. All rights reserved.</p>
+  </footer>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       THEME TOGGLE  — fixed bottom-right, handled by DS JS
+       ═══════════════════════════════════════════════════════════ -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+    <span class="icon-sun"  aria-hidden="true">☀</span>
+    <span class="icon-moon" aria-hidden="true">☽</span>
+  </button>
+
+
+  <!-- Phosphor icons (remove if unused on this page) -->
+  <script type="module" src="https://unpkg.com/@phosphor-icons/webcomponents@2.1"></script>
+
+  <!-- Design system behaviours: toggle + FAQ + scroll reveal -->
+  <script src="/parentwise-design-system.js"></script>
+
+</body>
+</html>

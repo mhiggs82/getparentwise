@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design System — ParentWise</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/images/flower-lotus-duotone.svg" />
+  <script>(function(){var t=localStorage.getItem('pw-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t!=='light'&&d))document.documentElement.setAttribute('data-mode','dark')})();</script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/parentwise-design-system.css" />
+  <style>
+    /* Style-guide-only chrome */
+    .sg-page       { max-width: 860px; margin: 0 auto; padding: 3rem 2rem 6rem; }
+    .sg-toc        { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 3.5rem; }
+    .sg-toc a      { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+                     padding: 5px 14px; border-radius: 20px; border: 1px solid var(--border);
+                     color: var(--ink-mid); text-decoration: none; transition: all 0.2s ease; }
+    .sg-toc a:hover { background: var(--purple-pale); border-color: var(--purple); color: var(--purple); }
+
+    .sg-section    { margin-bottom: 5rem; scroll-margin-top: 2rem; }
+    .sg-section-title {
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent-gold); margin-bottom: 0.4rem; display: block;
+    }
+    .sg-section > h2 {
+      font-family: 'DM Sans', sans-serif; font-size: 1.5rem; font-weight: 600;
+      color: var(--text-primary); border-bottom: 1px solid var(--divider);
+      padding-bottom: 0.75rem; margin-bottom: 2rem;
+    }
+
+    /* Token swatches */
+    .sg-swatches   { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem; }
+    .sg-swatch     { width: 80px; }
+    .sg-swatch-block { height: 56px; border-radius: 10px; border: 1px solid rgba(0,0,0,0.08); margin-bottom: 6px; }
+    .sg-swatch-name { font-size: 0.65rem; font-weight: 600; color: var(--ink-soft); letter-spacing: 0.04em; }
+    .sg-swatch-val  { font-size: 0.6rem; color: var(--ink-soft); font-family: monospace; }
+
+    /* Type specimens */
+    .sg-type-row   { padding: 1.25rem 0; border-bottom: 1px solid var(--divider); display: grid;
+                     grid-template-columns: 180px 1fr; gap: 1.5rem; align-items: center; }
+    .sg-type-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+                     color: var(--ink-soft); }
+    .sg-type-code  { font-family: monospace; font-size: 0.72rem; color: var(--purple); background: var(--purple-pale);
+                     padding: 2px 8px; border-radius: 4px; }
+
+    /* Component rows */
+    .sg-row        { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+    .sg-item       { }
+    .sg-label      { display: block; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em;
+                     text-transform: uppercase; color: var(--ink-soft); margin-top: 0.5rem; text-align: center; }
+    .sg-code       { display: inline-block; font-family: monospace; font-size: 0.7rem; color: var(--purple);
+                     background: var(--purple-pale); padding: 2px 7px; border-radius: 4px; margin-top: 3px; }
+
+    /* Dark preview panel */
+    .sg-dark-panel { background: linear-gradient(155deg, #7B5AB5 0%, #3D2970 100%);
+                     border-radius: 16px; padding: 2.5rem; margin-bottom: 2rem; display: flex;
+                     flex-wrap: wrap; gap: 1rem; align-items: center; }
+
+    /* Section preview tiles */
+    .sg-preview    { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin-bottom: 1rem; }
+    .sg-preview-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+                        color: var(--ink-soft); padding: 0.5rem 0; }
+
+    .sg-card-grid  { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.25rem; }
+
+    /* Form preview */
+    .sg-form-grid  { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    @media (max-width: 600px) {
+      .sg-type-row  { grid-template-columns: 1fr; }
+      .sg-form-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="pw-nav-bar">
+    <div class="pw-nav-inner">
+      <a href="/offers" class="pw-logo">
+        Parent<span>Wise</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true">
+          <path d="M128,200c-15.37,0-40.77-.18-70-17.64S19.31,143,16.28,131.82A7.94,7.94,0,0,1,21.74,122a69.59,69.59,0,0,1,30.82-.64h0c-7.63-23.88-4-42.44-1-51.71A8.2,8.2,0,0,1,61,64.18C68.56,65.79,81.28,70,94.6,80.8v0A108.49,108.49,0,0,0,88,119.18C88,178,128,200,128,200Zm106.26-78a69.59,69.59,0,0,0-30.82-.64h0c7.63-23.88,4-42.44,1-51.71A8.2,8.2,0,0,0,195,64.18c-7.52,1.61-20.24,5.8-33.56,16.62v0A108.49,108.49,0,0,1,168,119.18C168,178,128,200,128,200c15.37,0,40.77-.18,70-17.64s38.69-39.34,41.72-50.54A7.94,7.94,0,0,0,234.26,122Z" opacity="0.3"/>
+          <path d="M245.83,121.63a15.53,15.53,0,0,0-9.52-7.33,73.51,73.51,0,0,0-22.17-2.22c4-19.85,1-35.55-2.06-44.86a16.15,16.15,0,0,0-18.79-10.88,85.53,85.53,0,0,0-28.55,12.12,94.58,94.58,0,0,0-27.11-33.25,16.05,16.05,0,0,0-19.26,0A94.48,94.48,0,0,0,91.26,68.46,85.53,85.53,0,0,0,62.71,56.34,16.15,16.15,0,0,0,43.92,67.22c-3,9.31-6,25-2.06,44.86a73.51,73.51,0,0,0-22.17,2.22,15.53,15.53,0,0,0-9.52,7.33,16,16,0,0,0-1.6,12.27c3.39,12.57,13.8,36.48,45.33,55.32S113.13,208,128.05,208s42.67,0,74-18.78c31.53-18.84,41.94-42.75,45.33-55.32A16,16,0,0,0,245.83,121.63Z"/>
+        </svg>
+      </a>
+      <a href="/" class="pw-nav-cta">← Back to site</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="pw-hero">
+    <div class="pw-hero-inner">
+      <span class="pw-eyebrow pw-eyebrow--dark">Living reference</span>
+      <h1>ParentWise Design System</h1>
+      <p class="pw-lead pw-lead--on-dark">
+        Every token, component, and layout class in one place. Use this page
+        to find the right class before writing any CSS.
+      </p>
+    </div>
+  </section>
+
+  <div class="sg-page">
+
+    <!-- Table of contents -->
+    <nav class="sg-toc" aria-label="Style guide sections">
+      <a href="#colors">Colors</a>
+      <a href="#typography">Typography</a>
+      <a href="#buttons">Buttons</a>
+      <a href="#badges">Badges</a>
+      <a href="#cards">Cards</a>
+      <a href="#eyebrows">Eyebrows &amp; Labels</a>
+      <a href="#sections">Sections</a>
+      <a href="#faq">FAQ Accordion</a>
+      <a href="#forms">Forms</a>
+      <a href="#reveal">Scroll Reveal</a>
+      <a href="#layout">Layout</a>
+    </nav>
+
+
+    <!-- ── 1. COLORS ─────────────────────────────────────────────── -->
+    <section class="sg-section" id="colors">
+      <span class="sg-section-title">Section 01</span>
+      <h2>Color Tokens</h2>
+
+      <p style="margin-bottom:1.5rem; color:var(--ink-mid); font-size:0.9rem;">
+        Reference these as <code style="font-size:0.82rem; background:var(--purple-pale); color:var(--purple); padding:2px 6px; border-radius:4px;">var(--token-name)</code> in your CSS. Never hardcode brand hex values in page styles.
+      </p>
+
+      <p style="font-size:0.78rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:0.75rem;">Purple Scale</p>
+      <div class="sg-swatches">
+        <div class="sg-swatch"><div class="sg-swatch-block" style="background:#3D2970;"></div><div class="sg-swatch-name">--purple-deep</div><div class="sg-swatch-val">#3D2970</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-block" style="background:#5A3D8F;"></div><div class="sg-swatch-name">--purple-deep (alias)</div><div class="sg-swatch-val">#5A3D8F</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-block" style="background:#6B4CA3;"></div><div class="sg-swatch-name">--purple</div><div class="sg-swatch-val">#6B4CA3</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-block" style="background:#9B7ED4;"></div><div class="sg-swatch-name">--purple-light</div><div class="sg-swatch-val">#9B7ED4</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-block" style="background:#EDE7F8; border:1px solid #d0c8ee;"></div><div class="sg-swatch-name">--purple-pale</div><div class="sg-swatch-val">#EDE7F8</div></div>
+      </div>
+
+      <p style="font-size:0.78rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:0.75rem; margin-top:1.5rem;">Gold Scale</p>
+      <div class="sg-swatches">
+        <div class="sg-swatch"><div class="sg-swatch-block" style="background:#D4B97E;"></div><div class="sg-swatch-name">--gold-honey</div><div class="sg-swatch-val">#D4B97E</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-block" style="background:#C9A96E;"></div><div class="sg-swatch-name">--gold / --accent-gold</div><div class="sg-swatch-val">#C9A96E</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-block" style="background:#B8943A;"></div><div class="sg-swatch-name">--gold-deep</div><div class="sg-swatch-val">#B8943A</div></div>
+      </div>
+
+      <p style="font-size:0.78rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:0.75rem; margin-top:1.5rem;">Semantic Backgrounds</p>
+      <div class="sg-swatches">
+        <div class="sg-swatch"><div class="sg-swatch-block" style="background:var(--bg-page); border:1px solid var(--divider);"></div><div class="sg-swatch-name">--bg-page</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-block" style="background:var(--bg-primary); border:1px solid var(--divider);"></div><div class="sg-swatch-name">--bg-primary</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-block" style="background:var(--bg-secondary); border:1px solid var(--divider);"></div><div class="sg-swatch-name">--bg-secondary</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-block" style="background:var(--bg-tint); border:1px solid var(--divider);"></div><div class="sg-swatch-name">--bg-tint</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-block" style="background:var(--bg-card); border:1px solid var(--divider);"></div><div class="sg-swatch-name">--bg-card</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-block" style="background:var(--bg-footer);"></div><div class="sg-swatch-name">--bg-footer</div></div>
+      </div>
+
+      <p style="font-size:0.78rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:0.75rem; margin-top:1.5rem;">Text Tokens</p>
+      <div class="sg-swatches">
+        <div class="sg-swatch"><div class="sg-swatch-block" style="background:var(--text-primary);"></div><div class="sg-swatch-name">--text-primary</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-block" style="background:var(--ink-mid);"></div><div class="sg-swatch-name">--ink-mid</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-block" style="background:var(--ink-soft);"></div><div class="sg-swatch-name">--ink-soft</div></div>
+        <div class="sg-swatch"><div class="sg-swatch-block" style="background:var(--text-on-dark);"></div><div class="sg-swatch-name">--text-on-dark</div></div>
+      </div>
+    </section>
+
+
+    <!-- ── 2. TYPOGRAPHY ──────────────────────────────────────────── -->
+    <section class="sg-section" id="typography">
+      <span class="sg-section-title">Section 02</span>
+      <h2>Typography</h2>
+
+      <div class="sg-type-row">
+        <div><span class="sg-type-label">h1</span><span class="sg-code">h1</span></div>
+        <h1 style="margin:0;">Your Teen Doesn't Need to Be Fixed</h1>
+      </div>
+      <div class="sg-type-row">
+        <div><span class="sg-type-label">h2</span><span class="sg-code">h2 / .pw-heading</span></div>
+        <h2 style="margin:0;">What Secure Parents Know</h2>
+      </div>
+      <div class="sg-type-row">
+        <div><span class="sg-type-label">h3</span><span class="sg-code">h3</span></div>
+        <h3 style="margin:0;">Phase One: The Foundation</h3>
+      </div>
+      <div class="sg-type-row">
+        <div><span class="sg-type-label">h4</span><span class="sg-code">h4</span></div>
+        <h4 style="margin:0;">Week 1 — Awareness</h4>
+      </div>
+      <div class="sg-type-row">
+        <div><span class="sg-type-label">Body</span><span class="sg-code">p</span></div>
+        <p style="margin:0;">You've built something that matters — maybe from scratch. This is for the parent who cares about what they leave behind, not just what they earn.</p>
+      </div>
+      <div class="sg-type-row">
+        <div><span class="sg-type-label">Lead</span><span class="sg-code">.pw-lead</span></div>
+        <p class="pw-lead" style="margin:0;">A larger intro paragraph used directly beneath a heading or in hero sections to carry the reader from the headline into the body.</p>
+      </div>
+      <div class="sg-type-row">
+        <div><span class="sg-type-label">Serif pull</span><span class="sg-code">.pw-pull</span></div>
+        <p class="pw-pull" style="margin:0;">"The relationship you have with yourself is the one your child learns from."</p>
+      </div>
+      <div class="sg-type-row">
+        <div><span class="sg-type-label">Micro label</span><span class="sg-code">.pw-label</span></div>
+        <span class="pw-label" style="margin:0;">Is this you?</span>
+      </div>
+    </section>
+
+
+    <!-- ── 3. BUTTONS ─────────────────────────────────────────────── -->
+    <section class="sg-section" id="buttons">
+      <span class="sg-section-title">Section 03</span>
+      <h2>Buttons</h2>
+
+      <p style="color:var(--ink-mid); font-size:0.9rem; margin-bottom:2rem;">
+        All buttons use <code class="sg-code" style="display:inline;">.pw-btn</code> as a base class plus one modifier.
+        Gold buttons use <code class="sg-code" style="display:inline;">var(--btn-gol-tx)</code> for dark text — never white.
+      </p>
+
+      <div class="sg-row">
+        <div class="sg-item">
+          <a href="#" class="pw-btn pw-btn-gold">Book a call</a>
+          <span class="sg-label">.pw-btn-gold</span>
+          <span class="sg-code" style="display:block; text-align:center; margin-top:2px;">Primary CTA</span>
+        </div>
+        <div class="sg-item">
+          <a href="#" class="pw-btn pw-btn-purple">Get started</a>
+          <span class="sg-label">.pw-btn-purple</span>
+          <span class="sg-code" style="display:block; text-align:center; margin-top:2px;">Secondary CTA</span>
+        </div>
+        <div class="sg-item">
+          <a href="#" class="pw-btn pw-btn-outline">Learn more</a>
+          <span class="sg-label">.pw-btn-outline</span>
+          <span class="sg-code" style="display:block; text-align:center; margin-top:2px;">Tertiary / ghost</span>
+        </div>
+        <div class="sg-item">
+          <a href="#" class="pw-btn pw-btn-gold-outline">View details</a>
+          <span class="sg-label">.pw-btn-gold-outline</span>
+          <span class="sg-code" style="display:block; text-align:center; margin-top:2px;">Gold ghost</span>
+        </div>
+      </div>
+
+      <!-- On dark background -->
+      <p style="font-size:0.78rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:0.75rem;">On dark / hero backgrounds</p>
+      <div class="sg-dark-panel">
+        <a href="#" class="pw-btn pw-btn-gold">Book a call</a>
+        <a href="#" class="pw-btn pw-btn-gold-outline">Learn more</a>
+      </div>
+
+      <!-- Card CTA button -->
+      <p style="font-size:0.78rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:0.75rem;">Inside cards — .pw-cbtn-outline</p>
+      <div class="sg-row">
+        <div class="sg-item">
+          <a href="#" class="pw-cbtn-outline">Explore pathway →</a>
+          <span class="sg-label">.pw-cbtn-outline</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── 4. BADGES ──────────────────────────────────────────────── -->
+    <section class="sg-section" id="badges">
+      <span class="sg-section-title">Section 04</span>
+      <h2>Badges</h2>
+      <div class="sg-row">
+        <div class="sg-item">
+          <span class="pw-badge pw-badge-sci">Science-backed</span>
+          <span class="sg-label">.pw-badge-sci</span>
+        </div>
+        <div class="sg-item">
+          <span class="pw-badge pw-badge-outline">New</span>
+          <span class="sg-label">.pw-badge-outline</span>
+        </div>
+        <div class="sg-item">
+          <span class="pw-badge pw-badge-sci">✦ Featured</span>
+          <span class="sg-label">with icon</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── 5. CARDS ───────────────────────────────────────────────── -->
+    <section class="sg-section" id="cards">
+      <span class="sg-section-title">Section 05</span>
+      <h2>Cards</h2>
+      <div class="sg-card-grid">
+        <div class="pw-card pw-reveal">
+          <span class="pw-badge pw-badge-sci" style="margin-bottom:1rem;">Book</span>
+          <h3 style="color:var(--purple); font-size:1.05rem; margin-bottom:0.75rem;">A Parent's Guide</h3>
+          <p style="font-size:0.9rem; color:var(--ink-mid);">How to create security during adolescence, grounded in attachment theory.</p>
+          <a href="#" class="pw-cbtn-outline" style="margin-top:1.25rem;">Get the book →</a>
+          <span class="sg-label">.pw-card</span>
+        </div>
+        <div class="pw-card pw-card-gold pw-reveal">
+          <span class="pw-badge pw-badge-outline" style="margin-bottom:1rem;">Featured</span>
+          <h3 style="color:var(--purple); font-size:1.05rem; margin-bottom:0.75rem;">90-Day Pathway</h3>
+          <p style="font-size:0.9rem; color:var(--ink-mid);">A complete transformation programme for families navigating the teenage years.</p>
+          <a href="#" class="pw-cbtn-outline" style="margin-top:1.25rem;">Explore pathway →</a>
+          <span class="sg-label">.pw-card.pw-card-gold</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── 6. EYEBROWS & LABELS ───────────────────────────────────── -->
+    <section class="sg-section" id="eyebrows">
+      <span class="sg-section-title">Section 06</span>
+      <h2>Eyebrows &amp; Labels</h2>
+
+      <div style="display:flex; flex-wrap:wrap; gap:2rem; align-items:flex-start; margin-bottom:2rem;">
+        <div>
+          <span class="pw-eyebrow">Is this you?</span>
+          <span class="sg-label">.pw-eyebrow</span>
+          <span class="sg-code" style="display:block; text-align:center;">light bg</span>
+        </div>
+        <div class="sg-dark-panel" style="padding:1.25rem 1.5rem; display:inline-flex; flex-direction:column; align-items:flex-start; gap:0.5rem; border-radius:12px;">
+          <span class="pw-eyebrow pw-eyebrow--dark">ParentWise 🪷</span>
+          <span class="sg-label" style="color:rgba(255,255,255,0.5);">.pw-eyebrow--dark</span>
+          <span class="sg-code" style="display:block; background:rgba(255,255,255,0.15); color:#fff;">dark / hero bg</span>
+        </div>
+        <div>
+          <span class="pw-label">Science-backed approach</span>
+          <span class="sg-label">.pw-label</span>
+          <span class="sg-code" style="display:block; text-align:center;">gold caps</span>
+        </div>
+      </div>
+
+      <p style="font-size:0.78rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:0.75rem;">Decorative rules</p>
+      <div style="display:flex; gap:3rem; flex-wrap:wrap; align-items:center;">
+        <div>
+          <hr class="pw-rule-gold" style="margin:0 0 0.5rem;" />
+          <span class="sg-label">.pw-rule-gold</span>
+        </div>
+        <div style="width:200px;">
+          <hr class="pw-rule-gold pw-rule-gold--center" style="margin:0 auto 0.5rem;" />
+          <span class="sg-label" style="display:block; text-align:center;">.pw-rule-gold--center</span>
+        </div>
+        <div style="width:200px;">
+          <hr class="pw-rule-full" style="margin:0 0 0.5rem;" />
+          <span class="sg-label">.pw-rule-full</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── 7. SECTIONS REFERENCE ──────────────────────────────────── -->
+    <section class="sg-section" id="sections">
+      <span class="sg-section-title">Section 07</span>
+      <h2>Section Layout Classes</h2>
+
+      <p style="color:var(--ink-mid); font-size:0.9rem; margin-bottom:1.5rem;">
+        Apply these to <code class="sg-code" style="display:inline;">&lt;section&gt;</code> elements. Combine with <code class="sg-code" style="display:inline;">.pw-section-inner</code> for width constraints.
+      </p>
+
+      <table style="width:100%; border-collapse:collapse; font-size:0.88rem;">
+        <thead>
+          <tr style="border-bottom:2px solid var(--divider);">
+            <th style="text-align:left; padding:0.6rem 0.75rem; color:var(--ink-soft); font-weight:600; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase;">Class</th>
+            <th style="text-align:left; padding:0.6rem 0.75rem; color:var(--ink-soft); font-weight:600; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase;">Background</th>
+            <th style="text-align:left; padding:0.6rem 0.75rem; color:var(--ink-soft); font-weight:600; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase;">Use for</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--divider);">
+            <td style="padding:0.7rem 0.75rem;"><code class="sg-code">.pw-section</code></td>
+            <td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">--bg-primary (warm cream)</td>
+            <td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">Default body section</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--divider);">
+            <td style="padding:0.7rem 0.75rem;"><code class="sg-code">.pw-section-alt</code></td>
+            <td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">--bg-tint (warm taupe)</td>
+            <td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">Alternate / zebra section</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--divider);">
+            <td style="padding:0.7rem 0.75rem;"><code class="sg-code">.pw-section-white</code></td>
+            <td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">--bg-secondary (near-white)</td>
+            <td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">High-contrast card sections</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--divider);">
+            <td style="padding:0.7rem 0.75rem;"><code class="sg-code">.pw-section-purple</code></td>
+            <td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">Purple gradient</td>
+            <td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">Authority / testimonials</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--divider);">
+            <td style="padding:0.7rem 0.75rem;"><code class="sg-code">.pw-section-dark</code></td>
+            <td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">Dark navy gradient</td>
+            <td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">Pain / contrast sections</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--divider);">
+            <td style="padding:0.7rem 0.75rem;"><code class="sg-code">.pw-cta-section</code></td>
+            <td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">--purple solid</td>
+            <td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">Final page CTA</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--divider);">
+            <td style="padding:0.7rem 0.75rem;"><code class="sg-code">.pw-hero</code></td>
+            <td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">--gradient-hero</td>
+            <td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">Top-of-page hero</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Live mini-previews -->
+      <div style="margin-top:2rem; display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+        <div>
+          <p class="sg-preview-label">.pw-section-purple</p>
+          <div class="sg-preview">
+            <div class="pw-section-purple" style="padding:2rem 1.5rem; text-align:center;">
+              <span class="pw-eyebrow pw-eyebrow--dark">Authority</span>
+              <h3 style="color:var(--text-on-dark); margin:0; font-size:1rem;">Section heading on purple</h3>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="sg-preview-label">.pw-section-dark</p>
+          <div class="sg-preview">
+            <div class="pw-section-dark" style="padding:2rem 1.5rem; text-align:center;">
+              <span class="pw-label pw-label--light">Pain points</span>
+              <h3 style="color:var(--text-on-dark); margin:0; font-size:1rem;">Section heading on dark</h3>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="sg-preview-label">.pw-cta-section</p>
+          <div class="sg-preview">
+            <div class="pw-cta-section" style="padding:2rem 1.5rem;">
+              <h3 style="color:var(--text-on-dark); margin:0 0 1rem; font-size:1rem;">Ready to start?</h3>
+              <a href="#" class="pw-btn pw-btn-gold">Book a call</a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="sg-preview-label">.pw-top-bar</p>
+          <div class="sg-preview">
+            <div class="pw-top-bar">Cohort 3 now open</div>
+            <div style="padding:1rem 1.5rem; background:var(--bg-primary); font-size:0.85rem; color:var(--ink-mid);">↑ sits above nav</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── 8. FAQ ACCORDION ───────────────────────────────────────── -->
+    <section class="sg-section" id="faq">
+      <span class="sg-section-title">Section 08</span>
+      <h2>FAQ Accordion — live demo</h2>
+      <p style="color:var(--ink-mid); font-size:0.9rem; margin-bottom:1.5rem;">
+        Handled automatically by <code class="sg-code" style="display:inline;">parentwise-design-system.js</code>.
+        No extra JavaScript needed on the page.
+      </p>
+
+      <div class="pw-faq">
+        <div class="pw-faq-item">
+          <button class="pw-faq-q" aria-expanded="false">
+            What classes do I need for a FAQ?
+            <span class="pw-faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="pw-faq-a">
+            Wrap items in <code>.pw-faq</code>, each question/answer pair in <code>.pw-faq-item</code>,
+            the trigger in <code>button.pw-faq-q</code>, and the answer in <code>div.pw-faq-a</code>.
+            Add a <code>span.pw-faq-chevron</code> inside the button for the animated arrow.
+          </div>
+        </div>
+        <div class="pw-faq-item">
+          <button class="pw-faq-q" aria-expanded="false">
+            Does it need any JavaScript on my page?
+            <span class="pw-faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="pw-faq-a">
+            No. The design system JS file (<code>/parentwise-design-system.js</code>) already handles
+            the accordion. As long as that script is included at the bottom of the page, it works automatically.
+          </div>
+        </div>
+        <div class="pw-faq-item">
+          <button class="pw-faq-q" aria-expanded="false">
+            Can I have multiple FAQs on one page?
+            <span class="pw-faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="pw-faq-a">
+            Yes. Each <code>.pw-faq</code> container is independent — collapsing one item only
+            affects siblings in the same container.
+          </div>
+        </div>
+      </div>
+
+      <details style="margin-top:1.5rem; background:var(--bg-tint); border-radius:10px; padding:1rem 1.25rem; font-size:0.85rem;">
+        <summary style="cursor:pointer; font-weight:600; color:var(--purple);">Show HTML markup</summary>
+        <pre style="margin-top:1rem; overflow-x:auto; font-size:0.78rem; line-height:1.6; color:var(--ink-mid);"><code>&lt;div class="pw-faq"&gt;
+  &lt;div class="pw-faq-item"&gt;
+    &lt;button class="pw-faq-q" aria-expanded="false"&gt;
+      Question text
+      &lt;span class="pw-faq-chevron" aria-hidden="true"&gt;▾&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class="pw-faq-a"&gt;Answer text.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </details>
+    </section>
+
+
+    <!-- ── 9. FORMS ───────────────────────────────────────────────── -->
+    <section class="sg-section" id="forms">
+      <span class="sg-section-title">Section 09</span>
+      <h2>Form Elements</h2>
+      <div class="sg-form-grid">
+        <div>
+          <label style="display:block; font-size:0.85rem; font-weight:600; color:var(--ink); margin-bottom:0.4rem;">Text input</label>
+          <input class="pw-input" type="text" placeholder="e.g. Your name" />
+          <span class="sg-label">.pw-input</span>
+        </div>
+        <div>
+          <label style="display:block; font-size:0.85rem; font-weight:600; color:var(--ink); margin-bottom:0.4rem;">Select</label>
+          <select class="pw-select">
+            <option>Option 1</option>
+            <option>Option 2</option>
+          </select>
+          <span class="sg-label">.pw-select</span>
+        </div>
+        <div style="grid-column:1/-1;">
+          <label style="display:block; font-size:0.85rem; font-weight:600; color:var(--ink); margin-bottom:0.4rem;">Textarea</label>
+          <textarea class="pw-textarea" rows="3" placeholder="Your message…"></textarea>
+          <span class="sg-label">.pw-textarea</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── 10. SCROLL REVEAL ──────────────────────────────────────── -->
+    <section class="sg-section" id="reveal">
+      <span class="sg-section-title">Section 10</span>
+      <h2>Scroll Reveal</h2>
+      <p style="color:var(--ink-mid); font-size:0.9rem; margin-bottom:1.5rem;">
+        Add <code class="sg-code" style="display:inline;">.pw-reveal</code> to any element. It fades + slides up as it enters the
+        viewport. Grid children automatically stagger (up to 4 items).
+        No JS setup required — handled by the design system script.
+      </p>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem;">
+        <div class="pw-card pw-reveal" style="text-align:center; padding:1.5rem;">
+          <div style="font-size:1.5rem; margin-bottom:0.5rem;">①</div>
+          <p style="margin:0; font-size:0.88rem; color:var(--ink-mid);">Fades in first</p>
+        </div>
+        <div class="pw-card pw-reveal" style="text-align:center; padding:1.5rem;">
+          <div style="font-size:1.5rem; margin-bottom:0.5rem;">②</div>
+          <p style="margin:0; font-size:0.88rem; color:var(--ink-mid);">0.08s delay</p>
+        </div>
+        <div class="pw-card pw-reveal" style="text-align:center; padding:1.5rem;">
+          <div style="font-size:1.5rem; margin-bottom:0.5rem;">③</div>
+          <p style="margin:0; font-size:0.88rem; color:var(--ink-mid);">0.16s delay</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── 11. LAYOUT ─────────────────────────────────────────────── -->
+    <section class="sg-section" id="layout">
+      <span class="sg-section-title">Section 11</span>
+      <h2>Layout &amp; Containers</h2>
+      <table style="width:100%; border-collapse:collapse; font-size:0.88rem;">
+        <thead>
+          <tr style="border-bottom:2px solid var(--divider);">
+            <th style="text-align:left; padding:0.6rem 0.75rem; color:var(--ink-soft); font-weight:600; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase;">Class</th>
+            <th style="text-align:left; padding:0.6rem 0.75rem; color:var(--ink-soft); font-weight:600; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase;">Max-width</th>
+            <th style="text-align:left; padding:0.6rem 0.75rem; color:var(--ink-soft); font-weight:600; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase;">Use for</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--divider);"><td style="padding:0.7rem 0.75rem;"><code class="sg-code">.pw-container</code></td><td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">900px</td><td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">Standard page content</td></tr>
+          <tr style="border-bottom:1px solid var(--divider);"><td style="padding:0.7rem 0.75rem;"><code class="sg-code">.pw-container-wide</code></td><td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">1100px</td><td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">Card grids, wide layouts</td></tr>
+          <tr style="border-bottom:1px solid var(--divider);"><td style="padding:0.7rem 0.75rem;"><code class="sg-code">.pw-container-narrow</code></td><td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">680px</td><td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">Hero copy, CTA text</td></tr>
+          <tr style="border-bottom:1px solid var(--divider);"><td style="padding:0.7rem 0.75rem;"><code class="sg-code">.pw-section-inner</code></td><td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">740px</td><td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">Inside section, no side padding</td></tr>
+          <tr style="border-bottom:1px solid var(--divider);"><td style="padding:0.7rem 0.75rem;"><code class="sg-code">.pw-section-inner--wide</code></td><td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">1100px</td><td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">Wide content inside section</td></tr>
+          <tr><td style="padding:0.7rem 0.75rem;"><code class="sg-code">.pw-section-inner--narrow</code></td><td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">640px</td><td style="padding:0.7rem 0.75rem; color:var(--ink-mid);">Narrow content inside section</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+  </div><!-- /sg-page -->
+
+
+  <!-- Footer -->
+  <footer class="pw-footer">
+    <div class="pw-footer-logo">
+      <span class="pw-footer-name">Parent<span>Wise</span></span>
+    </div>
+    <p class="pw-footer-tagline">Design System — single source of style truth.</p>
+    <p class="pw-footer-copy">Internal reference · not a public page</p>
+  </footer>
+
+  <!-- Theme toggle -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+    <span class="icon-sun"  aria-hidden="true">☀</span>
+    <span class="icon-moon" aria-hidden="true">☽</span>
+  </button>
+
+  <script src="/parentwise-design-system.js"></script>
+
+</body>
+</html>

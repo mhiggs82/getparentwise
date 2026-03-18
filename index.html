@@ -22,119 +22,8 @@
   </script>
   <link rel="icon" type="image/svg+xml" href="/assets/images/flower-lotus-duotone.svg" />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mhiggs82/parentwise-design-system@main/parentwise-design-system.css" />
+  <link rel="stylesheet" href="/parentwise-design-system.css" />
   <style>
-    /*
-     * TOKEN SYSTEM
-     * Source: assets/style/parentwise-brand-reference-*.md
-     */
-
-    /* ── Light Mode (default) ── */
-    :root {
-      /* Backgrounds */
-      --bg-page:       #C9C3B4;
-      --bg-primary:    #F5F1E8;
-      --bg-secondary:  #FDFCF9;
-      --bg-tint:       #EAE4D4;
-      --bg-card:       #FFFFFF;
-      --bg-footer:     #1A1A1A;
-
-      /* Text — on light backgrounds */
-      --text-primary:     #1A1A1A;
-      --text-secondary:   rgba(26, 26, 26, 0.65);
-      --text-muted:       rgba(26, 26, 26, 0.38);
-
-      /* Text — always cream/light (on hero, purple, dark sections) */
-      --text-on-dark:     #F5F1E8;
-      --text-on-dark-sub: rgba(245, 241, 232, 0.82);
-
-      /* Purple scale */
-      --purple:        #6B4CA3;
-      --purple-deep:   #5A3D8F;
-      --purple-light:  #9B7ED4;
-      --purple-pale:   #EDE7F8;
-      --purple-mid:    rgba(107, 76, 163, 0.18);
-      --purple-glow:   rgba(107, 76, 163, 0.18);
-      --purple-tint:   rgba(107, 76, 163, 0.04);
-
-      /* Gold */
-      --gold:              #C9A96E;
-      --gold-light:        #D4B97E;
-      --accent-gold:       #C9A96E;
-      --accent-gold-light: #D4B97E;
-
-      /* Borders / dividers / shadows */
-      --border:        rgba(107, 76, 163, 0.14);
-      --divider:       #EAE4D4;
-      --shadow:        rgba(107, 76, 163, 0.18);
-      --shadow-purple: rgba(107, 76, 163, 0.18);
-
-      /* Legacy aliases retained for compatibility */
-      --cream:      #F5F1E8;
-      --cream-warm: #EAE4D4;
-      --cream-dark: #EAE4D4;
-      --white:      #FDFCF9;
-      --ink:        #1A1A1A;
-      --ink-mid:    rgba(26, 26, 26, 0.65);
-      --ink-soft:   rgba(26, 26, 26, 0.38);
-      --black:      #1A1A1A;
-      --card-bg:    #FFFFFF;
-      --card-border: rgba(107, 76, 163, 0.14);
-    }
-
-    /* ── Dark Mode ── */
-    [data-mode="dark"] {
-      /* Backgrounds */
-      --bg-page:       #111118;
-      --bg-primary:    #1C1C26;
-      --bg-secondary:  #22222E;
-      --bg-tint:       #201E2B;
-      --bg-card:       #26263A;
-      --bg-footer:     #0E0E18;
-
-      /* Text — on dark backgrounds */
-      --text-primary:     #EDE7D8;
-      --text-secondary:   rgba(237, 231, 216, 0.68);
-      --text-muted:       rgba(237, 231, 216, 0.38);
-
-      /* Text — on hero / purple / dark sections (same as text-primary in dark) */
-      --text-on-dark:     #EDE7D8;
-      --text-on-dark-sub: rgba(237, 231, 216, 0.78);
-
-      /* Purple scale */
-      --purple:        #9B7ED4;
-      --purple-deep:   #7B5AB5;
-      --purple-light:  #BBA2E8;
-      --purple-pale:   rgba(107, 76, 163, 0.22);
-      --purple-mid:    rgba(155, 126, 212, 0.22);
-      --purple-glow:   rgba(155, 126, 212, 0.20);
-      --purple-tint:   rgba(107, 76, 163, 0.08);
-
-      /* Gold unchanged */
-      --gold:              #C9A96E;
-      --gold-light:        #D4B97E;
-      --accent-gold:       #C9A96E;
-      --accent-gold-light: #D4B97E;
-
-      /* Borders / dividers / shadows */
-      --border:        rgba(155, 126, 212, 0.18);
-      --divider:       rgba(237, 231, 216, 0.10);
-      --shadow:        rgba(0, 0, 0, 0.40);
-      --shadow-purple: rgba(0, 0, 0, 0.40);
-
-      /* Legacy aliases */
-      --cream:      #1C1C26;
-      --cream-warm: #201E2B;
-      --cream-dark: rgba(237, 231, 216, 0.10);
-      --white:      #22222E;
-      --ink:        #EDE7D8;
-      --ink-mid:    rgba(237, 231, 216, 0.68);
-      --ink-soft:   rgba(237, 231, 216, 0.38);
-      --black:      #0E0E18;
-      --card-bg:    #26263A;
-      --card-border: rgba(155, 126, 212, 0.18);
-    }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { font-size: 18px; scroll-behavior: smooth; }
 
@@ -1614,6 +1503,6 @@
   <!-- icons -->
   <script type="module" src="https://unpkg.com/@phosphor-icons/webcomponents@2.1"></script>
   <!-- behaviors -->
-  <script src="https://cdn.jsdelivr.net/gh/mhiggs82/parentwise-design-system@main/parentwise-design-system.js"></script>
+  <script src="/parentwise-design-system.js"></script>
 </body>
 </html>

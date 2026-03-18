@@ -9,18 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/parentwise-design-system.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
 
     /* ── Top bar ── */
     .top-bar {
@@ -68,19 +57,6 @@
     .section { padding: 96px 24px; }
     .section-inner { max-width: 860px; margin: 0 auto; }
     .section-inner--wide { max-width: 1060px; margin: 0 auto; }
-
-    .eyebrow {
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--purple);
-      background: var(--purple-pale);
-      padding: 6px 16px;
-      border-radius: 20px;
-      margin-bottom: 24px;
-    }
 
     h2.section-title {
       font-family: 'DM Sans', sans-serif;
@@ -147,7 +123,7 @@
       display: inline-block;
       padding: 18px 52px;
       background: linear-gradient(135deg, var(--accent-gold-light) 0%, #B8943A 100%);
-      color: #fff;
+      color: var(--btn-gol-tx);
       font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.14em;
@@ -574,70 +550,6 @@
 
     .faq .section-inner { max-width: 720px; }
 
-    .faq-list {
-      margin-top: 48px;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .faq-item {
-      border-bottom: 1px solid var(--divider);
-    }
-
-    .faq-question {
-      width: 100%;
-      background: none;
-      border: none;
-      padding: 22px 0;
-      text-align: left;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--ink);
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .faq-question:hover { color: var(--purple); }
-
-    .faq-icon {
-      width: 22px;
-      height: 22px;
-      min-width: 22px;
-      border-radius: 50%;
-      border: 1.5px solid rgba(107,76,163,0.35);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      color: var(--purple);
-      transition: transform 0.3s ease, background 0.2s ease;
-    }
-
-    .faq-item.open .faq-icon {
-      transform: rotate(45deg);
-      background: var(--purple-pale);
-    }
-
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease;
-    }
-
-    .faq-item.open .faq-answer { max-height: 400px; }
-
-    .faq-answer p {
-      font-size: 0.9rem;
-      line-height: 1.8;
-      color: var(--ink-mid);
-      padding-bottom: 22px;
-    }
-
     /* ── Final CTA ── */
     .final-cta {
       background: var(--purple);
@@ -647,11 +559,6 @@
 
     [data-mode="dark"] .final-cta {
       background: linear-gradient(155deg, #3D2C6B 0%, #2A1F52 100%);
-    }
-
-    .final-cta .eyebrow {
-      background: rgba(255,255,255,0.15);
-      color: rgba(255,255,255,0.85);
     }
 
     .final-cta h2 {
@@ -679,7 +586,7 @@
       display: inline-block;
       padding: 18px 52px;
       background: linear-gradient(135deg, var(--accent-gold-light) 0%, #B8943A 100%);
-      color: #fff;
+      color: var(--btn-gol-tx);
       font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.14em;
@@ -731,9 +638,6 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    .animate { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .animate.visible { opacity: 1; transform: translateY(0); }
-
     /* ── Responsive ── */
     @media (max-width: 900px) {
       nav { padding: 20px 24px; }
@@ -765,7 +669,7 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero-inner">
-      <div class="eyebrow">90-Day 1:1 Coaching</div>
+      <div class="pw-eyebrow">90-Day 1:1 Coaching</div>
       <h1>You know what to do.<br><strong>Something keeps getting in the way.</strong></h1>
       <p class="hero-sub">Your ParentWise Pathway is a 90-day, 1:1 coaching journey that moves you from understanding the principles to actually living them, so your teen starts to feel the difference.</p>
       <a href="/first" class="btn-primary">Begin with the 5-Day First Steps</a>
@@ -776,8 +680,8 @@
 
   <!-- Pain Points -->
   <section class="pain section">
-    <div class="section-inner animate">
-      <div class="eyebrow" style="background: rgba(255,255,255,0.1); color: rgba(245,241,232,0.8);">Does this sound familiar?</div>
+    <div class="section-inner pw-reveal">
+      <div class="pw-eyebrow" style="background: rgba(255,255,255,0.1); color: rgba(245,241,232,0.8);">Does this sound familiar?</div>
       <h2 class="section-title">There's a gap between information and implementation.</h2>
       <div class="pain-grid">
         <div class="pain-card">
@@ -798,10 +702,10 @@
 
   <!-- Transformation -->
   <section class="transform section">
-    <div class="section-inner animate">
+    <div class="section-inner pw-reveal">
       <div class="transform-flex">
         <div class="transform-text">
-          <div class="eyebrow">What changes</div>
+          <div class="pw-eyebrow">What changes</div>
           <h2 class="section-title">In 90 days, create a stable foundation for a <span class="accent">flourishing relationship</span> with your teen.</h2>
           <p class="section-subtitle">This isn't about becoming a perfect parent. It's about being grounded enough that your teen has somewhere solid to stand—both in your presence and within themselves. The work starts with you, and the relationship changes from there.</p>
         </div>
@@ -822,13 +726,13 @@
 
   <!-- Framework -->
   <section class="framework section">
-    <div class="section-inner animate">
-      <div class="eyebrow">How it works</div>
+    <div class="section-inner pw-reveal">
+      <div class="pw-eyebrow">How it works</div>
       <h2 class="section-title">Three phases. One transformative journey.</h2>
       <p class="section-subtitle" style="margin: 0 auto;">Each phase builds on the last. You don't rush to strategies before the foundation is solid.</p>
     </div>
     <div class="section-inner--wide">
-      <div class="legs animate">
+      <div class="legs pw-reveal">
 
         <div class="leg">
           <div class="leg-number">1</div>
@@ -872,8 +776,8 @@
 
   <!-- Who it's for -->
   <section class="fit section">
-    <div class="section-inner animate">
-      <div class="eyebrow">Is this for you?</div>
+    <div class="section-inner pw-reveal">
+      <div class="pw-eyebrow">Is this for you?</div>
       <h2 class="section-title">This Pathway is built for a specific parent.</h2>
       <p class="section-subtitle">Not every program fits every family. Here's how to know if this is the right fit.</p>
 
@@ -906,8 +810,8 @@
 
   <!-- Testimonials
   <section class="testimonials section">
-    <div class="section-inner animate">
-      <div class="eyebrow" style="background: rgba(255,255,255,0.1); color: rgba(245,241,232,0.8);">Parent stories</div>
+    <div class="section-inner pw-reveal">
+      <div class="pw-eyebrow" style="background: rgba(255,255,255,0.1); color: rgba(245,241,232,0.8);">Parent stories</div>
       <h2 class="section-title">The shift happens from the inside.</h2>
       <div class="testi-grid">
 
@@ -939,8 +843,8 @@
 
   <!-- Credibility -->
   <section class="section" style="background: var(--bg-primary); padding: 80px 24px;">
-    <div class="section-inner animate" style="text-align: center; max-width: 900px;">
-      <div class="eyebrow">Rooted in research</div>
+    <div class="section-inner pw-reveal" style="text-align: center; max-width: 900px;">
+      <div class="pw-eyebrow">Rooted in research</div>
       <h2 class="section-title">This work is built on 20+ years of real experience.</h2>
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 48px; text-align: left;">
         <div>
@@ -957,8 +861,8 @@
 
   <!-- Investment -->
   <section class="investment section" id="invest">
-    <div class="section-inner animate" style="text-align:center;">
-      <div class="eyebrow">Investment</div>
+    <div class="section-inner pw-reveal" style="text-align:center;">
+      <div class="pw-eyebrow">Investment</div>
       <h2 class="section-title">Your ParentWise Pathway</h2>
       <p class="section-subtitle" style="margin: 0 auto 0;">Deep, personalised work. One family at a time.</p>
 
@@ -982,68 +886,68 @@
 
   <!-- FAQ -->
   <section class="faq section">
-    <div class="section-inner animate">
-      <div class="eyebrow">Questions</div>
+    <div class="section-inner pw-reveal">
+      <div class="pw-eyebrow">Questions</div>
       <h2 class="section-title">Good questions deserve honest answers.</h2>
 
-      <div class="faq-list">
+      <div class="pw-faq">
 
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
+        <div class="pw-faq-item">
+          <button class="pw-faq-q" aria-expanded="false">
             Why does the Pathway start with me rather than my teen?
-            <span class="faq-icon">+</span>
+            <span class="pw-faq-chevron" aria-hidden="true">▾</span>
           </button>
-          <div class="faq-answer">
+          <div class="pw-faq-a">
             <p>Because security emerges when it is witnessed. Decades of attachment research—from Bowlby and Ainsworth through modern neuroscience—consistently shows that a parent's own sense of security shapes the relational environment their teenager grows up in. A regulated parent creates a regulated home. You can't transmit what you haven't developed. The Pathway helps you build the internal regulation and self-awareness that naturally changes the dynamic between you and your teen. The shift in your teen follows from the shift in you.</p>
           </div>
         </div>
 
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
+        <div class="pw-faq-item">
+          <button class="pw-faq-q" aria-expanded="false">
             My teenager is 17. Is it too late?
-            <span class="faq-icon">+</span>
+            <span class="pw-faq-chevron" aria-hidden="true">▾</span>
           </button>
-          <div class="faq-answer">
+          <div class="pw-faq-a">
             <p>It's not too late. Adolescence runs well into the early twenties for most people, and the relational patterns you build now will shape your long-term relationship with your adult child. Parents with teens at every stage of adolescence have found the Pathway relevant. The work is timeless, not age-specific.</p>
           </div>
         </div>
 
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
+        <div class="pw-faq-item">
+          <button class="pw-faq-q" aria-expanded="false">
             How much time do I need to commit each week?
-            <span class="faq-icon">+</span>
+            <span class="pw-faq-chevron" aria-hidden="true">▾</span>
           </button>
-          <div class="faq-answer">
+          <div class="pw-faq-a">
             <p>The Pathway is designed for busy, driven parents. You'll have one 60-minute session per week, plus a small amount of reflection and practice between sessions. Most parents find this fits into their existing schedule without major disruption. The depth comes from the quality of engagement, not the volume of hours.</p>
           </div>
         </div>
 
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
+        <div class="pw-faq-item">
+          <button class="pw-faq-q" aria-expanded="false">
             What's the difference between this and therapy?
-            <span class="faq-icon">+</span>
+            <span class="pw-faq-chevron" aria-hidden="true">▾</span>
           </button>
-          <div class="faq-answer">
+          <div class="pw-faq-a">
             <p>Therapy explores the past to understand and heal. Coaching builds forward momentum using what you understand about the past. The Pathway draws on attachment science and developmental research, but it's not a clinical service. If you're navigating a mental health crisis in your family, therapy should come first. This Pathway works well alongside therapy, or after you've done some foundational therapeutic work.</p>
           </div>
         </div>
 
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
+        <div class="pw-faq-item">
+          <button class="pw-faq-q" aria-expanded="false">
             What does the free First Steps Challenge involve?
-            <span class="faq-icon">+</span>
+            <span class="pw-faq-chevron" aria-hidden="true">▾</span>
           </button>
-          <div class="faq-answer">
+          <div class="pw-faq-a">
             <p>The ParentWise First Steps is a free, 5-day 1:1 challenge that introduces you to the core approach of the Pathway. You'll begin where you have the greatest influence — your own patterns and responses. It's the right starting point before deciding whether the full 90-day Pathway is the right fit for your family.</p>
           </div>
         </div>
 
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
+        <div class="pw-faq-item">
+          <button class="pw-faq-q" aria-expanded="false">
             Are payment plans available?
-            <span class="faq-icon">+</span>
+            <span class="pw-faq-chevron" aria-hidden="true">▾</span>
           </button>
-          <div class="faq-answer">
+          <div class="pw-faq-a">
             <p>Yes. Instalment options are available. You'll discuss the full investment and payment structure during your discovery conversation. The priority is getting the right parents into the right program, and we work to make that practical.</p>
           </div>
         </div>
@@ -1054,7 +958,7 @@
 
   <!-- Final CTA -->
   <section class="final-cta" id="start">
-    <div class="eyebrow">Your first step</div>
+    <div class="pw-eyebrow pw-eyebrow--dark">Your first step</div>
     <h2>Start where you have the greatest influence.</h2>
     <p>The ParentWise First Steps is your introduction to this work. Five days. One-to-one. No application required. Begin with yourself.</p>
     <a href="/first" class="btn-white">Begin Your 5-Day First Steps</a>
@@ -1075,25 +979,6 @@
     <span class="icon-sun" aria-hidden="true">☀</span>
     <span class="icon-moon" aria-hidden="true">☽</span>
   </button>
-  <script>
-    // FAQ accordion
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.closest('.faq-item');
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-        if (!isOpen) item.classList.add('open');
-        btn.setAttribute('aria-expanded', !isOpen);
-      });
-    });
-
-    // Scroll animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.animate').forEach(el => observer.observe(el));
-  </script>
   <!-- icons -->
   <script type="module" src="https://unpkg.com/@phosphor-icons/webcomponents@2.1"></script>
   <!-- behaviors -->

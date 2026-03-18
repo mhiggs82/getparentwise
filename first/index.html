@@ -9,16 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/parentwise-design-system.css" />
 <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body {
-background: var(--bg-primary);
-color: var(--text-primary);
-font-family: 'DM Sans', sans-serif;
-font-weight: 300;
-min-height: 100vh;
-overflow-x: hidden;
-}
 /* ── Top bar ── */
 .top-bar {
 height: 4px;
@@ -68,18 +59,6 @@ max-width: 760px;
 margin: 0 auto;
 animation: fadeUp 0.8s ease both;
 }
-.hero-eyebrow {
-display: inline-block;
-font-size: 10px;
-font-weight: 600;
-letter-spacing: 0.2em;
-text-transform: uppercase;
-color: var(--purple);
-background: var(--purple-pale);
-padding: 6px 16px;
-border-radius: 20px;
-margin-bottom: 28px;
-}
 .hero h1 {
 font-family: 'DM Sans', sans-serif;
 font-size: clamp(2.2rem, 5.5vw, 3.8rem);
@@ -100,7 +79,7 @@ margin: 0 auto 44px;
 display: inline-block;
 padding: 18px 52px;
 background: linear-gradient(135deg, var(--accent-gold-light) 0%, #B8943A 100%);
-color: #fff;
+color: var(--btn-gol-tx);
 font-size: 12px;
 font-weight: 600;
 letter-spacing: 0.14em;
@@ -141,64 +120,6 @@ width: 100%;
 border-radius: 14px;
 display: block;
 box-shadow: 0 4px 32px rgba(107, 76, 163, 0.12);
-}
-/* ── FAQ ── */
-.faq-list {
-margin-top: 28px;
-display: flex;
-flex-direction: column;
-gap: 2px;
-}
-.faq-item {
-background: var(--card-bg);
-border: 1px solid var(--card-border);
-border-radius: 10px;
-overflow: hidden;
-transition: border-color 0.2s ease;
-}
-.faq-item.open { border-color: rgba(107, 76, 163, 0.3); }
-.faq-q {
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 18px 24px;
-cursor: pointer;
-font-size: 0.92rem;
-font-weight: 500;
-color: var(--ink);
-gap: 12px;
-user-select: none;
-}
-.faq-chevron {
-flex-shrink: 0;
-width: 22px;
-height: 22px;
-background: var(--purple-pale);
-border-radius: 6px;
-display: flex;
-align-items: center;
-justify-content: center;
-color: var(--purple);
-font-size: 0.65rem;
-transition: transform 0.25s ease, background 0.2s ease;
-}
-.faq-item.open .faq-chevron {
-transform: rotate(180deg);
-background: var(--purple);
-color: #fff;
-}
-.faq-a {
-max-height: 0;
-overflow: hidden;
-transition: max-height 0.3s ease, padding 0.3s ease;
-font-size: 0.88rem;
-line-height: 1.75;
-color: var(--ink-mid);
-padding: 0 24px;
-}
-.faq-item.open .faq-a {
-max-height: 80px;
-padding: 0 24px 18px;
 }
 /* ── Full-bleed contrasting section ── */
 .section-contrast {
@@ -521,12 +442,6 @@ box-shadow: 0 -8px 48px rgba(107, 76, 163, 0.18);
 from { opacity: 0; transform: translateY(18px); }
 to   { opacity: 1; transform: translateY(0); }
 }
-.fade-in {
-opacity: 0;
-transform: translateY(16px);
-transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.fade-in.visible { opacity: 1; transform: translateY(0); }
 /* ── Responsive ── */
 /* ── Page card ── */
 .page-card {
@@ -571,9 +486,9 @@ nav { padding: 16px 24px; }
 <div class="page-card">
 <!-- HERO -->
 <section class="hero">
-<span class="hero-eyebrow">ParentWise First Steps — 5-Day Challenge</span>
+<span class="pw-eyebrow">ParentWise First Steps — 5-Day Challenge</span>
 <h1>Five days to find out <span class="accent">if this actually helps.</span></h1>
-<div class="video-wrap fade-in">
+<div class="video-wrap pw-reveal">
 <video controls playsinline preload="metadata">
 <source src="/assets/videos/firststeps.mp4" type="video/mp4">
 </video>
@@ -583,7 +498,7 @@ nav { padding: 16px 24px; }
 <span class="hero-note">$50+ charitable donation · Proof required at first session</span>
 </section>
 <!-- TO BE HONEST — white contrasting band -->
-<div class="section-contrast fade-in">
+<div class="section-contrast pw-reveal">
 <div class="section-inner">
 <h2>To be honest...</h2>
 <p>You've probably read the books. Maybe tried a few approaches. Maybe things are fine-ish but things still feel off, and you can't quite name it. It may be appropriate at this stage. You're just not sure.</p>
@@ -594,7 +509,7 @@ nav { padding: 16px 24px; }
 </div>
 <div class="rule"><hr /></div>
 <!-- WHO THIS IS FOR -->
-<section class="section fade-in">
+<section class="section pw-reveal">
 <span class="section-eyebrow">Who This Is For</span>
 <h2>You might be in the right place if —</h2>
 <ul class="fit-list">
@@ -605,7 +520,7 @@ nav { padding: 16px 24px; }
 </section>
 <div class="rule"><hr /></div>
 <!-- 5 DAYS -->
-<section class="section fade-in">
+<section class="section pw-reveal">
 <span class="section-eyebrow">What Happens</span>
 <h2>The five days, plainly.</h2>
 <div class="days">
@@ -633,7 +548,7 @@ nav { padding: 16px 24px; }
 </div>
 </section>
 <!-- OUTCOMES — white contrasting band -->
-<div class="section-contrast fade-in">
+<div class="section-contrast pw-reveal">
 <div class="section-inner">
 <span class="section-eyebrow">What You'll Know By the End</span>
 <h2>You leave with answers, not just ideas.</h2>
@@ -660,7 +575,7 @@ nav { padding: 16px 24px; }
 </div>
 <div class="rule"><hr /></div>
 <!-- COMMITMENT -->
-<section class="section fade-in">
+<section class="section pw-reveal">
 <div class="commitment-block">
 <span class="section-eyebrow">The One Thing I Ask</span>
 <h2>Show up, and we'll make it count.</h2>
@@ -671,7 +586,7 @@ nav { padding: 16px 24px; }
 </div>
 </section>
 <!-- FINAL CTA -->
-<section class="final-cta fade-in">
+<section class="final-cta pw-reveal">
 <h2>Something's been bothering you. <span class="accent">This is a low-stakes way to find out if it can change.</span></h2>
 <p>Five sessions. Your situation. No pressure to continue. If we're not a fit, you leave with five coaching sessions worth of perspective and we part on good terms.</p>
 <button class="hero-cta" onclick="openDrawer()">I'm Ready — Reserve My Spot</button>
@@ -679,30 +594,30 @@ nav { padding: 16px 24px; }
 </section>
 <div class="rule"><hr /></div>
 <!-- FAQ -->
-<section class="section fade-in">
+<section class="section pw-reveal">
 <span class="section-eyebrow">Quick Questions</span>
 <h2>A few things people usually ask.</h2>
-<div class="faq-list">
-<div class="faq-item">
-<div class="faq-q" onclick="toggleFaq(this)">
+<div class="pw-faq">
+<div class="pw-faq-item">
+<button class="pw-faq-q" aria-expanded="false">
           How long are the sessions?
-<span class="faq-chevron">▼</span>
+<span class="pw-faq-chevron" aria-hidden="true">▾</span>
+</button>
+<div class="pw-faq-a">15 to 30 minutes — focused, no padding.</div>
 </div>
-<div class="faq-a">15 to 30 minutes — focused, no padding.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggleFaq(this)">
+<div class="pw-faq-item">
+<button class="pw-faq-q" aria-expanded="false">
           What platform do we use?
-<span class="faq-chevron">▼</span>
+<span class="pw-faq-chevron" aria-hidden="true">▾</span>
+</button>
+<div class="pw-faq-a">Set up for Zoom, but happy to use whatever works for you — WhatsApp, phone, Telegram, or Messenger.</div>
 </div>
-<div class="faq-a">Set up for Zoom, but happy to use whatever works for you — WhatsApp, phone, Telegram, or Messenger.</div>
-</div>
-<div class="faq-item">
-<div class="faq-q" onclick="toggleFaq(this)">
+<div class="pw-faq-item">
+<button class="pw-faq-q" aria-expanded="false">
           What if I need to reschedule?
-<span class="faq-chevron">▼</span>
-</div>
-<div class="faq-a">Just let me know 24 hours in advance. Life happens.</div>
+<span class="pw-faq-chevron" aria-hidden="true">▾</span>
+</button>
+<div class="pw-faq-a">Just let me know 24 hours in advance. Life happens.</div>
 </div>
 </div>
 </section>
@@ -734,13 +649,6 @@ nav { padding: 16px 24px; }
 </div>
 </div>
 <script>
-// FAQ accordion
-function toggleFaq(el) {
-const item = el.closest('.faq-item');
-const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-if (!isOpen) item.classList.add('open');
-}
 // Drawer
 const overlay = document.getElementById('drawerOverlay');
 const drawer  = document.getElementById('calDrawer');
@@ -757,16 +665,6 @@ function closeDrawer() {
     document.addEventListener('keydown', (e) => {
 if (e.key === 'Escape') closeDrawer();
 });
-// Scroll fade-in
-const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-}
-});
-}, { threshold: 0.1 });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 
 <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">

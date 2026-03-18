@@ -9,17 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/parentwise-design-system.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
     /* ── Accent bar at top ── */
     .top-bar {
       height: 4px;
@@ -35,19 +24,6 @@
       position: relative;
       z-index: 1;
       animation: fadeUp 0.8s ease both;
-    }
-
-    .hero-eyebrow {
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--purple);
-      background: var(--purple-pale);
-      padding: 6px 16px;
-      border-radius: 20px;
-      margin-bottom: 28px;
     }
 
     .hero h1 {
@@ -72,8 +48,8 @@
     .hero-cta {
       display: inline-block;
       padding: 18px 52px;
-      background: var(--purple);
-      color: #fff;
+      background: linear-gradient(135deg, var(--accent-gold-light) 0%, #B8943A 100%);
+      color: var(--btn-gol-tx);
       font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.14em;
@@ -81,12 +57,12 @@
       text-decoration: none;
       border-radius: 6px;
       transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
-      box-shadow: 0 4px 24px var(--purple-glow);
+      box-shadow: 0 4px 24px rgba(201, 169, 110, 0.45);
     }
 
     .hero-cta:hover {
-      background: #5a3d8f;
-      box-shadow: 0 8px 32px rgba(107, 76, 163, 0.3);
+      background: linear-gradient(135deg, var(--accent-gold) 0%, #9A7028 100%);
+      box-shadow: 0 8px 32px rgba(201, 169, 110, 0.55);
       transform: translateY(-1px);
     }
 
@@ -236,7 +212,7 @@
     .btn-filled {
       background: linear-gradient(135deg, var(--accent-gold-light) 0%, #B8943A 100%);
       border-color: #B8943A;
-      color: #fff;
+      color: var(--btn-gol-tx);
       box-shadow: 0 4px 20px rgba(201, 169, 110, 0.45), 0 2px 6px rgba(0,0,0,0.12);
     }
 
@@ -299,13 +275,13 @@
 
   <div class="top-bar"></div>
 
-  <section class="hero">
+  <section class="hero pw-reveal">
     <h1>Your family's secure future, <span class="accent">starts with you today.</span></h1>
     <p>Science-backed guidance to support entrepreneurial parents raising teens, because the work starts with you.</p>
     <a href="#" class="hero-cta">Get Your Free 30-Day Secure Parenting Insights Series</a>
   </section>
 
-  <section class="solutions">
+  <section class="solutions pw-reveal">
     <h2>Our Solutions to Create Security During Adolescence</h2>
     <div class="cards">
 

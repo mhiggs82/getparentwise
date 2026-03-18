@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-mode="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Your ParentWise Pathway — 90-Day 1:1 Coaching</title>
   <link rel="icon" type="image/svg+xml" href="/assets/images/flower-lotus-duotone.svg" />
-  <script>(function(){var t=localStorage.getItem('pw-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t!=='light'&&d))document.documentElement.setAttribute('data-theme','dark')})();</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/style/theme.css" />
+  <script>(function(){var t=localStorage.getItem('pw-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t!=='light'&&d))document.documentElement.setAttribute('data-mode','dark')})();</script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/parentwise-design-system.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -189,7 +188,7 @@
 
     .pain h2.section-title { color: var(--text-on-dark); }
 
-    [data-theme="dark"] .pain { background: var(--bg-footer); }
+    [data-mode="dark"] .pain { background: var(--bg-footer); }
 
     .pain-grid {
       display: grid;
@@ -445,7 +444,7 @@
 
     .testimonials h2.section-title { color: var(--text-on-dark); }
 
-    [data-theme="dark"] .testimonials { background: var(--bg-footer); }
+    [data-mode="dark"] .testimonials { background: var(--bg-footer); }
 
     .testi-grid {
       display: grid;
@@ -646,7 +645,7 @@
       padding: 100px 24px;
     }
 
-    [data-theme="dark"] .final-cta {
+    [data-mode="dark"] .final-cta {
       background: linear-gradient(155deg, #3D2C6B 0%, #2A1F52 100%);
     }
 
@@ -1079,8 +1078,8 @@
     (function() {
       var btn = document.getElementById('themeToggle');
       btn.addEventListener('click', function() {
-        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        var isDark = document.documentElement.getAttribute('data-mode') === 'dark';
+        document.documentElement.setAttribute('data-mode', isDark ? 'light' : 'dark');
         localStorage.setItem('pw-theme', isDark ? 'light' : 'dark');
       });
     })();
@@ -1105,6 +1104,9 @@
 
     document.querySelectorAll('.animate').forEach(el => observer.observe(el));
   </script>
-
+  <!-- icons -->
+  <script type="module" src="https://unpkg.com/@phosphor-icons/webcomponents@2.1"></script>
+  <!-- behaviors -->
+  <script src="/parentwise-design-system.js"></script>
 </body>
 </html>

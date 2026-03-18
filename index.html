@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-mode="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,13 +17,12 @@
     (function(){
       var t=localStorage.getItem('pw-theme');
       var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if(t==='dark'||(t!=='light'&&d)) document.documentElement.setAttribute('data-theme','dark');
+      if(t==='dark'||(t!=='light'&&d)) document.documentElement.setAttribute('data-mode','dark');
     })();
   </script>
   <link rel="icon" type="image/svg+xml" href="/assets/images/flower-lotus-duotone.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/parentwise-design-system.css" />
   <style>
     /*
      * TOKEN SYSTEM
@@ -84,7 +83,7 @@
     }
 
     /* ── Dark Mode ── */
-    [data-theme="dark"] {
+    [data-mode="dark"] {
       /* Backgrounds */
       --bg-page:       #111118;
       --bg-primary:    #1C1C26;
@@ -162,7 +161,7 @@
       transition: background 0.3s ease;
     }
 
-    [data-theme="dark"] .top-bar {
+    [data-mode="dark"] .top-bar {
       background: #0E0E18;
     }
 
@@ -204,7 +203,7 @@
       transition: background 0.3s ease;
     }
 
-    [data-theme="dark"] .section-wrap--dark {
+    [data-mode="dark"] .section-wrap--dark {
       background: linear-gradient(160deg, #0E0E18 0%, #1A1A26 100%);
     }
 
@@ -316,7 +315,7 @@
       overflow: hidden;
     }
 
-    [data-theme="dark"] .hero {
+    [data-mode="dark"] .hero {
       background: linear-gradient(155deg, #3D2C6B 0%, #2A1F52 60%, #1A1230 100%) !important;
     }
 
@@ -526,7 +525,7 @@
       transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
-    [data-theme="dark"] .separation-stakes {
+    [data-mode="dark"] .separation-stakes {
       background: rgba(107, 76, 163, 0.14);
       border-left-color: rgba(155, 126, 212, 0.25);
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
@@ -545,7 +544,7 @@
       transition: background 0.3s ease, border-color 0.3s ease;
     }
 
-    [data-theme="dark"] .sovereignty-statement {
+    [data-mode="dark"] .sovereignty-statement {
       background: rgba(107, 76, 163, 0.18);
       border-top-color: rgba(155, 126, 212, 0.25);
     }
@@ -559,7 +558,7 @@
       color: var(--purple-deep);
     }
 
-    [data-theme="dark"] .sovereignty-statement p {
+    [data-mode="dark"] .sovereignty-statement p {
       color: #BBA2E8;
     }
 
@@ -689,7 +688,7 @@
       overflow: hidden;
     }
 
-    [data-theme="dark"] .section-wrap--purple {
+    [data-mode="dark"] .section-wrap--purple {
       background: linear-gradient(155deg, #3D2C6B 0%, #2A1F52 100%) !important;
     }
 
@@ -1083,83 +1082,83 @@
     }
 
     /* ===== DARK MODE — ASSESSMENT MODAL ===== */
-    [data-theme="dark"] .assessment-progress {
+    [data-mode="dark"] .assessment-progress {
       background: var(--purple-pale);
     }
 
-    [data-theme="dark"] .assessment-intro-title,
-    [data-theme="dark"] .assessment-email-title,
-    [data-theme="dark"] .assessment-thanks-title {
+    [data-mode="dark"] .assessment-intro-title,
+    [data-mode="dark"] .assessment-email-title,
+    [data-mode="dark"] .assessment-thanks-title {
       color: var(--purple-light);
     }
 
-    [data-theme="dark"] .assessment-intro-body,
-    [data-theme="dark"] .assessment-email-body,
-    [data-theme="dark"] .assessment-thanks-body,
-    [data-theme="dark"] .assessment-q-number,
-    [data-theme="dark"] .assessment-meta,
-    [data-theme="dark"] .assessment-privacy {
+    [data-mode="dark"] .assessment-intro-body,
+    [data-mode="dark"] .assessment-email-body,
+    [data-mode="dark"] .assessment-thanks-body,
+    [data-mode="dark"] .assessment-q-number,
+    [data-mode="dark"] .assessment-meta,
+    [data-mode="dark"] .assessment-privacy {
       color: var(--text-secondary);
     }
 
-    [data-theme="dark"] .assessment-question {
+    [data-mode="dark"] .assessment-question {
       color: var(--text-primary);
     }
 
-    [data-theme="dark"] .assessment-yn-btn--yes {
+    [data-mode="dark"] .assessment-yn-btn--yes {
       color: var(--purple-light);
       border-color: var(--purple);
     }
 
-    [data-theme="dark"] .assessment-yn-btn--yes:hover {
+    [data-mode="dark"] .assessment-yn-btn--yes:hover {
       background: var(--purple-pale);
     }
 
-    [data-theme="dark"] .assessment-yn-btn--no {
+    [data-mode="dark"] .assessment-yn-btn--no {
       color: var(--text-secondary);
       border-color: var(--divider);
     }
 
-    [data-theme="dark"] .assessment-yn-btn--no:hover {
+    [data-mode="dark"] .assessment-yn-btn--no:hover {
       border-color: var(--text-secondary);
       color: var(--text-primary);
     }
 
-    [data-theme="dark"] .assessment-email-input {
+    [data-mode="dark"] .assessment-email-input {
       background: var(--bg-primary);
       color: var(--text-primary);
       border-color: rgba(155, 126, 212, 0.30);
     }
 
-    [data-theme="dark"] .assessment-email-input:focus {
+    [data-mode="dark"] .assessment-email-input:focus {
       border-color: var(--purple-light);
       box-shadow: 0 0 0 3px rgba(155, 126, 212, 0.15);
     }
 
-    [data-theme="dark"] .assessment-email-input::placeholder {
+    [data-mode="dark"] .assessment-email-input::placeholder {
       color: var(--text-muted);
     }
 
-    [data-theme="dark"] .assessment-close {
+    [data-mode="dark"] .assessment-close {
       color: var(--text-muted);
     }
 
-    [data-theme="dark"] .assessment-close:hover {
+    [data-mode="dark"] .assessment-close:hover {
       color: var(--text-primary);
       background: var(--purple-pale);
     }
 
-    [data-theme="dark"] .assessment-close-btn {
+    [data-mode="dark"] .assessment-close-btn {
       background: var(--purple-pale);
       color: var(--purple-light);
     }
 
-    [data-theme="dark"] .assessment-close-btn:hover {
+    [data-mode="dark"] .assessment-close-btn:hover {
       background: rgba(155, 126, 212, 0.28);
       color: var(--purple-light);
     }
 
-    [data-theme="dark"] .assessment-thanks-icon {
+    [data-mode="dark"] .assessment-thanks-icon {
       background: var(--purple-pale);
     }
 
@@ -1200,8 +1199,8 @@
     .theme-toggle .icon-sun  { display: none; }
     .theme-toggle .icon-moon { display: block; }
 
-    [data-theme="dark"] .theme-toggle .icon-sun  { display: block; }
-    [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+    [data-mode="dark"] .theme-toggle .icon-sun  { display: block; }
+    [data-mode="dark"] .theme-toggle .icon-moon { display: none; }
   </style>
 </head>
 <body>
@@ -1594,23 +1593,27 @@
     var stored = localStorage.getItem('pw-theme');
     var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     var theme = stored || (prefersDark ? 'dark' : 'light');
-    if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    if (theme === 'dark') document.documentElement.setAttribute('data-mode', 'dark');
 
     document.addEventListener('DOMContentLoaded', function() {
       var btn = document.getElementById('themeToggle');
       if (!btn) return;
       btn.addEventListener('click', function() {
-        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        var isDark = document.documentElement.getAttribute('data-mode') === 'dark';
         if (isDark) {
-          document.documentElement.removeAttribute('data-theme');
+          document.documentElement.removeAttribute('data-mode');
           localStorage.setItem('pw-theme', 'light');
         } else {
-          document.documentElement.setAttribute('data-theme', 'dark');
+          document.documentElement.setAttribute('data-mode', 'dark');
           localStorage.setItem('pw-theme', 'dark');
         }
       });
     });
   })();
 </script>
+  <!-- icons -->
+  <script type="module" src="https://unpkg.com/@phosphor-icons/webcomponents@2.1"></script>
+  <!-- behaviors -->
+  <script src="/parentwise-design-system.js"></script>
 </body>
 </html>

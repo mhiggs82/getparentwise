@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-mode="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A Parent's Guide: How to Create Security During Adolescence</title>
   <link rel="icon" type="image/svg+xml" href="/assets/images/flower-lotus-duotone.svg" />
-  <script>(function(){var t=localStorage.getItem('pw-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t!=='light'&&d))document.documentElement.setAttribute('data-theme','dark')})();</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mhiggs82/parentwise-design-system@v1.0.0/theme.css" />
+  <script>(function(){var t=localStorage.getItem('pw-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t!=='light'&&d))document.documentElement.setAttribute('data-mode','dark')})();</script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/parentwise-design-system.css" />
   <style>
     html { scroll-behavior: smooth; }
 
@@ -344,11 +342,11 @@
       box-shadow: 0 4px 20px var(--shadow-purple);
     }
 
-    [data-theme="dark"] .transformation .before-after {
+    [data-mode="dark"] .transformation .before-after {
       background: linear-gradient(135deg, rgba(155,126,212,0.14) 0%, rgba(155,126,212,0.06) 100%);
     }
 
-    [data-theme="dark"] .transformation .before-after p {
+    [data-mode="dark"] .transformation .before-after p {
       color: var(--text-primary);
     }
 
@@ -431,8 +429,8 @@
       border-top: 1px solid var(--divider);
     }
 
-    [data-theme="dark"] .proof-section,
-    [data-theme="dark"] .guarantee {
+    [data-mode="dark"] .proof-section,
+    [data-mode="dark"] .guarantee {
       background: linear-gradient(155deg, #3D2C6B 0%, #2A1F52 100%);
     }
 
@@ -1772,16 +1770,6 @@
       handlePurchase();
     }
 
-    // Theme toggle
-    (function() {
-      var btn = document.getElementById('themeToggle');
-      btn.addEventListener('click', function() {
-        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
-        localStorage.setItem('pw-theme', isDark ? 'light' : 'dark');
-      });
-    })();
-
     // Card number auto-spacing
     document.addEventListener('DOMContentLoaded', function() {
       var cardInput = document.querySelector('input[placeholder="Card Number"]');
@@ -1802,5 +1790,9 @@
     });
   </script>
 
+  <!-- icons -->
+  <script type="module" src="https://unpkg.com/@phosphor-icons/webcomponents@2.1"></script>
+  <!-- behaviors -->
+  <script src="/parentwise-design-system.js"></script>
 </body>
 </html>

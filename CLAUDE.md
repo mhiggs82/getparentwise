@@ -67,7 +67,7 @@ This script must be the **first `<script>` in `<head>`**, before any `<link>` or
 It prevents a light/dark flicker on page load.
 
 ```html
-<script>(function(){var t=localStorage.getItem('pw-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t!=='light'&&d))document.documentElement.setAttribute('data-mode','dark')})();</script>
+<script>(function(){var t=localStorage.getItem('pw-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t!=='light'&&d))document.documentElement.setAttribute('data-mode','dark');else document.documentElement.setAttribute('data-mode','light')})();</script>
 ```
 
 ### 2. Gold buttons never use white text

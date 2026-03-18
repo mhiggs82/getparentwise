@@ -18,6 +18,7 @@
       var t=localStorage.getItem('pw-theme');
       var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
       if(t==='dark'||(t!=='light'&&d)) document.documentElement.setAttribute('data-mode','dark');
+      else document.documentElement.setAttribute('data-mode','light');
     })();
   </script>
   <link rel="icon" type="image/svg+xml" href="/assets/images/flower-lotus-duotone.svg" />

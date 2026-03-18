@@ -56,6 +56,11 @@
   --lavender-tint:  #EDE8F5;
   --greige:         #C9C3B4;
 
+  --purple:         #6B4CA3;   /* main brand accent — used by page inline styles */
+  --purple-glow:    rgba(107, 76, 163, 0.25); /* button/card glow shadows */
+  --ink-mid:        #4A4568;   /* body copy, list items, descriptions */
+  --ink-soft:       #7A7495;   /* captions, notes, footer copy */
+
   --cream:          #F0EAF8;
   --cream-dark:     #C9C3B4;
   --white:          #FFFFFF;
@@ -140,6 +145,10 @@
   --cream:          #1A1A2E;
   --white:          #2D2547;
   --ink:            #F0EAF8;
+  --ink-mid:        #C4AEE8;
+  --ink-soft:       #9B91C0;
+  --purple:         #9B7ED4;
+  --purple-glow:    rgba(155, 126, 212, 0.35);
 
   /* --- Semantic Background Tokens --- */
   --bg-primary:     #1A1A2E;

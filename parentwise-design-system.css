@@ -572,3 +572,554 @@ textarea:focus-visible,
 
   body, .pw-btn, .pw-badge, .pw-card { transition: none !important; }
 }
+
+/* ==========================================================================
+   15. BASE ELEMENT DEFAULTS
+   Everything here is low-specificity — page-specific class rules always win.
+   The goal: unstyled HTML still looks on-brand.
+   ========================================================================== */
+h1, h2, h3, h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+h1 {
+  font-size: clamp(2.2rem, 5.5vw, 3.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--purple);
+  margin-bottom: 1.25rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+h4 {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+
+p:last-child { margin-bottom: 0; }
+
+a {
+  color: var(--purple);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover { color: var(--purple-deep); }
+
+strong { font-weight: 600; }
+em     { font-style: italic; }
+
+ul, ol { padding-left: 1.5rem; }
+li {
+  line-height: 1.75;
+  margin-bottom: 0.4rem;
+  color: var(--text-primary);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--divider);
+  margin: 2rem 0;
+  transition: border-color 0.3s ease;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+/* ==========================================================================
+   16. CONTAINERS
+   ========================================================================== */
+.pw-container        { max-width: 900px;  margin: 0 auto; padding: 0 2rem; }
+.pw-container-wide   { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+.pw-container-narrow { max-width: 680px;  margin: 0 auto; padding: 0 2rem; }
+
+/* ==========================================================================
+   17. TOP BAR
+   ========================================================================== */
+.pw-top-bar {
+  background: var(--purple-deep);
+  color: var(--accent-gold-light);
+  text-align: center;
+  padding: 11px 20px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  transition: background 0.3s ease;
+}
+
+[data-mode="dark"] .pw-top-bar { background: #0E0E18; }
+
+.pw-top-bar::before,
+.pw-top-bar::after {
+  content: '✦';
+  margin: 0 10px;
+  font-size: 9px;
+  opacity: 0.7;
+}
+
+/* ==========================================================================
+   18. NAVIGATION
+   ========================================================================== */
+.pw-nav-bar {
+  background: var(--bg-nav);
+  border-bottom: 1px solid var(--nav-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: relative;
+  z-index: 100;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.pw-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.pw-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.2s ease;
+}
+
+.pw-logo span { color: var(--purple); }
+
+[data-mode="dark"] .pw-logo { color: var(--text-on-dark); }
+
+.pw-nav-cta {
+  display: inline-block;
+  padding: 10px 24px;
+  background: var(--purple);
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 16px var(--purple-glow);
+}
+
+.pw-nav-cta:hover {
+  background: var(--purple-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px var(--purple-glow);
+  color: #fff;
+}
+
+/* ==========================================================================
+   19. HERO
+   ========================================================================== */
+.pw-hero {
+  background: var(--gradient-hero);
+  color: var(--text-on-dark);
+  position: relative;
+  overflow: hidden;
+  padding: 7rem 2rem 8rem;
+}
+
+[data-mode="dark"] .pw-hero {
+  background: linear-gradient(155deg, #3D2C6B 0%, #2A1F52 60%, #1A1230 100%);
+}
+
+/* Multi-radial glow overlay */
+.pw-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 15% 10%, rgba(255,255,255,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 85%, rgba(0,0,0,0.15) 0%, transparent 45%),
+    radial-gradient(ellipse at 60% 40%, rgba(201,169,110,0.06) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.pw-hero > * { position: relative; z-index: 1; }
+
+/* Optional wave cut into next section */
+.pw-hero--wave::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 56px;
+  background: var(--bg-primary);
+  clip-path: ellipse(55% 100% at 50% 100%);
+  transition: background 0.3s ease;
+}
+
+/* Centered hero inner */
+.pw-hero-inner {
+  max-width: 740px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Hero headings always on dark */
+.pw-hero h1,
+.pw-hero-inner h1 {
+  color: var(--text-on-dark);
+  text-shadow: 0 2px 16px rgba(0,0,0,0.2);
+}
+
+/* ==========================================================================
+   20. SECTION LAYOUTS
+   ========================================================================== */
+.pw-section        { background: var(--bg-primary);   padding: 5rem 2rem; transition: background 0.3s ease; }
+.pw-section-alt    { background: var(--bg-tint);      padding: 5rem 2rem; transition: background 0.3s ease; }
+.pw-section-white  { background: var(--bg-secondary); padding: 5rem 2rem; transition: background 0.3s ease; }
+
+.pw-section-purple {
+  background: linear-gradient(155deg, #6B4CA3 0%, #5A3D8F 100%);
+  color: var(--text-on-dark);
+  padding: 5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+[data-mode="dark"] .pw-section-purple {
+  background: linear-gradient(155deg, #3D2C6B 0%, #2A1F52 100%);
+}
+
+.pw-section-dark {
+  background: linear-gradient(160deg, #1A1A2E 0%, #2C2C2C 100%);
+  color: var(--text-on-dark);
+  padding: 5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+[data-mode="dark"] .pw-section-dark {
+  background: linear-gradient(160deg, #0E0E18 0%, #1A1A26 100%);
+}
+
+/* Final CTA — centred, purple bg */
+.pw-cta-section {
+  background: var(--purple);
+  color: var(--text-on-dark);
+  text-align: center;
+  padding: 6rem 2rem;
+}
+[data-mode="dark"] .pw-cta-section {
+  background: linear-gradient(155deg, #3D2C6B 0%, #2A1F52 100%);
+}
+
+/* Text colour resets inside dark sections */
+.pw-section-purple h1, .pw-section-purple h2, .pw-section-purple h3, .pw-section-purple p,
+.pw-section-dark h1,   .pw-section-dark h2,   .pw-section-dark h3,   .pw-section-dark p,
+.pw-cta-section h1,    .pw-cta-section h2,    .pw-cta-section h3,    .pw-cta-section p {
+  color: var(--text-on-dark);
+}
+
+/* Inner width shims */
+.pw-section-inner         { max-width: 740px;  margin: 0 auto; }
+.pw-section-inner--wide   { max-width: 1100px; margin: 0 auto; }
+.pw-section-inner--narrow { max-width: 640px;  margin: 0 auto; }
+
+/* ==========================================================================
+   21. TYPOGRAPHY UTILITIES
+   ========================================================================== */
+
+/* Eyebrow pill — above a heading, light bg */
+.pw-eyebrow {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--purple);
+  background: var(--purple-pale);
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+}
+
+/* Eyebrow on dark / hero backgrounds */
+.pw-eyebrow--dark {
+  color: var(--accent-gold-light);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(4px);
+}
+
+/* Section heading (h2 level, brand purple) */
+.pw-heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 600;
+  color: var(--purple);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+}
+.pw-heading--on-dark { color: var(--text-on-dark); }
+
+/* Lead paragraph */
+.pw-lead {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--ink-mid);
+  margin-bottom: 2rem;
+}
+.pw-lead--on-dark { color: var(--text-on-dark-sub); }
+
+/* Serif italic pull-quote */
+.pw-pull {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--purple);
+}
+.pw-pull--on-dark { color: var(--text-on-dark); }
+
+/* Micro section label (above eyebrow, tracked caps) */
+.pw-label {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin-bottom: 1.5rem;
+}
+.pw-label--light { color: var(--accent-gold-light); opacity: 0.8; }
+
+/* Gold accent rule */
+.pw-rule-gold {
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-gold), var(--purple-light));
+  border: none;
+  margin-bottom: 2.5rem;
+  border-radius: 2px;
+}
+.pw-rule-gold--center { margin-left: auto; margin-right: auto; }
+
+/* Full-width subtle divider */
+.pw-rule-full {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--purple-mid);
+  border: none;
+}
+
+/* ==========================================================================
+   22. FOOTER
+   ========================================================================== */
+.pw-footer {
+  background: var(--bg-footer);
+  text-align: center;
+  padding: 44px 24px 56px;
+  transition: background 0.3s ease;
+}
+
+.pw-footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.pw-footer-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.04em;
+}
+
+.pw-footer-name span { color: var(--accent-gold-light); }
+
+.pw-footer-tagline {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.35);
+  line-height: 1.8;
+  max-width: 460px;
+  margin: 0 auto 0.8rem;
+  letter-spacing: 0.04em;
+}
+
+.pw-footer-copy {
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.06em;
+}
+
+.pw-footer a {
+  color: var(--accent-gold);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.pw-footer a:hover { opacity: 1; }
+
+/* ==========================================================================
+   23. FAQ ACCORDION
+   ========================================================================== */
+.pw-faq {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 2rem;
+}
+
+.pw-faq-item {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.pw-faq-item.open { border-color: rgba(107, 76, 163, 0.3); }
+[data-mode="dark"] .pw-faq-item.open { border-color: rgba(155, 126, 212, 0.4); }
+
+.pw-faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 18px 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink);
+  gap: 12px;
+  text-align: left;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.pw-faq-q:hover { color: var(--purple); }
+
+.pw-faq-chevron {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  background: var(--purple-pale);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--purple);
+  font-size: 0.7rem;
+  font-style: normal;
+  transition: transform 0.25s ease, background 0.2s ease, color 0.2s ease;
+  line-height: 1;
+}
+
+.pw-faq-item.open .pw-faq-chevron {
+  transform: rotate(180deg);
+  background: var(--purple);
+  color: #fff;
+}
+
+.pw-faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.3s ease;
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--ink-mid);
+  padding: 0 24px;
+}
+
+.pw-faq-item.open .pw-faq-a {
+  max-height: 600px;
+  padding: 0 24px 18px;
+}
+
+/* ==========================================================================
+   24. SCROLL REVEAL
+   ========================================================================== */
+.pw-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity  0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pw-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered entry for grid children */
+.pw-reveal:nth-child(2) { transition-delay: 0.08s; }
+.pw-reveal:nth-child(3) { transition-delay: 0.16s; }
+.pw-reveal:nth-child(4) { transition-delay: 0.24s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pw-reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ==========================================================================
+   25. RESPONSIVE
+   ========================================================================== */
+@media (max-width: 768px) {
+  .pw-container,
+  .pw-container-narrow { padding: 0 1.25rem; }
+  .pw-container-wide   { padding: 0 1rem; }
+
+  .pw-section,
+  .pw-section-alt,
+  .pw-section-white,
+  .pw-section-purple,
+  .pw-section-dark,
+  .pw-cta-section { padding: 3.5rem 1.25rem; }
+
+  .pw-hero { padding: 5rem 1.25rem 6rem; }
+  .pw-nav-inner { padding: 16px 20px; }
+
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+}

@@ -322,6 +322,7 @@ textarea:focus-visible,
 }
 .pw-btn-purple:hover {
   background: var(--btn-pur-hbg);
+  color: var(--btn-pur-text);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(61, 41, 112, 0.35);
 }
@@ -343,6 +344,7 @@ textarea:focus-visible,
 }
 .pw-btn-gold:hover {
   background: var(--btn-gol-hbg);
+  color: var(--btn-gol-tx);
   border-color: var(--btn-gol-hbd);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(184, 148, 58, 0.40);
@@ -357,6 +359,7 @@ textarea:focus-visible,
 }
 .pw-btn-outline:hover {
   background: var(--btn-ol-hbg);
+  color: var(--btn-ol-text);
   border-color: var(--btn-ol-hbd);
   transform: translateY(-2px);
 }
@@ -368,6 +371,7 @@ textarea:focus-visible,
 }
 .pw-btn-gold-outline:hover {
   background: rgba(212, 185, 126, 0.12);
+  color: var(--gold-honey);
   border-color: var(--gold-honey);
   transform: translateY(-2px);
 }

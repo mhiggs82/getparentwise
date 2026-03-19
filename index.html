@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-mode="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,19 +8,27 @@
 
   <!-- Open Graph for social sharing -->
   <meta property="og:title" content="Your Teen Doesn't Need You to Fix Them">
-  <meta property="og:description" content="They need a foundation to launch from. ParentWise is a guided, science-backed service that shows you how, from the inside out.">
+  <meta property="og:description"
+    content="They need a foundation to launch from. ParentWise is a guided, science-backed service that shows you how, from the inside out.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="book-cover.png">
-  <meta name="description" content="ParentWise is a guided, science-backed service that helps entrepreneurial, globally minded parents create the secure foundation their teenager needs to launch.">
+  <meta name="description"
+    content="ParentWise is a guided, science-backed service that helps entrepreneurial, globally minded parents create the secure foundation their teenager needs to launch.">
 
   <link rel="icon" type="image/svg+xml" href="/assets/images/flower-lotus-duotone.svg" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="/style-guide/parentwise-design-system.css" />
   <style>
-    html { font-size: 18px; scroll-behavior: smooth; }
+    html {
+      font-size: 18px;
+      scroll-behavior: smooth;
+    }
 
     body {
-      background-color: var(--bg-page); /* intentional: page bg, not bg-primary */
+      background-color: var(--bg-page);
+      /* intentional: page bg, not bg-primary */
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
@@ -64,15 +73,33 @@
     }
 
     @media (max-width: 920px) {
-      .page-container { box-shadow: none; }
+      .page-container {
+        box-shadow: none;
+      }
     }
 
     /* ===== SECTION SYSTEM ===== */
-    .section-wrap { position: relative; }
-    .section-wrap--cream { background-color: var(--bg-primary); }
-    .section-wrap--white { background-color: var(--bg-secondary); }
-    .section-wrap--tint { background-color: var(--bg-tint); }
-    .section-wrap--purple { background-color: var(--purple); color: var(--text-on-dark); }
+    .section-wrap {
+      position: relative;
+    }
+
+    .section-wrap--cream {
+      background-color: var(--bg-primary);
+    }
+
+    .section-wrap--white {
+      background-color: var(--bg-secondary);
+    }
+
+    .section-wrap--tint {
+      background-color: var(--bg-tint);
+    }
+
+    .section-wrap--purple {
+      background-color: var(--purple);
+      color: var(--text-on-dark);
+    }
+
     .section-wrap--dark {
       background: linear-gradient(160deg, #1A1A2E 0%, #2C2C2C 100%);
       color: var(--text-on-dark);
@@ -89,7 +116,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 20% 50%, rgba(107,76,163,0.12) 0%, transparent 60%);
+      background: radial-gradient(ellipse at 20% 50%, rgba(107, 76, 163, 0.12) 0%, transparent 60%);
       pointer-events: none;
     }
 
@@ -99,7 +126,9 @@
       padding: 6rem 2.5rem;
     }
 
-    .section-inner--narrow { max-width: 640px; }
+    .section-inner--narrow {
+      max-width: 640px;
+    }
 
     /* ===== HORIZONTAL ELEMENTS ===== */
     .hr-accent {
@@ -113,10 +142,13 @@
     }
 
     .hr-accent--cream {
-      background: linear-gradient(90deg, var(--accent-gold), rgba(255,255,255,0.3));
+      background: linear-gradient(90deg, var(--accent-gold), rgba(255, 255, 255, 0.3));
     }
 
-    .hr-accent--center { margin-left: auto; margin-right: auto; }
+    .hr-accent--center {
+      margin-left: auto;
+      margin-right: auto;
+    }
 
     .hr-full {
       display: block;
@@ -135,7 +167,7 @@
       letter-spacing: -0.02em;
       color: var(--text-on-dark);
       margin-bottom: 1.8rem;
-      text-shadow: 0 2px 16px rgba(0,0,0,0.2);
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
     }
 
     .subhead {
@@ -143,7 +175,7 @@
       font-size: 1.1rem;
       font-weight: 400;
       line-height: 1.8;
-      color: rgba(255,255,255,0.82);
+      color: rgba(255, 255, 255, 0.82);
       max-width: 520px;
     }
 
@@ -158,7 +190,10 @@
       display: block;
     }
 
-    .section-label--light { color: var(--accent-gold-light); opacity: 0.8; }
+    .section-label--light {
+      color: var(--accent-gold-light);
+      opacity: 0.8;
+    }
 
     h2 {
       font-family: 'DM Sans', sans-serif;
@@ -171,10 +206,19 @@
     }
 
     .section-wrap--purple h2,
-    .section-wrap--dark h2 { color: var(--text-on-dark); }
+    .section-wrap--dark h2 {
+      color: var(--text-on-dark);
+    }
 
-    p { margin-bottom: 1.3rem; font-size: 1rem; line-height: 1.8; }
-    p:last-child { margin-bottom: 0; }
+    p {
+      margin-bottom: 1.3rem;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
 
     .emphasis {
       font-family: 'DM Sans', sans-serif;
@@ -183,7 +227,9 @@
       font-weight: 500;
     }
 
-    .emphasis--purple { color: var(--purple); }
+    .emphasis--purple {
+      color: var(--purple);
+    }
 
     /* ===== HERO ===== */
     .hero {
@@ -203,9 +249,9 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse at 15% 10%, rgba(255,255,255,0.09) 0%, transparent 50%),
-        radial-gradient(ellipse at 85% 85%, rgba(0,0,0,0.18) 0%, transparent 45%),
-        radial-gradient(ellipse at 60% 40%, rgba(201,169,110,0.07) 0%, transparent 55%);
+        radial-gradient(ellipse at 15% 10%, rgba(255, 255, 255, 0.09) 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 85%, rgba(0, 0, 0, 0.18) 0%, transparent 45%),
+        radial-gradient(ellipse at 60% 40%, rgba(201, 169, 110, 0.07) 0%, transparent 55%);
       pointer-events: none;
     }
 
@@ -237,8 +283,8 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--accent-gold-light);
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       padding: 6px 16px;
       border-radius: 20px;
       margin-bottom: 2.5rem;
@@ -256,7 +302,9 @@
       color: var(--text-on-dark);
     }
 
-    .scroll-hint:hover { opacity: 0.65; }
+    .scroll-hint:hover {
+      opacity: 0.65;
+    }
 
     .scroll-hint-line {
       width: 32px;
@@ -273,7 +321,10 @@
     }
 
     /* ===== MIRROR ===== */
-    .mirror-lines { list-style: none; padding: 0; }
+    .mirror-lines {
+      list-style: none;
+      padding: 0;
+    }
 
     .mirror-lines li {
       font-family: 'DM Sans', sans-serif;
@@ -353,14 +404,19 @@
       font-style: italic;
     }
 
-    .book-reference { font-style: italic; opacity: 0.9; }
+    .book-reference {
+      font-style: italic;
+      opacity: 0.9;
+    }
 
-    .section-wrap--purple p { color: var(--text-on-dark-sub); }
+    .section-wrap--purple p {
+      color: var(--text-on-dark-sub);
+    }
 
     .authority-missing {
       margin-top: 2rem;
       padding-top: 2rem;
-      border-top: 1px solid rgba(201,169,110,0.2);
+      border-top: 1px solid rgba(201, 169, 110, 0.2);
     }
 
     .authority-missing p {
@@ -406,11 +462,18 @@
     [data-mode="dark"] .separation-stakes {
       background: rgba(107, 76, 163, 0.14);
       border-left-color: rgba(155, 126, 212, 0.25);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
 
-    .separation-stakes p { font-size: 0.95rem; line-height: 1.8; margin-bottom: 1rem; }
-    .separation-stakes p:last-child { margin-bottom: 0; }
+    .separation-stakes p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .separation-stakes p:last-child {
+      margin-bottom: 0;
+    }
 
     /* ===== WHAT MOST MISS ===== */
     .sovereignty-statement {
@@ -451,7 +514,11 @@
       border-bottom: 1px solid var(--divider);
     }
 
-    .phase:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+    .phase:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
 
     .phase-number {
       font-family: 'Cormorant Garamond', serif;
@@ -473,7 +540,10 @@
       margin-bottom: 0.5rem;
     }
 
-    .phase-content p { font-size: 1rem; line-height: 1.8; }
+    .phase-content p {
+      font-size: 1rem;
+      line-height: 1.8;
+    }
 
     /* ===== CTA ===== */
     .cta-section {
@@ -487,7 +557,7 @@
       font-size: 1.05rem;
       line-height: 1.75;
       font-weight: 400;
-      color: rgba(245,241,232,0.7);
+      color: rgba(245, 241, 232, 0.7);
       max-width: 500px;
       margin: 0 auto 3.5rem;
     }
@@ -495,7 +565,7 @@
     .cta-divider {
       width: 48px;
       height: 2px;
-      background: linear-gradient(90deg, var(--accent-gold), rgba(201,169,110,0.2));
+      background: linear-gradient(90deg, var(--accent-gold), rgba(201, 169, 110, 0.2));
       margin: 0 auto 3rem;
       border-radius: 2px;
     }
@@ -516,7 +586,7 @@
       font-size: 0.72rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(245,241,232,0.4);
+      color: rgba(245, 241, 232, 0.4);
     }
 
     /* Gold gradient button with shine sweep */
@@ -535,7 +605,7 @@
       cursor: pointer;
       text-decoration: none;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
-      box-shadow: 0 4px 20px rgba(201,169,110,0.45), 0 2px 6px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 20px rgba(201, 169, 110, 0.45), 0 2px 6px rgba(0, 0, 0, 0.15);
       position: relative;
       overflow: hidden;
     }
@@ -547,16 +617,18 @@
       left: -75%;
       width: 50%;
       height: 200%;
-      background: rgba(255,255,255,0.18);
+      background: rgba(255, 255, 255, 0.18);
       transform: skewX(-20deg);
       transition: left 0.5s ease;
     }
 
-    .cta-button:hover::after { left: 150%; }
+    .cta-button:hover::after {
+      left: 150%;
+    }
 
     .cta-button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(201,169,110,0.55), 0 4px 10px rgba(0,0,0,0.15);
+      box-shadow: 0 8px 28px rgba(201, 169, 110, 0.55), 0 4px 10px rgba(0, 0, 0, 0.15);
     }
 
     /* ===== AUTHORITY SECTION PURPLE ENRICHMENT ===== */
@@ -575,12 +647,15 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse at 15% 50%, rgba(255,255,255,0.07) 0%, transparent 55%),
-        radial-gradient(ellipse at 85% 20%, rgba(0,0,0,0.12) 0%, transparent 50%);
+        radial-gradient(ellipse at 15% 50%, rgba(255, 255, 255, 0.07) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 20%, rgba(0, 0, 0, 0.12) 0%, transparent 50%);
       pointer-events: none;
     }
 
-    .section-wrap--purple .section-inner { position: relative; z-index: 1; }
+    .section-wrap--purple .section-inner {
+      position: relative;
+      z-index: 1;
+    }
 
     /* ===== FOOTER ===== */
     .footer {
@@ -603,16 +678,18 @@
       font-size: 1.35rem;
       font-weight: 600;
       font-style: italic;
-      color: rgba(255,255,255,0.7);
+      color: rgba(255, 255, 255, 0.7);
       letter-spacing: 0.04em;
     }
 
-    .logo-text span { color: var(--accent-gold-light); }
+    .logo-text span {
+      color: var(--accent-gold-light);
+    }
 
     .footer-tagline {
       font-family: 'DM Sans', sans-serif;
       font-size: 0.78rem;
-      color: rgba(255,255,255,0.35);
+      color: rgba(255, 255, 255, 0.35);
       line-height: 1.8;
       max-width: 460px;
       margin: 0 auto 0.8rem;
@@ -621,12 +698,19 @@
 
     .footer-copy {
       font-size: 0.68rem;
-      color: rgba(255,255,255,0.2);
+      color: rgba(255, 255, 255, 0.2);
       letter-spacing: 0.06em;
     }
 
-    .footer a { color: var(--accent-gold); text-decoration: none; opacity: 0.7; }
-    .footer a:hover { opacity: 1; }
+    .footer a {
+      color: var(--accent-gold);
+      text-decoration: none;
+      opacity: 0.7;
+    }
+
+    .footer a:hover {
+      opacity: 1;
+    }
 
     /* ===== ANIMATIONS ===== */
     .fade-in {
@@ -635,11 +719,21 @@
       transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     @keyframes subtle-bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(3px); }
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(3px);
+      }
     }
 
     .scroll-hint svg {
@@ -648,21 +742,70 @@
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 640px) {
-      html { font-size: 16px; }
-      h1 { font-size: 2rem; }
-      .hero .section-inner { padding-top: 5rem; padding-bottom: 6.5rem; }
-      .section-inner { padding: 4rem 1.5rem; }
-      .mirror-lines li { font-size: 1rem; }
-      .emphasis { font-size: 1.15rem; }
-      .authority-header { flex-direction: column; gap: 0.3rem; }
-      .authority-sep { display: none; }
-      .phase { grid-template-columns: 1fr; gap: 0.5rem; }
-      .phase-number { font-size: 2.2rem; }
-      .cta-button { padding: 1rem 2.5rem; width: 100%; max-width: 300px; }
-      .separation-stakes { padding: 1.5rem; }
-      .scroll-hint { margin-top: 2.5rem; }
-      .reframe-turn { padding-left: 1.6rem; }
-      .reframe-turn::before { font-size: 4rem; }
+      html {
+        font-size: 16px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .hero .section-inner {
+        padding-top: 5rem;
+        padding-bottom: 6.5rem;
+      }
+
+      .section-inner {
+        padding: 4rem 1.5rem;
+      }
+
+      .mirror-lines li {
+        font-size: 1rem;
+      }
+
+      .emphasis {
+        font-size: 1.15rem;
+      }
+
+      .authority-header {
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+
+      .authority-sep {
+        display: none;
+      }
+
+      .phase {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+
+      .phase-number {
+        font-size: 2.2rem;
+      }
+
+      .cta-button {
+        padding: 1rem 2.5rem;
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .separation-stakes {
+        padding: 1.5rem;
+      }
+
+      .scroll-hint {
+        margin-top: 2.5rem;
+      }
+
+      .reframe-turn {
+        padding-left: 1.6rem;
+      }
+
+      .reframe-turn::before {
+        font-size: 4rem;
+      }
     }
 
     /* ===== ASSESSMENT POPUP ===== */
@@ -694,7 +837,7 @@
       max-width: 520px;
       max-height: 90vh;
       overflow-y: auto;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.28), 0 4px 20px rgba(107,76,163,0.15);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.28), 0 4px 20px rgba(107, 76, 163, 0.15);
       position: relative;
       transform: translateY(24px) scale(0.98);
       transition: transform 0.38s cubic-bezier(0.32, 0, 0.24, 1);
@@ -870,10 +1013,12 @@
 
     .assessment-email-input:focus {
       border-color: var(--purple-light);
-      box-shadow: 0 0 0 3px rgba(107,76,163,0.1);
+      box-shadow: 0 0 0 3px rgba(107, 76, 163, 0.1);
     }
 
-    .assessment-email-input::placeholder { color: var(--ink-soft); }
+    .assessment-email-input::placeholder {
+      color: var(--ink-soft);
+    }
 
     .assessment-submit-btn {
       width: 100%;
@@ -889,13 +1034,13 @@
       border-radius: 6px;
       cursor: pointer;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
-      box-shadow: 0 4px 20px rgba(201,169,110,0.45);
+      box-shadow: 0 4px 20px rgba(201, 169, 110, 0.45);
       margin-bottom: 0.75rem;
     }
 
     .assessment-submit-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(201,169,110,0.55);
+      box-shadow: 0 8px 28px rgba(201, 169, 110, 0.55);
     }
 
     .assessment-privacy {
@@ -955,8 +1100,13 @@
     }
 
     @media (max-width: 480px) {
-      .assessment-body { padding: 1.8rem 1.5rem 2rem; }
-      .assessment-yn { grid-template-columns: 1fr; }
+      .assessment-body {
+        padding: 1.8rem 1.5rem 2rem;
+      }
+
+      .assessment-yn {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* ===== DARK MODE — ASSESSMENT MODAL ===== */
@@ -1043,371 +1193,454 @@
     /* ===== DARK MODE TOGGLE BUTTON ===== */
   </style>
 </head>
-<body>
-<div class="page-container">
-<div class="top-bar">Secure Parents Create Secure Teens</div>
 
-  <!-- HERO -->
-  <div class="section-wrap hero">
-    <div class="section-inner fade-in">
-      <span class="hero-tag">ParentWise 🪷</span>
-      <h1>Your Teen Doesn't Need You to Fix Them</h1>
-      <p class="subhead">They need to launch from a secure foundation. ParentWise is a guided, science-backed service that shows you how to create that foundation from the inside out.</p>
-      <div class="scroll-hint">
-        <span class="scroll-hint-line"></span>
-        <span class="scroll-hint-text">Scroll</span>
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="opacity: 0.8;">
-          <path d="M6 1v10M2 7l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<body>
+  <div class="page-container">
+    <div class="top-bar">Secure Parents Create Secure Teens</div>
+
+    <!-- HERO -->
+    <div class="section-wrap hero">
+      <div class="section-inner fade-in">
+        <span class="hero-tag">ParentWise 🪷</span>
+        <h1>Your Teen Doesn't Need You to Fix Them</h1>
+        <p class="subhead">They need to launch from a secure foundation. ParentWise is a guided, science-backed service
+          that shows you how to create that foundation from the inside out.</p>
+        <div class="scroll-hint">
+          <span class="scroll-hint-line"></span>
+          <span class="scroll-hint-text">Scroll</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="opacity: 0.8;">
+            <path d="M6 1v10M2 7l4 4 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUDIENCE MIRROR -->
+    <div class="section-wrap section-wrap--white">
+      <div class="section-inner fade-in">
+        <span class="section-label">Is this you?</span>
+        <hr class="hr-accent">
+        <ul class="mirror-lines">
+          <li>You've built something that matters. Maybe from scratch.</li>
+          <li>You've raised a family across countries and cultures.</li>
+          <li>You care about what you leave behind, not just what you earn.</li>
+          <li>Securing your family isn't your first hard problem. Yet, it might be the most important one.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- AUTHORITY -->
+    <div class="section-wrap section-wrap--purple">
+      <div class="section-inner fade-in">
+        <span class="section-label section-label--light">The guide</span>
+        <hr class="hr-accent hr-accent--cream">
+        <div class="authority-header">
+          <span class="authority-name">M. Aurelius Higgs</span>
+          <span class="authority-sep"></span>
+          <span class="authority-title">Founder of ParentWise</span>
+        </div>
+        <p class="authority-credentials">20+ years as an international educator working with families across cultures.
+        </p>
+        <p>From extensive work across different cultural contexts, he saw a throughline. The science of how security
+          develops during adolescence is sound. Works like <span class="book-reference">Parenting from the Inside
+            Out</span> by Daniel J. Siegel and Mary Hartzell, and <span class="book-reference">The Breakthrough
+            Years</span> by Ellen Galinsky lay the foundation.</p>
+        <div class="authority-missing">
+          <p>But there's something missing from the conversation. Security isn't only something that happens to a teen.
+            It's something they actively create. And most approaches miss that entirely.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- THE REFRAME -->
+    <div class="section-wrap section-wrap--cream">
+      <div class="section-inner section-inner--narrow fade-in">
+        <span class="section-label">The reframe</span>
+        <hr class="hr-accent">
+        <p>You've been focused on your teen. The pulling away during a transition. The rootlessness of another move. The
+          silence. The distance between you.</p>
+        <p>Sometimes they're struggling. Sometimes they're just processing. But you're unsure what it all means. So are
+          they.</p>
+        <div class="reframe-turn">
+          <p class="emphasis emphasis--purple">Your real work doesn't start with them. It starts with you.</p>
+        </div>
+        <p>Not because you're the problem. But because you're the foundation. And what you're creating is more than just
+          safety. It's the foundation they launch from. It's the environment where they can learn to create for
+          themselves.</p>
+      </div>
+    </div>
+
+    <!-- THE SEPARATION -->
+    <div class="section-wrap section-wrap--white">
+      <div class="section-inner fade-in">
+        <span class="section-label">Two responsibilities</span>
+        <hr class="hr-accent">
+        <p>These are two separate responsibilities at this stage of human development.</p>
+        <p class="emphasis emphasis--purple" style="margin: 1.8rem 0;">Your job is to create the secure foundation.
+          Their job is to launch from it.</p>
+        <p>When you try to do their work for them, or neglect your own, both of you lose.</p>
+        <div class="separation-stakes">
+          <p>A teen who is safe but never learns to create something of their own doesn't learn to trust themselves.</p>
+          <p>A parent who is consumed by controlling or decoding their teen's behavior never works on securing
+            themselves. This creates a foundation their teen can't trust.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT MOST MISS -->
+    <div class="section-wrap section-wrap--tint">
+      <div class="section-inner section-inner--narrow fade-in">
+        <span class="section-label">The missing piece</span>
+        <hr class="hr-accent">
+        <h2>Most conversations about raising secure teens stop at the same place.</h2>
+        <p style="font-size: 1.15rem; margin-bottom: 0.5rem;">Safe. Seen. Soothed.</p>
+        <p>That matters. But it's not enough.</p>
+        <p>What builds lasting inner security is an invitation toward creation. A teen who is supported in creating
+          something of their own, something that contributes to the world around them, doesn't just feel safe.</p>
+        <p>They make progress in something bigger than themselves. They start to believe their work is worth existing in
+          this world. And eventually, they start to own their story from the inside out.</p>
+        <div class="sovereignty-statement">
+          <p>We call it expressed sovereignty. The kind of self-trust that holds when life inevitably knocks them off
+            their feet.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- THE PROCESS -->
+    <div class="section-wrap section-wrap--cream">
+      <div class="section-inner fade-in">
+        <span class="section-label">Your ParentWise Pathway</span>
+        <hr class="hr-accent">
+        <h2>There are three phases to your unique pathway.</h2>
+        <div class="phase">
+          <span class="phase-number">01</span>
+          <div class="phase-content">
+            <p class="phase-label">Look Back</p>
+            <p>Understand your own adolescence. What you needed. How those needs were or weren't met. This is where your
+              foundation begins.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <span class="phase-number">02</span>
+          <div class="phase-content">
+            <p class="phase-label">Look at Now</p>
+            <p>The transition you and your teen are both going through. What they need from you at this stage. And how
+              to secure it.</p>
+          </div>
+        </div>
+        <div class="phase">
+          <span class="phase-number">03</span>
+          <div class="phase-content">
+            <p class="phase-label">Look Forward</p>
+            <p>You create the environment where your teen creates something of their own and launches from it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="section-wrap section-wrap--dark">
+      <div class="section-inner cta-section fade-in">
+        <p class="cta-service">ParentWise is a guided, science-backed service for parents who want to do this work with
+          intention and support. Not alone.</p>
+        <div class="cta-divider"></div>
+        <p class="cta-lead">Are you ready to be the foundation your teen launches from?</p>
+        <a href="#" class="cta-button">Take a free assessment</a>
+        <p class="cta-disclaimer">Less than 2 minutes.</p>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="logo-wrap">
+        <span class="logo-text">Parent<span>Wise</span></span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="rgba(201,169,110,0.6)"
+          viewBox="0 0 256 256" aria-hidden="true">
+          <path
+            d="M128,200c-15.37,0-40.77-.18-70-17.64S19.31,143,16.28,131.82A7.94,7.94,0,0,1,21.74,122a69.59,69.59,0,0,1,30.82-.64h0c-7.63-23.88-4-42.44-1-51.71A8.2,8.2,0,0,1,61,64.18C68.56,65.79,81.28,70,94.6,80.8v0A108.49,108.49,0,0,0,88,119.18C88,178,128,200,128,200Zm106.26-78a69.59,69.59,0,0,0-30.82-.64h0c7.63-23.88,4-42.44,1-51.71A8.2,8.2,0,0,0,195,64.18c-7.52,1.61-20.24,5.8-33.56,16.62v0A108.49,108.49,0,0,1,168,119.18C168,178,128,200,128,200c15.37,0,40.77-.18,70-17.64s38.69-39.34,41.72-50.54A7.94,7.94,0,0,0,234.26,122Z"
+            opacity="0.2" />
+          <path
+            d="M245.83,121.63a15.53,15.53,0,0,0-9.52-7.33,73.51,73.51,0,0,0-22.17-2.22c4-19.85,1-35.55-2.06-44.86a16.15,16.15,0,0,0-18.79-10.88,85.53,85.53,0,0,0-28.55,12.12,94.58,94.58,0,0,0-27.11-33.25,16.05,16.05,0,0,0-19.26,0A94.48,94.48,0,0,0,91.26,68.46,85.53,85.53,0,0,0,62.71,56.34,16.15,16.15,0,0,0,43.92,67.22c-3,9.31-6,25-2.06,44.86a73.51,73.51,0,0,0-22.17,2.22,15.53,15.53,0,0,0-9.52,7.33,16,16,0,0,0-1.6,12.27c3.39,12.57,13.8,36.48,45.33,55.32S113.13,208,128.05,208s42.67,0,74-18.78c31.53-18.84,41.94-42.75,45.33-55.32A16,16,0,0,0,245.83,121.63ZM59.14,72.14a.2.2,0,0,1,.23-.15A70.43,70.43,0,0,1,85.18,83.66,118.65,118.65,0,0,0,80,119.17c0,18.74,3.77,34,9.11,46.28A123.59,123.59,0,0,1,69.57,140C51.55,108.62,55.3,84,59.14,72.14Zm3,103.35C35.47,159.57,26.82,140.05,24,129.7a59.82,59.82,0,0,1,22.5-1.17,129.08,129.08,0,0,0,9.15,19.41,142.28,142.28,0,0,0,34,39.56A114.92,114.92,0,0,1,62.1,175.49ZM128,190.4c-9.33-6.94-32-28.23-32-71.23C96,76.7,118.38,55.24,128,48c9.62,7.26,32,28.72,32,71.19C160,162.17,137.33,183.46,128,190.4ZM170.82,83.66A70.43,70.43,0,0,1,196.63,72a.2.2,0,0,1,.23.15C200.7,84,204.45,108.62,186.43,140a123.32,123.32,0,0,1-19.54,25.48c5.34-12.26,9.11-27.54,9.11-46.28A118.65,118.65,0,0,0,170.82,83.66ZM232,129.72c-2.77,10.25-11.4,29.81-38.09,45.77a114.92,114.92,0,0,1-27.55,12,142.28,142.28,0,0,0,34-39.56,129.08,129.08,0,0,0,9.15-19.41A59.69,59.69,0,0,1,232,129.71Z" />
         </svg>
       </div>
-    </div>
-  </div>
+      <p class="footer-tagline">Secure Parents Create Secure Teens.<br>Secure Teens Create a Secure Future.</p>
+      <p class="footer-copy">&copy; 2026 ParentWise. All rights reserved.</p>
+    </footer>
 
-  <!-- AUDIENCE MIRROR -->
-  <div class="section-wrap section-wrap--white">
-    <div class="section-inner fade-in">
-      <span class="section-label">Is this you?</span>
-      <hr class="hr-accent">
-      <ul class="mirror-lines">
-        <li>You've built something that matters. Maybe from scratch.</li>
-        <li>You've raised a family across countries and cultures.</li>
-        <li>You care about what you leave behind, not just what you earn.</li>
-        <li>This isn't your first hard problem. But it might be the most important one.</li>
-      </ul>
-    </div>
-  </div>
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
 
-  <!-- AUTHORITY -->
-  <div class="section-wrap section-wrap--purple">
-    <div class="section-inner fade-in">
-      <span class="section-label section-label--light">The guide</span>
-      <hr class="hr-accent hr-accent--cream">
-      <div class="authority-header">
-        <span class="authority-name">M. Aurelius Higgs</span>
-        <span class="authority-sep"></span>
-        <span class="authority-title">Founder of ParentWise</span>
+  </div><!-- /.page-container -->
+
+
+  <!-- ===== ASSESSMENT POPUP ===== -->
+  <div class="assessment-overlay" id="assessmentOverlay" role="dialog" aria-modal="true"
+    aria-label="Secure Foundation Assessment">
+    <div class="assessment-modal" id="assessmentModal">
+      <button class="assessment-close" id="assessmentClose" aria-label="Close assessment">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M14 4L4 14M4 4l10 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        </svg>
+      </button>
+      <div class="assessment-progress">
+        <div class="assessment-progress-fill" id="assessmentProgress" style="width: 0%"></div>
       </div>
-      <p class="authority-credentials">20+ years as an international educator working with families across cultures.</p>
-      <p>From extensive work across different cultural contexts, he saw a throughline. The science of how security develops during adolescence is sound. Works like <span class="book-reference">Parenting from the Inside Out</span> by Daniel J. Siegel and Mary Hartzell, and <span class="book-reference">The Breakthrough Years</span> by Ellen Galinsky lay the foundation.</p>
-      <div class="authority-missing">
-        <p>But there's something missing from the conversation. Security isn't only something that happens to a teen. It's something they actively create. And most approaches miss that entirely.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- THE REFRAME -->
-  <div class="section-wrap section-wrap--cream">
-    <div class="section-inner section-inner--narrow fade-in">
-      <span class="section-label">The reframe</span>
-      <hr class="hr-accent">
-      <p>You've been focused on your teen. The pulling away during a transition. The rootlessness of another move. The silence. The distance between you.</p>
-      <p>Sometimes they're struggling. Sometimes they're just processing. But you've already assumed what it means.</p>
-      <div class="reframe-turn">
-        <p class="emphasis emphasis--purple">The real work doesn't start with them. It starts with you.</p>
-      </div>
-      <p>Not because you're the problem. Because you're the foundation. And what you're creating isn't just safety. It's the environment where your teen learns to create for themselves.</p>
-    </div>
-  </div>
-
-  <!-- THE SEPARATION -->
-  <div class="section-wrap section-wrap--white">
-    <div class="section-inner fade-in">
-      <span class="section-label">Two responsibilities</span>
-      <hr class="hr-accent">
-      <p>These are two separate responsibilities at this stage of development.</p>
-      <p class="emphasis emphasis--purple" style="margin: 1.8rem 0;">Your job is to create the secure foundation. Their job is to launch from it.</p>
-      <p>When you try to do their work for them, or neglect your own, both of you lose.</p>
-      <div class="separation-stakes">
-        <p>A teen who is safe but never learns to create something of their own doesn't learn to trust themselves.</p>
-        <p>A parent who focuses only on the teen's behavior never works on securing themselves. This creates a foundation their teen can't trust.</p>
+      <div class="assessment-body" id="assessmentBody">
+        <!-- Content injected by JS -->
       </div>
     </div>
   </div>
-
-  <!-- WHAT MOST MISS -->
-  <div class="section-wrap section-wrap--tint">
-    <div class="section-inner section-inner--narrow fade-in">
-      <span class="section-label">The missing piece</span>
-      <hr class="hr-accent">
-      <h2>Most approaches to raising secure teens stop at the same place.</h2>
-      <p style="font-size: 1.15rem; margin-bottom: 0.5rem;">Safe. Seen. Soothed.</p>
-      <p>That matters. But it's not enough.</p>
-      <p>What builds lasting inner security is an invitation toward creation. A teen who is supported in creating something of their own, something that contributes to the world around them, doesn't just feel safe. They become sovereign.</p>
-      <div class="sovereignty-statement">
-        <p>Inner sovereignty. The kind of self-trust that holds when life inevitably knocks them off their feet.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- THE PROCESS -->
-  <div class="section-wrap section-wrap--cream">
-    <div class="section-inner fade-in">
-      <span class="section-label">Your ParentWise Pathway</span>
-      <hr class="hr-accent">
-      <h2>There are three phases to your unique pathway.</h2>
-      <div class="phase">
-        <span class="phase-number">01</span>
-        <div class="phase-content">
-          <p class="phase-label">Look Back</p>
-          <p>Understand your own adolescence. What you needed. How those needs were or weren't met. This is where your foundation begins.</p>
-        </div>
-      </div>
-      <div class="phase">
-        <span class="phase-number">02</span>
-        <div class="phase-content">
-          <p class="phase-label">Look at Now</p>
-          <p>The transition you and your teen are both going through. What they need from you at this stage. And how to secure it.</p>
-        </div>
-      </div>
-      <div class="phase">
-        <span class="phase-number">03</span>
-        <div class="phase-content">
-          <p class="phase-label">Look Forward</p>
-          <p>You create the environment where your teen creates something of their own and launches from it.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CTA -->
-  <div class="section-wrap section-wrap--dark">
-    <div class="section-inner cta-section fade-in">
-      <p class="cta-service">ParentWise is a guided, science-backed service for parents who want to do this work with intention and support. Not alone.</p>
-      <div class="cta-divider"></div>
-      <p class="cta-lead">Are you ready to become a secure foundation for your teen to launch from?</p>
-      <a href="#" class="cta-button">Take a free assessment</a>
-      <p class="cta-disclaimer">Less than 2 minutes.</p>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="logo-wrap">
-      <span class="logo-text">Parent<span>Wise</span></span>
-      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="rgba(201,169,110,0.6)" viewBox="0 0 256 256" aria-hidden="true"><path d="M128,200c-15.37,0-40.77-.18-70-17.64S19.31,143,16.28,131.82A7.94,7.94,0,0,1,21.74,122a69.59,69.59,0,0,1,30.82-.64h0c-7.63-23.88-4-42.44-1-51.71A8.2,8.2,0,0,1,61,64.18C68.56,65.79,81.28,70,94.6,80.8v0A108.49,108.49,0,0,0,88,119.18C88,178,128,200,128,200Zm106.26-78a69.59,69.59,0,0,0-30.82-.64h0c7.63-23.88,4-42.44,1-51.71A8.2,8.2,0,0,0,195,64.18c-7.52,1.61-20.24,5.8-33.56,16.62v0A108.49,108.49,0,0,1,168,119.18C168,178,128,200,128,200c15.37,0,40.77-.18,70-17.64s38.69-39.34,41.72-50.54A7.94,7.94,0,0,0,234.26,122Z" opacity="0.2"/><path d="M245.83,121.63a15.53,15.53,0,0,0-9.52-7.33,73.51,73.51,0,0,0-22.17-2.22c4-19.85,1-35.55-2.06-44.86a16.15,16.15,0,0,0-18.79-10.88,85.53,85.53,0,0,0-28.55,12.12,94.58,94.58,0,0,0-27.11-33.25,16.05,16.05,0,0,0-19.26,0A94.48,94.48,0,0,0,91.26,68.46,85.53,85.53,0,0,0,62.71,56.34,16.15,16.15,0,0,0,43.92,67.22c-3,9.31-6,25-2.06,44.86a73.51,73.51,0,0,0-22.17,2.22,15.53,15.53,0,0,0-9.52,7.33,16,16,0,0,0-1.6,12.27c3.39,12.57,13.8,36.48,45.33,55.32S113.13,208,128.05,208s42.67,0,74-18.78c31.53-18.84,41.94-42.75,45.33-55.32A16,16,0,0,0,245.83,121.63ZM59.14,72.14a.2.2,0,0,1,.23-.15A70.43,70.43,0,0,1,85.18,83.66,118.65,118.65,0,0,0,80,119.17c0,18.74,3.77,34,9.11,46.28A123.59,123.59,0,0,1,69.57,140C51.55,108.62,55.3,84,59.14,72.14Zm3,103.35C35.47,159.57,26.82,140.05,24,129.7a59.82,59.82,0,0,1,22.5-1.17,129.08,129.08,0,0,0,9.15,19.41,142.28,142.28,0,0,0,34,39.56A114.92,114.92,0,0,1,62.1,175.49ZM128,190.4c-9.33-6.94-32-28.23-32-71.23C96,76.7,118.38,55.24,128,48c9.62,7.26,32,28.72,32,71.19C160,162.17,137.33,183.46,128,190.4ZM170.82,83.66A70.43,70.43,0,0,1,196.63,72a.2.2,0,0,1,.23.15C200.7,84,204.45,108.62,186.43,140a123.32,123.32,0,0,1-19.54,25.48c5.34-12.26,9.11-27.54,9.11-46.28A118.65,118.65,0,0,0,170.82,83.66ZM232,129.72c-2.77,10.25-11.4,29.81-38.09,45.77a114.92,114.92,0,0,1-27.55,12,142.28,142.28,0,0,0,34-39.56,129.08,129.08,0,0,0,9.15-19.41A59.69,59.69,0,0,1,232,129.71Z"/></svg>
-    </div>
-    <p class="footer-tagline">Secure Parents Create Secure Teens.<br>Secure Teens Create a Secure Future.</p>
-    <p class="footer-copy">&copy; 2026 ParentWise. All rights reserved.</p>
-  </footer>
 
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+    // ===== ASSESSMENT POPUP =====
+
+    var assessmentQuestions = [
+      // ── Safe (0–3) ─────────────────────────────────────────
+      {
+        pillar: 'Safe',
+        q: 'When my teen tells me something I didn\'t expect or didn\'t want to hear, they generally feel safe doing so.'
+      },
+      {
+        pillar: 'Safe',
+        q: 'When life gets hard for my teen, they tend to come toward home rather than away from it.'
+      },
+      {
+        pillar: 'Safe',
+        q: 'When I\'m tired, stressed, or overwhelmed, my teen still knows they can come to me without it becoming about my state.'
+      },
+      {
+        pillar: 'Safe',
+        q: 'My teen knows there are things they can say to me that won\'t change how I feel about them.'
+      },
+      // ── Seen (4–7) ─────────────────────────────────────────
+      {
+        pillar: 'Seen',
+        q: 'I can name what genuinely lights my teen up right now, separate from what I hope or wish they cared about.'
+      },
+      {
+        pillar: 'Seen',
+        q: 'When my teen is struggling, I find myself listening more than offering solutions.'
+      },
+      {
+        pillar: 'Seen',
+        q: 'I make time for one-on-one moments with my teen that aren\'t tied to a problem, task, or schedule.'
+      },
+      {
+        pillar: 'Seen',
+        q: 'I can describe my teen\'s current inner world, their fears, their hopes, their social pressures, without them having to spell it out for me.'
+      },
+      // ── Soothe (8–11) ──────────────────────────────────────
+      {
+        pillar: 'Soothe',
+        q: 'When my teen is anxious, angry, or shut down, I\'m usually able to stay regulated myself.'
+      },
+      {
+        pillar: 'Soothe',
+        q: 'After a conflict, I take the first step toward repair, without waiting for my teen to apologise first.'
+      },
+      {
+        pillar: 'Soothe',
+        q: 'I can name my own emotional triggers as a parent, the specific things my teen does or says that make it hardest for me to stay steady.'
+      },
+      {
+        pillar: 'Soothe',
+        q: 'When I\'ve reacted in a way I\'m not proud of, I circle back and acknowledge it to my teen, without over-explaining or making it about me.'
+      },
+      // ── Expressed Sovereignty (12–15) ──────────────────────
+      {
+        pillar: 'Expressed Sovereignty',
+        q: 'When my teen shares an idea or plan with me, I can listen all the way through without offering advice, a correction, or a better option.'
+      },
+      {
+        pillar: 'Expressed Sovereignty',
+        q: 'My teen makes the final call on their own creative projects, interests, and goals. I may have opinions, but the decision is theirs.'
+      },
+      {
+        pillar: 'Expressed Sovereignty',
+        q: 'If my teen told the truth, they would say I support their ideas even when those ideas make me nervous.'
+      },
+      {
+        pillar: 'Expressed Sovereignty',
+        q: 'When my teen moves toward something unconventional or uncertain, my first instinct is to ask questions rather than steer them back to safer ground.'
+      }
+    ];
+
+    var assessmentStep    = -1;
+    var assessmentAnswers = [];
+
+    function openAssessment() {
+      assessmentStep    = -1;
+      assessmentAnswers = [];
+      renderAssessmentStep();
+      document.getElementById('assessmentOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeAssessment() {
+      document.getElementById('assessmentOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function updateProgress() {
+      var total = assessmentQuestions.length + 1;
+      var pct   = assessmentStep < 0 ? 0 : Math.round((assessmentStep / total) * 100);
+      document.getElementById('assessmentProgress').style.width = pct + '%';
+    }
+
+    function renderAssessmentStep() {
+      updateProgress();
+      var body = document.getElementById('assessmentBody');
+
+      if (assessmentStep === -1) {
+        // ── Intro ──
+        body.innerHTML =
+          '<span class="assessment-step-tag">Free Assessment</span>' +
+          '<p class="assessment-intro-title">Are you a secure foundation for your teen to launch from?</p>' +
+          '<p class="assessment-intro-body">Take 2 minutes to see where you\'re already showing up for your teen and where there\'s room to grow. Think of it as a mirror, not a measuring stick.</p>' +
+          '<span class="assessment-meta">16 questions &nbsp;&middot;&nbsp; Yes or No &nbsp;&middot;&nbsp; Less than 2 minutes</span>' +
+          '<button class="assessment-yn-btn assessment-yn-btn--yes" style="width:100%;font-size:0.85rem;" onclick="advanceAssessment()">Let\'s Begin &rarr;</button>';
+
+      } else if (assessmentStep < assessmentQuestions.length) {
+        // ── Question ──
+        var q   = assessmentQuestions[assessmentStep];
+        var num = assessmentStep + 1;
+        body.innerHTML =
+          '<span class="assessment-step-tag">' + q.pillar + '</span>' +
+          '<span class="assessment-q-number">Question ' + num + ' of ' + assessmentQuestions.length + '</span>' +
+          '<p class="assessment-question">' + q.q + '</p>' +
+          '<div class="assessment-yn">' +
+            '<button class="assessment-yn-btn assessment-yn-btn--yes" onclick="answerQuestion(true)">Yes</button>' +
+            '<button class="assessment-yn-btn assessment-yn-btn--no"  onclick="answerQuestion(false)">No</button>' +
+          '</div>';
+
+      } else if (assessmentStep === assessmentQuestions.length) {
+        // ── Name + Email capture ──
+        body.innerHTML =
+          '<span class="assessment-step-tag">Almost there</span>' +
+          '<p class="assessment-email-title">You\'ve got good instincts for being here.</p>' +
+          '<p class="assessment-email-body">Where\'s the best place to send your results? You\'ll get a breakdown across Safe, Seen, Soothe, and Expressed Sovereignty, plus your clearest next step.</p>' +
+          '<input type="text"  class="assessment-email-input" id="assessmentFirstName" placeholder="Your first name" autocomplete="given-name" style="margin-bottom:0.6rem;">' +
+          '<input type="email" class="assessment-email-input" id="assessmentEmail"     placeholder="Your email address" autocomplete="email">' +
+          '<button class="assessment-submit-btn" onclick="submitAssessment()">Send My Results &rarr;</button>' +
+          '<span class="assessment-privacy">We respect your privacy. No spam, ever.</span>';
+
+        setTimeout(function () {
+          var emailInput = document.getElementById('assessmentEmail');
+          if (emailInput) {
+            emailInput.addEventListener('keydown', function (e) {
+              if (e.key === 'Enter') submitAssessment();
+            });
+          }
+        }, 50);
+
+      } else {
+        // ── Thank you ──
+        document.getElementById('assessmentProgress').style.width = '100%';
+        body.innerHTML =
+          '<div class="assessment-thanks-icon">' +
+            '<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+              '<path d="M5 13l5.5 5.5L21 7" stroke="#6B4CA3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>' +
+            '</svg>' +
+          '</div>' +
+          '<p class="assessment-thanks-title">Thank you. That took honesty.</p>' +
+          '<p class="assessment-thanks-body">Your personalised results and next steps are on their way. Check your inbox in the next few moments.</p>' +
+          '<p class="assessment-thanks-body">In the meantime, here\'s how ParentWise can support you on this journey.</p>' +
+          '<button class="assessment-submit-btn" onclick="window.location.href=\'/offers/\'">See What ParentWise Offers &rarr;</button>';
+      }
+
+      document.getElementById('assessmentModal').scrollTop = 0;
+    }
+
+    function advanceAssessment() {
+      assessmentStep++;
+      renderAssessmentStep();
+    }
+
+    function answerQuestion(answer) {
+      assessmentAnswers.push(answer);
+      assessmentStep++;
+      renderAssessmentStep();
+    }
+
+    function setInputError(input) {
+      input.focus();
+      input.style.borderColor = '#E57373';
+      setTimeout(function () { input.style.borderColor = ''; }, 2000);
+    }
+
+    function submitAssessment() {
+      var firstNameInput = document.getElementById('assessmentFirstName');
+      var emailInput     = document.getElementById('assessmentEmail');
+      var firstName      = firstNameInput ? firstNameInput.value.trim() : '';
+      var email          = emailInput     ? emailInput.value.trim()      : '';
+
+      if (!firstName) {
+        if (firstNameInput) setInputError(firstNameInput);
+        return;
+      }
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        if (emailInput) setInputError(emailInput);
+        return;
+      }
+
+      // Disable button to prevent double-submit
+      var btn = document.querySelector('.assessment-submit-btn');
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+      fetch('/api/submit-assessment', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({
+          firstName: firstName,
+          email:     email,
+          answers:   assessmentAnswers
+        })
+      })
+      .then(function (res) { return res.json(); })
+      .then(function () {
+        assessmentStep++;
+        renderAssessmentStep();
+      })
+      .catch(function (err) {
+        console.error('Submission error:', err);
+        // Still advance to thank-you — don't penalise the user for a network issue
+        assessmentStep++;
+        renderAssessmentStep();
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('assessmentClose').addEventListener('click', closeAssessment);
+
+      document.getElementById('assessmentOverlay').addEventListener('click', function (e) {
+        if (e.target === e.currentTarget) closeAssessment();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeAssessment();
+      });
+
+      var ctaBtn = document.querySelector('.cta-button');
+      if (ctaBtn) {
+        ctaBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          openAssessment();
+        });
+      }
+    });
   </script>
 
-</div><!-- /.page-container -->
-
-
-<!-- ===== ASSESSMENT POPUP ===== -->
-<div class="assessment-overlay" id="assessmentOverlay" role="dialog" aria-modal="true" aria-label="Secure Foundation Assessment">
-  <div class="assessment-modal" id="assessmentModal">
-    <button class="assessment-close" id="assessmentClose" aria-label="Close assessment">
-      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-        <path d="M14 4L4 14M4 4l10 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-      </svg>
-    </button>
-    <div class="assessment-progress">
-      <div class="assessment-progress-fill" id="assessmentProgress" style="width: 0%"></div>
-    </div>
-    <div class="assessment-body" id="assessmentBody">
-      <!-- Content injected by JS -->
-    </div>
-  </div>
-</div>
-
-<script>
-  // ===== ASSESSMENT POPUP =====
-
-  var assessmentQuestions = [
-    {
-      pillar: 'Safe',
-      q: 'When my teen tells me something I didn\'t expect or didn\'t want to hear, they generally feel safe doing so.'
-    },
-    {
-      pillar: 'Safe',
-      q: 'When life gets hard for my teen, they tend to come toward home rather than away from it.'
-    },
-    {
-      pillar: 'Seen',
-      q: 'I can name what genuinely lights my teen up right now — separate from what I hope or wish they cared about.'
-    },
-    {
-      pillar: 'Seen',
-      q: 'When my teen is struggling, I find myself listening more than offering solutions.'
-    },
-    {
-      pillar: 'Seen',
-      q: 'I make time for one-on-one moments with my teen that aren\'t tied to a problem, task, or schedule.'
-    },
-    {
-      pillar: 'Soothe',
-      q: 'When my teen is anxious, angry, or shut down, I\'m usually able to stay regulated myself.'
-    },
-    {
-      pillar: 'Soothe',
-      q: 'After a conflict, I take the first step toward repair — without waiting for my teen to apologise first.'
-    },
-    {
-      pillar: 'Inner Sovereignty',
-      q: 'When my teen shares an idea or plan with me, I can listen all the way through without offering advice, a correction, or a better option.'
-    },
-    {
-      pillar: 'Inner Sovereignty',
-      q: 'My teen makes the final call on their own creative projects, interests, and goals. I may have opinions, but the decision is theirs.'
-    },
-    {
-      pillar: 'Inner Sovereignty',
-      q: 'If my teen told the truth, they would say I support their ideas even when those ideas make me nervous.'
-    },
-    {
-      pillar: 'Inner Sovereignty',
-      q: 'When my teen moves toward something unconventional or uncertain, my first instinct is to ask questions rather than steer them back to safer ground.'
-    }
-  ];
-
-  var assessmentStep = -1;
-  var assessmentAnswers = [];
-
-  function openAssessment() {
-    assessmentStep = -1;
-    assessmentAnswers = [];
-    renderAssessmentStep();
-    var overlay = document.getElementById('assessmentOverlay');
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeAssessment() {
-    var overlay = document.getElementById('assessmentOverlay');
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  function updateProgress() {
-    var total = assessmentQuestions.length + 1; // questions + email step
-    var pct = assessmentStep < 0 ? 0 : Math.round((assessmentStep / total) * 100);
-    document.getElementById('assessmentProgress').style.width = pct + '%';
-  }
-
-  function renderAssessmentStep() {
-    updateProgress();
-    var body = document.getElementById('assessmentBody');
-
-    if (assessmentStep === -1) {
-      // ── Intro ──
-      body.innerHTML =
-        '<span class="assessment-step-tag">Free Assessment</span>' +
-        '<p class="assessment-intro-title">Are you a secure foundation for your teen to launch from?</p>' +
-        '<p class="assessment-intro-body">Take 2 minutes to see where you\'re already showing up for your teen — and where there\'s room to grow. Think of it as a mirror, not a measuring stick.</p>' +
-        '<span class="assessment-meta">11 questions &nbsp;&middot;&nbsp; Yes or No &nbsp;&middot;&nbsp; Less than 2 minutes</span>' +
-        '<button class="assessment-yn-btn assessment-yn-btn--yes" style="width:100%;font-size:0.85rem;" onclick="advanceAssessment()">Let\'s Begin &rarr;</button>';
-
-    } else if (assessmentStep < assessmentQuestions.length) {
-      // ── Question ──
-      var q = assessmentQuestions[assessmentStep];
-      var num = assessmentStep + 1;
-      body.innerHTML =
-        '<span class="assessment-step-tag">' + q.pillar + '</span>' +
-        '<span class="assessment-q-number">Question ' + num + ' of ' + assessmentQuestions.length + '</span>' +
-        '<p class="assessment-question">' + q.q + '</p>' +
-        '<div class="assessment-yn">' +
-          '<button class="assessment-yn-btn assessment-yn-btn--yes" onclick="answerQuestion(true)">Yes</button>' +
-          '<button class="assessment-yn-btn assessment-yn-btn--no" onclick="answerQuestion(false)">No</button>' +
-        '</div>';
-
-    } else if (assessmentStep === assessmentQuestions.length) {
-      // ── Email capture ──
-      body.innerHTML =
-        '<span class="assessment-step-tag">Almost there</span>' +
-        '<p class="assessment-email-title">You\'ve got good instincts for being here.</p>' +
-        '<p class="assessment-email-body">Where\'s the best place to send your results? You\'ll get a breakdown across Safe, Seen, Soothe, and Inner Sovereignty — plus your clearest next step.</p>' +
-        '<input type="email" class="assessment-email-input" id="assessmentEmail" placeholder="Your email address" autocomplete="email">' +
-        '<button class="assessment-submit-btn" onclick="submitAssessment()">Send My Results &rarr;</button>' +
-        '<span class="assessment-privacy">We respect your privacy. No spam, ever.</span>';
-
-      setTimeout(function() {
-        var input = document.getElementById('assessmentEmail');
-        if (input) {
-          input.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') submitAssessment();
-          });
-        }
-      }, 50);
-
-    } else {
-      // ── Thank you ──
-      document.getElementById('assessmentProgress').style.width = '100%';
-      body.innerHTML =
-        '<div class="assessment-thanks-icon">' +
-          '<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-            '<path d="M5 13l5.5 5.5L21 7" stroke="#6B4CA3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>' +
-          '</svg>' +
-        '</div>' +
-        '<p class="assessment-thanks-title">Thank you — that took honesty.</p>' +
-        '<p class="assessment-thanks-body">Your personalised results and next steps are on their way. Check your inbox in the next few moments.</p>' +
-        '<p class="assessment-thanks-body">In the meantime, here\'s how ParentWise can support you on this journey.</p>' +
-        '<button class="assessment-submit-btn" onclick="window.location.href=\'/offers/\'">See What ParentWise Offers &rarr;</button>';
-    }
-
-    document.getElementById('assessmentModal').scrollTop = 0;
-  }
-
-  function advanceAssessment() {
-    assessmentStep++;
-    renderAssessmentStep();
-  }
-
-  function answerQuestion(answer) {
-    assessmentAnswers.push(answer);
-    assessmentStep++;
-    renderAssessmentStep();
-  }
-
-  function submitAssessment() {
-    var emailInput = document.getElementById('assessmentEmail');
-    var email = emailInput ? emailInput.value.trim() : '';
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      if (emailInput) {
-        emailInput.focus();
-        emailInput.style.borderColor = '#E57373';
-        setTimeout(function() { emailInput.style.borderColor = ''; }, 2000);
-      }
-      return;
-    }
-    // Submit answers — wire to your email service here
-    console.log('Assessment submitted:', { email: email, answers: assessmentAnswers });
-    assessmentStep++;
-    renderAssessmentStep();
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('assessmentClose').addEventListener('click', closeAssessment);
-
-    document.getElementById('assessmentOverlay').addEventListener('click', function(e) {
-      if (e.target === e.currentTarget) closeAssessment();
-    });
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeAssessment();
-    });
-
-    // Wire the "Take a free assessment" CTA button
-    var ctaBtn = document.querySelector('.cta-button');
-    if (ctaBtn) {
-      ctaBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        openAssessment();
-      });
-    }
-  });
-</script>
   <!-- icons -->
   <script type="module" src="https://unpkg.com/@phosphor-icons/webcomponents@2.1"></script>
   <!-- behaviors -->
   <script src="/style-guide/parentwise-design-system.js"></script>
 </body>
+
 </html>

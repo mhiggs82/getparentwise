@@ -1402,6 +1402,7 @@
     // ===== ASSESSMENT POPUP =====
 
     var assessmentQuestions = [
+      // ── Safe (0–3) ─────────────────────────────────────────
       {
         pillar: 'Safe',
         q: 'When my teen tells me something I didn\'t expect or didn\'t want to hear, they generally feel safe doing so.'
@@ -1411,8 +1412,17 @@
         q: 'When life gets hard for my teen, they tend to come toward home rather than away from it.'
       },
       {
+        pillar: 'Safe',
+        q: 'When I\'m tired, stressed, or overwhelmed, my teen still knows they can come to me without it becoming about my state.'
+      },
+      {
+        pillar: 'Safe',
+        q: 'My teen knows there are things they can say to me that won\'t change how I feel about them.'
+      },
+      // ── Seen (4–7) ─────────────────────────────────────────
+      {
         pillar: 'Seen',
-        q: 'I can name what genuinely lights my teen up right now — separate from what I hope or wish they cared about.'
+        q: 'I can name what genuinely lights my teen up right now, separate from what I hope or wish they cared about.'
       },
       {
         pillar: 'Seen',
@@ -1423,52 +1433,64 @@
         q: 'I make time for one-on-one moments with my teen that aren\'t tied to a problem, task, or schedule.'
       },
       {
+        pillar: 'Seen',
+        q: 'I can describe my teen\'s current inner world, their fears, their hopes, their social pressures, without them having to spell it out for me.'
+      },
+      // ── Soothe (8–11) ──────────────────────────────────────
+      {
         pillar: 'Soothe',
         q: 'When my teen is anxious, angry, or shut down, I\'m usually able to stay regulated myself.'
       },
       {
         pillar: 'Soothe',
-        q: 'After a conflict, I take the first step toward repair — without waiting for my teen to apologise first.'
+        q: 'After a conflict, I take the first step toward repair, without waiting for my teen to apologise first.'
       },
       {
-        pillar: 'Inner Sovereignty',
+        pillar: 'Soothe',
+        q: 'I can name my own emotional triggers as a parent, the specific things my teen does or says that make it hardest for me to stay steady.'
+      },
+      {
+        pillar: 'Soothe',
+        q: 'When I\'ve reacted in a way I\'m not proud of, I circle back and acknowledge it to my teen, without over-explaining or making it about me.'
+      },
+      // ── Expressed Sovereignty (12–15) ──────────────────────
+      {
+        pillar: 'Expressed Sovereignty',
         q: 'When my teen shares an idea or plan with me, I can listen all the way through without offering advice, a correction, or a better option.'
       },
       {
-        pillar: 'Inner Sovereignty',
+        pillar: 'Expressed Sovereignty',
         q: 'My teen makes the final call on their own creative projects, interests, and goals. I may have opinions, but the decision is theirs.'
       },
       {
-        pillar: 'Inner Sovereignty',
+        pillar: 'Expressed Sovereignty',
         q: 'If my teen told the truth, they would say I support their ideas even when those ideas make me nervous.'
       },
       {
-        pillar: 'Inner Sovereignty',
+        pillar: 'Expressed Sovereignty',
         q: 'When my teen moves toward something unconventional or uncertain, my first instinct is to ask questions rather than steer them back to safer ground.'
       }
     ];
 
-    var assessmentStep = -1;
+    var assessmentStep    = -1;
     var assessmentAnswers = [];
 
     function openAssessment() {
-      assessmentStep = -1;
+      assessmentStep    = -1;
       assessmentAnswers = [];
       renderAssessmentStep();
-      var overlay = document.getElementById('assessmentOverlay');
-      overlay.classList.add('open');
+      document.getElementById('assessmentOverlay').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
 
     function closeAssessment() {
-      var overlay = document.getElementById('assessmentOverlay');
-      overlay.classList.remove('open');
+      document.getElementById('assessmentOverlay').classList.remove('open');
       document.body.style.overflow = '';
     }
 
     function updateProgress() {
-      var total = assessmentQuestions.length + 1; // questions + email step
-      var pct = assessmentStep < 0 ? 0 : Math.round((assessmentStep / total) * 100);
+      var total = assessmentQuestions.length + 1;
+      var pct   = assessmentStep < 0 ? 0 : Math.round((assessmentStep / total) * 100);
       document.getElementById('assessmentProgress').style.width = pct + '%';
     }
 
@@ -1481,37 +1503,38 @@
         body.innerHTML =
           '<span class="assessment-step-tag">Free Assessment</span>' +
           '<p class="assessment-intro-title">Are you a secure foundation for your teen to launch from?</p>' +
-          '<p class="assessment-intro-body">Take 2 minutes to see where you\'re already showing up for your teen — and where there\'s room to grow. Think of it as a mirror, not a measuring stick.</p>' +
-          '<span class="assessment-meta">11 questions &nbsp;&middot;&nbsp; Yes or No &nbsp;&middot;&nbsp; Less than 2 minutes</span>' +
+          '<p class="assessment-intro-body">Take 2 minutes to see where you\'re already showing up for your teen and where there\'s room to grow. Think of it as a mirror, not a measuring stick.</p>' +
+          '<span class="assessment-meta">16 questions &nbsp;&middot;&nbsp; Yes or No &nbsp;&middot;&nbsp; Less than 2 minutes</span>' +
           '<button class="assessment-yn-btn assessment-yn-btn--yes" style="width:100%;font-size:0.85rem;" onclick="advanceAssessment()">Let\'s Begin &rarr;</button>';
 
       } else if (assessmentStep < assessmentQuestions.length) {
         // ── Question ──
-        var q = assessmentQuestions[assessmentStep];
+        var q   = assessmentQuestions[assessmentStep];
         var num = assessmentStep + 1;
         body.innerHTML =
           '<span class="assessment-step-tag">' + q.pillar + '</span>' +
           '<span class="assessment-q-number">Question ' + num + ' of ' + assessmentQuestions.length + '</span>' +
           '<p class="assessment-question">' + q.q + '</p>' +
           '<div class="assessment-yn">' +
-          '<button class="assessment-yn-btn assessment-yn-btn--yes" onclick="answerQuestion(true)">Yes</button>' +
-          '<button class="assessment-yn-btn assessment-yn-btn--no" onclick="answerQuestion(false)">No</button>' +
+            '<button class="assessment-yn-btn assessment-yn-btn--yes" onclick="answerQuestion(true)">Yes</button>' +
+            '<button class="assessment-yn-btn assessment-yn-btn--no"  onclick="answerQuestion(false)">No</button>' +
           '</div>';
 
       } else if (assessmentStep === assessmentQuestions.length) {
-        // ── Email capture ──
+        // ── Name + Email capture ──
         body.innerHTML =
           '<span class="assessment-step-tag">Almost there</span>' +
           '<p class="assessment-email-title">You\'ve got good instincts for being here.</p>' +
-          '<p class="assessment-email-body">Where\'s the best place to send your results? You\'ll get a breakdown across Safe, Seen, Soothe, and Inner Sovereignty — plus your clearest next step.</p>' +
-          '<input type="email" class="assessment-email-input" id="assessmentEmail" placeholder="Your email address" autocomplete="email">' +
+          '<p class="assessment-email-body">Where\'s the best place to send your results? You\'ll get a breakdown across Safe, Seen, Soothe, and Expressed Sovereignty, plus your clearest next step.</p>' +
+          '<input type="text"  class="assessment-email-input" id="assessmentFirstName" placeholder="Your first name" autocomplete="given-name" style="margin-bottom:0.6rem;">' +
+          '<input type="email" class="assessment-email-input" id="assessmentEmail"     placeholder="Your email address" autocomplete="email">' +
           '<button class="assessment-submit-btn" onclick="submitAssessment()">Send My Results &rarr;</button>' +
           '<span class="assessment-privacy">We respect your privacy. No spam, ever.</span>';
 
         setTimeout(function () {
-          var input = document.getElementById('assessmentEmail');
-          if (input) {
-            input.addEventListener('keydown', function (e) {
+          var emailInput = document.getElementById('assessmentEmail');
+          if (emailInput) {
+            emailInput.addEventListener('keydown', function (e) {
               if (e.key === 'Enter') submitAssessment();
             });
           }
@@ -1522,11 +1545,11 @@
         document.getElementById('assessmentProgress').style.width = '100%';
         body.innerHTML =
           '<div class="assessment-thanks-icon">' +
-          '<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-          '<path d="M5 13l5.5 5.5L21 7" stroke="#6B4CA3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>' +
-          '</svg>' +
+            '<svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+              '<path d="M5 13l5.5 5.5L21 7" stroke="#6B4CA3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>' +
+            '</svg>' +
           '</div>' +
-          '<p class="assessment-thanks-title">Thank you — that took honesty.</p>' +
+          '<p class="assessment-thanks-title">Thank you. That took honesty.</p>' +
           '<p class="assessment-thanks-body">Your personalised results and next steps are on their way. Check your inbox in the next few moments.</p>' +
           '<p class="assessment-thanks-body">In the meantime, here\'s how ParentWise can support you on this journey.</p>' +
           '<button class="assessment-submit-btn" onclick="window.location.href=\'/offers/\'">See What ParentWise Offers &rarr;</button>';
@@ -1546,21 +1569,51 @@
       renderAssessmentStep();
     }
 
+    function setInputError(input) {
+      input.focus();
+      input.style.borderColor = '#E57373';
+      setTimeout(function () { input.style.borderColor = ''; }, 2000);
+    }
+
     function submitAssessment() {
-      var emailInput = document.getElementById('assessmentEmail');
-      var email = emailInput ? emailInput.value.trim() : '';
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        if (emailInput) {
-          emailInput.focus();
-          emailInput.style.borderColor = '#E57373';
-          setTimeout(function () { emailInput.style.borderColor = ''; }, 2000);
-        }
+      var firstNameInput = document.getElementById('assessmentFirstName');
+      var emailInput     = document.getElementById('assessmentEmail');
+      var firstName      = firstNameInput ? firstNameInput.value.trim() : '';
+      var email          = emailInput     ? emailInput.value.trim()      : '';
+
+      if (!firstName) {
+        if (firstNameInput) setInputError(firstNameInput);
         return;
       }
-      // Submit answers — wire to your email service here
-      console.log('Assessment submitted:', { email: email, answers: assessmentAnswers });
-      assessmentStep++;
-      renderAssessmentStep();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        if (emailInput) setInputError(emailInput);
+        return;
+      }
+
+      // Disable button to prevent double-submit
+      var btn = document.querySelector('.assessment-submit-btn');
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+      fetch('/api/submit-assessment', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({
+          firstName: firstName,
+          email:     email,
+          answers:   assessmentAnswers
+        })
+      })
+      .then(function (res) { return res.json(); })
+      .then(function () {
+        assessmentStep++;
+        renderAssessmentStep();
+      })
+      .catch(function (err) {
+        console.error('Submission error:', err);
+        // Still advance to thank-you — don't penalise the user for a network issue
+        assessmentStep++;
+        renderAssessmentStep();
+      });
     }
 
     document.addEventListener('DOMContentLoaded', function () {
@@ -1574,7 +1627,6 @@
         if (e.key === 'Escape') closeAssessment();
       });
 
-      // Wire the "Take a free assessment" CTA button
       var ctaBtn = document.querySelector('.cta-button');
       if (ctaBtn) {
         ctaBtn.addEventListener('click', function (e) {
@@ -1584,6 +1636,7 @@
       }
     });
   </script>
+
   <!-- icons -->
   <script type="module" src="https://unpkg.com/@phosphor-icons/webcomponents@2.1"></script>
   <!-- behaviors -->

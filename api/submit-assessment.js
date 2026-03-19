@@ -208,8 +208,12 @@ export default async function handler(req, res) {
   }
 
   // ── MailerLite ──
-  const groupId      = process.env.MAILERLITE_GROUP_ID      || 'YOUR_MAILERLITE_GROUP_ID';
-  const automationId = process.env.MAILERLITE_AUTOMATION_ID || 'YOUR_MAILERLITE_AUTOMATION_ID';
+  const rawGroupId      = process.env.MAILERLITE_GROUP_ID      || 'YOUR_MAILERLITE_GROUP_ID';
+  const rawAutomationId = process.env.MAILERLITE_AUTOMATION_ID || 'YOUR_MAILERLITE_AUTOMATION_ID';
+
+  // Strip common prefixes if provided (e.g., "group=123" -> "123")
+  const groupId      = rawGroupId.replace('group=', '');
+  const automationId = rawAutomationId.replace('automations/', '');
 
   try {
     await upsertSubscriber(firstName || '', email, mlFields, groupId);

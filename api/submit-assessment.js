@@ -5,7 +5,6 @@
 // Environment variables (set in Vercel dashboard):
 //   MAILERLITE_API_KEY       — your MailerLite v3 API key
 //   MAILERLITE_GROUP_ID      — the group subscribers are added to
-//   MAILERLITE_AUTOMATION_ID — (optional) automation to trigger
 // =============================================================
 
 const MAILERLITE_API = 'https://connect.mailerlite.com/api';
@@ -117,28 +116,6 @@ async function upsertSubscriber(firstName, email, fields, groupId) {
   return res.json();
 }
 
-async function triggerAutomation(email, automationId) {
-  if (!automationId || automationId === 'YOUR_MAILERLITE_AUTOMATION_ID') return;
-
-  const apiKey = process.env.MAILERLITE_API_KEY || 'YOUR_MAILERLITE_API_KEY';
-
-  const res = await fetch(`${MAILERLITE_API}/automations/${automationId}/subscribers`, {
-    method:  'POST',
-    headers: {
-      'Content-Type':  'application/json',
-      'Accept':        'application/json',
-      'Authorization': `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({ email }),
-  });
-
-  if (!res.ok) {
-    const text = await res.text();
-    console.warn(`MailerLite automation trigger warning ${res.status}: ${text}`);
-    // Non-fatal: subscriber was created, automation trigger is best-effort
-  }
-}
-
 // ── Main handler ──────────────────────────────────────────────
 export default async function handler(req, res) {
   // CORS preflight
@@ -208,16 +185,13 @@ export default async function handler(req, res) {
   }
 
   // ── MailerLite ──
-  const rawGroupId      = process.env.MAILERLITE_GROUP_ID      || 'YOUR_MAILERLITE_GROUP_ID';
-  const rawAutomationId = process.env.MAILERLITE_AUTOMATION_ID || 'YOUR_MAILERLITE_AUTOMATION_ID';
+  const rawGroupId = process.env.MAILERLITE_GROUP_ID || 'YOUR_MAILERLITE_GROUP_ID';
 
   // Strip common prefixes if provided (e.g., "group=123" -> "123")
-  const groupId      = rawGroupId.replace('group=', '');
-  const automationId = rawAutomationId.replace('automations/', '');
+  const groupId = rawGroupId.replace('group=', '');
 
   try {
     await upsertSubscriber(firstName || '', email, mlFields, groupId);
-    await triggerAutomation(email, automationId);
   } catch (err) {
     console.error('MailerLite error:', err.message);
     // Still return success to the user — don't expose API errors

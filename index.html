@@ -1402,82 +1402,123 @@
     // ===== ASSESSMENT POPUP =====
 
     var assessmentQuestions = [
-      // ── Safe (0–3) ─────────────────────────────────────────
+      // ── Safe (id: 0-3) ─────────────────────────────────────────
       {
+        id: 0,
         pillar: 'Safe',
-        q: 'When my teen tells me something I didn\'t expect or didn\'t want to hear, they generally feel safe doing so.'
+        q: 'When my teen tells me something I didn\'t expect or didn\'t want to hear, they generally feel safe doing so.',
+        positiveAnswer: true
       },
       {
+        id: 1,
         pillar: 'Safe',
-        q: 'When life gets hard for my teen, they tend to come toward home rather than away from it.'
+        q: 'When life gets difficult, my teen tends to pull away and keep their struggles to themselves rather than coming to me.',
+        positiveAnswer: false
       },
       {
+        id: 2,
         pillar: 'Safe',
-        q: 'When I\'m tired, stressed, or overwhelmed, my teen still knows they can come to me without it becoming about my state.'
+        q: 'When I\'m tired, stressed, or overwhelmed, my teen still knows they can come to me without it becoming about my state.',
+        positiveAnswer: true
       },
       {
+        id: 3,
         pillar: 'Safe',
-        q: 'My teen knows there are things they can say to me that won\'t change how I feel about them.'
+        q: 'There are certain things my teen feels they must keep hidden from me to avoid changing the way I feel about them.',
+        positiveAnswer: false
       },
-      // ── Seen (4–7) ─────────────────────────────────────────
+      // ── Seen (id: 4-7) ─────────────────────────────────────────
       {
+        id: 4,
         pillar: 'Seen',
-        q: 'I can name what genuinely lights my teen up right now, separate from what I hope or wish they cared about.'
+        q: 'I can name what genuinely lights my teen up right now, separate from what I hope or wish they cared about.',
+        positiveAnswer: true
       },
       {
+        id: 5,
         pillar: 'Seen',
-        q: 'When my teen is struggling, I find myself listening more than offering solutions.'
+        q: 'When my teen is struggling, my first instinct is to jump in with solutions before they\'ve had a chance to fully feel seen.',
+        positiveAnswer: false
       },
       {
+        id: 6,
         pillar: 'Seen',
-        q: 'I make time for one-on-one moments with my teen that aren\'t tied to a problem, task, or schedule.'
+        q: 'I make time for one-on-one moments with my teen that aren\'t tied to a problem, task, or schedule.',
+        positiveAnswer: true
       },
       {
+        id: 7,
         pillar: 'Seen',
-        q: 'I can describe my teen\'s current inner world, their fears, their hopes, their social pressures, without them having to spell it out for me.'
+        q: 'I often find myself guessing at my teen\'s current inner world because we don\'t really talk about their fears or social pressures.',
+        positiveAnswer: false
       },
-      // ── Soothe (8–11) ──────────────────────────────────────
+      // ── Soothe (id: 8-11) ──────────────────────────────────────
       {
+        id: 8,
         pillar: 'Soothe',
-        q: 'When my teen is anxious, angry, or shut down, I\'m usually able to stay regulated myself.'
+        q: 'When my teen is anxious, angry, or shut down, I\'m usually able to stay regulated myself.',
+        positiveAnswer: true
       },
       {
+        id: 9,
         pillar: 'Soothe',
-        q: 'After a conflict, I take the first step toward repair, without waiting for my teen to apologise first.'
+        q: 'After a conflict, I usually wait for my teen to apologise or reach out first before I move toward repair.',
+        positiveAnswer: false
       },
       {
+        id: 10,
         pillar: 'Soothe',
-        q: 'I can name my own emotional triggers as a parent, the specific things my teen does or says that make it hardest for me to stay steady.'
+        q: 'I can name my own emotional triggers as a parent—the specific things my teen says or does that make it hardest for me to stay steady.',
+        positiveAnswer: true
       },
       {
+        id: 11,
         pillar: 'Soothe',
-        q: 'When I\'ve reacted in a way I\'m not proud of, I circle back and acknowledge it to my teen, without over-explaining or making it about me.'
+        q: 'When I\'ve reacted in a way I\'m not proud of, I tend to let it pass without circling back to acknowledge it to my teen.',
+        positiveAnswer: false
       },
-      // ── Expressed Sovereignty (12–15) ──────────────────────
+      // ── Expressed Sovereignty (id: 12-15) ──────────────────────
       {
+        id: 12,
         pillar: 'Expressed Sovereignty',
-        q: 'When my teen shares an idea or plan with me, I can listen all the way through without offering advice, a correction, or a better option.'
-      },
-      {
-        pillar: 'Expressed Sovereignty',
-        q: 'My teen makes the final call on their own creative projects, interests, and goals. I may have opinions, but the decision is theirs.'
-      },
-      {
-        pillar: 'Expressed Sovereignty',
-        q: 'If my teen told the truth, they would say I support their ideas even when those ideas make me nervous.'
+        q: 'When my teen shares an idea or plan with me, I can listen all the way through without offering advice, a correction, or a "better" option.',
+        positiveAnswer: true
       },
       {
+        id: 13,
         pillar: 'Expressed Sovereignty',
-        q: 'When my teen moves toward something unconventional or uncertain, my first instinct is to ask questions rather than steer them back to safer ground.'
+        q: 'I find myself making the final call on most of my teen\'s creative projects or goals to ensure they stay on the right track.',
+        positiveAnswer: false
+      },
+      {
+        id: 14,
+        pillar: 'Expressed Sovereignty',
+        q: 'If my teen told the truth, they would say I support their ideas even when those ideas make me nervous.',
+        positiveAnswer: true
+      },
+      {
+        id: 15,
+        pillar: 'Expressed Sovereignty',
+        q: 'When my teen moves toward something unconventional, I usually try to steer them back to safer, more predictable ground.',
+        positiveAnswer: false
       }
     ];
 
+    var currentQuestions = []; // Shuffled current session
     var assessmentStep    = -1;
-    var assessmentAnswers = [];
+    var assessmentAnswers = {}; // Map of original question id to raw user answer
 
     function openAssessment() {
       assessmentStep    = -1;
-      assessmentAnswers = [];
+      assessmentAnswers = {};
+      
+      // Create a shuffled copy for this session
+      currentQuestions = JSON.parse(JSON.stringify(assessmentQuestions));
+      for (let i = currentQuestions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [currentQuestions[i], currentQuestions[j]] = [currentQuestions[j], currentQuestions[i]];
+      }
+
       renderAssessmentStep();
       document.getElementById('assessmentOverlay').classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -1507,20 +1548,20 @@
           '<span class="assessment-meta">16 questions &nbsp;&middot;&nbsp; Yes or No &nbsp;&middot;&nbsp; Less than 2 minutes</span>' +
           '<button class="assessment-yn-btn assessment-yn-btn--yes" style="width:100%;font-size:0.85rem;" onclick="advanceAssessment()">Let\'s Begin &rarr;</button>';
 
-      } else if (assessmentStep < assessmentQuestions.length) {
+      } else if (assessmentStep < currentQuestions.length) {
         // ── Question ──
-        var q   = assessmentQuestions[assessmentStep];
+        var q   = currentQuestions[assessmentStep];
         var num = assessmentStep + 1;
         body.innerHTML =
           '<span class="assessment-step-tag">' + q.pillar + '</span>' +
-          '<span class="assessment-q-number">Question ' + num + ' of ' + assessmentQuestions.length + '</span>' +
+          '<span class="assessment-q-number">Question ' + num + ' of ' + currentQuestions.length + '</span>' +
           '<p class="assessment-question">' + q.q + '</p>' +
           '<div class="assessment-yn">' +
             '<button class="assessment-yn-btn assessment-yn-btn--yes" onclick="answerQuestion(true)">Yes</button>' +
             '<button class="assessment-yn-btn assessment-yn-btn--no"  onclick="answerQuestion(false)">No</button>' +
           '</div>';
 
-      } else if (assessmentStep === assessmentQuestions.length) {
+      } else if (assessmentStep === currentQuestions.length) {
         // ── Name + Email capture ──
         body.innerHTML =
           '<span class="assessment-step-tag">Almost there</span>' +
@@ -1564,7 +1605,8 @@
     }
 
     function answerQuestion(answer) {
-      assessmentAnswers.push(answer);
+      var q = currentQuestions[assessmentStep];
+      assessmentAnswers[q.id] = answer;
       assessmentStep++;
       renderAssessmentStep();
     }
@@ -1590,6 +1632,16 @@
         return;
       }
 
+      // Normalize answers for backend: mapping back to original 16-slot array
+      // and checking if user's answer matches the positive state.
+      var normalizedAnswers = [];
+      for (var i = 0; i < assessmentQuestions.length; i++) {
+        var q = assessmentQuestions[i];
+        var userAnswer = assessmentAnswers[q.id];
+        // If userAnswer === q.positiveAnswer, it counts as true (secure foundation point)
+        normalizedAnswers.push(userAnswer === q.positiveAnswer);
+      }
+
       // Disable button to prevent double-submit
       var btn = document.querySelector('.assessment-submit-btn');
       if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
@@ -1600,7 +1652,7 @@
         body:    JSON.stringify({
           firstName: firstName,
           email:     email,
-          answers:   assessmentAnswers
+          answers:   normalizedAnswers
         })
       })
       .then(function (res) { return res.json(); })

@@ -6,7 +6,7 @@
   <title>A Parent's Guide: How to Create Security During Adolescence</title>
   <link rel="icon" type="image/svg+xml" href="/assets/images/flower-lotus-duotone.svg" />
   <script>(function(){var t=localStorage.getItem('pw-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t!=='light'&&d))document.documentElement.setAttribute('data-mode','dark');else document.documentElement.setAttribute('data-mode','light')})();</script>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Playfair+Display:wght@600;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/style-guide/parentwise-design-system.css" />
   <style>
     html { scroll-behavior: smooth; }
@@ -140,7 +140,7 @@
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 1fr minmax(0, 45%);
       gap: var(--space-lg);
       align-items: center;
     }
@@ -162,7 +162,7 @@
     }
 
     .pw-hero__headline {
-      font-family: var(--font-display);
+      font-family: 'Playfair Display', serif;
       font-size: var(--text-4xl);
       font-weight: 700;
       line-height: 1.08;
@@ -174,7 +174,7 @@
       font-family: var(--font-primary);
       font-size: var(--text-lg);
       font-weight: 400;
-      line-height: 1.65;
+      line-height: 1.7;
       color: var(--black);
       opacity: 0.78;
       max-width: 52ch;
@@ -233,17 +233,18 @@
     }
 
     .pw-hero__book-img {
-      width: 280px;
+      width: 100%;
+      max-width: 380px;
       height: auto;
       border-radius: var(--radius-md);
-      box-shadow: var(--shadow-strong);
-      transform: perspective(800px) rotateY(-4deg);
+      box-shadow: 0 24px 80px rgba(107, 76, 163, 0.35), 0 8px 24px rgba(0, 0, 0, 0.18);
+      transform: perspective(900px) rotateY(-4deg) rotate(-3deg);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
     .pw-hero__book-img:hover {
-      transform: perspective(800px) rotateY(0deg);
-      box-shadow: 0 24px 70px rgba(107, 76, 163, 0.35);
+      transform: perspective(900px) rotateY(0deg) rotate(0deg);
+      box-shadow: 0 32px 90px rgba(107, 76, 163, 0.40), 0 10px 28px rgba(0, 0, 0, 0.20);
     }
 
     @media (max-width: 768px) {
@@ -268,7 +269,7 @@
       }
 
       .pw-hero__cta { align-self: center; }
-      .pw-hero__book-img { width: 200px; transform: none; }
+      .pw-hero__book-img { width: 220px; max-width: 100%; transform: none; box-shadow: var(--shadow-strong); }
     }
 
     /* ─── Benefits Section ──────────────────────────────────────────────── */
@@ -426,18 +427,19 @@
     }
 
     .pw-bonuses__card--purple {
-      background-color: var(--purple);
-      color: var(--cream);
+      background-color: var(--cream);
+      color: var(--black);
+      border: 2px solid var(--purple);
     }
 
     .pw-bonuses__card--purple .pw-bonuses__badge {
-      background-color: rgba(245, 241, 232, 0.18);
+      background-color: var(--purple);
       color: var(--cream);
-      border: 1px solid rgba(245, 241, 232, 0.35);
+      border: 1px solid var(--purple-deep);
     }
 
-    .pw-bonuses__card--purple .pw-bonuses__card-title { color: var(--cream); }
-    .pw-bonuses__card--purple .pw-bonuses__card-body  { color: rgba(245, 241, 232, 0.82); }
+    .pw-bonuses__card--purple .pw-bonuses__card-title { color: var(--black); }
+    .pw-bonuses__card--purple .pw-bonuses__card-body  { color: var(--text-secondary); opacity: 1; }
 
     .pw-bonuses__card--cream {
       background-color: var(--cream);
@@ -1165,6 +1167,171 @@
     /* ─── Who For SVG arrow ─────────────────────────────────────────────────── */
     .who-item .arrow { display: flex; align-items: center; flex-shrink: 0; margin-top: 2px; font-size: inherit; }
     .who-item .arrow svg { width: 18px; height: 18px; color: var(--accent-gold); }
+
+    /* ═══════════════════════════════════════════════════════════════════════
+       TYPOGRAPHY & DESIGN IMPROVEMENTS
+       ═══════════════════════════════════════════════════════════════════════ */
+
+    /* ─── Typographic scale: H2 heavier + larger ──────────────────────────── */
+    h2, .pw-heading, .pw-benefits__title, .pw-bonuses__title {
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      font-weight: 700;
+    }
+
+    /* ─── Typographic scale: H3 medium-weight + letter-spacing ───────────── */
+    h3, .pw-benefits__card-headline {
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      line-height: 1.3;
+    }
+
+    /* ─── Body copy line-height + paragraph spacing ──────────────────────── */
+    p {
+      line-height: 1.75;
+      margin-bottom: 1.4em;
+    }
+
+    .pw-lead {
+      line-height: 1.8;
+      text-align: left;
+    }
+
+    /* ─── Purple / dark section body text: near-white + readable ─────────── */
+    .pw-section-purple p,
+    .pw-section-purple .pw-lead,
+    .pw-cta-section p {
+      color: rgba(245, 241, 232, 0.95);
+      font-weight: 400;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      text-align: left;
+    }
+
+    .pw-section-purple h2,
+    .pw-section-purple .pw-heading {
+      text-align: center;
+    }
+
+    /* ─── CTA button typography: bold + tracked ───────────────────────────── */
+    .pw-btn-gold {
+      font-weight: 700 !important;
+      letter-spacing: 0.06em;
+      color: #1A1000;
+    }
+
+    /* ─── Benefit icon: purple-filled circle + white glyph ───────────────── */
+    .pw-benefits__icon-circle {
+      width: 56px;
+      height: 56px;
+      background: var(--purple);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .pw-benefits__icon-circle .pw-benefits__icon {
+      color: #fff;
+      width: 28px;
+      height: 28px;
+    }
+
+    /* ─── Offer price card ────────────────────────────────────────────────── */
+    .offer-price-card {
+      background: var(--gradient-tint);
+      border: 2px solid var(--purple-light);
+      border-radius: var(--radius-md);
+      padding: 2.5rem 3rem;
+      text-align: center;
+      margin-top: 2rem;
+      max-width: 340px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: var(--shadow-soft);
+    }
+    .offer-price-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin: 0 0 0.5rem;
+      line-height: 1;
+    }
+    .offer-price-amount {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6vw, 3.5rem);
+      font-weight: 700;
+      color: var(--purple);
+      line-height: 1;
+      margin: 0 0 0.75rem;
+    }
+    .offer-price-sub {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    /* ─── Sticky CTA bar ──────────────────────────────────────────────────── */
+    .sticky-cta-bar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--cream);
+      border-top: 2px solid var(--purple-light);
+      box-shadow: 0 -4px 24px rgba(107, 76, 163, 0.15);
+      z-index: 400;
+      transform: translateY(100%);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      padding: 12px 24px;
+    }
+    .sticky-cta-bar.is-visible {
+      transform: translateY(0);
+    }
+    .sticky-cta-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .sticky-cta-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .sticky-cta-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.2;
+    }
+    .sticky-cta-value {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.3;
+    }
+    .sticky-cta-btn {
+      flex-shrink: 0;
+      padding: 0.65rem 1.5rem !important;
+      font-size: 0.875rem !important;
+    }
+    @media (max-width: 480px) {
+      .sticky-cta-text { display: none; }
+      .sticky-cta-btn { width: 100%; justify-content: center; }
+    }
+
+    /* ─── Who For list: more breathing room between items ─────────────────── */
+    .who-items-list {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .who-item {
+      padding: 18px 0;
+    }
   </style>
 </head>
 <body>
@@ -1244,14 +1411,16 @@
 
         <article class="pw-benefits__card">
           <div class="pw-benefits__icon-wrap" aria-hidden="true">
-            <svg class="pw-benefits__icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="20" cy="10" r="4" stroke="currentColor" stroke-width="2" fill="none"/>
-              <line x1="20" y1="14" x2="20" y2="34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M10 20 C10 20 10 32 20 32 C30 32 30 20 30 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
-              <line x1="14" y1="20" x2="26" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <line x1="10" y1="34" x2="14" y2="31" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <line x1="30" y1="34" x2="26" y2="31" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+            <div class="pw-benefits__icon-circle">
+              <svg class="pw-benefits__icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="10" r="4" stroke="currentColor" stroke-width="2" fill="none"/>
+                <line x1="20" y1="14" x2="20" y2="34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M10 20 C10 20 10 32 20 32 C30 32 30 20 30 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+                <line x1="14" y1="20" x2="26" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <line x1="10" y1="34" x2="14" y2="31" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <line x1="30" y1="34" x2="26" y2="31" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
           </div>
           <p class="pw-eyebrow" style="margin: 0 0 6px;">Phase 1 &middot; Look Back</p>
           <h3 class="pw-benefits__card-headline">Become a grounded parent your teen turns to</h3>
@@ -1260,16 +1429,18 @@
 
         <article class="pw-benefits__card">
           <div class="pw-benefits__icon-wrap" aria-hidden="true">
-            <svg class="pw-benefits__icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 34 L20 22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M20 22 C20 22 13 22 11 18 C9 14 10 9 14 8 C15 7.5 16 8 16 8 C16 8 15 6 17 5.5 C19 5 20 7 20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              <path d="M11 16 C9.5 16 9 14.5 10 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M13 10 C12 9 12.5 7.5 14 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M20 22 C20 22 27 22 29 18 C31 14 30 9 26 8 C25 7.5 24 8 24 8 C24 8 25 6 23 5.5 C21 5 20 7 20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              <path d="M29 16 C30.5 16 31 14.5 30 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M27 10 C28 9 27.5 7.5 26 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              <path d="M16 34 C16 34 14 34 14 32 C14 30 16 30 16 30 L24 30 C24 30 26 30 26 32 C26 34 24 34 24 34 Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
-            </svg>
+            <div class="pw-benefits__icon-circle">
+              <svg class="pw-benefits__icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 34 L20 22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M20 22 C20 22 13 22 11 18 C9 14 10 9 14 8 C15 7.5 16 8 16 8 C16 8 15 6 17 5.5 C19 5 20 7 20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M11 16 C9.5 16 9 14.5 10 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M13 10 C12 9 12.5 7.5 14 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M20 22 C20 22 27 22 29 18 C31 14 30 9 26 8 C25 7.5 24 8 24 8 C24 8 25 6 23 5.5 C21 5 20 7 20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M29 16 C30.5 16 31 14.5 30 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M27 10 C28 9 27.5 7.5 26 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M16 34 C16 34 14 34 14 32 C14 30 16 30 16 30 L24 30 C24 30 26 30 26 32 C26 34 24 34 24 34 Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </div>
           </div>
           <p class="pw-eyebrow" style="margin: 0 0 6px;">Phase 2 &middot; Look at Now</p>
           <h3 class="pw-benefits__card-headline">Understand what&rsquo;s happening during adolescence</h3>
@@ -1278,13 +1449,15 @@
 
         <article class="pw-benefits__card">
           <div class="pw-benefits__icon-wrap" aria-hidden="true">
-            <svg class="pw-benefits__icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 36 L20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <path d="M20 26 C20 26 13 26 11 20 C11 20 15 16 20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              <path d="M20 22 C20 22 27 20 29 14 C29 14 25 10 20 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              <path d="M13 36 Q20 33 27 36" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
-              <circle cx="20" cy="12" r="2.5" stroke="currentColor" stroke-width="2" fill="none"/>
-            </svg>
+            <div class="pw-benefits__icon-circle">
+              <svg class="pw-benefits__icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 36 L20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M20 26 C20 26 13 26 11 20 C11 20 15 16 20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M20 22 C20 22 27 20 29 14 C29 14 25 10 20 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M13 36 Q20 33 27 36" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+                <circle cx="20" cy="12" r="2.5" stroke="currentColor" stroke-width="2" fill="none"/>
+              </svg>
+            </div>
           </div>
           <p class="pw-eyebrow" style="margin: 0 0 6px;">Phase 3 &middot; Look Forward</p>
           <h3 class="pw-benefits__card-headline">Give them resilience they carry for life</h3>
@@ -1374,9 +1547,10 @@
           <p>This book gives you everything you need to understand why your teen is pulling away, what is really driving your emotional reactions, and how to become the kind of parent whose presence is more compelling than any screen. It shows you how to build the foundation your teen launches from &mdash; and how to support the sovereign expression that turns their security into lasting self-trust.</p>
           <p>It is short. It is direct. It is built on science, not opinions.</p>
           <p>You can read it in a weekend and start applying it immediately.</p>
-          <div style="display: inline-block; background: var(--gradient-tint); border: 2px solid var(--purple-light); border-radius: var(--radius-md); padding: 16px 32px; margin-top: 8px; text-align: center;">
-            <p style="font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: var(--purple); margin: 0; line-height: 1;">$7</p>
-            <p style="font-size: var(--text-sm); color: var(--text-secondary); margin: 4px 0 0;">Complete book + both bonuses &middot; Instant digital delivery</p>
+          <div class="offer-price-card">
+            <p class="offer-price-label">Only</p>
+            <p class="offer-price-amount">$7</p>
+            <p class="offer-price-sub">Complete book + both bonuses &middot; Instant digital delivery</p>
           </div>
         </div>
       </div>
@@ -1512,11 +1686,13 @@
   <section class="pw-section pw-reveal">
     <div class="pw-container-narrow">
       <h2 class="pw-heading" style="text-align: center;">This Book Is for You If...</h2>
-      <div class="who-item"><span class="arrow"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.5 4L11.5 9L6.5 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You have a teen or pre-teen and you can feel the distance growing between you</span></div>
-      <div class="who-item"><span class="arrow"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.5 4L11.5 9L6.5 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You find yourself reacting emotionally and then regretting it, and you do not know why</span></div>
-      <div class="who-item"><span class="arrow"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.5 4L11.5 9L6.5 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You have read other parenting books that told you what to <em>do</em> but never addressed who you need to <em>become</em></span></div>
-      <div class="who-item"><span class="arrow"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.5 4L11.5 9L6.5 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You want a relationship with your adult child built on trust, not obligation</span></div>
-      <div class="who-item"><span class="arrow"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.5 4L11.5 9L6.5 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You are willing to look at your own story honestly, because you know that is where the real work begins</span></div>
+      <div class="who-items-list">
+        <div class="who-item"><span class="arrow"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.5 4L11.5 9L6.5 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You have a teen or pre-teen and you can feel the distance growing between you</span></div>
+        <div class="who-item"><span class="arrow"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.5 4L11.5 9L6.5 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You find yourself reacting emotionally and then regretting it, and you do not know why</span></div>
+        <div class="who-item"><span class="arrow"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.5 4L11.5 9L6.5 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You have read other parenting books that told you what to <em>do</em> but never addressed who you need to <em>become</em></span></div>
+        <div class="who-item"><span class="arrow"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.5 4L11.5 9L6.5 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You want a relationship with your adult child built on trust, not obligation</span></div>
+        <div class="who-item"><span class="arrow"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.5 4L11.5 9L6.5 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You are willing to look at your own story honestly, because you know that is where the real work begins</span></div>
+      </div>
     </div>
   </section>
 
@@ -1780,6 +1956,35 @@
         });
       }
     });
+  </script>
+
+  <!-- Sticky CTA bar -->
+  <div id="stickyCtaBar" class="sticky-cta-bar" aria-hidden="true">
+    <div class="sticky-cta-inner">
+      <div class="sticky-cta-text">
+        <span class="sticky-cta-title">A Parent&rsquo;s Guide</span>
+        <span class="sticky-cta-value">Science-backed security for your teen &middot; Just $7</span>
+      </div>
+      <a href="javascript:void(0)" onclick="openCart()" class="pw-btn pw-btn-gold sticky-cta-btn">Get the Book &raquo;</a>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var bar  = document.getElementById('stickyCtaBar');
+      var hero = document.querySelector('.pw-hero');
+      if (!bar || !hero) return;
+      function onScroll() {
+        if (hero.getBoundingClientRect().bottom < 0) {
+          bar.classList.add('is-visible');
+          bar.removeAttribute('aria-hidden');
+        } else {
+          bar.classList.remove('is-visible');
+          bar.setAttribute('aria-hidden', 'true');
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
   </script>
 
   <!-- icons -->

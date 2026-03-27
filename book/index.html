@@ -915,10 +915,27 @@
         <div class="cart-product">
           <img src="../assets/images/bookcover.png" alt="Book Cover">
           <div class="cart-product-info">
-            <p class="cart-product-title">A Parent's Guide: How to Create Security During Adolescence</p>
-            <p class="cart-product-sub">Digital Book + 2 Free Bonuses</p>
+            <p class="cart-product-title">A Parent's Quick Guide: How to Create Security During Adolescence</p>
+            <p class="cart-product-sub">Digital Book</p>
           </div>
-          <span class="cart-product-price">$4.99</span>
+          <span class="cart-product-price">$7</span>
+        </div>
+
+        <!-- Bonus line items -->
+        <div class="cart-product">
+          <div class="cart-product-info" style="padding-left: 4px;">
+            <p class="cart-product-title" style="font-size:14px;">Bonus: Global Circle of Secure Parents (1 month)</p>
+            <p class="cart-product-sub">Free ($47 value)</p>
+          </div>
+          <span class="cart-product-price" style="font-size:15px; color: var(--text-secondary); text-decoration: line-through; opacity: 0.45;">$47</span>
+        </div>
+
+        <div class="cart-product" style="border-bottom: none;">
+          <div class="cart-product-info" style="padding-left: 4px;">
+            <p class="cart-product-title" style="font-size:14px;">Bonus: ParentWise Short Pathway</p>
+            <p class="cart-product-sub">Free ($97 value)</p>
+          </div>
+          <span class="cart-product-price" style="font-size:15px; color: var(--text-secondary); text-decoration: line-through; opacity: 0.45;">$97</span>
         </div>
 
         <!-- Order Bump -->
@@ -927,10 +944,11 @@
             <input type="checkbox" id="bumpCheckbox" onchange="updateTotal()">
             <div class="bump-content">
               <div class="bump-top">
-                <span class="bump-badge">Add-On Offer</span>
+                <span class="bump-badge">One-Time Add-On</span>
               </div>
-              <p><strong>Yes! Add 6 Months in the Global Circle of Secure Parents</strong> — a private community of parents doing the inner work together. Weekly discussions, live Q&As, and ongoing accountability.</p>
-              <p class="bump-price">Just $47 more <span class="bump-original">(normally $97)</span></p>
+              <p><strong>Add 6 months in the Global Circle</strong></p>
+              <p>Continue your momentum with weekly community sessions</p>
+              <p class="bump-price">$147 today — 50% off <span class="bump-original">(usually $294)</span></p>
             </div>
           </label>
         </div>
@@ -974,7 +992,7 @@
         <!-- Order Total -->
         <div class="cart-total-row">
           <span class="cart-total-label">Order Total</span>
-          <span class="cart-total-price" id="cartTotalPrice">$4.99</span>
+          <span class="cart-total-price" id="cartTotalPrice">$7</span>
         </div>
 
         <!-- Buy Button -->
@@ -1056,7 +1074,7 @@
 
     function updateTotal() {
       var bump = document.getElementById('bumpCheckbox').checked;
-      var total = bump ? '$51.99' : '$4.99';
+      var total = bump ? '$154' : '$7';
       document.getElementById('cartTotalPrice').textContent = total;
     }
 

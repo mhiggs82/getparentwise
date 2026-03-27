@@ -1066,12 +1066,111 @@
       .cart-buy-btn { width: calc(100% - 36px); margin-left: 18px; margin-right: 18px; }
       .cart-bump { margin-left: 18px; margin-right: 18px; }
     }
+
+    /* ─── 3S+1 Framework Cards ──────────────────────────────────────────────── */
+    .framework-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-sm);
+      max-width: 640px;
+      margin: 0 auto var(--space-sm);
+    }
+
+    .framework-card {
+      background: var(--cream);
+      border-radius: var(--radius-md);
+      padding: var(--space-sm) calc(var(--space-sm) * 1.25);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .framework-card__label {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--purple);
+      line-height: 1;
+    }
+
+    .framework-card__title {
+      font-weight: 600;
+      font-size: var(--text-sm);
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .framework-card__body {
+      font-size: var(--text-xs);
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .framework-card--gold {
+      background: linear-gradient(135deg, rgba(201,169,110,0.14) 0%, rgba(201,169,110,0.06) 100%);
+      border: 2px solid var(--accent-gold);
+      grid-column: 1 / -1;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-md);
+    }
+
+    .framework-card--gold .framework-card__label {
+      color: var(--accent-gold);
+      flex-shrink: 0;
+      font-size: 1.8rem;
+      padding-top: 2px;
+    }
+
+    .framework-card--gold .framework-card__title { font-size: var(--text-base); }
+    .framework-card--gold .framework-card__body  { font-size: var(--text-sm); }
+
+    @media (max-width: 560px) {
+      .framework-grid { grid-template-columns: 1fr; }
+      .framework-card--gold { flex-direction: column; }
+    }
+
+    /* ─── Even If callout list ──────────────────────────────────────────────── */
+    .evenif-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    .evenif-item {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-md);
+      padding: var(--space-sm) var(--space-md);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .evenif-item strong {
+      display: block;
+      font-size: var(--text-base);
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .evenif-item p {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* ─── Who For SVG arrow ─────────────────────────────────────────────────── */
+    .who-item .arrow { display: flex; align-items: center; flex-shrink: 0; margin-top: 2px; font-size: inherit; }
+    .who-item .arrow svg { width: 18px; height: 18px; color: var(--accent-gold); }
   </style>
 </head>
 <body>
 
   <!-- TOP BAR -->
-  <div class="pw-top-bar">New Book for Multinational Entrepreneurial Parents of Teens: How to</div>
+  <div class="pw-top-bar">New Book for Multinational Entrepreneurial Parents of Teens</div>
 
   <!-- HERO -->
   <section class="pw-hero" aria-labelledby="pw-hero-headline">
@@ -1089,6 +1188,7 @@
 
       <!-- LEFT: Text content -->
       <div class="pw-hero__content">
+        <p class="pw-hero__eyebrow">A Parent&rsquo;s Guide &middot; How to Create Security During Adolescence</p>
         <h1 class="pw-hero__headline" id="pw-hero-headline">
           Build something that lasts in your family.
         </h1>
@@ -1101,9 +1201,7 @@
           &ldquo;Secure Parents Create Secure Teens.&nbsp;Secure Teens Create a&nbsp;Secure&nbsp;Future.&rdquo;
         </blockquote>
 
-        <button class="pw-hero__cta" id="open-order-form" type="button" onclick="openCart()">
-          Get the Book + Bonuses
-        </button>
+        <a href="javascript:void(0)" onclick="openCart()" class="pw-btn pw-btn-gold" id="open-order-form">Get the Book + Bonuses &raquo;</a>
       </div>
 
       <!-- RIGHT: Book cover -->
@@ -1128,6 +1226,7 @@
   <!-- CTA 1 -->
   <section class="pw-section-white" style="padding: 32px 24px; text-align: center;">
     <a href="javascript:void(0)" onclick="openCart()" class="pw-btn pw-btn-gold">Order Now &raquo;</a>
+    <p style="margin-top: 10px; font-size: 13px; color: var(--text-secondary); opacity: 0.75;">$7 &middot; Instant digital delivery &middot; 365-day guarantee &middot; Keep all bonuses</p>
   </section>
 
   <!-- BENEFITS -->
@@ -1216,6 +1315,19 @@
     </div>
   </section>
 
+  <!-- AUTHOR CREDIBILITY -->
+  <section class="pw-section pw-reveal">
+    <div class="pw-container-narrow">
+      <div class="authority-header">
+        <span class="authority-name">M. Aurelius Higgs</span>
+        <span class="authority-sep"></span>
+        <span class="authority-title">Founder of ParentWise</span>
+      </div>
+      <p class="authority-credentials">20+ years as an international educator working with families across cultures.</p>
+      <p>The research is clear. Books like <span class="book-reference">Parenting from the Inside Out</span> by Daniel J. Siegel and Mary Hartzell, and <span class="book-reference">The Breakthrough Years</span> by Ellen Galinsky lay the foundation. What they do not address is the fourth step &mdash; the one that turns security into lasting self-trust. That gap is what this book closes.</p>
+    </div>
+  </section>
+
   <!-- 3S+1 FRAMEWORK -->
   <section class="pw-section pw-reveal">
     <div class="pw-container-narrow">
@@ -1226,31 +1338,30 @@
         This book introduces the 3S+1 framework: the fourth element most
         approaches miss entirely, and the one that builds lasting inner security.
       </p>
-      <div style="display: flex; flex-direction: column; gap: 12px; max-width: 480px; margin: 0 auto;">
-        <div style="display: flex; gap: 16px; align-items: baseline;">
-          <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--purple); flex-shrink: 0;">S1</span>
-          <p style="margin: 0;"><strong>Safe</strong> &mdash; a physical and emotional environment free from threat</p>
-        </div>
-        <div style="display: flex; gap: 16px; align-items: baseline;">
-          <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--purple); flex-shrink: 0;">S2</span>
-          <p style="margin: 0;"><strong>Seen</strong> &mdash; genuinely known and understood</p>
-        </div>
-        <div style="display: flex; gap: 16px; align-items: baseline;">
-          <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--purple); flex-shrink: 0;">S3</span>
-          <p style="margin: 0;"><strong>Soothed</strong> &mdash; supported through distress and dysregulation</p>
-        </div>
-        <div style="display: flex; gap: 16px; align-items: baseline; margin-top: 8px; padding-top: 16px; border-top: 1px solid var(--divider);">
-          <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--accent-gold); flex-shrink: 0;">+1</span>
-          <p style="margin: 0;"><strong>Sovereign Expression</strong> &mdash; supported in creating something of their own. The step that turns security into self-trust.</p>
-        </div>
+      <div class="framework-grid">
+        <article class="framework-card">
+          <span class="framework-card__label">S1</span>
+          <p class="framework-card__title">Safe</p>
+          <p class="framework-card__body">A physical and emotional environment free from threat</p>
+        </article>
+        <article class="framework-card">
+          <span class="framework-card__label">S2</span>
+          <p class="framework-card__title">Seen</p>
+          <p class="framework-card__body">Genuinely known and understood</p>
+        </article>
+        <article class="framework-card">
+          <span class="framework-card__label">S3</span>
+          <p class="framework-card__title">Soothed</p>
+          <p class="framework-card__body">Supported through distress and dysregulation</p>
+        </article>
+        <article class="framework-card framework-card--gold">
+          <span class="framework-card__label">+1</span>
+          <div>
+            <p class="framework-card__title">Sovereign Expression</p>
+            <p class="framework-card__body">Supported in creating something of their own. The step that turns security into self-trust &mdash; and the element most approaches miss entirely.</p>
+          </div>
+        </article>
       </div>
-    </div>
-  </section>
-
-  <!-- DISCLAIMER -->
-  <section class="pw-section" style="padding-top: 12px; padding-bottom: 12px;">
-    <div class="pw-container-narrow">
-      <p class="disclaimer" style="font-size: 12.5px; opacity: 0.7; text-align: center;">DISCLAIMER: This book does not replace professional therapy or counseling. It is an educational resource grounded in attachment science for parents who want to do the inner work of becoming more secure. Results depend on your willingness to engage honestly with the material.</p>
     </div>
   </section>
 
@@ -1259,12 +1370,14 @@
     <div class="pw-container-narrow">
       <h2 class="pw-heading" style="text-align: center;">Get the Complete Guide on Creating Security During Adolescence</h2>
       <div class="offer-body" style="display: flex; flex-direction: column; align-items: center; gap: 28px;">
-        <img src="../assets/images/bookcover.png" alt="Book Cover" style="width: 180px; height: auto; border-radius: 6px; box-shadow: 0 16px 48px rgba(107,76,163,0.25), 0 4px 14px rgba(0,0,0,0.12); flex-shrink: 0; transform: perspective(800px) rotateY(-3deg);">
         <div class="offer-text">
           <p>This book gives you everything you need to understand why your teen is pulling away, what is really driving your emotional reactions, and how to become the kind of parent whose presence is more compelling than any screen. It shows you how to build the foundation your teen launches from &mdash; and how to support the sovereign expression that turns their security into lasting self-trust.</p>
           <p>It is short. It is direct. It is built on science, not opinions.</p>
           <p>You can read it in a weekend and start applying it immediately.</p>
-          <p class="price-line" style="font-size: 24px; font-weight: 700; color: var(--purple); font-family: 'Cormorant Garamond', serif;">It is only $7.</p>
+          <div style="display: inline-block; background: var(--gradient-tint); border: 2px solid var(--purple-light); border-radius: var(--radius-md); padding: 16px 32px; margin-top: 8px; text-align: center;">
+            <p style="font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: var(--purple); margin: 0; line-height: 1;">$7</p>
+            <p style="font-size: var(--text-sm); color: var(--text-secondary); margin: 4px 0 0;">Complete book + both bonuses &middot; Instant digital delivery</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1273,17 +1386,31 @@
   <!-- CTA 2 -->
   <section class="pw-section-white" style="padding: 32px 24px; text-align: center;">
     <a href="javascript:void(0)" onclick="openCart()" class="pw-btn pw-btn-gold">Get the Book &raquo;</a>
+    <p style="margin-top: 10px; font-size: 13px; color: var(--text-secondary); opacity: 0.75;">$7 &middot; Instant digital delivery &middot; 365-day guarantee &middot; Keep all bonuses</p>
   </section>
 
   <!-- EVEN IF -->
-  <section class="pw-section pw-reveal">
+  <section class="pw-section pw-reveal" style="background: var(--bg-tint);">
     <div class="pw-container-narrow">
-      <h2 class="pw-heading" style="text-align: center;">This Works Even If You Think It Is "Too Late" to Change Your Relationship With Your Teen</h2>
-      <p>You might be thinking that you will need to overhaul your entire parenting approach, have awkward confrontations, or somehow become a different person in order to rebuild your relationship with your teenager.</p>
-      <p>Actually, the opposite is true.</p>
-      <p>This book is not about adding more strategies to your already-overwhelmed plate. It is about understanding one thing: <strong>the most powerful change you can make for your teenager starts inside of you.</strong></p>
-      <p>You do not need to be a perfect parent. You do not need a psychology degree. You do not need your teen's cooperation. You just need the willingness to look honestly at your own story and make sense of it.</p>
-      <p>The inner work required is simple. Now you have a community to practice it.</p>
+      <h2 class="pw-heading" style="text-align: center;">This Works Even If You Think It Is &ldquo;Too Late&rdquo; to Change Your Relationship With Your Teen</h2>
+      <div class="evenif-list">
+        <div class="evenif-item">
+          <strong>&ldquo;I&rsquo;ll need to overhaul my entire parenting approach.&rdquo;</strong>
+          <p>Actually the opposite is true. This is not about adding more strategies. It is about understanding one thing: the most powerful change you can make for your teenager starts inside of you.</p>
+        </div>
+        <div class="evenif-item">
+          <strong>&ldquo;I need my teen to cooperate for this to work.&rdquo;</strong>
+          <p>You do not need their cooperation. You do not need a psychology degree. You just need the willingness to look honestly at your own story and make sense of it.</p>
+        </div>
+        <div class="evenif-item">
+          <strong>&ldquo;It&rsquo;s too late &mdash; the damage is already done.&rdquo;</strong>
+          <p>Because this approach starts with you, not them, the timing does not matter. Any moment you choose to become a more secure parent creates the conditions for a more secure relationship.</p>
+        </div>
+        <div class="evenif-item">
+          <strong>&ldquo;Every other parenting book has failed me.&rdquo;</strong>
+          <p>This one is different because it does not just tell you what to <em>do</em>. It addresses who you need to <em>become</em>. The inner work required is simple. Now you have a community to practice it in.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1385,11 +1512,11 @@
   <section class="pw-section pw-reveal">
     <div class="pw-container-narrow">
       <h2 class="pw-heading" style="text-align: center;">This Book Is for You If...</h2>
-      <div class="who-item"><span class="arrow">&rsaquo;</span><span>You have a teen or pre-teen and you can feel the distance growing between you</span></div>
-      <div class="who-item"><span class="arrow">&rsaquo;</span><span>You find yourself reacting emotionally and then regretting it, and you do not know why</span></div>
-      <div class="who-item"><span class="arrow">&rsaquo;</span><span>You have read other parenting books that told you what to <em>do</em> but never addressed who you need to <em>become</em></span></div>
-      <div class="who-item"><span class="arrow">&rsaquo;</span><span>You want a relationship with your adult child built on trust, not obligation</span></div>
-      <div class="who-item"><span class="arrow">&rsaquo;</span><span>You are willing to look at your own story honestly, because you know that is where the real work begins</span></div>
+      <div class="who-item"><span class="arrow"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.5 4L11.5 9L6.5 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You have a teen or pre-teen and you can feel the distance growing between you</span></div>
+      <div class="who-item"><span class="arrow"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.5 4L11.5 9L6.5 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You find yourself reacting emotionally and then regretting it, and you do not know why</span></div>
+      <div class="who-item"><span class="arrow"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.5 4L11.5 9L6.5 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You have read other parenting books that told you what to <em>do</em> but never addressed who you need to <em>become</em></span></div>
+      <div class="who-item"><span class="arrow"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.5 4L11.5 9L6.5 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You want a relationship with your adult child built on trust, not obligation</span></div>
+      <div class="who-item"><span class="arrow"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.5 4L11.5 9L6.5 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>You are willing to look at your own story honestly, because you know that is where the real work begins</span></div>
     </div>
   </section>
 
@@ -1422,6 +1549,7 @@
   <!-- FINAL FINAL CTA -->
   <section class="pw-section-white" style="padding-bottom: 24px; text-align: center;">
     <a href="javascript:void(0)" onclick="openCart()" class="pw-btn pw-btn-gold">Get the Book &raquo;</a>
+    <p style="margin-top: 10px; font-size: 13px; color: var(--text-secondary); opacity: 0.75;">$7 &middot; Instant digital delivery &middot; 365-day guarantee &middot; Keep all bonuses</p>
   </section>
 
   <!-- FOOTER -->
@@ -1429,6 +1557,7 @@
     <div class="pw-footer-name">Parent<span>Wise</span></div>
     <p class="pw-footer-tagline">&copy; 2026 ParentWise by M. Aurelius Higgs. All rights reserved.</p>
     <p class="pw-footer-copy" style="margin-top:6px;"><a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Use</a></p>
+    <p class="pw-footer-copy" style="margin-top: 12px; font-size: 11.5px; opacity: 0.55; max-width: 640px; margin-left: auto; margin-right: auto;">Disclaimer: This book does not replace professional therapy or counseling. It is an educational resource grounded in attachment science for parents who want to do the inner work of becoming more secure. Results depend on your willingness to engage honestly with the material.</p>
   </footer>
 
 
@@ -1577,11 +1706,6 @@
     </div><!-- /viewSuccess -->
 
   </div><!-- /cartPanel -->
-
-  <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
-    <span class="icon-sun" aria-hidden="true">☀</span>
-    <span class="icon-moon" aria-hidden="true">☽</span>
-  </button>
 
   <script>
     const cartPanel   = document.getElementById('cartPanel');

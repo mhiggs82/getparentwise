@@ -1,0 +1,294 @@
+<style>
+  /* ─── ParentWise Bonuses Section ─────────────────────────────────────────── */
+
+  .pw-bonuses {
+    background-color: var(--color-white);
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .pw-bonuses__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  /* ── Section header ───────────────────────────────────────────────── */
+  .pw-bonuses__header {
+    text-align: center;
+  }
+
+  .pw-bonuses__title {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--color-black);
+    margin: 0;
+  }
+
+  .pw-bonuses__title-rule {
+    display: block;
+    width: 48px;
+    height: 3px;
+    background-color: var(--color-purple);
+    border-radius: var(--radius-pill);
+    margin: var(--space-sm) auto 0;
+  }
+
+  /* ── Two-column bonus card grid ───────────────────────────────────── */
+  .pw-bonuses__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+
+  /* ── Shared card base ─────────────────────────────────────────────── */
+  .pw-bonuses__card {
+    border-radius: var(--radius-lg);
+    padding: var(--space-md) calc(var(--space-md) * 1.25);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+  }
+
+  .pw-bonuses__card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-strong);
+  }
+
+  /* ── Card 1: purple ───────────────────────────────────────────────── */
+  .pw-bonuses__card--purple {
+    background-color: var(--color-purple);
+    color: var(--color-cream);
+  }
+
+  .pw-bonuses__card--purple .pw-bonuses__badge {
+    background-color: rgba(245, 241, 232, 0.18);
+    color: var(--color-cream);
+    border: 1px solid rgba(245, 241, 232, 0.35);
+  }
+
+  .pw-bonuses__card--purple .pw-bonuses__card-title {
+    color: var(--color-cream);
+  }
+
+  .pw-bonuses__card--purple .pw-bonuses__card-body {
+    color: rgba(245, 241, 232, 0.82);
+  }
+
+  /* ── Card 2: cream ────────────────────────────────────────────────── */
+  .pw-bonuses__card--cream {
+    background-color: var(--color-cream);
+    color: var(--color-black);
+    border: 2px solid var(--color-purple);
+  }
+
+  .pw-bonuses__card--cream .pw-bonuses__badge {
+    background-color: var(--color-purple);
+    color: var(--color-cream);
+    border: 1px solid var(--color-purple-dark);
+  }
+
+  .pw-bonuses__card--cream .pw-bonuses__card-title {
+    color: var(--color-black);
+  }
+
+  .pw-bonuses__card--cream .pw-bonuses__card-body {
+    color: var(--color-black);
+    opacity: 0.75;
+  }
+
+  /* ── Card internals ───────────────────────────────────────────────── */
+  .pw-bonuses__badge {
+    display: inline-flex;
+    align-self: flex-start;
+    font-family: var(--font-primary);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35em 0.85em;
+    border-radius: var(--radius-pill);
+  }
+
+  .pw-bonuses__card-title {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .pw-bonuses__card-body {
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
+    font-weight: 400;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ── Trust strip ──────────────────────────────────────────────────── */
+  .pw-bonuses__trust {
+    background-color: #F0EDE8;
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) var(--space-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  .pw-bonuses__trust-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: calc(var(--space-xs) * 0.75) var(--space-sm);
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-black);
+    opacity: 0.8;
+    text-align: center;
+  }
+
+  .pw-bonuses__trust-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: var(--color-purple);
+  }
+
+  .pw-bonuses__trust-divider {
+    width: 1px;
+    height: 28px;
+    background-color: rgba(107, 76, 163, 0.25);
+    flex-shrink: 0;
+  }
+
+  /* ── Responsive ───────────────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .pw-bonuses {
+      padding: var(--space-lg) var(--space-sm);
+    }
+
+    .pw-bonuses__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .pw-bonuses__trust {
+      flex-direction: column;
+      gap: var(--space-xs);
+      padding: var(--space-sm);
+    }
+
+    .pw-bonuses__trust-divider {
+      width: 32px;
+      height: 1px;
+    }
+
+    .pw-bonuses__title {
+      font-size: var(--text-2xl);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .pw-bonuses__card {
+      padding: var(--space-md);
+    }
+  }
+</style>
+
+<section class="pw-bonuses" aria-labelledby="pw-bonuses-title">
+  <div class="pw-bonuses__inner">
+
+    <!-- Section header -->
+    <header class="pw-bonuses__header">
+      <h2 class="pw-bonuses__title" id="pw-bonuses-title">
+        Everything included when you get the book today
+      </h2>
+      <span class="pw-bonuses__title-rule" aria-hidden="true"></span>
+    </header>
+
+    <!-- Two bonus cards -->
+    <div class="pw-bonuses__grid">
+
+      <!-- Bonus Card 1: Purple -->
+      <article class="pw-bonuses__card pw-bonuses__card--purple">
+        <span class="pw-bonuses__badge">Free Bonus #1 &mdash; Value: $47</span>
+        <h3 class="pw-bonuses__card-title">
+          1&nbsp;Month VIP in The Global Circle of Secure&nbsp;Parents
+        </h3>
+        <p class="pw-bonuses__card-body">
+          Join a private community of entrepreneurial parents from around the world.
+          Weekly sessions to share challenges, breakthroughs, and strategies &mdash;
+          with people who understand your life.
+        </p>
+      </article>
+
+      <!-- Bonus Card 2: Cream -->
+      <article class="pw-bonuses__card pw-bonuses__card--cream">
+        <span class="pw-bonuses__badge">Free Bonus #2 &mdash; Value: $97</span>
+        <h3 class="pw-bonuses__card-title">
+          ParentWise Short Pathway <span style="white-space:nowrap">(6&nbsp;Sessions)</span>
+        </h3>
+        <p class="pw-bonuses__card-body">
+          A condensed presentation of how to create a secure foundation your teen can
+          launch from &mdash; in 3&nbsp;weeks. Includes worksheets and book summaries.
+        </p>
+      </article>
+
+    </div>
+
+    <!-- Trust strip -->
+    <aside class="pw-bonuses__trust" aria-label="Trust signals">
+
+      <div class="pw-bonuses__trust-item">
+        <!-- Checkmark / flask icon: science-backed -->
+        <svg class="pw-bonuses__trust-icon" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M6 2 L6 9 L3 14 C2.5 15 3.2 16 4.4 16 L13.6 16 C14.8 16 15.5 15 15 14 L12 9 L12 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="5" y1="2" x2="13" y2="2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="7.5" cy="12" r="1" fill="currentColor"/>
+          <circle cx="11" cy="13.5" r="0.75" fill="currentColor"/>
+        </svg>
+        Science-backed methodology
+      </div>
+
+      <span class="pw-bonuses__trust-divider" aria-hidden="true"></span>
+
+      <div class="pw-bonuses__trust-item">
+        <!-- Globe icon: international educator -->
+        <svg class="pw-bonuses__trust-icon" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M9 2 C9 2 6 5.5 6 9 C6 12.5 9 16 9 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M9 2 C9 2 12 5.5 12 9 C12 12.5 9 16 9 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="2" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M3 5.5 Q9 7.5 15 5.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+          <path d="M3 12.5 Q9 10.5 15 12.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+        </svg>
+        Built by an international educator
+      </div>
+
+      <span class="pw-bonuses__trust-divider" aria-hidden="true"></span>
+
+      <div class="pw-bonuses__trust-item">
+        <!-- Map pin / people cluster: 12+ countries -->
+        <svg class="pw-bonuses__trust-icon" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="6" cy="5" r="2" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="12" cy="5" r="2" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M1 15 C1 12 3.5 10 6 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M17 15 C17 12 14.5 10 12 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="9" cy="8" r="2.25" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M4.5 15 C4.5 12.5 6.5 11 9 11 C11.5 11 13.5 12.5 13.5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Used by parents across 12+ countries
+      </div>
+
+    </aside>
+
+  </div>
+</section>

@@ -17,31 +17,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Page-specific overrides for Hero Book */
-    .hero-book img {
-      width: 220px;
-      height: auto;
-      border-radius: 6px;
-      box-shadow:
-        0 2px 0 rgba(255,255,255,0.15),
-        0 20px 60px rgba(0,0,0,0.45),
-        0 8px 20px rgba(0,0,0,0.3);
-      transform: perspective(800px) rotateY(-4deg);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .hero-book img:hover {
-      transform: perspective(800px) rotateY(0deg);
-      box-shadow: 0 24px 70px rgba(0,0,0,0.45), 0 10px 24px rgba(0,0,0,0.3);
-    }
-
-    .hero-text .even-if {
-      font-style: italic;
-      font-size: clamp(14px, 1.8vw, 16px);
-      opacity: 0.65;
-      margin-bottom: 28px;
-    }
-
     /* Transformation before-after tint */
     .transformation .before-after {
       border-left: 4px solid transparent;
@@ -105,14 +80,455 @@
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 600px) {
-      .hero { padding: 44px 20px 56px; }
-      .hero-book img { width: 180px; transform: none; }
       .offer-overview img { transform: none; }
       .final-cta img { transform: none; }
-      .cta-btn { padding: 16px 36px; font-size: 16px; }
-      .bonus-card-body { padding: 20px 22px; }
       .guarantee-badge { width: 100px; height: 100px; }
       .guarantee-badge .pct { font-size: 24px; }
+    }
+
+    /* ── Layout & type tokens for new sections (not in DS) ── */
+    :root {
+      --font-primary: 'DM Sans', sans-serif;
+      --font-display: 'Cormorant Garamond', serif;
+      --text-xs:   clamp(0.75rem, 1.5vw, 0.875rem);
+      --text-sm:   clamp(0.875rem, 1.8vw, 1rem);
+      --text-base: clamp(1rem, 2vw, 1.125rem);
+      --text-lg:   clamp(1.125rem, 2.5vw, 1.375rem);
+      --text-xl:   clamp(1.375rem, 3vw, 1.75rem);
+      --text-2xl:  clamp(1.75rem, 4vw, 2.5rem);
+      --text-3xl:  clamp(2.25rem, 5vw, 3.5rem);
+      --text-4xl:  clamp(3rem, 6vw, 5rem);
+      --space-xs:  0.5rem;
+      --space-sm:  1rem;
+      --space-md:  2rem;
+      --space-lg:  4rem;
+      --space-xl:  8rem;
+      --radius-sm:   4px;
+      --radius-md:   12px;
+      --radius-lg:   24px;
+      --radius-pill: 100px;
+      --shadow-soft:   0 4px 24px rgba(107, 76, 163, 0.12);
+      --shadow-strong: 0 12px 48px rgba(107, 76, 163, 0.24);
+    }
+
+    /* ─── Hero Section ──────────────────────────────────────────────────── */
+
+    .pw-hero {
+      position: relative;
+      background-color: var(--cream);
+      overflow: hidden;
+      padding: var(--space-xl) var(--space-md);
+    }
+
+    .pw-hero__blobs {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .pw-hero__blobs svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .pw-hero__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--space-lg);
+      align-items: center;
+    }
+
+    .pw-hero__content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .pw-hero__eyebrow {
+      font-family: var(--font-primary);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin: 0;
+    }
+
+    .pw-hero__headline {
+      font-family: var(--font-display);
+      font-size: var(--text-4xl);
+      font-weight: 700;
+      line-height: 1.08;
+      color: var(--black);
+      margin: 0;
+    }
+
+    .pw-hero__subheadline {
+      font-family: var(--font-primary);
+      font-size: var(--text-lg);
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--black);
+      opacity: 0.78;
+      max-width: 52ch;
+      margin: 0;
+    }
+
+    .pw-hero__tagline {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--purple-deep);
+      border-left: 3px solid var(--purple-light);
+      padding-left: var(--space-sm);
+      margin: calc(var(--space-xs) / 2) 0;
+    }
+
+    .pw-hero__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: calc(var(--space-sm) / 2);
+      padding: 1rem 2.25rem;
+      background-color: var(--purple);
+      color: var(--cream);
+      font-family: var(--font-primary);
+      font-size: var(--text-base);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      border: none;
+      border-radius: var(--radius-pill);
+      box-shadow: var(--shadow-soft);
+      cursor: pointer;
+      transition: background-color 0.22s ease, box-shadow 0.22s ease, transform 0.18s ease;
+      align-self: flex-start;
+    }
+
+    .pw-hero__cta:hover {
+      background-color: var(--purple-deep);
+      box-shadow: var(--shadow-strong);
+      transform: translateY(-2px);
+    }
+
+    .pw-hero__cta:active {
+      transform: translateY(0);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .pw-hero__book-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .pw-hero__book-img {
+      width: 280px;
+      height: auto;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-strong);
+      transform: perspective(800px) rotateY(-4deg);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .pw-hero__book-img:hover {
+      transform: perspective(800px) rotateY(0deg);
+      box-shadow: 0 24px 70px rgba(107, 76, 163, 0.35);
+    }
+
+    @media (max-width: 768px) {
+      .pw-hero { padding: var(--space-lg) var(--space-sm); }
+
+      .pw-hero__inner {
+        grid-template-columns: 1fr;
+        grid-template-areas: "book" "content";
+        gap: var(--space-md);
+        text-align: center;
+      }
+
+      .pw-hero__book-wrap  { grid-area: book; }
+      .pw-hero__content    { grid-area: content; align-items: center; }
+      .pw-hero__subheadline { max-width: 100%; }
+
+      .pw-hero__tagline {
+        border-left: none;
+        border-top: 2px solid var(--purple-light);
+        padding-left: 0;
+        padding-top: var(--space-xs);
+      }
+
+      .pw-hero__cta { align-self: center; }
+      .pw-hero__book-img { width: 200px; transform: none; }
+    }
+
+    /* ─── Benefits Section ──────────────────────────────────────────────── */
+
+    .pw-benefits {
+      background-color: var(--bg-secondary);
+      padding: var(--space-xl) var(--space-md);
+    }
+
+    .pw-benefits__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .pw-benefits__header {
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+
+    .pw-benefits__title {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--black);
+      margin: 0;
+    }
+
+    .pw-benefits__title-rule {
+      display: block;
+      width: 48px;
+      height: 3px;
+      background-color: var(--purple);
+      border-radius: var(--radius-pill);
+      margin: var(--space-sm) auto 0;
+    }
+
+    .pw-benefits__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+
+    .pw-benefits__card {
+      background-color: var(--cream);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-soft);
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .pw-benefits__card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .pw-benefits__icon-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .pw-benefits__icon {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      color: var(--purple);
+    }
+
+    .pw-benefits__card-headline {
+      font-family: var(--font-primary);
+      font-size: var(--text-lg);
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--black);
+      margin: 0;
+    }
+
+    .pw-benefits__card-body {
+      font-family: var(--font-primary);
+      font-size: var(--text-base);
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+
+    @media (max-width: 900px) {
+      .pw-benefits__grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .pw-benefits { padding: var(--space-lg) var(--space-sm); }
+      .pw-benefits__grid { grid-template-columns: 1fr; }
+      .pw-benefits__title { font-size: var(--text-2xl); }
+    }
+
+    /* ─── Bonuses Section ───────────────────────────────────────────────── */
+
+    .pw-bonuses {
+      background-color: var(--bg-secondary);
+      padding: var(--space-xl) var(--space-md);
+    }
+
+    .pw-bonuses__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .pw-bonuses__header { text-align: center; }
+
+    .pw-bonuses__title {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--black);
+      margin: 0;
+    }
+
+    .pw-bonuses__title-rule {
+      display: block;
+      width: 48px;
+      height: 3px;
+      background-color: var(--purple);
+      border-radius: var(--radius-pill);
+      margin: var(--space-sm) auto 0;
+    }
+
+    .pw-bonuses__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+    }
+
+    .pw-bonuses__card {
+      border-radius: var(--radius-lg);
+      padding: var(--space-md) calc(var(--space-md) * 1.25);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .pw-bonuses__card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .pw-bonuses__card--purple {
+      background-color: var(--purple);
+      color: var(--cream);
+    }
+
+    .pw-bonuses__card--purple .pw-bonuses__badge {
+      background-color: rgba(245, 241, 232, 0.18);
+      color: var(--cream);
+      border: 1px solid rgba(245, 241, 232, 0.35);
+    }
+
+    .pw-bonuses__card--purple .pw-bonuses__card-title { color: var(--cream); }
+    .pw-bonuses__card--purple .pw-bonuses__card-body  { color: rgba(245, 241, 232, 0.82); }
+
+    .pw-bonuses__card--cream {
+      background-color: var(--cream);
+      color: var(--black);
+      border: 2px solid var(--purple);
+    }
+
+    .pw-bonuses__card--cream .pw-bonuses__badge {
+      background-color: var(--purple);
+      color: var(--cream);
+      border: 1px solid var(--purple-deep);
+    }
+
+    .pw-bonuses__card--cream .pw-bonuses__card-title { color: var(--black); }
+    .pw-bonuses__card--cream .pw-bonuses__card-body  { color: var(--text-secondary); opacity: 1; }
+
+    .pw-bonuses__badge {
+      display: inline-flex;
+      align-self: flex-start;
+      font-family: var(--font-primary);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35em 0.85em;
+      border-radius: var(--radius-pill);
+    }
+
+    .pw-bonuses__card-title {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    .pw-bonuses__card-body {
+      font-family: var(--font-primary);
+      font-size: var(--text-base);
+      font-weight: 400;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .pw-bonuses__trust {
+      background-color: var(--bg-tint);
+      border-radius: var(--radius-md);
+      padding: var(--space-sm) var(--space-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .pw-bonuses__trust-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: calc(var(--space-xs) * 0.75) var(--space-sm);
+      font-family: var(--font-primary);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+
+    .pw-bonuses__trust-icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      color: var(--purple);
+    }
+
+    .pw-bonuses__trust-divider {
+      width: 1px;
+      height: 28px;
+      background-color: var(--border);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .pw-bonuses { padding: var(--space-lg) var(--space-sm); }
+      .pw-bonuses__grid { grid-template-columns: 1fr; }
+      .pw-bonuses__trust { flex-direction: column; gap: var(--space-xs); padding: var(--space-sm); }
+      .pw-bonuses__trust-divider { width: 32px; height: 1px; }
+      .pw-bonuses__title { font-size: var(--text-2xl); }
+    }
+
+    @media (max-width: 480px) {
+      .pw-bonuses__card { padding: var(--space-md); }
     }
 
     /* ===== SLIDE-OUT CART ===== */
@@ -658,19 +1074,49 @@
   <div class="pw-top-bar">New Book for Parents of Teens and Pre-Teens Reveals</div>
 
   <!-- HERO -->
-  <section class="pw-hero pw-hero--wave">
-    <div class="pw-container-wide">
-      <div class="hero-inner" style="display: flex; flex-direction: column; align-items: center; gap: 36px;">
-        <div class="hero-book">
-          <img src="../assets/images/bookcover.png" alt="A Parent's Guide: How to Create Security During Adolescence by M. Aurelius Higgs">
-        </div>
-        <div class="hero-text">
-          <h1 class="pw-heading">How to Build a Secure, Connected Relationship With Your Teenager That Lasts a Lifetime</h1>
-          <p class="pw-lead pw-lead--on-dark">The science-backed path to becoming the foundation your teen needs to launch from. By securing yourself from the inside out.</p>
-          <p class="even-if" style="font-style: italic; font-size: clamp(14px, 1.8vw, 16px); opacity: 0.65; margin-bottom: 28px;">...Even if your teen barely talks to you, you feel like you are losing them, or nothing you have tried has worked.</p>
-          <a href="javascript:void(0)" onclick="openCart()" class="pw-btn pw-btn-gold">Get the Book &raquo;</a>
-        </div>
+  <section class="pw-hero" aria-labelledby="pw-hero-headline">
+
+    <!-- Organic blob background shapes -->
+    <div class="pw-hero__blobs" aria-hidden="true">
+      <svg viewBox="0 0 1440 780" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <path d="M-120,80 C60,20 220,180 300,320 C380,460 260,560 160,620 C60,680 -80,640 -160,520 C-240,400 -300,140 -120,80 Z" fill="#6B4CA3" opacity="0.07"/>
+        <path d="M1180,60 C1320,-40 1520,100 1500,280 C1480,460 1340,520 1240,480 C1140,440 1060,320 1080,200 C1100,80 1040,160 1180,60 Z" fill="#6B4CA3" opacity="0.06"/>
+        <path d="M400,680 C500,600 680,640 800,700 C920,760 960,860 840,900 C720,940 560,880 460,820 C360,760 300,760 400,680 Z" fill="#6B4CA3" opacity="0.065"/>
+      </svg>
+    </div>
+
+    <div class="pw-hero__inner">
+
+      <!-- LEFT: Text content -->
+      <div class="pw-hero__content">
+        <p class="pw-hero__eyebrow">M. Aurelius Higgs &middot; ParentWise</p>
+
+        <h1 class="pw-hero__headline" id="pw-hero-headline">
+          The Parenting Book&nbsp;That&nbsp;Starts&nbsp;With&nbsp;You
+        </h1>
+
+        <p class="pw-hero__subheadline">
+          Most parenting books focus on your teen. This one focuses on the
+          source&nbsp;&mdash;&nbsp;you. Because secure parents don&rsquo;t just
+          manage teens. They shape them.
+        </p>
+
+        <blockquote class="pw-hero__tagline">
+          &ldquo;Secure Parents Create Secure Teens.&nbsp;Secure Teens Create a&nbsp;Secure&nbsp;Future.&rdquo;
+        </blockquote>
+
+        <button class="pw-hero__cta" id="open-order-form" type="button" onclick="openCart()">
+          Get the Book + Bonuses
+        </button>
       </div>
+
+      <!-- RIGHT: Book cover -->
+      <div class="pw-hero__book-wrap">
+        <img class="pw-hero__book-img"
+             src="../assets/images/bookcover.png"
+             alt="A Parent's Quick Guide: How to Create Security During Adolescence by M. Aurelius Higgs">
+      </div>
+
     </div>
   </section>
 
@@ -686,6 +1132,69 @@
   <!-- CTA 1 -->
   <section class="pw-section-white" style="padding: 32px 24px; text-align: center;">
     <a href="javascript:void(0)" onclick="openCart()" class="pw-btn pw-btn-gold">Order Now &raquo;</a>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="pw-benefits pw-reveal" aria-labelledby="pw-benefits-title">
+    <div class="pw-benefits__inner">
+
+      <header class="pw-benefits__header">
+        <h2 class="pw-benefits__title" id="pw-benefits-title">
+          What the ParentWise Pathway delivers
+        </h2>
+        <span class="pw-benefits__title-rule" aria-hidden="true"></span>
+      </header>
+
+      <div class="pw-benefits__grid">
+
+        <article class="pw-benefits__card">
+          <div class="pw-benefits__icon-wrap" aria-hidden="true">
+            <svg class="pw-benefits__icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="10" r="4" stroke="currentColor" stroke-width="2" fill="none"/>
+              <line x1="20" y1="14" x2="20" y2="34" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M10 20 C10 20 10 32 20 32 C30 32 30 20 30 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <line x1="14" y1="20" x2="26" y2="20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="10" y1="34" x2="14" y2="31" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <line x1="30" y1="34" x2="26" y2="31" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="pw-benefits__card-headline">Become a grounded parent your teen turns to</h3>
+          <p class="pw-benefits__card-body">Recognize the patterns from your own story that silently drive your parenting. Learn to navigate conflict before it creates lasting distance.</p>
+        </article>
+
+        <article class="pw-benefits__card">
+          <div class="pw-benefits__icon-wrap" aria-hidden="true">
+            <svg class="pw-benefits__icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 34 L20 22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M20 22 C20 22 13 22 11 18 C9 14 10 9 14 8 C15 7.5 16 8 16 8 C16 8 15 6 17 5.5 C19 5 20 7 20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path d="M11 16 C9.5 16 9 14.5 10 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M13 10 C12 9 12.5 7.5 14 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M20 22 C20 22 27 22 29 18 C31 14 30 9 26 8 C25 7.5 24 8 24 8 C24 8 25 6 23 5.5 C21 5 20 7 20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path d="M29 16 C30.5 16 31 14.5 30 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M27 10 C28 9 27.5 7.5 26 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M16 34 C16 34 14 34 14 32 C14 30 16 30 16 30 L24 30 C24 30 26 30 26 32 C26 34 24 34 24 34 Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <h3 class="pw-benefits__card-headline">Understand what&rsquo;s happening during adolescence</h3>
+          <p class="pw-benefits__card-body">Stop misreading their behavior. Start meeting their actual developmental needs, with clarity instead of confusion.</p>
+        </article>
+
+        <article class="pw-benefits__card">
+          <div class="pw-benefits__icon-wrap" aria-hidden="true">
+            <svg class="pw-benefits__icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 36 L20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M20 26 C20 26 13 26 11 20 C11 20 15 16 20 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path d="M20 22 C20 22 27 20 29 14 C29 14 25 10 20 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path d="M13 36 Q20 33 27 36" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <circle cx="20" cy="12" r="2.5" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+          </div>
+          <h3 class="pw-benefits__card-headline">Give them resilience they carry for life</h3>
+          <p class="pw-benefits__card-body">Support your teen&rsquo;s independence without losing the connection. The natural separation of adolescence becomes a launch, not a loss.</p>
+        </article>
+
+      </div>
+    </div>
   </section>
 
   <!-- LETTER OPENING -->
@@ -794,21 +1303,79 @@
   </section>
 
   <!-- BONUSES -->
-  <section class="pw-section-alt pw-reveal">
-    <div class="pw-container">
-      <h2 class="pw-heading" style="text-align: center;">Order Now and Get These 2 Bonuses Free</h2>
-      <div style="display: flex; flex-direction: column; gap: 24px; align-items: center;">
-        <div class="pw-card pw-card-gold" style="max-width: 600px; text-align: left;">
-          <div class="bonus-label" style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.8px; color: var(--accent-gold); margin-bottom: 8px;">Bonus #1</div>
-          <h3 class="pw-heading" style="font-size: 22px;">The ParentWise 10 Commandments Quick-Reference Card</h3>
-          <p>A printable, one-page guide with the 10 core principles of secure parenting during adolescence. Keep it on your fridge, in your journal, or on your phone. When a difficult moment hits with your teen, you will have the right framework within arm's reach instead of reacting from old patterns.</p>
-        </div>
-        <div class="pw-card pw-card-gold" style="max-width: 600px; text-align: left;">
-          <div class="bonus-label" style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.8px; color: var(--accent-gold); margin-bottom: 8px;">Bonus #2</div>
-          <h3 class="pw-heading" style="font-size: 22px;">The Inside-Out Audit Companion Worksheet</h3>
-          <p>A structured, fill-in worksheet that walks you through the self-reflection process described in the book, step by step. This turns the book's concepts into a personal action plan specific to your family, your story, and your teen.</p>
-        </div>
+  <section class="pw-bonuses pw-reveal" aria-labelledby="pw-bonuses-title">
+    <div class="pw-bonuses__inner">
+
+      <header class="pw-bonuses__header">
+        <h2 class="pw-bonuses__title" id="pw-bonuses-title">
+          Everything included when you get the book today
+        </h2>
+        <span class="pw-bonuses__title-rule" aria-hidden="true"></span>
+      </header>
+
+      <div class="pw-bonuses__grid">
+
+        <article class="pw-bonuses__card pw-bonuses__card--purple">
+          <span class="pw-bonuses__badge">Free Bonus #1 &mdash; Value: $47</span>
+          <h3 class="pw-bonuses__card-title">
+            1&nbsp;Month VIP in The Global Circle of Secure&nbsp;Parents
+          </h3>
+          <p class="pw-bonuses__card-body">
+            Join a private community of entrepreneurial parents from around the world.
+            Weekly sessions to share challenges, breakthroughs, and strategies &mdash;
+            with people who understand your life.
+          </p>
+        </article>
+
+        <article class="pw-bonuses__card pw-bonuses__card--cream">
+          <span class="pw-bonuses__badge">Free Bonus #2 &mdash; Value: $97</span>
+          <h3 class="pw-bonuses__card-title">
+            ParentWise Short Pathway <span style="white-space:nowrap">(6&nbsp;Sessions)</span>
+          </h3>
+          <p class="pw-bonuses__card-body">
+            A condensed presentation of how to create a secure foundation your teen can
+            launch from &mdash; in 3&nbsp;weeks. Includes worksheets and book summaries.
+          </p>
+        </article>
+
       </div>
+
+      <aside class="pw-bonuses__trust" aria-label="Trust signals">
+        <div class="pw-bonuses__trust-item">
+          <svg class="pw-bonuses__trust-icon" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M6 2 L6 9 L3 14 C2.5 15 3.2 16 4.4 16 L13.6 16 C14.8 16 15.5 15 15 14 L12 9 L12 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="5" y1="2" x2="13" y2="2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="7.5" cy="12" r="1" fill="currentColor"/>
+            <circle cx="11" cy="13.5" r="0.75" fill="currentColor"/>
+          </svg>
+          Science-backed methodology
+        </div>
+        <span class="pw-bonuses__trust-divider" aria-hidden="true"></span>
+        <div class="pw-bonuses__trust-item">
+          <svg class="pw-bonuses__trust-icon" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M9 2 C9 2 6 5.5 6 9 C6 12.5 9 16 9 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M9 2 C9 2 12 5.5 12 9 C12 12.5 9 16 9 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="2" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M3 5.5 Q9 7.5 15 5.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+            <path d="M3 12.5 Q9 10.5 15 12.5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+          </svg>
+          Built by an international educator
+        </div>
+        <span class="pw-bonuses__trust-divider" aria-hidden="true"></span>
+        <div class="pw-bonuses__trust-item">
+          <svg class="pw-bonuses__trust-icon" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="6" cy="5" r="2" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="12" cy="5" r="2" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M1 15 C1 12 3.5 10 6 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M17 15 C17 12 14.5 10 12 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="9" cy="8" r="2.25" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M4.5 15 C4.5 12.5 6.5 11 9 11 C11.5 11 13.5 12.5 13.5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          Used by parents across 12+ countries
+        </div>
+      </aside>
+
     </div>
   </section>
 
@@ -915,10 +1482,27 @@
         <div class="cart-product">
           <img src="../assets/images/bookcover.png" alt="Book Cover">
           <div class="cart-product-info">
-            <p class="cart-product-title">A Parent's Guide: How to Create Security During Adolescence</p>
-            <p class="cart-product-sub">Digital Book + 2 Free Bonuses</p>
+            <p class="cart-product-title">A Parent's Quick Guide: How to Create Security During Adolescence</p>
+            <p class="cart-product-sub">Digital Book</p>
           </div>
-          <span class="cart-product-price">$4.99</span>
+          <span class="cart-product-price">$7</span>
+        </div>
+
+        <!-- Bonus line items -->
+        <div class="cart-product">
+          <div class="cart-product-info" style="padding-left: 4px;">
+            <p class="cart-product-title" style="font-size:14px;">Bonus: Global Circle of Secure Parents (1 month)</p>
+            <p class="cart-product-sub">Free ($47 value)</p>
+          </div>
+          <span class="cart-product-price" style="font-size:15px; color: var(--text-secondary); text-decoration: line-through; opacity: 0.45;">$47</span>
+        </div>
+
+        <div class="cart-product" style="border-bottom: none;">
+          <div class="cart-product-info" style="padding-left: 4px;">
+            <p class="cart-product-title" style="font-size:14px;">Bonus: ParentWise Short Pathway</p>
+            <p class="cart-product-sub">Free ($97 value)</p>
+          </div>
+          <span class="cart-product-price" style="font-size:15px; color: var(--text-secondary); text-decoration: line-through; opacity: 0.45;">$97</span>
         </div>
 
         <!-- Order Bump -->
@@ -927,10 +1511,11 @@
             <input type="checkbox" id="bumpCheckbox" onchange="updateTotal()">
             <div class="bump-content">
               <div class="bump-top">
-                <span class="bump-badge">Add-On Offer</span>
+                <span class="bump-badge">One-Time Add-On</span>
               </div>
-              <p><strong>Yes! Add 6 Months in the Global Circle of Secure Parents</strong> — a private community of parents doing the inner work together. Weekly discussions, live Q&As, and ongoing accountability.</p>
-              <p class="bump-price">Just $47 more <span class="bump-original">(normally $97)</span></p>
+              <p><strong>Add 6 months in the Global Circle</strong></p>
+              <p>Continue your momentum with weekly community sessions</p>
+              <p class="bump-price">$147 today — 50% off <span class="bump-original">(usually $294)</span></p>
             </div>
           </label>
         </div>
@@ -974,7 +1559,7 @@
         <!-- Order Total -->
         <div class="cart-total-row">
           <span class="cart-total-label">Order Total</span>
-          <span class="cart-total-price" id="cartTotalPrice">$4.99</span>
+          <span class="cart-total-price" id="cartTotalPrice">$7</span>
         </div>
 
         <!-- Buy Button -->
@@ -1056,7 +1641,7 @@
 
     function updateTotal() {
       var bump = document.getElementById('bumpCheckbox').checked;
-      var total = bump ? '$51.99' : '$4.99';
+      var total = bump ? '$154' : '$7';
       document.getElementById('cartTotalPrice').textContent = total;
     }
 

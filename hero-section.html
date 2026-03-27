@@ -1,0 +1,266 @@
+<style>
+  /* ─── ParentWise Hero Section ─────────────────────────────────────────────── */
+
+  .pw-hero {
+    position: relative;
+    background-color: var(--color-cream);
+    overflow: hidden;
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  /* Blob layer sits behind all content */
+  .pw-hero__blobs {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .pw-hero__blobs svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Inner two-column grid */
+  .pw-hero__inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-lg);
+    align-items: center;
+  }
+
+  /* ── LEFT column ──────────────────────────────────────────────────── */
+  .pw-hero__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .pw-hero__eyebrow {
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-purple);
+    margin: 0;
+  }
+
+  .pw-hero__headline {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    line-height: 1.08;
+    color: var(--color-black);
+    margin: 0;
+  }
+
+  .pw-hero__subheadline {
+    font-family: var(--font-primary);
+    font-size: var(--text-lg);
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--color-black);
+    opacity: 0.78;
+    max-width: 52ch;
+    margin: 0;
+  }
+
+  .pw-hero__tagline {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.45;
+    color: var(--color-purple-dark);
+    border-left: 3px solid var(--color-purple-light);
+    padding-left: var(--space-sm);
+    margin: calc(var(--space-xs) / 2) 0;
+  }
+
+  .pw-hero__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: calc(var(--space-sm) / 2);
+    padding: 1rem 2.25rem;
+    background-color: var(--color-purple);
+    color: var(--color-cream);
+    font-family: var(--font-primary);
+    font-size: var(--text-base);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    border: none;
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-soft);
+    cursor: pointer;
+    transition: background-color 0.22s ease, box-shadow 0.22s ease, transform 0.18s ease;
+    align-self: flex-start;
+  }
+
+  .pw-hero__cta:hover {
+    background-color: var(--color-purple-dark);
+    box-shadow: var(--shadow-strong);
+    transform: translateY(-2px);
+  }
+
+  .pw-hero__cta:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* ── RIGHT column ─────────────────────────────────────────────────── */
+  .pw-hero__book-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .pw-hero__book-cover-placeholder {
+    width: 280px;
+    height: 400px;
+    background-color: var(--color-purple);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-strong);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    text-align: center;
+    padding: var(--space-sm);
+  }
+
+  .pw-hero__book-cover-placeholder span {
+    font-family: var(--font-primary);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: rgba(245, 241, 232, 0.55);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .pw-hero__book-cover-placeholder strong {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-cream);
+    line-height: 1.3;
+  }
+
+  /* ── Responsive ───────────────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .pw-hero {
+      padding: var(--space-lg) var(--space-sm);
+    }
+
+    .pw-hero__inner {
+      grid-template-columns: 1fr;
+      /* book cover first on mobile */
+      grid-template-areas:
+        "book"
+        "content";
+      gap: var(--space-md);
+      text-align: center;
+    }
+
+    .pw-hero__book-wrap {
+      grid-area: book;
+    }
+
+    .pw-hero__content {
+      grid-area: content;
+      align-items: center;
+    }
+
+    .pw-hero__subheadline {
+      max-width: 100%;
+    }
+
+    .pw-hero__tagline {
+      border-left: none;
+      border-top: 2px solid var(--color-purple-light);
+      padding-left: 0;
+      padding-top: var(--space-xs);
+    }
+
+    .pw-hero__cta {
+      align-self: center;
+    }
+
+    .pw-hero__book-cover-placeholder {
+      width: 220px;
+      height: 314px;
+    }
+  }
+</style>
+
+<section class="pw-hero" aria-labelledby="pw-hero-headline">
+
+  <!-- Organic blob background shapes -->
+  <div class="pw-hero__blobs" aria-hidden="true">
+    <svg viewBox="0 0 1440 780" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <!-- Blob 1 — large, top-left -->
+      <path
+        d="M-120,80 C60,20 220,180 300,320 C380,460 260,560 160,620 C60,680 -80,640 -160,520 C-240,400 -300,140 -120,80 Z"
+        fill="#6B4CA3"
+        opacity="0.07"
+      />
+      <!-- Blob 2 — mid-right -->
+      <path
+        d="M1180,60 C1320,-40 1520,100 1500,280 C1480,460 1340,520 1240,480 C1140,440 1060,320 1080,200 C1100,80 1040,160 1180,60 Z"
+        fill="#6B4CA3"
+        opacity="0.06"
+      />
+      <!-- Blob 3 — bottom-center, flowing -->
+      <path
+        d="M400,680 C500,600 680,640 800,700 C920,760 960,860 840,900 C720,940 560,880 460,820 C360,760 300,760 400,680 Z"
+        fill="#6B4CA3"
+        opacity="0.065"
+      />
+    </svg>
+  </div>
+
+  <div class="pw-hero__inner">
+
+    <!-- LEFT: Text content -->
+    <div class="pw-hero__content">
+      <p class="pw-hero__eyebrow">M. Aurelius Higgs &middot; ParentWise</p>
+
+      <h1 class="pw-hero__headline" id="pw-hero-headline">
+        The Parenting Book&nbsp;That&nbsp;Starts&nbsp;With&nbsp;You
+      </h1>
+
+      <p class="pw-hero__subheadline">
+        Most parenting books focus on your teen. This one focuses on the
+        source&nbsp;&mdash;&nbsp;you. Because secure parents don&rsquo;t just manage
+        teens. They shape them.
+      </p>
+
+      <blockquote class="pw-hero__tagline">
+        &ldquo;Secure Parents Create Secure Teens.&nbsp;Secure&nbsp;Teens Create a&nbsp;Secure&nbsp;Future.&rdquo;
+      </blockquote>
+
+      <button class="pw-hero__cta" id="open-order-form" type="button">
+        Get the Book + Bonuses
+      </button>
+    </div>
+
+    <!-- RIGHT: Book cover placeholder -->
+    <div class="pw-hero__book-wrap">
+      <div class="pw-hero__book-cover-placeholder">
+        <span>Book Cover</span>
+        <strong>A Parent&rsquo;s Guide: How to Create Security During Adolescence</strong>
+      </div>
+    </div>
+
+  </div>
+</section>

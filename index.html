@@ -631,6 +631,172 @@
       box-shadow: 0 8px 28px rgba(201, 169, 110, 0.55), 0 4px 10px rgba(0, 0, 0, 0.15);
     }
 
+    /* ===== BOOK MODAL ===== */
+    .book-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 26, 26, 0.78);
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
+      z-index: 9100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .book-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .book-modal {
+      background: var(--bg-card);
+      border-radius: 14px;
+      width: 100%;
+      max-width: 580px;
+      max-height: 92vh;
+      overflow-y: auto;
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.32), 0 4px 24px rgba(107, 76, 163, 0.18);
+      position: relative;
+      transform: translateY(28px) scale(0.97);
+      transition: transform 0.38s cubic-bezier(0.32, 0, 0.24, 1);
+    }
+
+    .book-overlay.open .book-modal {
+      transform: translateY(0) scale(1);
+    }
+
+    .book-modal-close {
+      position: absolute;
+      top: 1.1rem;
+      right: 1.1rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--ink-soft);
+      padding: 6px;
+      border-radius: 4px;
+      line-height: 1;
+      transition: color 0.2s ease, background 0.2s ease;
+      z-index: 1;
+    }
+
+    .book-modal-close:hover {
+      color: var(--ink);
+      background: var(--purple-pale);
+    }
+
+    .book-modal-inner {
+      display: flex;
+      gap: 2rem;
+      padding: 2.5rem;
+      align-items: flex-start;
+    }
+
+    .book-modal-cover {
+      flex-shrink: 0;
+      width: 140px;
+    }
+
+    .book-modal-cover img {
+      width: 100%;
+      border-radius: 6px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
+      display: block;
+    }
+
+    .book-modal-content {
+      flex: 1;
+    }
+
+    .book-modal-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 0.6rem;
+    }
+
+    .book-modal-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .book-modal-bullets {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.75rem;
+    }
+
+    .book-modal-bullets li {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--ink-soft);
+      padding-left: 1.4rem;
+      position: relative;
+      margin-bottom: 0.75rem;
+    }
+
+    .book-modal-bullets li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-gold);
+    }
+
+    .book-modal-cta {
+      display: inline-block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--btn-gol-tx);
+      background: linear-gradient(135deg, var(--accent-gold-light) 0%, #B8943A 100%);
+      padding: 14px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(201, 169, 110, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .book-modal-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201, 169, 110, 0.52);
+    }
+
+    @media (max-width: 480px) {
+      .book-modal-inner {
+        flex-direction: column;
+        padding: 2rem 1.5rem;
+        align-items: center;
+        text-align: center;
+      }
+
+      .book-modal-cover {
+        width: 120px;
+      }
+
+      .book-modal-bullets li {
+        text-align: left;
+      }
+    }
+
     /* ===== AUTHORITY SECTION PURPLE ENRICHMENT ===== */
     .section-wrap--purple {
       background: linear-gradient(155deg, #6B4CA3 0%, #5A3D8F 100%) !important;
@@ -1346,7 +1512,7 @@
           intention and support. Not alone.</p>
         <div class="cta-divider"></div>
         <p class="cta-lead">Are you ready to create the foundation your teen launches from?</p>
-        <a href="#" class="cta-button">Take a free assessment</a>
+        <a href="#" class="cta-button" id="bookModalBtn">Show Me How to Build That Foundation</a>
         <p class="cta-disclaimer">Less than 2 minutes.</p>
       </div>
     </div>
@@ -1394,6 +1560,34 @@
       </div>
       <div class="assessment-body" id="assessmentBody">
         <!-- Content injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- BOOK MODAL -->
+  <div class="book-overlay" id="bookOverlay" role="dialog" aria-modal="true" aria-label="Create Security During Adolescence — the book">
+    <div class="book-modal" id="bookModal">
+      <button class="book-modal-close" id="bookModalClose" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M14 4L4 14M4 4l10 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        </svg>
+      </button>
+      <div class="book-modal-inner">
+        <div class="book-modal-cover">
+          <img src="book-cover.png" alt="Create Security During Adolescence book cover" />
+        </div>
+        <div class="book-modal-content">
+          <p class="book-modal-eyebrow">The Book</p>
+          <h2 class="book-modal-title">Create Security During Adolescence</h2>
+          <ul class="book-modal-bullets">
+            <li>Why "being there" for your teen isn't enough — and the science-backed shift that actually creates lasting security</li>
+            <li>How to regulate your own nervous system first, so your teen has a real foundation to launch from</li>
+            <li>The 4-S framework that transforms everyday conflict into connection — without losing your authority</li>
+            <li>What parents of confident, self-directed teens do differently, and how to start doing it this week</li>
+            <li>How to stop reacting and start responding — even in the moments that matter most</li>
+          </ul>
+          <a href="https://getparentwise.com/book" class="book-modal-cta" target="_blank" rel="noopener">Get the Book &rarr;</a>
+        </div>
       </div>
     </div>
   </div>
@@ -1627,13 +1821,37 @@
         if (e.key === 'Escape') closeAssessment();
       });
 
-      var ctaBtn = document.querySelector('.cta-button');
-      if (ctaBtn) {
-        ctaBtn.addEventListener('click', function (e) {
+      // ── Book modal ──
+      var bookModalBtn   = document.getElementById('bookModalBtn');
+      var bookOverlay    = document.getElementById('bookOverlay');
+      var bookModalClose = document.getElementById('bookModalClose');
+
+      function openBookModal() {
+        bookOverlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeBookModal() {
+        bookOverlay.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      if (bookModalBtn) {
+        bookModalBtn.addEventListener('click', function (e) {
           e.preventDefault();
-          openAssessment();
+          openBookModal();
         });
       }
+
+      bookModalClose.addEventListener('click', closeBookModal);
+
+      bookOverlay.addEventListener('click', function (e) {
+        if (e.target === e.currentTarget) closeBookModal();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeBookModal();
+      });
     });
   </script>
 

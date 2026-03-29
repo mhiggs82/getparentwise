@@ -8,6 +8,7 @@
   <script>(function(){var t=localStorage.getItem('pw-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t!=='light'&&d))document.documentElement.setAttribute('data-mode','dark');else document.documentElement.setAttribute('data-mode','light')})();</script>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Playfair+Display:wght@600;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/style-guide/parentwise-design-system.css" />
+  <script src="https://js.stripe.com/v3/"></script>
   <style>
     html { scroll-behavior: smooth; }
 
@@ -957,6 +958,28 @@
       box-shadow: 0 8px 26px rgba(201,169,110,0.55);
     }
 
+    .cart-buy-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .cart-payment-error {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #b91c1c;
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    [data-mode="dark"] .cart-payment-error {
+      background: rgba(185,28,28,0.12);
+      border-color: rgba(185,28,28,0.35);
+      color: #fca5a5;
+    }
+
     /* ===== UPSELL VIEW ===== */
     .upsell-view-inner {
       padding: 32px 22px;
@@ -1011,6 +1034,38 @@
     }
 
     .upsell-no:hover { opacity: 0.65; }
+
+    /* Upsell order summary strip */
+    .upsell-summary {
+      background: var(--bg-tint);
+      border: 1.5px solid var(--divider);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin: 0 0 22px;
+      text-align: left;
+    }
+
+    .upsell-summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: var(--text-secondary);
+      padding: 4px 0;
+    }
+
+    .upsell-summary-row--add {
+      color: var(--purple);
+      font-weight: 600;
+    }
+
+    .upsell-summary-row--total {
+      border-top: 1px solid var(--divider);
+      margin-top: 8px;
+      padding-top: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
 
     /* ===== SUCCESS VIEW ===== */
     .success-view-inner {
@@ -1803,9 +1858,9 @@
               <div class="bump-top">
                 <span class="bump-badge">One-Time Add-On</span>
               </div>
-              <p><strong>Add 6 months in the Global Circle</strong></p>
+              <p><strong>Add 3 months in the Global Circle</strong></p>
               <p>Continue your momentum with weekly community sessions</p>
-              <p class="bump-price">$147 today — 50% off <span class="bump-original">(usually $294)</span></p>
+              <p class="bump-price">$75 today — 50% off <span class="bump-original">(usually $150)</span></p>
             </div>
           </label>
         </div>
@@ -1822,21 +1877,10 @@
           <div class="cart-or-divider"><span>or pay by card</span></div>
         </div>
 
-        <!-- Form Fields -->
+        <!-- Stripe Payment Element (replaces manual card inputs) -->
         <div class="cart-form">
-          <input type="text" class="cart-input" placeholder="Full Name" autocomplete="name">
-          <input type="email" class="cart-input" placeholder="Email Address" autocomplete="email">
-          <input type="text" class="cart-input" placeholder="Card Number" autocomplete="cc-number" inputmode="numeric" maxlength="19">
-          <div class="cart-row">
-            <input type="text" class="cart-input" placeholder="MM / YY" autocomplete="cc-exp" inputmode="numeric" maxlength="7" style="flex:1">
-            <input type="text" class="cart-input" placeholder="CVV" autocomplete="cc-csc" inputmode="numeric" maxlength="4" style="flex:1">
-          </div>
-          <div class="card-icons">
-            <span class="card-icon">VISA</span>
-            <span class="card-icon">MC</span>
-            <span class="card-icon">AMEX</span>
-            <span class="card-icon">DISC</span>
-          </div>
+          <div id="payment-element" style="margin-bottom: 10px;"></div>
+          <div id="payment-error" class="cart-payment-error" style="display:none;"></div>
         </div>
 
         <!-- Trust Signals -->
@@ -1870,8 +1914,24 @@
           <img src="../assets/images/bookcover.png" alt="Book Cover" style="width:90px;border-radius:4px;box-shadow:0 8px 24px rgba(0,0,0,0.18);margin-bottom:20px;display:inline-block;">
           <h3>Unlock the Full ParentWise Pathway — All 3 Phases</h3>
           <p>Go deeper with the complete system. Phase 1 builds the secure foundation, Phase 2 strengthens connection through the adolescent years, and Phase 3 launches your teen toward confident independence — with step-by-step video lessons, worksheets, and lifetime access.</p>
-          <p class="upsell-price-line">Just $197 — added to your order in one click.</p>
-          <button class="cart-buy-btn" onclick="handleUpsellYes()">Yes! Unlock the Full 3-Phase Pathway &raquo;</button>
+
+          <!-- Order summary strip -->
+          <div class="upsell-summary">
+            <div class="upsell-summary-row">
+              <span>&#10003; Book + Bonuses</span>
+              <span id="upsellBaseAmount">$7</span>
+            </div>
+            <div class="upsell-summary-row upsell-summary-row--add">
+              <span>+ Full 3-Phase Pathway</span>
+              <span>$197</span>
+            </div>
+            <div class="upsell-summary-row upsell-summary-row--total">
+              <span>New Order Total</span>
+              <span id="upsellNewTotal">$204</span>
+            </div>
+          </div>
+
+          <button class="cart-buy-btn" id="upsellYesBtn" onclick="handleUpsellYes()">Yes! Add the Full Pathway for $197 &raquo;</button>
           <button class="upsell-no" onclick="handleUpsellNo()">No thanks, I'll stay with the book only.</button>
         </div>
       </div>
@@ -1895,76 +1955,203 @@
   </div><!-- /cartPanel -->
 
   <script>
-    const cartPanel   = document.getElementById('cartPanel');
-    const cartOverlay = document.getElementById('cartOverlay');
+    // ─── Stripe publishable key ───────────────────────────────────────────────
+    // Replace with your actual key from https://dashboard.stripe.com/apikeys
+    var STRIPE_PUBLISHABLE_KEY = 'pk_test_YOUR_PUBLISHABLE_KEY';
 
+    // ─── State ────────────────────────────────────────────────────────────────
+    var stripe, elements, paymentElement;
+    var cartPanel   = document.getElementById('cartPanel');
+    var cartOverlay = document.getElementById('cartOverlay');
+
+    // ─── Cart open / close ────────────────────────────────────────────────────
     function openCart() {
       cartPanel.classList.add('is-open');
       cartOverlay.classList.add('is-open');
       document.body.style.overflow = 'hidden';
       showView('viewCheckout');
+      initStripeElements();
     }
 
     function closeCart() {
       cartPanel.classList.remove('is-open');
       cartOverlay.classList.remove('is-open');
       document.body.style.overflow = '';
-      // Reset after transition so next open starts fresh
       setTimeout(function() {
         document.getElementById('bumpCheckbox').checked = false;
         updateTotal();
         showView('viewCheckout');
+        // Destroy elements so next open re-creates with correct amount
+        if (elements) { elements = null; paymentElement = null; }
       }, 400);
     }
 
     function showView(id) {
       ['viewCheckout','viewUpsell','viewSuccess'].forEach(function(v) {
-        var el = document.getElementById(v);
-        el.classList.toggle('is-active', v === id);
+        document.getElementById(v).classList.toggle('is-active', v === id);
       });
     }
 
+    // ─── Total display ────────────────────────────────────────────────────────
     function updateTotal() {
       var bump = document.getElementById('bumpCheckbox').checked;
-      var total = bump ? '$154' : '$7';
-      document.getElementById('cartTotalPrice').textContent = total;
+      document.getElementById('cartTotalPrice').textContent = bump ? '$82' : '$7';
+      // Re-init Payment Elements with new amount when bump changes
+      if (elements) { elements = null; paymentElement = null; initStripeElements(); }
     }
 
-    function handlePurchase() {
-      // In production this wires to SamCart's payment processor.
-      // For now, transition to the upsell view.
+    // ─── Init Stripe Payment Elements ────────────────────────────────────────
+    async function initStripeElements() {
+      if (elements) return; // already mounted
+
+      var isDark = document.documentElement.getAttribute('data-mode') === 'dark';
+      var bump   = document.getElementById('bumpCheckbox').checked;
+
+      try {
+        var resp = await fetch('/api/create-payment-intent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ bumpIncluded: bump }),
+        });
+        var data = await resp.json();
+        if (!resp.ok || !data.clientSecret) throw new Error(data.error || 'Could not start checkout');
+
+        if (!stripe) stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+
+        var appearance = {
+          theme: isDark ? 'night' : 'stripe',
+          variables: {
+            colorPrimary: '#7C5CBF',
+            borderRadius: '6px',
+            fontFamily: 'DM Sans, sans-serif',
+          },
+        };
+
+        elements = stripe.elements({ clientSecret: data.clientSecret, appearance: appearance });
+        paymentElement = elements.create('payment', { layout: 'tabs' });
+        paymentElement.mount('#payment-element');
+
+      } catch (err) {
+        showError(err.message);
+      }
+    }
+
+    // ─── Main purchase ────────────────────────────────────────────────────────
+    async function handlePurchase() {
+      if (!stripe || !elements) {
+        showError('Payment form is still loading. Please try again in a moment.');
+        return;
+      }
+
+      setBuyLoading(true);
+      hideError();
+
+      var result = await stripe.confirmPayment({
+        elements: elements,
+        confirmParams: {
+          // Return URL required by Stripe for redirect-based methods (3DS, etc.)
+          // We handle the success flow in-panel; Stripe redirects here only for
+          // methods that require a full redirect.
+          return_url: window.location.href + '?payment=complete',
+        },
+        redirect: 'if_required', // stay in-panel for cards/Link
+      });
+
+      setBuyLoading(false);
+
+      if (result.error) {
+        showError(result.error.message);
+        return;
+      }
+
+      // Payment succeeded — show upsell
+      renderUpsellSummary();
       showView('viewUpsell');
     }
 
-    function handleUpsellYes() {
-      showView('viewSuccess');
+    // ─── Upsell ───────────────────────────────────────────────────────────────
+    function renderUpsellSummary() {
+      var bump     = document.getElementById('bumpCheckbox').checked;
+      var base     = bump ? 82 : 7;
+      var newTotal = base + 197;
+      document.getElementById('upsellBaseAmount').textContent = '$' + base;
+      document.getElementById('upsellNewTotal').textContent   = '$' + newTotal;
+    }
+
+    async function handleUpsellYes() {
+      var btn = document.getElementById('upsellYesBtn');
+      btn.disabled = true;
+      btn.textContent = 'Processing…';
+
+      try {
+        var resp = await fetch('/api/create-upsell-intent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({}),
+        });
+        var data = await resp.json();
+        if (!resp.ok || !data.clientSecret) throw new Error(data.error || 'Could not process upgrade');
+
+        // Confirm using the saved payment method from the first purchase
+        var result = await stripe.confirmPayment({
+          clientSecret: data.clientSecret,
+          confirmParams: { return_url: window.location.href + '?payment=complete' },
+          redirect: 'if_required',
+        });
+
+        if (result.error) throw new Error(result.error.message);
+
+        showView('viewSuccess');
+
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Yes! Add the Full Pathway for $197 »';
+        alert('Could not process upgrade: ' + err.message);
+      }
     }
 
     function handleUpsellNo() {
       showView('viewSuccess');
     }
 
+    // ─── Express pay (Apple Pay / Google Pay) ─────────────────────────────────
+    // These are surfaced automatically inside Payment Elements (the 'tabs' layout
+    // shows them when the browser/device supports them). The separate buttons are
+    // kept as visual anchors but delegate to the same confirmPayment flow.
     function handleExpressPay(provider) {
-      // In production this triggers the relevant payment sheet.
       handlePurchase();
     }
 
-    // Card number auto-spacing
+    // ─── Helpers ──────────────────────────────────────────────────────────────
+    function showError(msg) {
+      var el = document.getElementById('payment-error');
+      el.textContent = msg;
+      el.style.display = 'block';
+    }
+
+    function hideError() {
+      var el = document.getElementById('payment-error');
+      el.style.display = 'none';
+      el.textContent = '';
+    }
+
+    function setBuyLoading(loading) {
+      var btn = document.querySelector('#viewCheckout .cart-buy-btn');
+      if (!btn) return;
+      btn.disabled = loading;
+      btn.textContent = loading ? 'Processing…' : 'Complete Purchase';
+    }
+
+    // ─── Handle return from Stripe 3DS redirect ───────────────────────────────
     document.addEventListener('DOMContentLoaded', function() {
-      var cardInput = document.querySelector('input[placeholder="Card Number"]');
-      if (cardInput) {
-        cardInput.addEventListener('input', function(e) {
-          var v = e.target.value.replace(/\D/g, '').substring(0, 16);
-          e.target.value = v.replace(/(.{4})/g, '$1 ').trim();
-        });
-      }
-      var expInput = document.querySelector('input[placeholder="MM / YY"]');
-      if (expInput) {
-        expInput.addEventListener('input', function(e) {
-          var v = e.target.value.replace(/\D/g, '').substring(0, 4);
-          if (v.length >= 3) v = v.substring(0,2) + ' / ' + v.substring(2);
-          e.target.value = v;
-        });
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('payment') === 'complete') {
+        // User was redirected back after 3DS — open cart at success view
+        openCart();
+        renderUpsellSummary();
+        showView('viewSuccess');
+        // Clean up URL
+        history.replaceState({}, '', window.location.pathname);
       }
     });
   </script>

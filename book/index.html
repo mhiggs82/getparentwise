@@ -625,16 +625,26 @@
 
     /* Cart View */
     .cart-view { display: none; }
-    .cart-view.is-active { display: block; }
+    .cart-view.is-active {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+    }
 
     /* Product Row */
     .cart-product {
       display: flex;
       gap: 14px;
       align-items: center;
-      padding: 18px 22px;
+      padding: 14px 22px;
       border-bottom: 1px solid var(--divider);
       background: var(--bg-tint);
+    }
+
+    .cart-product--bonus {
+      padding: 8px 22px;
     }
 
     .cart-product img {
@@ -658,8 +668,7 @@
 
     .cart-product-info .cart-product-sub {
       font-size: 12px;
-      color: var(--text-secondary);
-      opacity: 0.6;
+      color: var(--text-muted);
     }
 
     .cart-product-price {
@@ -747,8 +756,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1.4px;
-      color: var(--text-secondary);
-      opacity: 0.5;
+      color: var(--text-muted);
       margin-bottom: 10px;
     }
 
@@ -805,8 +813,7 @@
 
     .cart-or-divider span {
       font-size: 12px;
-      color: var(--text-secondary);
-      opacity: 0.45;
+      color: var(--text-muted);
       white-space: nowrap;
     }
 
@@ -885,8 +892,7 @@
       align-items: center;
       gap: 5px;
       font-size: 12px;
-      color: var(--text-secondary);
-      opacity: 0.65;
+      color: var(--text-muted);
     }
 
     .trust-item .trust-icon { font-size: 14px; }
@@ -1057,6 +1063,16 @@
     }
 
     .cart-back-btn:hover { background: var(--purple-deep); transform: translateY(-1px); }
+
+    /* ===== DESKTOP CART — tighter spacing ===== */
+    @media (min-width: 481px) {
+      .cart-product { padding: 10px 22px; }
+      .cart-product--bonus { padding: 6px 22px; }
+      .cart-bump { margin: 10px 22px; }
+      .cart-express { padding-top: 10px; }
+      .cart-trust { padding: 8px 22px; }
+      .cart-total-row { padding: 10px 22px 8px; }
+    }
 
     /* ===== MOBILE CART ===== */
     @media (max-width: 480px) {
@@ -1763,20 +1779,20 @@
         </div>
 
         <!-- Bonus line items -->
-        <div class="cart-product">
+        <div class="cart-product cart-product--bonus">
           <div class="cart-product-info" style="padding-left: 4px;">
             <p class="cart-product-title" style="font-size:14px;">Bonus: Global Circle of Secure Parents (1 month)</p>
             <p class="cart-product-sub">Free ($47 value)</p>
           </div>
-          <span class="cart-product-price" style="font-size:15px; color: var(--text-secondary); text-decoration: line-through; opacity: 0.45;">$47</span>
+          <span class="cart-product-price" style="font-size:15px; color: var(--text-muted); text-decoration: line-through;">$47</span>
         </div>
 
-        <div class="cart-product" style="border-bottom: none;">
+        <div class="cart-product cart-product--bonus" style="border-bottom: none;">
           <div class="cart-product-info" style="padding-left: 4px;">
             <p class="cart-product-title" style="font-size:14px;">Bonus: ParentWise Short Pathway</p>
             <p class="cart-product-sub">Free ($97 value)</p>
           </div>
-          <span class="cart-product-price" style="font-size:15px; color: var(--text-secondary); text-decoration: line-through; opacity: 0.45;">$97</span>
+          <span class="cart-product-price" style="font-size:15px; color: var(--text-muted); text-decoration: line-through;">$97</span>
         </div>
 
         <!-- Order Bump -->
@@ -1852,11 +1868,11 @@
         <div class="upsell-view-inner">
           <p class="upsell-wait">Wait!</p>
           <img src="../assets/images/bookcover.png" alt="Book Cover" style="width:90px;border-radius:4px;box-shadow:0 8px 24px rgba(0,0,0,0.18);margin-bottom:20px;display:inline-block;">
-          <h3>Want a Private 1-on-1 Coaching Session With M. Aurelius Higgs?</h3>
-          <p>A focused 60-minute session where we work through your specific family situation using the Inside-Out framework. Limited spots available.</p>
-          <p class="upsell-price-line">Just $99 — added to your order in one click.</p>
-          <button class="cart-buy-btn" onclick="handleUpsellYes()">Yes! Add the Coaching Session &raquo;</button>
-          <button class="upsell-no" onclick="handleUpsellNo()">No thanks, I'll pass on this one-time offer.</button>
+          <h3>Unlock the Full ParentWise Pathway — All 3 Phases</h3>
+          <p>Go deeper with the complete system. Phase 1 builds the secure foundation, Phase 2 strengthens connection through the adolescent years, and Phase 3 launches your teen toward confident independence — with step-by-step video lessons, worksheets, and lifetime access.</p>
+          <p class="upsell-price-line">Just $197 — added to your order in one click.</p>
+          <button class="cart-buy-btn" onclick="handleUpsellYes()">Yes! Unlock the Full 3-Phase Pathway &raquo;</button>
+          <button class="upsell-no" onclick="handleUpsellNo()">No thanks, I'll stay with the book only.</button>
         </div>
       </div>
     </div><!-- /viewUpsell -->

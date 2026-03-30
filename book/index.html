@@ -1846,6 +1846,21 @@
           </label>
         </div>
 
+        <!-- Upsell Bump -->
+        <div class="cart-bump">
+          <label>
+            <input type="checkbox" id="upsellCheckbox" onchange="updateTotal()">
+            <div class="bump-content">
+              <div class="bump-top">
+                <span class="bump-badge">One-Time Add-On</span>
+              </div>
+              <p><strong>Unlock the Full ParentWise Pathway — All 3 Phases</strong></p>
+              <p>Phase 1 builds the foundation, Phase 2 deepens connection, Phase 3 launches your teen — step-by-step video lessons, worksheets, and lifetime access.</p>
+              <p class="bump-price">$197 today — one-time only</p>
+            </div>
+          </label>
+        </div>
+
         <!-- Express Checkout -->
         <div class="cart-express">
           <p class="cart-section-label">Express Checkout</p>
@@ -1883,41 +1898,6 @@
       </div><!-- /cart-body -->
     </div><!-- /viewCheckout -->
 
-    <!-- ── UPSELL VIEW ── -->
-    <div id="viewUpsell" class="cart-view">
-      <div class="cart-header">
-        <h3>One-Time Offer</h3>
-        <button class="cart-close-btn" onclick="closeCart()" aria-label="Close">&times;</button>
-      </div>
-      <div class="cart-body">
-        <div class="upsell-view-inner">
-          <p class="upsell-wait">Wait!</p>
-          <img src="../assets/images/bookcover.png" alt="Book Cover" style="width:90px;border-radius:4px;box-shadow:0 8px 24px rgba(0,0,0,0.18);margin-bottom:20px;display:inline-block;">
-          <h3>Unlock the Full ParentWise Pathway — All 3 Phases</h3>
-          <p>Go deeper with the complete system. Phase 1 builds the secure foundation, Phase 2 strengthens connection through the adolescent years, and Phase 3 launches your teen toward confident independence — with step-by-step video lessons, worksheets, and lifetime access.</p>
-
-          <!-- Order summary strip -->
-          <div class="upsell-summary">
-            <div class="upsell-summary-row">
-              <span>&#10003; Book + Bonuses</span>
-              <span id="upsellBaseAmount">$7</span>
-            </div>
-            <div class="upsell-summary-row upsell-summary-row--add">
-              <span>+ Full 3-Phase Pathway</span>
-              <span>$197</span>
-            </div>
-            <div class="upsell-summary-row upsell-summary-row--total">
-              <span>New Order Total</span>
-              <span id="upsellNewTotal">$204</span>
-            </div>
-          </div>
-
-          <button class="cart-buy-btn" id="upsellYesBtn" onclick="handleUpsellYes()">Yes! Add the Full Pathway for $197 &raquo;</button>
-          <button class="upsell-no" onclick="handleUpsellNo()">No thanks, I'll stay with the book only.</button>
-        </div>
-      </div>
-    </div><!-- /viewUpsell -->
-
     <!-- ── SUCCESS VIEW ── -->
     <div id="viewSuccess" class="cart-view">
       <div class="cart-header">
@@ -1941,7 +1921,7 @@
     var STRIPE_PUBLISHABLE_KEY = 'pk_test_51OUJguCYB8AO312d4Y2ey3FyHg8t8aR5h3g7KxePJ82HDJYVXFYX05ocv3o8WPF2qEkPxDCvSBM9AHTSmEgac7FZ00yIalySRX';
 
     // ─── State ────────────────────────────────────────────────────────────────
-    var stripe, elements, paymentElement, savedPaymentMethod;
+    var stripe, elements, paymentElement;
     var cartPanel   = document.getElementById('cartPanel');
     var cartOverlay = document.getElementById('cartOverlay');
 
@@ -1960,6 +1940,7 @@
       document.body.style.overflow = '';
       setTimeout(function() {
         document.getElementById('bumpCheckbox').checked = false;
+        document.getElementById('upsellCheckbox').checked = false;
         updateTotal();
         showView('viewCheckout');
         // Destroy elements so next open re-creates with correct amount
@@ -1968,16 +1949,18 @@
     }
 
     function showView(id) {
-      ['viewCheckout','viewUpsell','viewSuccess'].forEach(function(v) {
+      ['viewCheckout','viewSuccess'].forEach(function(v) {
         document.getElementById(v).classList.toggle('is-active', v === id);
       });
     }
 
     // ─── Total display ────────────────────────────────────────────────────────
     function updateTotal() {
-      var bump = document.getElementById('bumpCheckbox').checked;
-      document.getElementById('cartTotalPrice').textContent = bump ? '$82' : '$7';
-      // Re-init Payment Elements with new amount when bump changes
+      var bump   = document.getElementById('bumpCheckbox').checked;
+      var upsell = document.getElementById('upsellCheckbox').checked;
+      var total  = 7 + (bump ? 75 : 0) + (upsell ? 197 : 0);
+      document.getElementById('cartTotalPrice').textContent = '$' + total;
+      // Re-init Payment Elements with new amount when selections change
       if (elements) { elements = null; paymentElement = null; initStripeElements(); }
     }
 
@@ -1985,14 +1968,15 @@
     async function initStripeElements() {
       if (elements) return; // already mounted
 
-      var isDark = document.documentElement.getAttribute('data-mode') === 'dark';
-      var bump   = document.getElementById('bumpCheckbox').checked;
+      var isDark  = document.documentElement.getAttribute('data-mode') === 'dark';
+      var bump    = document.getElementById('bumpCheckbox').checked;
+      var upsell  = document.getElementById('upsellCheckbox').checked;
 
       try {
         var resp = await fetch('/api/create-payment-intent', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ bumpIncluded: bump }),
+          body: JSON.stringify({ bumpIncluded: bump, upsellIncluded: upsell }),
         });
         var data = await resp.json();
         if (!resp.ok || !data.clientSecret) throw new Error(data.error || 'Could not start checkout');
@@ -2045,60 +2029,7 @@
         return;
       }
 
-      // Payment succeeded — save payment method for one-click upsell
-      savedPaymentMethod = result.paymentIntent && result.paymentIntent.payment_method
-        ? result.paymentIntent.payment_method
-        : null;
-
-      renderUpsellSummary();
-      showView('viewUpsell');
-    }
-
-    // ─── Upsell ───────────────────────────────────────────────────────────────
-    function renderUpsellSummary() {
-      var bump     = document.getElementById('bumpCheckbox').checked;
-      var base     = bump ? 82 : 7;
-      var newTotal = base + 197;
-      document.getElementById('upsellBaseAmount').textContent = '$' + base;
-      document.getElementById('upsellNewTotal').textContent   = '$' + newTotal;
-    }
-
-    async function handleUpsellYes() {
-      var btn = document.getElementById('upsellYesBtn');
-      btn.disabled = true;
-      btn.textContent = 'Processing…';
-
-      try {
-        var resp = await fetch('/api/create-upsell-intent', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({}),
-        });
-        var data = await resp.json();
-        if (!resp.ok || !data.clientSecret) throw new Error(data.error || 'Could not process upgrade');
-
-        // Confirm using the saved payment method from the first purchase
-        var result = await stripe.confirmPayment({
-          clientSecret: data.clientSecret,
-          confirmParams: {
-            payment_method: savedPaymentMethod,
-            return_url: window.location.href + '?payment=complete',
-          },
-          redirect: 'if_required',
-        });
-
-        if (result.error) throw new Error(result.error.message);
-
-        showView('viewSuccess');
-
-      } catch (err) {
-        btn.disabled = false;
-        btn.textContent = 'Yes! Add the Full Pathway for $197 »';
-        alert('Could not process upgrade: ' + err.message);
-      }
-    }
-
-    function handleUpsellNo() {
+      // Payment succeeded
       showView('viewSuccess');
     }
 

@@ -12,9 +12,9 @@
 const STRIPE_API = 'https://api.stripe.com/v1';
 
 // Product amounts in cents
-const BOOK_AMOUNT = 700;       // $7.00
-const BUMP_AMOUNT = 7500;      // $75.00
-const TOTAL_WITH_BUMP = BOOK_AMOUNT + BUMP_AMOUNT; // $82.00
+const BOOK_AMOUNT   = 700;   // $7.00
+const BUMP_AMOUNT   = 7500;  // $75.00
+const UPSELL_AMOUNT = 19700; // $197.00
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -35,13 +35,14 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Stripe not configured' });
   }
 
-  const { bumpIncluded } = req.body || {};
-  const amount = bumpIncluded ? TOTAL_WITH_BUMP : BOOK_AMOUNT;
+  const { bumpIncluded, upsellIncluded } = req.body || {};
+  const amount = BOOK_AMOUNT + (bumpIncluded ? BUMP_AMOUNT : 0) + (upsellIncluded ? UPSELL_AMOUNT : 0);
 
   // Build description for Stripe dashboard clarity
-  const description = bumpIncluded
-    ? "A Parent's Quick Guide + 3-Month Global Circle"
-    : "A Parent's Quick Guide: How to Create Security During Adolescence";
+  const parts = ["A Parent's Quick Guide"];
+  if (bumpIncluded)   parts.push('3-Month Global Circle');
+  if (upsellIncluded) parts.push('Full 3-Phase Pathway');
+  const description = parts.join(' + ');
 
   // Build x-www-form-urlencoded body for Stripe API
   const params = new URLSearchParams({

@@ -16,28 +16,23 @@ const BOOK_AMOUNT = 700;       // $7.00
 const BUMP_AMOUNT = 7500;      // $75.00
 const TOTAL_WITH_BUMP = BOOK_AMOUNT + BUMP_AMOUNT; // $82.00
 
-function corsHeaders() {
-  return {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Content-Type': 'application/json',
-  };
-}
-
 export default async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
   // Handle CORS preflight
   if (req.method === 'OPTIONS') {
-    return res.status(204).set(corsHeaders()).end();
+    return res.status(204).end();
   }
 
   if (req.method !== 'POST') {
-    return res.status(405).set(corsHeaders()).json({ error: 'Method not allowed' });
+    return res.status(405).json({ error: 'Method not allowed' });
   }
 
   const secretKey = process.env.STRIPE_SECRET_KEY;
   if (!secretKey) {
-    return res.status(500).set(corsHeaders()).json({ error: 'Stripe not configured' });
+    return res.status(500).json({ error: 'Stripe not configured' });
   }
 
   const { bumpIncluded } = req.body || {};
@@ -68,8 +63,8 @@ export default async function handler(req, res) {
   const data = await stripeRes.json();
 
   if (!stripeRes.ok) {
-    return res.status(stripeRes.status).set(corsHeaders()).json({ error: data.error?.message || 'Stripe error' });
+    return res.status(stripeRes.status).json({ error: data.error?.message || 'Stripe error' });
   }
 
-  return res.status(200).set(corsHeaders()).json({ clientSecret: data.client_secret });
+  return res.status(200).json({ clientSecret: data.client_secret });
 }

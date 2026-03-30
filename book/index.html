@@ -1941,7 +1941,7 @@
     var STRIPE_PUBLISHABLE_KEY = 'pk_test_51OUJguCYB8AO312d4Y2ey3FyHg8t8aR5h3g7KxePJ82HDJYVXFYX05ocv3o8WPF2qEkPxDCvSBM9AHTSmEgac7FZ00yIalySRX';
 
     // ─── State ────────────────────────────────────────────────────────────────
-    var stripe, elements, paymentElement;
+    var stripe, elements, paymentElement, savedPaymentMethod;
     var cartPanel   = document.getElementById('cartPanel');
     var cartOverlay = document.getElementById('cartOverlay');
 
@@ -2045,7 +2045,11 @@
         return;
       }
 
-      // Payment succeeded — show upsell
+      // Payment succeeded — save payment method for one-click upsell
+      savedPaymentMethod = result.paymentIntent && result.paymentIntent.payment_method
+        ? result.paymentIntent.payment_method
+        : null;
+
       renderUpsellSummary();
       showView('viewUpsell');
     }
@@ -2076,7 +2080,10 @@
         // Confirm using the saved payment method from the first purchase
         var result = await stripe.confirmPayment({
           clientSecret: data.clientSecret,
-          confirmParams: { return_url: window.location.href + '?payment=complete' },
+          confirmParams: {
+            payment_method: savedPaymentMethod,
+            return_url: window.location.href + '?payment=complete',
+          },
           redirect: 'if_required',
         });
 

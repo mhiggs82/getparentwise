@@ -138,18 +138,21 @@
     .pw-hero__inner {
       position: relative;
       z-index: 1;
-      max-width: 1200px;
+      max-width: 860px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr minmax(0, 55%);
-      gap: var(--space-lg);
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      gap: var(--space-md);
+      text-align: center;
     }
 
     .pw-hero__content {
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: var(--space-sm);
+      width: 100%;
     }
 
     .pw-hero__eyebrow {
@@ -188,9 +191,9 @@
       font-weight: 400;
       line-height: 1.45;
       color: var(--text-on-dark);
-      border-left: 3px solid rgba(245, 241, 232, 0.4);
-      padding-left: var(--space-sm);
-      margin: calc(var(--space-xs) / 2) 0;
+      border-top: 2px solid rgba(245, 241, 232, 0.4);
+      padding-top: var(--space-xs);
+      margin: calc(var(--space-xs) / 2) 0 0;
     }
 
     .pw-hero__cta {
@@ -229,12 +232,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
+      width: 100%;
     }
 
     .pw-hero__book-img {
       width: 100%;
-      max-width: 560px;
+      max-width: 720px;
       height: auto;
       border-radius: 12px;
       box-shadow: 0 24px 80px rgba(107, 76, 163, 0.30), 0 8px 24px rgba(0, 0, 0, 0.18);
@@ -247,27 +250,7 @@
 
     @media (max-width: 768px) {
       .pw-hero { padding: var(--space-lg) var(--space-sm); }
-
-      .pw-hero__inner {
-        grid-template-columns: 1fr;
-        grid-template-areas: "book" "content";
-        gap: var(--space-md);
-        text-align: center;
-      }
-
-      .pw-hero__book-wrap  { grid-area: book; }
-      .pw-hero__content    { grid-area: content; align-items: center; }
-      .pw-hero__subheadline { max-width: 100%; }
-
-      .pw-hero__tagline {
-        border-left: none;
-        border-top: 2px solid var(--purple-light);
-        padding-left: 0;
-        padding-top: var(--space-xs);
-      }
-
-      .pw-hero__cta { align-self: center; }
-      .pw-hero__book-img { width: 100%; max-width: 100%; transform: none; box-shadow: var(--shadow-strong); }
+      .pw-hero__book-img { box-shadow: var(--shadow-strong); }
     }
 
     /* ─── Benefits Section ──────────────────────────────────────────────── */
@@ -1424,7 +1407,7 @@
 
     <div class="pw-hero__inner">
 
-      <!-- LEFT: Text content -->
+      <!-- TOP: Text content -->
       <div class="pw-hero__content">
         <p class="pw-hero__eyebrow">We support you while you</p>
         <h1 class="pw-hero__headline" id="pw-hero-headline">
@@ -1433,15 +1416,18 @@
         <blockquote class="pw-hero__tagline">
           &ldquo;Secure Parents Create Secure Teens.&nbsp;<br>Secure Teens Create a&nbsp;Secure&nbsp;Future.&rdquo;
         </blockquote>
-
-        <a href="javascript:void(0)" onclick="openCart()" class="pw-btn pw-btn-gold" id="open-order-form">Join the Community + Bonuses &raquo;</a>
       </div>
 
-      <!-- RIGHT: Zoom call -->
+      <!-- MIDDLE: Zoom call image -->
       <div class="pw-hero__book-wrap">
         <img class="pw-hero__book-img"
              src="../assets/images/zoom-call.png"
              alt="Parents from around the world on a ParentWise community Zoom call">
+      </div>
+
+      <!-- BOTTOM: CTA button -->
+      <div style="display: flex; justify-content: center;">
+        <a href="javascript:void(0)" onclick="openCart()" class="pw-btn pw-btn-gold" id="open-order-form">Join Our ParentWise Community + Bonuses &raquo;</a>
       </div>
 
     </div>
@@ -1625,25 +1611,23 @@
       <div class="pw-bonuses__grid" style="grid-template-columns: repeat(2, 1fr);">
 
         <article class="pw-bonuses__card pw-bonuses__card--purple">
-          <span class="pw-bonuses__badge">Bonus #1</span>
+          <span class="pw-bonuses__badge">Bonus #1 &mdash; Value: $10</span>
           <h3 class="pw-bonuses__card-title">
             The Book: &ldquo;The 3S+1 Framework to Create Security During Adolescence&rdquo;
           </h3>
           <p class="pw-bonuses__card-body">
             The complete digital book &mdash; your roadmap to understanding why your teen is pulling away and how to build lasting security.
           </p>
-          <p style="font-family: var(--font-primary); font-size: var(--text-lg); font-weight: 700; color: var(--color-cream); margin: 0;">$10</p>
         </article>
 
         <article class="pw-bonuses__card pw-bonuses__card--cream">
-          <span class="pw-bonuses__badge">Bonus #2</span>
+          <span class="pw-bonuses__badge">Bonus #2 &mdash; Value: $14</span>
           <h3 class="pw-bonuses__card-title">
             The Audiobook: &ldquo;The 3S+1 Framework to Create Security During Adolescence&rdquo;
           </h3>
           <p class="pw-bonuses__card-body">
             Listen on the go. The full audiobook version so you can absorb the framework during your commute, workout, or downtime.
           </p>
-          <p style="font-family: var(--font-primary); font-size: var(--text-lg); font-weight: 700; color: var(--color-black); margin: 0;">$14</p>
         </article>
 
         <article class="pw-bonuses__card pw-bonuses__card--purple">
@@ -1778,7 +1762,7 @@
       <ol style="padding-left: 22px; font-size: 15px; line-height: 1.85; color: var(--text-secondary);">
         <li>Your teen is biologically designed to separate from you. That is not the problem. The problem is that nobody prepared you for this transition. There is a preparation gap, and this community closes it.</li>
         <li>50+ years of attachment science shows that the single greatest predictor of your teen's security is whether you have made sense of your own story. Not what happened to you. Whether you have processed it.</li>
-        <li>For just $7, you join our ParentWise Community and get 4 bonuses: the book and audiobook of &ldquo;The Entrepreneurial Parent&rsquo;s Guide,&rdquo; one month free VIP access with weekly meetings ($49 value), and the ParentWise Short Pathway 6-session program ($97 value).</li>
+        <li>For just $7, you join our ParentWise Community and get 4 bonuses: the book ($10 value) and audiobook ($14 value) of &ldquo;The 3S+1 Framework to Create Security During Adolescence,&rdquo; one month free VIP access with weekly meetings ($49 value), and the ParentWise Short Pathway 6-session program ($97 value).</li>
         <li>This works even if your teen barely talks to you, even if you think it is too late, and even if every other parenting approach has failed. Because this one starts with you, not them.</li>
         <li>You can try the community and bonuses for a full year. If you do not find them useful, I will refund every penny. No questions asked.</li>
       </ol>
@@ -1833,17 +1817,17 @@
         <div class="cart-product cart-product--bonus">
           <div class="cart-product-info" style="padding-left: 4px;">
             <p class="cart-product-title" style="font-size:14px;">Bonus: The Book &mdash; The 3S+1 Framework to Create Security During Adolescence</p>
-            <p class="cart-product-sub">Included</p>
+            <p class="cart-product-sub">Free ($10 value)</p>
           </div>
-          <span class="cart-product-price" style="font-size:15px;">$10</span>
+          <span class="cart-product-price" style="font-size:15px; color: var(--text-muted); text-decoration: line-through;">$10</span>
         </div>
 
         <div class="cart-product cart-product--bonus">
           <div class="cart-product-info" style="padding-left: 4px;">
             <p class="cart-product-title" style="font-size:14px;">Bonus: The Audiobook &mdash; The 3S+1 Framework to Create Security During Adolescence</p>
-            <p class="cart-product-sub">Included</p>
+            <p class="cart-product-sub">Free ($14 value)</p>
           </div>
-          <span class="cart-product-price" style="font-size:15px;">$14</span>
+          <span class="cart-product-price" style="font-size:15px; color: var(--text-muted); text-decoration: line-through;">$14</span>
         </div>
 
         <div class="cart-product cart-product--bonus">

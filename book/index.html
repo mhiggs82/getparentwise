@@ -141,7 +141,7 @@
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr minmax(0, 45%);
+      grid-template-columns: 1fr minmax(0, 55%);
       gap: var(--space-lg);
       align-items: center;
     }
@@ -234,16 +234,14 @@
 
     .pw-hero__book-img {
       width: 100%;
-      max-width: 380px;
+      max-width: 560px;
       height: auto;
-      border-radius: var(--radius-md);
-      box-shadow: 0 24px 80px rgba(107, 76, 163, 0.35), 0 8px 24px rgba(0, 0, 0, 0.18);
-      transform: perspective(900px) rotateY(-4deg) rotate(-3deg);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border-radius: 12px;
+      box-shadow: 0 24px 80px rgba(107, 76, 163, 0.30), 0 8px 24px rgba(0, 0, 0, 0.18);
+      transition: box-shadow 0.4s ease;
     }
 
     .pw-hero__book-img:hover {
-      transform: perspective(900px) rotateY(0deg) rotate(0deg);
       box-shadow: 0 32px 90px rgba(107, 76, 163, 0.40), 0 10px 28px rgba(0, 0, 0, 0.20);
     }
 
@@ -269,7 +267,7 @@
       }
 
       .pw-hero__cta { align-self: center; }
-      .pw-hero__book-img { width: 220px; max-width: 100%; transform: none; box-shadow: var(--shadow-strong); }
+      .pw-hero__book-img { width: 100%; max-width: 100%; transform: none; box-shadow: var(--shadow-strong); }
     }
 
     /* ─── Benefits Section ──────────────────────────────────────────────── */
@@ -1439,11 +1437,11 @@
         <a href="javascript:void(0)" onclick="openCart()" class="pw-btn pw-btn-gold" id="open-order-form">Join the Community + Bonuses &raquo;</a>
       </div>
 
-      <!-- RIGHT: Book cover -->
+      <!-- RIGHT: Zoom call -->
       <div class="pw-hero__book-wrap">
         <img class="pw-hero__book-img"
-             src="../assets/images/bookcover.png"
-             alt="A Parent's Quick Guide: How to Create Security During Adolescence by M. Aurelius Higgs">
+             src="../assets/images/zoom-call.png"
+             alt="Parents from around the world on a ParentWise community Zoom call">
       </div>
 
     </div>
@@ -1629,21 +1627,23 @@
         <article class="pw-bonuses__card pw-bonuses__card--purple">
           <span class="pw-bonuses__badge">Bonus #1</span>
           <h3 class="pw-bonuses__card-title">
-            The Book: &ldquo;The Entrepreneurial Parent&rsquo;s Guide: The 3S+1 Framework to Create Security During Adolescence&rdquo;
+            The Book: &ldquo;The 3S+1 Framework to Create Security During Adolescence&rdquo;
           </h3>
           <p class="pw-bonuses__card-body">
             The complete digital book &mdash; your roadmap to understanding why your teen is pulling away and how to build lasting security.
           </p>
+          <p style="font-family: var(--font-primary); font-size: var(--text-lg); font-weight: 700; color: var(--color-cream); margin: 0;">$10</p>
         </article>
 
         <article class="pw-bonuses__card pw-bonuses__card--cream">
           <span class="pw-bonuses__badge">Bonus #2</span>
           <h3 class="pw-bonuses__card-title">
-            The Audiobook: &ldquo;The Entrepreneurial Parent&rsquo;s Guide: The 3S+1 Framework to Create Security During Adolescence&rdquo;
+            The Audiobook: &ldquo;The 3S+1 Framework to Create Security During Adolescence&rdquo;
           </h3>
           <p class="pw-bonuses__card-body">
             Listen on the go. The full audiobook version so you can absorb the framework during your commute, workout, or downtime.
           </p>
+          <p style="font-family: var(--font-primary); font-size: var(--text-lg); font-weight: 700; color: var(--color-black); margin: 0;">$14</p>
         </article>
 
         <article class="pw-bonuses__card pw-bonuses__card--purple">
@@ -1747,7 +1747,7 @@
     <div style="display: grid; grid-template-columns: minmax(0, 45%) 1fr; gap: 48px; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 24px;">
       <!-- LEFT: Book cover -->
       <div style="display: flex; align-items: center; justify-content: center;">
-        <img src="../assets/images/bookcover.png" alt="Book Cover" style="width: 100%; max-width: 340px; height: auto; border-radius: 6px; box-shadow: 0 20px 60px rgba(107,76,163,0.35), 0 6px 18px rgba(0,0,0,0.18); transform: perspective(800px) rotateY(4deg);">
+        <img src="../assets/images/book-mockup.png" alt="The 3S+1 Framework to Create Security During Adolescence — book and audiobook" style="width: 100%; max-width: 400px; height: auto; border-radius: 6px; box-shadow: 0 20px 60px rgba(107,76,163,0.30), 0 6px 18px rgba(0,0,0,0.15);">
       </div>
       <!-- RIGHT: Copy + CTA -->
       <div style="text-align: left;">
@@ -1832,16 +1832,18 @@
         <!-- Bonus line items -->
         <div class="cart-product cart-product--bonus">
           <div class="cart-product-info" style="padding-left: 4px;">
-            <p class="cart-product-title" style="font-size:14px;">Bonus: The Book &mdash; The Entrepreneurial Parent&rsquo;s Guide</p>
+            <p class="cart-product-title" style="font-size:14px;">Bonus: The Book &mdash; The 3S+1 Framework to Create Security During Adolescence</p>
             <p class="cart-product-sub">Included</p>
           </div>
+          <span class="cart-product-price" style="font-size:15px;">$10</span>
         </div>
 
         <div class="cart-product cart-product--bonus">
           <div class="cart-product-info" style="padding-left: 4px;">
-            <p class="cart-product-title" style="font-size:14px;">Bonus: The Audiobook &mdash; The Entrepreneurial Parent&rsquo;s Guide</p>
+            <p class="cart-product-title" style="font-size:14px;">Bonus: The Audiobook &mdash; The 3S+1 Framework to Create Security During Adolescence</p>
             <p class="cart-product-sub">Included</p>
           </div>
+          <span class="cart-product-price" style="font-size:15px;">$14</span>
         </div>
 
         <div class="cart-product cart-product--bonus">

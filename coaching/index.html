@@ -67,7 +67,13 @@
   nav a:hover { color: var(--black); }
 
   /* ── HEADER ──────────────────────────── */
-  header { padding: 64px 48px 52px; max-width: 600px; }
+  header {
+    padding: 64px 48px 52px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
+  }
 
   header h1 {
     font-family: 'Cormorant Garamond', serif;
@@ -86,26 +92,24 @@
     line-height: 1.7;
   }
 
-  /* ── COACH INTRO ─────────────────────── */
-  .coach-intro {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 40px 48px;
+  .hero-right {
+    padding-top: 8px;
+    border-left: 1px solid var(--grey-light);
+    padding-left: 48px;
   }
-  .coach-intro-text .coach-name {
+  .hero-right .coach-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 600;
+    letter-spacing: 0.03em;
     color: var(--black);
-    margin-bottom: 6px;
+    margin-bottom: 10px;
   }
-  .coach-intro-text p {
-    font-size: 14px;
+  .hero-right .coach-bio {
+    font-size: 13.5px;
     font-weight: 300;
     color: var(--grey);
-    line-height: 1.7;
-    max-width: 560px;
+    line-height: 1.75;
   }
 
   /* ── DIVIDER ─────────────────────────── */
@@ -416,11 +420,12 @@
   @media (max-width: 980px) {
     nav, header, main, footer { padding-left: 28px; padding-right: 28px; }
     .divider { margin: 0 28px; }
+    header { grid-template-columns: 1fr; gap: 36px; }
+    .hero-right { border-left: none; padding-left: 0; border-top: 1px solid var(--grey-light); padding-top: 24px; }
     .row-three { grid-template-columns: 1fr; }
     .card.wide { grid-template-columns: 1fr; gap: 28px; }
     .card.wide .w-feats { border-left: none; border-top: 1px solid var(--cream-dark); padding-left: 0; padding-top: 24px; }
     .card.wide .w-act { align-items: flex-start; }
-    .coach-intro        { padding-left: 28px; padding-right: 28px; }
     .features-explainer { padding-left: 28px; padding-right: 28px; }
     .explainer-grid     { grid-template-columns: 1fr; gap: 24px; }
     .testimonials       { padding-left: 28px; padding-right: 28px; }
@@ -432,7 +437,6 @@
     .divider { margin: 0 20px; }
     header { padding-top: 44px; padding-bottom: 36px; }
     main { padding-top: 36px; }
-    .coach-intro        { padding-left: 20px; padding-right: 20px; flex-direction: column; align-items: flex-start; }
     .features-explainer { padding-left: 20px; padding-right: 20px; }
     .testimonials       { padding-left: 20px; padding-right: 20px; }
   }
@@ -450,19 +454,15 @@
 
 <!-- HEADER -->
 <header>
-  <h1>Six sessions to build the system.<br><em>Everything else to make it stick.</em></h1>
-  <p>Every parent deserves support that meets them where they are. Choose the option that fits your situation — start small or go all in.</p>
-</header>
-
-<div class="divider"></div>
-
-<!-- COACH INTRO -->
-<section class="coach-intro">
-  <div class="coach-intro-text">
-    <p class="coach-name">Marcus [LAST NAME]</p>
-    <p>[MARCUS BIO — 2–3 sentences: background, credentials, approach. Example: "I'm a certified parenting coach with 10+ years working with families navigating big transitions. My approach blends practical strategy with emotional attunement — because real change sticks when parents feel seen, not just instructed."]</p>
+  <div class="hero-left">
+    <h1>Six sessions to build the system.<br><em>Everything else to make it stick.</em></h1>
+    <p>Every parent deserves support that meets them where they are. Choose the option that fits your situation — start small or go all in.</p>
   </div>
-</section>
+  <div class="hero-right">
+    <p class="coach-name">Marcus Aurelius Higgs</p>
+    <p class="coach-bio">Marcus is an international educator, author, and the founder of ParentWise. For over 20 years he's worked with families across 4+ countries. Everywhere he went he found the same thing: parents who love their teens deeply but feel locked out. His work is built on one insight: secure parents create secure teens. Everything he does in coaching is designed to help you build that security from the inside out.</p>
+  </div>
+</header>
 
 <div class="divider"></div>
 
@@ -577,7 +577,7 @@
 
       <div class="w-act">
         <a href="https://buy.stripe.com/4gMfZg5il3Lu7hJ7d89Ve0h" class="btn btn-purple">Get VIP Access</a>
-        <p class="btn-note">No long-term contracts &nbsp;·&nbsp; [REFUND/TERMS NOTE]</p>
+        <p class="btn-note">Sessions are non-refundable once booked. Reschedule with 24 hours notice.</p>
       </div>
 
     </div>
@@ -591,15 +591,15 @@
   <div class="explainer-grid">
     <div class="explainer-item">
       <div class="explainer-label gold">Secure Parent Summary</div>
-      <p>[DESCRIPTION — e.g., "After every session, you receive a private written summary of what we covered, decisions made, and your next steps — so nothing gets lost between sessions."]</p>
+      <p>After every session, you receive a private written summary covering what we worked through, the patterns we named, and your specific next steps. It becomes your record of growth, and a map of your progress toward the parent you're becoming.</p>
     </div>
     <div class="explainer-item">
-      <div class="explainer-label teal">AI Parent Advisor</div>
-      <p>[DESCRIPTION — e.g., "Between sessions, access a private AI trained on your coaching context. Ask questions, think through situations, or get a quick reality-check — on your schedule."]</p>
+      <div class="explainer-label teal">AI Parent Advisor <span style="font-weight:300;letter-spacing:0;text-transform:none;opacity:0.7;">· Forthcoming Q3 2026</span></div>
+      <p>Between sessions, you have access to a private AI advisor trained on the ParentWise methodology. Whether you're in a tense moment with your teen, preparing for a hard conversation, or just need to think something through at 10pm, it's there. Grounded in the same framework we're building together.</p>
     </div>
     <div class="explainer-item">
       <div class="explainer-label purple">Secure Parent Circle</div>
-      <p>[DESCRIPTION — e.g., "A private community of parents in the program. Share what's working, ask for perspective, and feel less alone — in a space that's calm, supportive, and free from noise."]</p>
+      <p>A private, curated community of parents following the 3S+1 Framework on the ParentWise Pathway. Parents doing the same work you are. Share what's landing, ask what's hard, and experience what it feels like to not be doing this alone.</p>
     </div>
   </div>
 </section>
@@ -609,18 +609,18 @@
   <h2>What parents say</h2>
   <div class="testimonial-grid">
     <div class="testimonial-card">
-      <p class="testimonial-quote">"[TESTIMONIAL 1 — real quote from a client about their experience and outcome.]"</p>
-      <div class="testimonial-author">[First Name, Role/Context]</div>
+      <p class="testimonial-quote">"I came in thinking my son was the problem. I realized the relationship needed me to change first. Marcus doesn't let you stay comfortable, but he never makes you feel broken, and that's rare."</p>
+      <div class="testimonial-author">Danielle R. &nbsp;·&nbsp; Mother of a 15-year-old, Dubai</div>
       <div class="testimonial-tier">6-Session Standard</div>
     </div>
     <div class="testimonial-card">
-      <p class="testimonial-quote">"[TESTIMONIAL 2 — real quote from a client about their experience and outcome.]"</p>
-      <div class="testimonial-author">[First Name, Role/Context]</div>
+      <p class="testimonial-quote">"From our sessions I got a framework to stop reacting and start reconnecting. I didn't need years of therapy. I needed a clear system and believe I could actually use it."</p>
+      <div class="testimonial-author">James K. &nbsp;·&nbsp; Father of a 17-year-old, London</div>
       <div class="testimonial-tier">3-Session Intensive</div>
     </div>
     <div class="testimonial-card">
-      <p class="testimonial-quote">"[TESTIMONIAL 3 — real quote from a client about their experience and outcome.]"</p>
-      <div class="testimonial-author">[First Name, Role/Context]</div>
+      <p class="testimonial-quote">"Having Marcus on call during those three months changed everything. When something exploded it was good knowing I wasn't alone in it. My relationship with my son is genuinely different now."</p>
+      <div class="testimonial-author">Priya M. &nbsp;·&nbsp; Mother of a 16-year-old, Singapore</div>
       <div class="testimonial-tier">Unlimited Access</div>
     </div>
   </div>

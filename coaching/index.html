@@ -7,6 +7,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.ico">
+<meta name="description" content="Expert parenting coaching with Marcus. Choose the level of support that fits where you are — from a single session to unlimited access.">
+<meta property="og:title" content="ParentWise — Coaching">
+<meta property="og:description" content="Expert parenting coaching with Marcus. Choose the level of support that fits where you are — from a single session to unlimited access.">
+<meta property="og:url" content="https://getparentwise.com/coaching">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
 <style>
   :root {
     --purple:       #6B4CA3;
@@ -77,6 +84,28 @@
     font-weight: 300;
     color: var(--grey);
     line-height: 1.7;
+  }
+
+  /* ── COACH INTRO ─────────────────────── */
+  .coach-intro {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 40px 48px;
+  }
+  .coach-intro-text .coach-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 6px;
+  }
+  .coach-intro-text p {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--grey);
+    line-height: 1.7;
+    max-width: 560px;
   }
 
   /* ── DIVIDER ─────────────────────────── */
@@ -251,10 +280,12 @@
   .feat-label-white { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.7); }
 
   /* section rule inside featured card */
-  .feat-rule {
+  li.feat-rule {
+    list-style: none;
     height: 1px;
     background: rgba(255,255,255,0.12);
     margin: 14px 0 14px;
+    padding: 0;
   }
 
   /* ── BUTTONS ─────────────────────────── */
@@ -290,6 +321,85 @@
 
   .btn-note { font-size: 11px; color: var(--grey); text-align: right; }
 
+  /* ── FEATURES EXPLAINER ──────────────── */
+  .features-explainer {
+    padding: 52px 48px;
+    background: var(--white);
+    border-top: 1px solid var(--grey-light);
+    border-bottom: 1px solid var(--grey-light);
+  }
+  .features-explainer h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--black);
+    margin-bottom: 32px;
+  }
+  .explainer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .explainer-item .explainer-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .explainer-item .explainer-label.gold   { color: var(--gold); }
+  .explainer-item .explainer-label.teal   { color: var(--teal); }
+  .explainer-item .explainer-label.purple { color: var(--purple); }
+  .explainer-item p {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--grey);
+    line-height: 1.65;
+  }
+
+  /* ── TESTIMONIALS ────────────────────── */
+  .testimonials {
+    padding: 60px 48px;
+  }
+  .testimonials h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--black);
+    margin-bottom: 32px;
+  }
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .testimonial-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 28px;
+    border: 1px solid var(--grey-light);
+  }
+  .testimonial-quote {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--black);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  .testimonial-author {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--grey);
+    text-transform: uppercase;
+  }
+  .testimonial-tier {
+    font-size: 10px;
+    color: var(--purple-light);
+    margin-top: 2px;
+  }
+
   /* ── FOOTER ──────────────────────────── */
   footer {
     padding: 28px 48px;
@@ -310,6 +420,11 @@
     .card.wide { grid-template-columns: 1fr; gap: 28px; }
     .card.wide .w-feats { border-left: none; border-top: 1px solid var(--cream-dark); padding-left: 0; padding-top: 24px; }
     .card.wide .w-act { align-items: flex-start; }
+    .coach-intro        { padding-left: 28px; padding-right: 28px; }
+    .features-explainer { padding-left: 28px; padding-right: 28px; }
+    .explainer-grid     { grid-template-columns: 1fr; gap: 24px; }
+    .testimonials       { padding-left: 28px; padding-right: 28px; }
+    .testimonial-grid   { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 580px) {
@@ -317,6 +432,9 @@
     .divider { margin: 0 20px; }
     header { padding-top: 44px; padding-bottom: 36px; }
     main { padding-top: 36px; }
+    .coach-intro        { padding-left: 20px; padding-right: 20px; flex-direction: column; align-items: flex-start; }
+    .features-explainer { padding-left: 20px; padding-right: 20px; }
+    .testimonials       { padding-left: 20px; padding-right: 20px; }
   }
 </style>
 </head>
@@ -333,8 +451,18 @@
 <!-- HEADER -->
 <header>
   <h1>Six sessions to build the system.<br><em>Everything else to make it stick.</em></h1>
-  <p>Select the level of support that fits where you are right now.</p>
+  <p>Every parent deserves support that meets them where they are. Choose the option that fits your situation — start small or go all in.</p>
 </header>
+
+<div class="divider"></div>
+
+<!-- COACH INTRO -->
+<section class="coach-intro">
+  <div class="coach-intro-text">
+    <p class="coach-name">Marcus [LAST NAME]</p>
+    <p>[MARCUS BIO — 2–3 sentences: background, credentials, approach. Example: "I'm a certified parenting coach with 10+ years working with families navigating big transitions. My approach blends practical strategy with emotional attunement — because real change sticks when parents feel seen, not just instructed."]</p>
+  </div>
+</section>
 
 <div class="divider"></div>
 
@@ -353,13 +481,14 @@
         <span class="price-sym">$</span>
         <span class="price-amount">175</span>
       </div>
-      <div class="price-plan">&nbsp;</div>
+      <div class="price-plan">one-time &nbsp;·&nbsp; no commitment</div>
       <ul class="features">
         <li><span class="dot"></span>One focused issue</li>
         <li><span class="dot"></span>Tactical strategy session</li>
         <li><span class="dot"></span>No commitment</li>
       </ul>
       <a href="https://buy.stripe.com/4gMdR8bGJdm431t0OK9Ve0d" class="btn btn-ghost">Book Session</a>
+
     </div>
 
     <!-- 3-Session Intensive -->
@@ -371,7 +500,7 @@
         <span class="price-sym">$</span>
         <span class="price-amount">450</span>
       </div>
-      <div class="price-plan">&nbsp;</div>
+      <div class="price-plan">$150 per session</div>
       <ul class="features">
         <li><span class="dot"></span>Crisis or transition focus</li>
         <li><span class="dot"></span>Weekly or bi-weekly</li>
@@ -390,11 +519,11 @@
         <span class="price-sym">$</span>
         <span class="price-amount">750</span>
       </div>
-      <div class="price-plan">&nbsp;</div>
+      <div class="price-plan">$125 per session</div>
       <ul class="features">
         <li><span class="dot"></span>Bi-weekly sessions</li>
 
-        <div class="feat-rule"></div>
+        <li class="feat-rule" role="presentation"></li>
 
         <li>
           <span class="dot dot-gold"></span>
@@ -433,7 +562,7 @@
           <span class="price-sym">$</span>
           <span class="price-amount">1,000</span>
         </div>
-        <div class="price-plan">&nbsp;</div>
+        <div class="price-plan">unlimited sessions &nbsp;·&nbsp; 3 months</div>
       </div>
 
       <div class="w-feats">
@@ -448,12 +577,54 @@
 
       <div class="w-act">
         <a href="https://buy.stripe.com/4gMfZg5il3Lu7hJ7d89Ve0h" class="btn btn-purple">Get VIP Access</a>
+        <p class="btn-note">No long-term contracts &nbsp;·&nbsp; [REFUND/TERMS NOTE]</p>
       </div>
 
     </div>
   </div>
 
 </main>
+
+<!-- FEATURES EXPLAINER -->
+<section class="features-explainer">
+  <h2>What's included</h2>
+  <div class="explainer-grid">
+    <div class="explainer-item">
+      <div class="explainer-label gold">Secure Parent Summary</div>
+      <p>[DESCRIPTION — e.g., "After every session, you receive a private written summary of what we covered, decisions made, and your next steps — so nothing gets lost between sessions."]</p>
+    </div>
+    <div class="explainer-item">
+      <div class="explainer-label teal">AI Parent Advisor</div>
+      <p>[DESCRIPTION — e.g., "Between sessions, access a private AI trained on your coaching context. Ask questions, think through situations, or get a quick reality-check — on your schedule."]</p>
+    </div>
+    <div class="explainer-item">
+      <div class="explainer-label purple">Secure Parent Circle</div>
+      <p>[DESCRIPTION — e.g., "A private community of parents in the program. Share what's working, ask for perspective, and feel less alone — in a space that's calm, supportive, and free from noise."]</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <h2>What parents say</h2>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <p class="testimonial-quote">"[TESTIMONIAL 1 — real quote from a client about their experience and outcome.]"</p>
+      <div class="testimonial-author">[First Name, Role/Context]</div>
+      <div class="testimonial-tier">6-Session Standard</div>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-quote">"[TESTIMONIAL 2 — real quote from a client about their experience and outcome.]"</p>
+      <div class="testimonial-author">[First Name, Role/Context]</div>
+      <div class="testimonial-tier">3-Session Intensive</div>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-quote">"[TESTIMONIAL 3 — real quote from a client about their experience and outcome.]"</p>
+      <div class="testimonial-author">[First Name, Role/Context]</div>
+      <div class="testimonial-tier">Unlimited Access</div>
+    </div>
+  </div>
+</section>
 
 <div class="divider"></div>
 

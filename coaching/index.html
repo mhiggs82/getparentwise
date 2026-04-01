@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ParentWise — Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple:       #6B4CA3;
+    --purple-deep:  #4E3578;
+    --purple-light: #9B7FCC;
+    --purple-pale:  #EDE6F7;
+    --cream:        #F5F1E8;
+    --cream-dark:   #EAE5D9;
+    --black:        #1A1A1A;
+    --grey:         #888;
+    --grey-light:   #D8D4CE;
+    --white:        #FFFFFF;
+    --gold:         #C9A84C;
+    --teal:         #4A9B8E;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--black);
+    min-height: 100vh;
+  }
+
+  /* ── NAV ─────────────────────────────── */
+  nav {
+    padding: 32px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--black);
+  }
+  .logo span { color: var(--purple); }
+
+  nav a {
+    font-size: 13px;
+    color: var(--grey);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--black); }
+
+  /* ── HEADER ──────────────────────────── */
+  header { padding: 64px 48px 52px; max-width: 600px; }
+
+  header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 5.5vw, 60px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--black);
+    margin-bottom: 14px;
+  }
+  header h1 em { font-style: italic; color: var(--purple); }
+
+  header p {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--grey);
+    line-height: 1.7;
+  }
+
+  /* ── DIVIDER ─────────────────────────── */
+  .divider { height: 1px; background: var(--grey-light); margin: 0 48px; }
+
+  /* ── MAIN ────────────────────────────── */
+  main { padding: 52px 48px 80px; }
+
+  /* Top row: 3 cards */
+  .row-three {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  /* Bottom row: VIP wide */
+  .row-one { display: grid; grid-template-columns: 1fr; }
+
+  /* ── CARD ────────────────────────────── */
+  .card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 34px 30px 38px;
+    border: 1px solid transparent;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    position: relative;
+  }
+
+  .card:hover {
+    border-color: var(--grey-light);
+    box-shadow: 0 6px 28px rgba(26,26,26,0.07);
+  }
+
+  /* Featured */
+  .card.featured {
+    background: var(--purple);
+    border-color: transparent;
+  }
+  .card.featured:hover {
+    box-shadow: 0 10px 44px rgba(107,76,163,0.30);
+    border-color: transparent;
+  }
+
+  /* Wide VIP */
+  .card.wide {
+    display: grid;
+    grid-template-columns: 1.1fr 1.2fr 0.7fr;
+    gap: 0;
+    align-items: center;
+    padding: 38px 40px;
+  }
+  .card.wide .w-body  { grid-column: 1/2; }
+  .card.wide .w-feats { grid-column: 2/3; border-left: 1px solid var(--cream-dark); padding-left: 36px; }
+  .card.wide .w-act   { grid-column: 3/4; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+
+  /* ── BADGE ───────────────────────────── */
+  .badge {
+    display: inline-block;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 50px;
+    margin-bottom: 18px;
+  }
+  .badge-popular { background: rgba(255,255,255,0.18); color: rgba(255,255,255,0.88); }
+  .badge-vip     { background: rgba(201,168,76,0.14); color: var(--gold); }
+
+  /* ── CARD LABELS ─────────────────────── */
+  .card-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 5px;
+  }
+  .card.featured .card-tag { color: rgba(255,255,255,0.48); }
+
+  .card-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--black);
+    line-height: 1.15;
+    margin-bottom: 4px;
+  }
+  .card.featured .card-name { color: var(--white); }
+
+  .card-meta { font-size: 12px; color: var(--grey); margin-bottom: 24px; }
+  .card.featured .card-meta { color: rgba(255,255,255,0.5); }
+
+  /* ── PRICE ───────────────────────────── */
+  .price { display: flex; align-items: baseline; gap: 3px; margin-bottom: 4px; }
+
+  .price-sym {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--purple);
+    padding-top: 5px;
+  }
+  .card.featured .price-sym { color: rgba(255,255,255,0.65); }
+
+  .price-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 50px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--black);
+  }
+  .card.featured .price-amount { color: var(--white); }
+
+  .price-plan {
+    font-size: 11px;
+    color: var(--grey);
+    margin-bottom: 24px;
+    min-height: 16px;
+  }
+  .card.featured .price-plan { color: rgba(255,255,255,0.48); }
+
+  /* ── FEATURES ────────────────────────── */
+  .features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-bottom: 28px;
+  }
+
+  .features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--black);
+    line-height: 1.45;
+  }
+  .card.featured .features li { color: rgba(255,255,255,0.82); }
+
+  .dot {
+    flex-shrink: 0;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--purple-light);
+    margin-top: 5px;
+  }
+  .card.featured .dot { background: rgba(255,255,255,0.4); }
+
+  /* highlight dot for bonus items */
+  .dot-gold { background: var(--gold) !important; opacity: 0.85; }
+  .dot-teal { background: var(--teal) !important; opacity: 0.9; }
+
+  /* inline feature label */
+  .feat-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 50px;
+    margin-left: 6px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+  }
+  .feat-label-gold { background: rgba(201,168,76,0.2); color: var(--gold); }
+  .feat-label-teal { background: rgba(74,155,142,0.15); color: var(--teal); }
+  .feat-label-white { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.7); }
+
+  /* section rule inside featured card */
+  .feat-rule {
+    height: 1px;
+    background: rgba(255,255,255,0.12);
+    margin: 14px 0 14px;
+  }
+
+  /* ── BUTTONS ─────────────────────────── */
+  .btn {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 13px 26px;
+    border-radius: 50px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.22s ease;
+    cursor: pointer;
+    border: none;
+    white-space: nowrap;
+  }
+
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--grey-light);
+    color: var(--black);
+    width: 100%;
+  }
+  .btn-ghost:hover { border-color: var(--purple-light); color: var(--purple); background: var(--purple-pale); }
+
+  .btn-white { background: var(--white); color: var(--purple); width: 100%; }
+  .btn-white:hover { background: var(--cream); box-shadow: 0 4px 18px rgba(0,0,0,0.10); }
+
+  .btn-purple { background: var(--purple); color: var(--white); padding: 14px 34px; }
+  .btn-purple:hover { background: var(--purple-deep); box-shadow: 0 6px 26px rgba(107,76,163,0.38); transform: translateY(-1px); }
+
+  .btn-note { font-size: 11px; color: var(--grey); text-align: right; }
+
+  /* ── FOOTER ──────────────────────────── */
+  footer {
+    padding: 28px 48px;
+    border-top: 1px solid var(--grey-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  footer p  { font-size: 12px; color: var(--grey); }
+  footer a  { font-size: 12px; color: var(--grey); text-decoration: none; transition: color 0.2s; }
+  footer a:hover { color: var(--black); }
+
+  /* ── RESPONSIVE ──────────────────────── */
+  @media (max-width: 980px) {
+    nav, header, main, footer { padding-left: 28px; padding-right: 28px; }
+    .divider { margin: 0 28px; }
+    .row-three { grid-template-columns: 1fr; }
+    .card.wide { grid-template-columns: 1fr; gap: 28px; }
+    .card.wide .w-feats { border-left: none; border-top: 1px solid var(--cream-dark); padding-left: 0; padding-top: 24px; }
+    .card.wide .w-act { align-items: flex-start; }
+  }
+
+  @media (max-width: 580px) {
+    nav, header, main, footer { padding-left: 20px; padding-right: 20px; }
+    .divider { margin: 0 20px; }
+    header { padding-top: 44px; padding-bottom: 36px; }
+    main { padding-top: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Parent<span>Wise</span></div>
+  <a href="https://getparentwise.com">getparentwise.com</a>
+</nav>
+
+<div class="divider"></div>
+
+<!-- HEADER -->
+<header>
+  <h1>Six sessions to build the system.<br><em>Everything else to make it stick.</em></h1>
+  <p>Select the level of support that fits where you are right now.</p>
+</header>
+
+<div class="divider"></div>
+
+<!-- PRICING -->
+<main>
+
+  <!-- Row 1: 3 standard cards -->
+  <div class="row-three">
+
+    <!-- Single Session -->
+    <div class="card">
+      <div class="card-tag">The Tester</div>
+      <div class="card-name">Single Session</div>
+      <div class="card-meta">1 × 60 min &nbsp;·&nbsp; One-time</div>
+      <div class="price">
+        <span class="price-sym">$</span>
+        <span class="price-amount">175</span>
+      </div>
+      <div class="price-plan">&nbsp;</div>
+      <ul class="features">
+        <li><span class="dot"></span>One focused issue</li>
+        <li><span class="dot"></span>Tactical strategy session</li>
+        <li><span class="dot"></span>No commitment</li>
+      </ul>
+      <a href="#" class="btn btn-ghost">Book Session</a>
+    </div>
+
+    <!-- 3-Session Intensive -->
+    <div class="card">
+      <div class="card-tag">The Fixer</div>
+      <div class="card-name">3-Session Intensive</div>
+      <div class="card-meta">3 × 90 min &nbsp;·&nbsp; 3–6 weeks</div>
+      <div class="price">
+        <span class="price-sym">$</span>
+        <span class="price-amount">450</span>
+      </div>
+      <div class="price-plan">&nbsp;</div>
+      <ul class="features">
+        <li><span class="dot"></span>Crisis or transition focus</li>
+        <li><span class="dot"></span>Weekly or bi-weekly</li>
+        <li><span class="dot"></span>High-momentum pacing</li>
+      </ul>
+      <a href="#" class="btn btn-ghost">Start Intensive</a>
+    </div>
+
+    <!-- 6-Session Standard: FEATURED -->
+    <div class="card featured">
+      <span class="badge badge-popular">Most Popular</span>
+      <div class="card-tag">The Builder</div>
+      <div class="card-name">6-Session Standard</div>
+      <div class="card-meta">6 × 45–90 min &nbsp;·&nbsp; 3 months</div>
+      <div class="price">
+        <span class="price-sym">$</span>
+        <span class="price-amount">750</span>
+      </div>
+      <div class="price-plan">or 2 × $375</div>
+      <ul class="features">
+        <li><span class="dot"></span>Bi-weekly sessions</li>
+
+        <div class="feat-rule"></div>
+
+        <li>
+          <span class="dot dot-gold"></span>
+          <span>Secure Parent Summary
+            <span class="feat-label feat-label-white">After every session</span>
+          </span>
+        </li>
+        <li>
+          <span class="dot dot-teal"></span>
+          <span>AI Parent Advisor — ask anything, anytime
+            <span class="feat-label feat-label-white">Between sessions</span>
+          </span>
+        </li>
+        <li>
+          <span class="dot dot-gold"></span>
+          <span>Secure Parent Circle — 3 months community access
+            <span class="feat-label feat-label-white">Included</span>
+          </span>
+        </li>
+      </ul>
+      <a href="#" class="btn btn-white">Enroll Now</a>
+    </div>
+
+  </div>
+
+  <!-- Row 2: VIP Unlimited -->
+  <div class="row-one">
+    <div class="card wide">
+
+      <div class="w-body">
+        <span class="badge badge-vip">VIP &nbsp;·&nbsp; Unlimited Access</span>
+        <div class="card-tag">The Co-Pilot</div>
+        <div class="card-name">Unlimited Access</div>
+        <div class="card-meta">15–90 min sessions &nbsp;·&nbsp; 3 months</div>
+        <div class="price">
+          <span class="price-sym">$</span>
+          <span class="price-amount">1,000</span>
+        </div>
+        <div class="price-plan">or 2 × $500</div>
+      </div>
+
+      <div class="w-feats">
+        <ul class="features">
+          <li><span class="dot"></span>Everything in the 6-Session Standard</li>
+          <li><span class="dot"></span>Unlimited sessions — no cap</li>
+          <li><span class="dot"></span>Unlimited text &amp; phone access to Marcus</li>
+          <li><span class="dot"></span>Reach out in the moment — not just at session time</li>
+          <li><span class="dot"></span>For complex, high-stakes, high-anxiety situations</li>
+        </ul>
+      </div>
+
+      <div class="w-act">
+        <a href="#" class="btn btn-purple">Get VIP Access</a>
+        <div class="btn-note">Payment plan available</div>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<div class="divider"></div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Questions? <a href="mailto:hello@getparentwise.com">hello@getparentwise.com</a></p>
+  <p>© 2026 ParentWise &nbsp;·&nbsp; <a href="https://getparentwise.com">getparentwise.com</a></p>
+</footer>
+
+</body>
+</html>

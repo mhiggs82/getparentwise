@@ -14,7 +14,7 @@ const STRIPE_API = 'https://api.stripe.com/v1';
 // Product amounts in cents
 const BOOK_AMOUNT   = 700;   // $7.00
 const BUMP_AMOUNT   = 7500;  // $75.00
-const UPSELL_AMOUNT = 19700; // $197.00
+const UPSELL_AMOUNT = 50000; // $500.00
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');

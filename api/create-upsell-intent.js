@@ -10,7 +10,7 @@
 // =============================================================
 
 const STRIPE_API = 'https://api.stripe.com/v1';
-const UPSELL_AMOUNT = 19700; // $197.00 in cents
+const UPSELL_AMOUNT = 50000; // $500.00 in cents
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
